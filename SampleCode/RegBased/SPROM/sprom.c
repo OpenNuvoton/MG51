@@ -4,8 +4,14 @@
 /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                         */
 /*                                                                                                         */
 /*---------------------------------------------------------------------------------------------------------*/
+#include "numicro_8051.h"
+#include "sprom.h"
 
-extern uint8_t  Write_DATAFLASH_BYTE(uint16_t u16EPAddr, uint8_t u8EPData);
-extern uint8_t  Write_DATAFLASH_ARRAY(uint16_t u16_addr, uint8_t *pDat, uint16_t num);
-void  Read_DATAFLASH_ARRAY(uint16_t u16_addr, uint8_t *pDat, uint16_t num);
+unsigned char  SPTEMP=1;
 
+void SPROM_CODE (void)
+{
+  GPIO_LED ^= 1;
+  SPTEMP++;
+
+}

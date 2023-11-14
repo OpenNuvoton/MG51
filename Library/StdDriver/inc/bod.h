@@ -18,5 +18,5 @@
 
 void BOD_Open(unsigned char u8bodstatus, unsigned char u8bodlevel, unsigned char u8bodresetstatus);
 void BOD_LowPower(unsigned char u8LPBDD);
-void BOD_Interrupt (unsigned char u8bodINTstatus);
+void BOD_Interrupt_Enable (unsigned char u8bodINTstatus);
 

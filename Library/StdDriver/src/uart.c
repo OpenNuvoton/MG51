@@ -10,9 +10,17 @@ BIT PRINTFG, uart0_receive_flag, uart1_receive_flag;
 uint8_t uart0_receive_data, uart1_receive_data;
 
 #if 0
+/* UART0 interrupt vector demo */
+#if defined __C51__
+void Serial_ISR(void)  interrupt 4
+#elif defined __ICC8051__
+#pragma vector=0x23
+__interrupt void SerialPort0_ISR(void)
+#elif defined __SDCC__
 void Serial_ISR(void) __interrupt (4)
+#endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     if (RI)
     {
@@ -29,14 +37,24 @@ void Serial_ISR(void) __interrupt (4)
         }
     }
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }	
 
 
-
+/* UART1 interrupt vector demo */
+#if defined __C51__
+void SerialPort1_ISR(void) interrupt 15
+#elif defined __ICC8051__
+#pragma vector=0x7B
+__interrupt void SerialPort1_ISR(void)
+#elif defined __SDCC__
 void SerialPort1_ISR(void) __interrupt (15)
+#endif
 {
-	 PUSH_SFRS;
+	 SFRS_TMP = SFRS;              /* for SFRS page */
   
     if (RI_1)
     {
@@ -53,7 +71,10 @@ void SerialPort1_ISR(void) __interrupt (15)
         }
     }
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 #endif
 
@@ -92,7 +113,6 @@ void UART_Open(unsigned long u32SysClock, unsigned char u8UARTPort,unsigned long
   }
 }
 
-#if 0 
 unsigned char Receive_Data(unsigned char UARTPort)
 {
     UINT8 c;
@@ -111,7 +131,6 @@ unsigned char Receive_Data(unsigned char UARTPort)
     }
     return (c);
 }
-#endif
 
 void UART_Send_Data(uint8_t UARTPort, uint8_t c)
 {

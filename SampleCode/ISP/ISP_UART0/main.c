@@ -35,8 +35,6 @@ void Serial_ISR(void) __interrupt (4)
 {
     uint8_t  votemp;
     
-    PUSH_SFRS;
-
     if (RI == 1)
     {
         votemp = SBUF;
@@ -59,7 +57,6 @@ void Serial_ISR(void) __interrupt (4)
         g_timer1Over = 0;
         bufhead = 0;
     }
-    POP_SFRS;
 }
 
 /****************************************
@@ -76,7 +73,6 @@ __interrupt void Timer0_ISR(void)
 void Timer0_ISR(void) __interrupt (1)
 #endif
 {
-    PUSH_SFRS;
     if (g_timer0Counter)
     {
         g_timer0Counter--;
@@ -93,7 +89,6 @@ void Timer0_ISR(void) __interrupt (1)
             g_timer1Over = 1;
         }
     }
-    POP_SFRS;
 }
 
 

@@ -4,13 +4,35 @@
 /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                         */
 /*                                                                                                         */
 /*---------------------------------------------------------------------------------------------------------*/
+#include "numicro_8051.h"
+#include "sprom.h"
+
+void main (void) 
+{
+    MODIFY_HIRC(HIRC_24);
+    Enable_UART0_VCOM_printf_24M_115200();
+    
+    ENABLE_SPROM;             //Enable SPROM memory mapping only for check SPROM in memory window
+
 #if defined __C51__
-extern uint8_t Read_SPROM_BYTE(uint8_t code *u8_addr);
+    printf ("\n protect bit is 0x%bX", lockdata);
 #elif defined __ICC8051__
-extern uint8_t Read_SPROM_BYTE(const uint8_t __code *u8_addr);
+    printf ("\n protect bit is 0x%hx", lockdata);
 #elif defined __SDCC__
-extern uint8_t Read_SPROM_BYTE(const uint8_t __code *u8_addr);
+    printf ("\n protect bit is 0x%hx", lockdata);
 #endif
 
-extern uint8_t Write_SPROM_DATAFLASH_ARRAY(uint8_t u8_addr, uint8_t *pDat, uint16_t num);
-void Read_SPROM_DATAFLASH_ARRAY(uint16_t u16_addr, uint8_t *pDat, uint16_t num);
+    while(1)
+    {
+      SPROM_CODE();
+#if defined __C51__
+      printf ("\n SPTEMP= 0x%bX", SPTEMP);
+#elif defined __ICC8051__
+      printf ("\n SPTEMP= 0x%hx", SPTEMP);
+#elif defined __SDCC__
+      printf ("\n SPTEMP= 0x%hx", SPTEMP);
+#endif
+
+      Timer0_Delay(24000000,300,1000);
+    }
+}

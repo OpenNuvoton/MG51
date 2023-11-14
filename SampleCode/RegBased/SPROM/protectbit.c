@@ -4,13 +4,27 @@
 /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                         */
 /*                                                                                                         */
 /*---------------------------------------------------------------------------------------------------------*/
-#if defined __C51__
-extern uint8_t Read_SPROM_BYTE(uint8_t code *u8_addr);
-#elif defined __ICC8051__
-extern uint8_t Read_SPROM_BYTE(const uint8_t __code *u8_addr);
-#elif defined __SDCC__
-extern uint8_t Read_SPROM_BYTE(const uint8_t __code *u8_addr);
-#endif
+#include "numicro_8051.h"
 
-extern uint8_t Write_SPROM_DATAFLASH_ARRAY(uint8_t u8_addr, uint8_t *pDat, uint16_t num);
-void Read_SPROM_DATAFLASH_ARRAY(uint16_t u16_addr, uint8_t *pDat, uint16_t num);
+#if defined __C51__
+uint8_t code lockdata [] = { 
+    0xFF                        /* This byte as 0xFF means unlock SPROM. Any other value is lock*/
+//    0X00                      /* Define this value is lock*/
+};
+
+#elif defined __ICC8051__
+__code const char lockdata@0xFFFF = 0xFF;    /* This byte as 0xFF means unlock SPROM. Any other value is lock*/
+// __code const char lockdata@0xFFFF = 0x00; /* Define this value is lock*/
+
+#elif defined __SDCC__
+uint8_t __code lockdata [] = {
+    0xFF                        /* This byte as 0xFF means unlock SPROM. Any other value is lock*/
+//    0X00                      /* Define this value is lock*/
+};
+
+#endif
+ 
+
+
+
+
