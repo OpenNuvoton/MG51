@@ -22,7 +22,7 @@
 #define BYTE_PROGRAM_CONFIG  0xE1
 #define READ_UID             0x04
 #define PAGE_SIZE            128
-#define APROM_SIZE           6*1024
+#define APROM_SIZE           30*1024
 
 extern  BIT volatile bI2CDataReady;
 extern  BIT volatile bISPDataReady;

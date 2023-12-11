@@ -166,7 +166,7 @@ void Init_I2C(void)
     SCL = 1;
     set_EIE_EI2C;                               //enable I2C interrupt by setting IE1 bit 0
     set_I2CON_I2CEN;                              //enable I2C circuit
-    I2ADDR = ADDR_SLA;                    //#include "ms51_8k.h" own slave address
+    I2ADDR = ADDR_SLA;                    // own slave address
     SI = 0;
     AA = 1;
     EA=1;

@@ -175,7 +175,7 @@
                 </option>
                 <option>
                     <name>General Xdata Stack Size</name>
-                    <state>0x7FF</state>
+                    <state>0x1FF</state>
                 </option>
                 <option>
                     <name>General Ext Stack Size</name>
@@ -818,7 +818,7 @@
                 </option>
                 <option>
                     <name>XclFile</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\lnk51ew_ML51.xcl</state>
+                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\lnk51ew_MG51_32K_16K.xcl</state>
                 </option>
                 <option>
                     <name>XclFileSlave</name>
@@ -1363,11 +1363,11 @@
                 </option>
                 <option>
                     <name>OGChipSelectMenu</name>
-                    <state>N76E003	N76E003</state>
+                    <state>MG51_32K_16K	MG51_32K_16K</state>
                 </option>
                 <option>
                     <name>OGChipSelectMenuSlave</name>
-                    <state>N76E003	N76E003</state>
+                    <state>MG51_32K_16K	MG51_32K_16K</state>
                 </option>
                 <option>
                     <name>DPC Address</name>
@@ -1391,7 +1391,7 @@
                 </option>
                 <option>
                     <name>OGChipConfigPath</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\N76E003.i51</state>
+                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\MG51\MG51_32K_16K.i51</state>
                 </option>
             </data>
         </settings>

@@ -1364,11 +1364,11 @@
                 </option>
                 <option>
                     <name>OGChipSelectMenu</name>
-                    <state>N76E003	N76E003</state>
+                    <state>MG51_32K_16K	MG51_32K_16K</state>
                 </option>
                 <option>
                     <name>OGChipSelectMenuSlave</name>
-                    <state>N76E003	N76E003</state>
+                    <state>MG51_32K_16K	MG51_32K_16K</state>
                 </option>
                 <option>
                     <name>DPC Address</name>
@@ -1392,7 +1392,7 @@
                 </option>
                 <option>
                     <name>OGChipConfigPath</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\N76E003.i51</state>
+                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\MG51\MG51_32K_16K.i51</state>
                 </option>
             </data>
         </settings>
