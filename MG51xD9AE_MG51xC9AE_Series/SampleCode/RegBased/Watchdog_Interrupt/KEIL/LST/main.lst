@@ -1,0 +1,112 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:42:35 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          BIT   wdtintflag;
+  10          
+  11          #if defined __C51__
+  12          void WDT_ISR (void)   interrupt 10
+  13          
+  14          #elif defined __ICC8051__
+              #pragma vector=0x53
+              __interrupt void WDT_ISR(void)
+              
+              #elif defined __SDCC__
+              void WDT_ISR (void)   __interrupt (10)
+              #endif
+  21          
+  22          {
+  23   1         SFRS_TMP = SFRS;              /* for SFRS page */
+  24   1         CLEAR_WDT_INTERRUPT_FLAG;
+  25   1        /* Config Enable WDT reset and not clear couter trig reset */
+  26   1          GPIO_LED ^= 1;
+  27   1          wdtintflag = 1;
+  28   1      
+  29   1          if (SFRS_TMP)                 /* for SFRS page */
+  30   1          {
+  31   2            ENABLE_SFR_PAGE1;
+  32   2          }
+  33   1      }
+  34          
+  35          /*********************************************************************************************************
+             -***/
+  36          /* FUNCTION_PURPOSE: Main Loop                                                                            
+             -  */
+  37          /*********************************************************************************************************
+             -***/
+  38          void main (void)
+  39          {
+  40   1          unsigned char ct; 
+  41   1      /* UART0 settting for printf function */
+  42   1          MODIFY_HIRC(HIRC_24);
+  43   1          Enable_UART0_VCOM_printf_24M_115200();
+  44   1          printf ("\n Test start ...");
+  45   1      
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:42:35 PAGE 2   
+
+  46   1          GPIO_LED_QUASI_MODE;
+  47   1      /*--------------------------------------------------------
+  48   1      *Warning:
+  49   1      *Pleaes always check CONFIG WDT disable first 
+  50   1      *only when WDT reset disable, WDT use as pure timer
+  51   1      --------------------------------------------------------*/
+  52   1          WDT_TIMEOUT_1_6S;                     /* Setting WDT time out */
+  53   1          WDT_RUN_IN_POWERDOWN_ENABLE;           /* WDT run in POWER DOWM mode setting if needed */
+  54   1          ENABLE_WDT_INTERRUPT;
+  55   1          ENABLE_GLOBAL_INTERRUPT;
+  56   1          WDT_COUNTER_RUN;                       /* WDT start to run */
+  57   1      
+  58   1          for(ct=0;ct<4;ct++)
+  59   1          {
+  60   2            WDT_Clear();
+  61   2            Timer0_Delay(24000000,300,1000);
+  62   2            GPIO_LED ^= 1;
+  63   2          }
+  64   1          while (1)
+  65   1          {
+  66   2            if (wdtintflag);
+  67   2            {
+  68   3              printf (" \n\r WDT interrupt ! \n\r");
+  69   3              wdtintflag = 0;
+  70   3              set_PCON_PD;
+  71   3            }
+  72   2          }
+  73   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    222    ----
+   CONSTANT SIZE    =     40    ----
+   XDATA SIZE       =   ----       1
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,76 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:40:20 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          
+  10          /*=============================================================================================*/
+  11          /*  The test process:                                                                          */
+  12          /*  1. Power on is run as default HIRC, show LED Fsys tickle faster                            */
+  13          /*  2. toggle P1.7 to GND. Call modify Fsys code to LIRC.                                      */
+  14          /*  3. toggle P1.7 to VDD. Call modify Fsys code to HIRC.                                      */
+  15          /*  4. LED tickle speed slowly than before                                                     */
+  16          /*=============================================================================================*/
+  17          
+  18          void main(void)
+  19          {
+  20   1      
+  21   1      /* Note
+  22   1        MCU power on system clock is HIRC (16 MHz)
+  23   1        Please keep P3.0 HIGH before you want to modify Fsys to LIRC
+  24   1      */
+  25   1        
+  26   1          P17_QUASI_MODE;
+  27   1          set_CKCON_CLOEN;                                  // Also can check P1.1 CLO pin for clock to find the
+             - Fsys change.
+  28   1          while (P17);
+  29   1          FsysSelect(FSYS_LIRC);
+  30   1          Timer0_Delay(10000,200,1000);
+  31   1          while (!P17);
+  32   1          FsysSelect(FSYS_HIRC);
+  33   1          Timer0_Delay(16000000,2000,1000);
+  34   1          while (P17);
+  35   1          set_PCON_PD;
+  36   1          while(1);
+  37   1      
+  38   1      }
+  39          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     91    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:40:20 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

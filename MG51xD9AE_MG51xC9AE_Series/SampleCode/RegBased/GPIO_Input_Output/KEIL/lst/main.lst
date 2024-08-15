@@ -1,0 +1,78 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:40:27 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(1,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          
+  10          //----------------------------------------------------------------------------------------------//
+  11          void main (void)
+  12          {
+  13   1          /* UART0 settting for printf function */
+  14   1          MODIFY_HIRC(HIRC_24);
+  15   1          Enable_UART0_VCOM_printf_24M_115200();
+  16   1          printf ("\n Test start ...");
+  17   1      
+  18   1          ALL_GPIO_QUASI_MODE;
+  19   1          P12_PUSHPULL_MODE;
+  20   1          P13_INPUT_MODE;
+  21   1      
+  22   1          while(1)
+  23   1          {
+  24   2            P0 = ~P0;
+  25   2            P1 = ~P1;
+  26   2            P30 ^= 1;
+  27   2            P1 |= SET_BIT2;
+  28   2            if (!(P1&SET_BIT3))
+  29   2            {
+  30   3              CALL_NOP;
+  31   3            }
+  32   2            Timer2_Delay(24000000,4,200,1000);
+  33   2      
+  34   2            P1 &= CLR_BIT2;
+  35   2            if (P1&SET_BIT3)
+  36   2            {
+  37   3              CALL_NOP;
+  38   3            }
+  39   2            Timer2_Delay(24000000,4,200,1000);
+  40   2          }
+  41   1      }
+  42          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    157    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:40:27 PAGE 2   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>1306812746</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\Debug\Obj\isp_uart0.r51</file>
+            <file>$PROJ_DIR$\..\main.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Exe\ISP_UART0.d51</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\isp_uart0.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\iar_common.h</file>
+            <file>$PROJ_DIR$\..\isp_uart0.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\adc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\bod.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\iap.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\timer.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\wdt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\wkt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\numicro_8051.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\math.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\mg51_32k_16k_iar.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\function_define_mg51_32k_16k.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\capture.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\delay.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\eeprom_sprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\eeprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\i2c.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\iap_sprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\isr.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\spi.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\sys.h</file>
+            <file>$TOOLKIT_DIR$\inc\iar_check_symbols.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdbool.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\pwm.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\uart.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\sfr_macro_mg51_32k_16k.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+            <file>$TOOLKIT_DIR$\inc\iar_cfi.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\common.h</file>
+            <file>$TOOLKIT_DIR$\lib\clib\cl-pli-nlxd-1e16x01.r51</file>
+            <file>$PROJ_DIR$\..\include\isp_uart0.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\ISP_UART0.a51</file>
+            <file>$TOOLKIT_DIR$\config\devices\NuvoTon\lnk51ew_MG51xC9AE.xcl</file>
+            <file>$PROJ_DIR$\Debug\List\ISP_UART0.map</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\..\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 2</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 4</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 16 19 36 34 29 39 17 37 32 18 20 10 11 21 40 22 23 24 25 26 12 27 33 28 30 13 35 14 15 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</name>
+            <outputs>
+                <tool>
+                    <name>A8051</name>
+                    <file> 6</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A8051</name>
+                    <file> 8 31 38</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\ISP_UART0.d51</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 45 43</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 44 6 0 2 41</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\isp_uart0.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 0</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 7</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 16 19 36 34 29 39 17 37 32 18 20 10 11 21 40 22 23 24 25 26 12 27 33 28 30 13 35 14 15 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 5 45 43</file>
+                </tool>
+            </outputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

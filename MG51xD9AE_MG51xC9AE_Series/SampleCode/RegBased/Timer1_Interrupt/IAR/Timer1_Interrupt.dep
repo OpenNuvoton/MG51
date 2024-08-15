@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>4016044936</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</file>
+            <file>$PROJ_DIR$\Debug\Obj\common.r51</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\sys.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdbool.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\math.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\sys.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\timer.r51</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\numicro_8051.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\sys.r51</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\timer.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\function_define_mg51_32k_16k.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+            <file>$PROJ_DIR$\..\main.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\mg51_32k_16k_iar.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\timer.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\common.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\common.c</file>
+            <file>$PROJ_DIR$\Debug\Exe\Timer1_Interrupt.d51</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\sfr_macro_mg51_32k_16k.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\uart.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\eeprom_sprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\bod.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\timer.h</file>
+            <file>$TOOLKIT_DIR$\inc\iar_cfi.h</file>
+            <file>$PROJ_DIR$\Debug\List\Timer1_Interrupt.map</file>
+            <file>$TOOLKIT_DIR$\lib\clib\cl-pli-nlxd-1e16x01.r51</file>
+            <file>$PROJ_DIR$\Debug\Exe\Timer1_Interrupt.a51</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\delay.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\sys.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\common.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\eeprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\capture.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\wdt.h</file>
+            <file>$TOOLKIT_DIR$\inc\iar_common.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\spi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\adc.h</file>
+            <file>$TOOLKIT_DIR$\config\devices\NuvoTon\lnk51ew_MG51xC9AE.xcl</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\wkt.h</file>
+            <file>$TOOLKIT_DIR$\inc\iar_check_symbols.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\iap_sprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\isr.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\iap.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\pwm.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\i2c.h</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 24 31 33</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</name>
+            <outputs>
+                <tool>
+                    <name>A8051</name>
+                    <file> 20</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A8051</name>
+                    <file> 40 45 30</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\sys.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 10</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 4</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 9 18 25 2 11 15 16 3 5 6 13 42 28 38 36 34 27 37 50 46 48 47 49 41 35 29 26 39 44</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 21</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 14</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 9 18 25 2 11 15 16 3 5 6 13 42 28 38 36 34 27 37 50 46 48 47 49 41 35 29 26 39 44</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\timer.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 9 18 25 2 11 15 16 3 5 6 13 42 28 38 36 34 27 37 50 46 48 47 49 41 35 29 26 39 44</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\common.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 1</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 9 18 25 2 11 15 16 3 5 6 13 42 28 38 36 34 27 37 50 46 48 47 49 41 35 29 26 39 44</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\Timer1_Interrupt.d51</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 31 33</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 43 1 20 21 10 8 32</file>
+                </tool>
+            </inputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

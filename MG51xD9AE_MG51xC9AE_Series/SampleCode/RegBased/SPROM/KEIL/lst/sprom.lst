@@ -1,0 +1,52 @@
+C51 COMPILER V9.60.0.0   SPROM                                                             06/25/2024 11:41:55 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SPROM
+OBJECT MODULE PLACED IN .\Output\sprom.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\sprom.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Librar
+                    -y\Device\Include;..\..\..\..\Library\StdDriver\inc;..\Include) DEBUG PRINT(.\lst\sprom.lst) TABS(2) OBJECT(.\Output\spro
+                    -m.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          #include "sprom.h"
+   9          
+  10          unsigned char  SPTEMP=1;
+  11          
+  12          void SPROM_CODE (void)
+  13          {
+  14   1        GPIO_LED ^= 1;
+  15   1        SPTEMP++;
+  16   1      
+  17   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     12    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,11 @@
+".\Output\main.obj",
+".\Output\uart.obj",
+".\Output\i2c.obj",
+".\Output\delay.obj",
+".\Output\sys.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\I2C_EEPROM_Master_Interrupt" 
+
+PRINT(".\LST\I2C_EEPROM_Master_Interrupt.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

@@ -1,0 +1,216 @@
+C51 COMPILER V9.60.0.0   UART                                                              06/25/2024 11:39:55 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\Output\uart.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\..\..\Library\StdDriver\src\uart.c LARGE OMF2 OPTIMIZE(7,SPEED) BR
+                    -OWSE INCDIR(..\..\..\..\Library\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\uart.lst) TABS(2) OB
+                    -JECT(.\Output\uart.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          BIT PRINTFG, uart0_receive_flag, uart1_receive_flag;
+  10          uint8_t uart0_receive_data, uart1_receive_data;
+  11          
+  12          #if 0
+              /* UART0 interrupt vector demo */
+              #if defined __C51__
+              void Serial_ISR(void)  interrupt 4
+              #elif defined __ICC8051__
+              #pragma vector=0x23
+              __interrupt void SerialPort0_ISR(void)
+              #elif defined __SDCC__
+              void Serial_ISR(void) __interrupt (4)
+              #endif
+              {
+                  SFRS_TMP = SFRS;              /* for SFRS page */
+                
+                  if (RI)
+                  {
+                      uart0_receive_flag = 1;
+                      uart0_receive_data = SBUF;
+                      clr_SCON_RI;                                         // Clear RI (Receive Interrupt).
+                  }
+              
+                  if (TI)
+                  {
+                      if (!PRINTFG)
+                      {
+                          TI = 0;
+                      }
+                  }
+              
+                  if (SFRS_TMP)                 /* for SFRS page */
+                  {
+                    ENABLE_SFR_PAGE1;
+                  }
+              } 
+              
+              
+              /* UART1 interrupt vector demo */
+C51 COMPILER V9.60.0.0   UART                                                              06/25/2024 11:39:55 PAGE 2   
+
+              #if defined __C51__
+              void SerialPort1_ISR(void) interrupt 15
+              #elif defined __ICC8051__
+              #pragma vector=0x7B
+              __interrupt void SerialPort1_ISR(void)
+              #elif defined __SDCC__
+              void SerialPort1_ISR(void) __interrupt (15)
+              #endif
+              {
+                 SFRS_TMP = SFRS;              /* for SFRS page */
+                
+                  if (RI_1)
+                  {
+                      uart1_receive_data = SBUF_1;
+                      uart1_receive_flag = 1;
+                      clr_SCON_1_RI_1;                             /* clear reception flag for next reception */
+                  }
+              
+                  if (TI_1 == 1)
+                  {
+                      if (!PRINTFG)
+                      {
+                          clr_SCON_1_TI_1;                             /* if emission occur */
+                      }
+                  }
+              
+                  if (SFRS_TMP)                 /* for SFRS page */
+                  {
+                    ENABLE_SFR_PAGE1;
+                  }
+              }
+              #endif
+  80          
+  81          void UART_Open(uint32_t u32SysClock, uint8_t u8UARTPort,uint32_t u32Baudrate)
+  82          {
+  83   1        switch(u8UARTPort)
+  84   1        {
+  85   2          case UART0_Timer1:
+  86   2                SCON = 0x50;       //UART0 Mode1,REN=1,TI=1
+  87   2                TMOD |= 0x20;      //Timer1 Mode1
+  88   2                set_PCON_SMOD;          //UART0 Double Rate Enable
+  89   2                set_CKCON_T1M;
+  90   2                clr_T3CON_BRCK;          //Serial port 0 baud rate clock source = Timer1
+  91   2                TH1 = 256 - (u32SysClock/16/u32Baudrate);
+  92   2                set_TCON_TR1;
+  93   2            break;
+  94   2            
+  95   2            case UART0_Timer3:
+  96   2                SCON = 0x50;     //UART0 Mode1,REN=1,TI=1
+  97   2                set_PCON_SMOD;        //UART0 Double Rate Enable
+  98   2                T3CON &= 0xF8;   //T3PS2=0,T3PS1=0,T3PS0=0(Prescale=1)
+  99   2                set_T3CON_BRCK;        //UART0 baud rate clock source = Timer3
+ 100   2                RH3    = HIBYTE(65536 - (u32SysClock/16/u32Baudrate));  
+ 101   2                RL3    = LOBYTE(65536 - (u32SysClock/16/u32Baudrate));  
+ 102   2                set_T3CON_TR3;         //Trigger Timer3
+ 103   2            break;
+ 104   2            
+ 105   2            case UART1_Timer3:
+ 106   2                SCON_1 = 0x50;     //UART1 Mode1,REN_1=1,TI_1=1
+ 107   2                T3CON = 0x80;     //T3PS2=0,T3PS1=0,T3PS0=0(Prescale=1), UART1 in MODE 1
+ 108   2                RH3    = HIBYTE(65536 - (u32SysClock/16/u32Baudrate));  
+ 109   2                RL3    = LOBYTE(65536 - (u32SysClock/16/u32Baudrate));     
+C51 COMPILER V9.60.0.0   UART                                                              06/25/2024 11:39:55 PAGE 3   
+
+ 110   2                set_T3CON_TR3;             //Trigger Timer3                                                     
+             -        
+ 111   2            break; 
+ 112   2        }
+ 113   1      }
+ 114          
+ 115          uint8_t Receive_Data(uint8_t UARTPort)
+ 116          {
+ 117   1          uint8_t c;
+ 118   1      
+ 119   1          c = 0;
+ 120   1          switch (UARTPort)
+ 121   1          {
+ 122   2            case UART0:
+ 123   2              while (!RI);
+ 124   2              c = SBUF;
+ 125   2              RI = 0;
+ 126   2            break;
+ 127   2            case UART1:
+ 128   2              while (!RI_1);
+ 129   2              c = SBUF_1;
+ 130   2              RI_1 = 0;
+ 131   2            break;
+ 132   2          }
+ 133   1          return (c);
+ 134   1      }
+ 135          
+ 136            /**
+ 137            * @brief This API configures UART send byte 
+ 138            * @param[in] UARTPort . Valid values as Fsys clock:
+ 139            *                       - \ref UART0
+ 140            *                       - \ref UART1
+ 141            * @param[in] c . UART send HEX value
+ 142            *                       - \ref 0x55 
+ 143            * @note      None.
+ 144            * @exmaple : UART_Send_Data(UART0, 0x55);
+ 145            */
+ 146          void UART_Send_Data(uint8_t UARTPort, uint8_t c)
+ 147          {
+ 148   1          switch (UARTPort)
+ 149   1          {
+ 150   2            case UART0:
+ 151   2            DISABLE_UART0_INTERRUPT;
+ 152   2              SBUF = c;
+ 153   2              while(!TI);
+ 154   2              TI=0;
+ 155   2          ENABLE_UART0_INTERRUPT;
+ 156   2            break;
+ 157   2            case UART1:
+ 158   2            DISABLE_UART1_INTERRUPT;
+ 159   2              SBUF_1 = c;
+ 160   2              while(!TI_1);
+ 161   2              TI_1=0;
+ 162   2          ENABLE_UART1_INTERRUPT;
+ 163   2          ENABLE_GLOBAL_INTERRUPT;
+ 164   2            break;
+ 165   2          }
+ 166   1      }
+ 167          
+ 168          void Enable_UART0_VCOM_printf_24M_115200(void)
+ 169          {
+ 170   1          P06_QUASI_MODE;
+C51 COMPILER V9.60.0.0   UART                                                              06/25/2024 11:39:55 PAGE 4   
+
+ 171   1          UART_Open(24000000,UART0_Timer1,115200);
+ 172   1          ENABLE_UART0_PRINTF;
+ 173   1          DISABLE_UART0_INTERRUPT;
+ 174   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    527    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2       9
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      3    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

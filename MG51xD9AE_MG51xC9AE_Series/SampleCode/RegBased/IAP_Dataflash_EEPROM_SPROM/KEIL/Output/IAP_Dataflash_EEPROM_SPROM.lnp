@@ -1,0 +1,10 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\common.obj",
+".\Output\eeprom_sprom.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\IAP_Dataflash_EEPROM_SPROM" 
+
+PRINT(".\lst\IAP_Dataflash_EEPROM_SPROM.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

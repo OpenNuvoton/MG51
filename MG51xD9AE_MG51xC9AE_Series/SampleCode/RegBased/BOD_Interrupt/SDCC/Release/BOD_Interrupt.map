@@ -1,0 +1,2483 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           _bp
+     00000000  l_BIT_BANK                      
+     00000000  l_CABS                          
+     00000000  l_GSINIT                        
+     00000000  l_GSINIT1                       
+     00000000  l_GSINIT5                       
+     00000000  l_IABS                          
+     00000000  l_INITIALIZED                   
+     00000000  l_INITIALIZER                   
+     00000000  l_ISEG                          
+     00000000  l_PSEG                          
+     00000000  l_REG_BANK_1                    
+     00000000  l_REG_BANK_2                    
+     00000000  l_REG_BANK_3                    
+     00000000  l_RSEG                          
+     00000000  l_RSEG0                         
+     00000000  l_RSEG1                         
+     00000000  l_XABS                          
+     00000000  l_XINIT                         
+     00000000  l_XISEG                         
+     00000000  l__CODE                         
+     00000000  s_.debug_abbrev                 
+     00000000  s_.debug_frame                  
+     00000000  s_.debug_info                   
+     00000000  s_.debug_line                   
+     00000000  s_.debug_loc                    
+     00000000  s_.debug_pubnames               
+     00000000  s_BSEG                          
+     00000000  s_CABS                          
+     00000000  s_HOME                          
+     00000000  s_IABS                          
+     00000000  s_ISEG                          
+     00000000  s_REG_BANK_0                    
+     00000000  s_RSEG                          
+     00000000  s_RSEG0                         
+     00000000  s_RSEG1                         
+     00000000  s_XABS                          
+     00000000  s__CODE                         
+     00000001  l_BSEG_BYTES                    
+     00000001  l_SSEG                          
+     00000001  s_PSEG                          
+     00000001  s_XSEG                          
+     00000003  l_GSFINAL                       
+     00000003  l_GSINIT0                       
+     00000004  l_OSEG                          
+     00000005  l_BSEG                          
+     00000008  l_REG_BANK_0                    
+     00000008  s_REG_BANK_1                    
+     0000000A  l_GSINIT2                       
+     0000000E  l_DSEG                          
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000010  s_REG_BANK_2                    
+     00000018  s_REG_BANK_3                    
+     00000020  s_BSEG_BYTES                    
+     00000021  s_BIT_BANK                      
+     00000021  s_DSEG                          
+     00000022  l_GSINIT3                       
+     0000002A  l_GSINIT4                       
+     0000002E  l_CONST                         
+     0000002F  s_OSEG                          
+     00000033  s_SSEG                          
+     00000034  s_INITIALIZED                   
+     00000034  s_INITIALIZER                   
+     00000049  l_HOME                          
+     00000049  s_GSINIT0                       
+     0000004C  s_GSINIT1                       
+     0000004C  s_GSINIT2                       
+     00000056  s_GSINIT3                       
+     00000069  l_XSEG                          
+     0000006A  s_XISEG                         
+     00000078  s_GSINIT4                       
+     00000080  G$MOSI$0_0$0                       uart
+     00000080  G$P0$0_0$0                         uart
+     00000080  G$P00$0_0$0                        uart
+     00000080  _MOSI                              uart
+     00000080  _P0                                uart
+     00000080  _P00                               uart
+     00000081  G$MISO$0_0$0                       uart
+     00000081  G$P01$0_0$0                        uart
+     00000081  G$SP$0_0$0                         uart
+     00000081  _MISO                              uart
+     00000081  _P01                               uart
+     00000081  _SP                                uart
+     00000082  G$DPL$0_0$0                        uart
+     00000082  G$P02$0_0$0                        uart
+     00000082  G$RXD_1$0_0$0                      uart
+     00000082  _DPL                               uart
+     00000082  _P02                               uart
+     00000082  _RXD_1                             uart
+     00000083  G$DPH$0_0$0                        uart
+     00000083  G$P03$0_0$0                        uart
+     00000083  _DPH                               uart
+     00000083  _P03                               uart
+     00000084  G$P04$0_0$0                        uart
+     00000084  G$RCTRIM0$0_0$0                    uart
+     00000084  G$STADC$0_0$0                      uart
+     00000084  _P04                               uart
+     00000084  _RCTRIM0                           uart
+     00000084  _STADC                             uart
+     00000085  G$P05$0_0$0                        uart
+     00000085  G$RCTRIM1$0_0$0                    uart
+     00000085  _P05                               uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000085  _RCTRIM1                           uart
+     00000086  G$P06$0_0$0                        uart
+     00000086  G$RWK$0_0$0                        uart
+     00000086  G$TXD$0_0$0                        uart
+     00000086  _P06                               uart
+     00000086  _RWK                               uart
+     00000086  _TXD                               uart
+     00000087  G$P07$0_0$0                        uart
+     00000087  G$PCON$0_0$0                       uart
+     00000087  G$RXD$0_0$0                        uart
+     00000087  _P07                               uart
+     00000087  _PCON                              uart
+     00000087  _RXD                               uart
+     00000088  G$IT0$0_0$0                        uart
+     00000088  G$TCON$0_0$0                       uart
+     00000088  _IT0                               uart
+     00000088  _TCON                              uart
+     00000089  G$IE0$0_0$0                        uart
+     00000089  G$TMOD$0_0$0                       uart
+     00000089  _IE0                               uart
+     00000089  _TMOD                              uart
+     0000008A  G$IT1$0_0$0                        uart
+     0000008A  G$TL0$0_0$0                        uart
+     0000008A  _IT1                               uart
+     0000008A  _TL0                               uart
+     0000008B  G$IE1$0_0$0                        uart
+     0000008B  G$TL1$0_0$0                        uart
+     0000008B  _IE1                               uart
+     0000008B  _TL1                               uart
+     0000008C  G$TH0$0_0$0                        uart
+     0000008C  G$TR0$0_0$0                        uart
+     0000008C  _TH0                               uart
+     0000008C  _TR0                               uart
+     0000008D  G$TF0$0_0$0                        uart
+     0000008D  G$TH1$0_0$0                        uart
+     0000008D  _TF0                               uart
+     0000008D  _TH1                               uart
+     0000008E  G$CKCON$0_0$0                      uart
+     0000008E  G$TR1$0_0$0                        uart
+     0000008E  _CKCON                             uart
+     0000008E  _TR1                               uart
+     0000008F  G$TF1$0_0$0                        uart
+     0000008F  G$WKCON$0_0$0                      uart
+     0000008F  _TF1                               uart
+     0000008F  _WKCON                             uart
+     00000090  G$P1$0_0$0                         uart
+     00000090  G$P10$0_0$0                        uart
+     00000090  _P1                                uart
+     00000090  _P10                               uart
+     00000091  G$P11$0_0$0                        uart
+     00000091  G$SFRS$0_0$0                       uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000091  _P11                               uart
+     00000091  _SFRS                              uart
+     00000092  G$CAPCON0$0_0$0                    uart
+     00000092  G$P12$0_0$0                        uart
+     00000092  _CAPCON0                           uart
+     00000092  _P12                               uart
+     00000093  G$CAPCON1$0_0$0                    uart
+     00000093  G$P13$0_0$0                        uart
+     00000093  G$SCL$0_0$0                        uart
+     00000093  _CAPCON1                           uart
+     00000093  _P13                               uart
+     00000093  _SCL                               uart
+     00000094  G$CAPCON2$0_0$0                    uart
+     00000094  G$P14$0_0$0                        uart
+     00000094  G$SDA$0_0$0                        uart
+     00000094  _CAPCON2                           uart
+     00000094  _P14                               uart
+     00000094  _SDA                               uart
+     00000095  G$CKDIV$0_0$0                      uart
+     00000095  G$P15$0_0$0                        uart
+     00000095  _CKDIV                             uart
+     00000095  _P15                               uart
+     00000096  G$CKSWT$0_0$0                      uart
+     00000096  G$P16$0_0$0                        uart
+     00000096  G$TXD_1$0_0$0                      uart
+     00000096  _CKSWT                             uart
+     00000096  _P16                               uart
+     00000096  _TXD_1                             uart
+     00000097  G$CKEN$0_0$0                       uart
+     00000097  G$P17$0_0$0                        uart
+     00000097  _CKEN                              uart
+     00000097  _P17                               uart
+     00000098  G$RI$0_0$0                         uart
+     00000098  G$SCON$0_0$0                       uart
+     00000098  _RI                                uart
+     00000098  _SCON                              uart
+     00000099  G$SBUF$0_0$0                       uart
+     00000099  G$TI$0_0$0                         uart
+     00000099  _SBUF                              uart
+     00000099  _TI                                uart
+     0000009A  G$RB8$0_0$0                        uart
+     0000009A  G$SBUF_1$0_0$0                     uart
+     0000009A  _RB8                               uart
+     0000009A  _SBUF_1                            uart
+     0000009B  G$EIE$0_0$0                        uart
+     0000009B  G$TB8$0_0$0                        uart
+     0000009B  _EIE                               uart
+     0000009B  _TB8                               uart
+     0000009C  G$EIE1$0_0$0                       uart
+     0000009C  G$REN$0_0$0                        uart
+     0000009C  _EIE1                              uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000009C  _REN                               uart
+     0000009D  G$SM2$0_0$0                        uart
+     0000009D  _SM2                               uart
+     0000009E  G$SM1$0_0$0                        uart
+     0000009E  _SM1                               uart
+     0000009F  G$CHPCON$0_0$0                     uart
+     0000009F  G$FE$0_0$0                         uart
+     0000009F  G$SM0$0_0$0                        uart
+     0000009F  _CHPCON                            uart
+     0000009F  _FE                                uart
+     0000009F  _SM0                               uart
+     000000A0  G$P2$0_0$0                         uart
+     000000A0  G$P20$0_0$0                        uart
+     000000A0  _P2                                uart
+     000000A0  _P20                               uart
+     000000A0  __XPAGE                            
+     000000A2  G$AUXR1$0_0$0                      uart
+     000000A2  _AUXR1                             uart
+     000000A2  s_GSFINAL                       
+     000000A2  s_GSINIT                        
+     000000A2  s_GSINIT5                       
+     000000A3  G$BODCON0$0_0$0                    uart
+     000000A3  _BODCON0                           uart
+     000000A4  G$IAPTRG$0_0$0                     uart
+     000000A4  _IAPTRG                            uart
+     000000A5  G$IAPUEN$0_0$0                     uart
+     000000A5  _IAPUEN                            uart
+     000000A5  s_CSEG                          
+     000000A6  G$IAPAL$0_0$0                      uart
+     000000A6  _IAPAL                             uart
+     000000A7  G$IAPAH$0_0$0                      uart
+     000000A7  _IAPAH                             uart
+     000000A8  G$EX0$0_0$0                        uart
+     000000A8  G$IE$0_0$0                         uart
+     000000A8  _EX0                               uart
+     000000A8  _IE                                uart
+     000000A9  G$ET0$0_0$0                        uart
+     000000A9  G$SADDR$0_0$0                      uart
+     000000A9  _ET0                               uart
+     000000A9  _SADDR                             uart
+     000000AA  G$EX1$0_0$0                        uart
+     000000AA  G$WDCON$0_0$0                      uart
+     000000AA  _EX1                               uart
+     000000AA  _WDCON                             uart
+     000000AB  G$BODCON1$0_0$0                    uart
+     000000AB  G$ET1$0_0$0                        uart
+     000000AB  _BODCON1                           uart
+     000000AB  _ET1                               uart
+     000000AC  G$ES$0_0$0                         uart
+     000000AC  G$P3M1$0_0$0                       uart
+     000000AC  G$P3S$0_0$0                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000AC  _ES                                uart
+     000000AC  _P3M1                              uart
+     000000AC  _P3S                               uart
+     000000AD  G$EBOD$0_0$0                       uart
+     000000AD  G$P3M2$0_0$0                       uart
+     000000AD  G$P3SR$0_0$0                       uart
+     000000AD  _EBOD                              uart
+     000000AD  _P3M2                              uart
+     000000AD  _P3SR                              uart
+     000000AE  G$EADC$0_0$0                       uart
+     000000AE  G$IAPFD$0_0$0                      uart
+     000000AE  _EADC                              uart
+     000000AE  _IAPFD                             uart
+     000000AF  G$EA$0_0$0                         uart
+     000000AF  G$IAPCN$0_0$0                      uart
+     000000AF  _EA                                uart
+     000000AF  _IAPCN                             uart
+     000000B0  G$P3$0_0$0                         uart
+     000000B0  G$P30$0_0$0                        uart
+     000000B0  _P3                                uart
+     000000B0  _P30                               uart
+     000000B1  G$P0M1$0_0$0                       uart
+     000000B1  G$P0S$0_0$0                        uart
+     000000B1  _P0M1                              uart
+     000000B1  _P0S                               uart
+     000000B2  G$P0M2$0_0$0                       uart
+     000000B2  G$P0SR$0_0$0                       uart
+     000000B2  _P0M2                              uart
+     000000B2  _P0SR                              uart
+     000000B3  G$P1M1$0_0$0                       uart
+     000000B3  G$P1S$0_0$0                        uart
+     000000B3  _P1M1                              uart
+     000000B3  _P1S                               uart
+     000000B4  G$P1M2$0_0$0                       uart
+     000000B4  G$P1SR$0_0$0                       uart
+     000000B4  _P1M2                              uart
+     000000B4  _P1SR                              uart
+     000000B5  G$P2S$0_0$0                        uart
+     000000B5  _P2S                               uart
+     000000B7  G$IPH$0_0$0                        uart
+     000000B7  G$PWMINTC$0_0$0                    uart
+     000000B7  _IPH                               uart
+     000000B7  _PWMINTC                           uart
+     000000B8  G$IP$0_0$0                         uart
+     000000B8  G$PX0$0_0$0                        uart
+     000000B8  _IP                                uart
+     000000B8  _PX0                               uart
+     000000B9  G$PT0$0_0$0                        uart
+     000000B9  G$SADEN$0_0$0                      uart
+     000000B9  _PT0                               uart
+     000000B9  _SADEN                             uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000BA  G$PX1$0_0$0                        uart
+     000000BA  G$SADEN_1$0_0$0                    uart
+     000000BA  _PX1                               uart
+     000000BA  _SADEN_1                           uart
+     000000BB  G$PT1$0_0$0                        uart
+     000000BB  G$SADDR_1$0_0$0                    uart
+     000000BB  _PT1                               uart
+     000000BB  _SADDR_1                           uart
+     000000BC  G$I2DAT$0_0$0                      uart
+     000000BC  G$PS$0_0$0                         uart
+     000000BC  _I2DAT                             uart
+     000000BC  _PS                                uart
+     000000BD  G$I2STAT$0_0$0                     uart
+     000000BD  G$PBOD$0_0$0                       uart
+     000000BD  _I2STAT                            uart
+     000000BD  _PBOD                              uart
+     000000BE  G$I2CLK$0_0$0                      uart
+     000000BE  G$PADC$0_0$0                       uart
+     000000BE  _I2CLK                             uart
+     000000BE  _PADC                              uart
+     000000BF  G$I2TOC$0_0$0                      uart
+     000000BF  _I2TOC                             uart
+     000000C0  G$I2CON$0_0$0                      uart
+     000000C0  G$I2CPX$0_0$0                      uart
+     000000C0  _I2CON                             uart
+     000000C0  _I2CPX                             uart
+     000000C1  G$I2ADDR$0_0$0                     uart
+     000000C1  _I2ADDR                            uart
+     000000C2  G$AA$0_0$0                         uart
+     000000C2  G$ADCRL$0_0$0                      uart
+     000000C2  _AA                                uart
+     000000C2  _ADCRL                             uart
+     000000C3  G$ADCRH$0_0$0                      uart
+     000000C3  G$SI$0_0$0                         uart
+     000000C3  _ADCRH                             uart
+     000000C3  _SI                                uart
+     000000C4  G$PWM4H$0_0$0                      uart
+     000000C4  G$STO$0_0$0                        uart
+     000000C4  G$T3CON$0_0$0                      uart
+     000000C4  _PWM4H                             uart
+     000000C4  _STO                               uart
+     000000C4  _T3CON                             uart
+     000000C5  G$PWM5H$0_0$0                      uart
+     000000C5  G$RL3$0_0$0                        uart
+     000000C5  G$STA$0_0$0                        uart
+     000000C5  _PWM5H                             uart
+     000000C5  _RL3                               uart
+     000000C5  _STA                               uart
+     000000C6  G$I2CEN$0_0$0                      uart
+     000000C6  G$PIOCON1$0_0$0                    uart
+     000000C6  G$RH3$0_0$0                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000C6  _I2CEN                             uart
+     000000C6  _PIOCON1                           uart
+     000000C6  _RH3                               uart
+     000000C7  G$TA$0_0$0                         uart
+     000000C7  _TA                                uart
+     000000C8  G$CM_RL2$0_0$0                     uart
+     000000C8  G$T2CON$0_0$0                      uart
+     000000C8  _CM_RL2                            uart
+     000000C8  _T2CON                             uart
+     000000C9  G$T2MOD$0_0$0                      uart
+     000000C9  _T2MOD                             uart
+     000000CA  G$RCMP2L$0_0$0                     uart
+     000000CA  G$TR2$0_0$0                        uart
+     000000CA  _RCMP2L                            uart
+     000000CA  _TR2                               uart
+     000000CB  G$RCMP2H$0_0$0                     uart
+     000000CB  _RCMP2H                            uart
+     000000CC  G$PWM4L$0_0$0                      uart
+     000000CC  G$TL2$0_0$0                        uart
+     000000CC  _PWM4L                             uart
+     000000CC  _TL2                               uart
+     000000CD  G$PWM5L$0_0$0                      uart
+     000000CD  G$TH2$0_0$0                        uart
+     000000CD  _PWM5L                             uart
+     000000CD  _TH2                               uart
+     000000CE  G$ADCMPL$0_0$0                     uart
+     000000CE  _ADCMPL                            uart
+     000000CF  G$ADCMPH$0_0$0                     uart
+     000000CF  G$TF2$0_0$0                        uart
+     000000CF  _ADCMPH                            uart
+     000000CF  _TF2                               uart
+     000000D0  G$P$0_0$0                          uart
+     000000D0  G$PSW$0_0$0                        uart
+     000000D0  _P                                 uart
+     000000D0  _PSW                               uart
+     000000D1  G$PWMPH$0_0$0                      uart
+     000000D1  _PWMPH                             uart
+     000000D2  G$OV$0_0$0                         uart
+     000000D2  G$PWM0H$0_0$0                      uart
+     000000D2  _OV                                uart
+     000000D2  _PWM0H                             uart
+     000000D3  G$PWM1H$0_0$0                      uart
+     000000D3  G$RS0$0_0$0                        uart
+     000000D3  _PWM1H                             uart
+     000000D3  _RS0                               uart
+     000000D4  G$PWM2H$0_0$0                      uart
+     000000D4  G$RS1$0_0$0                        uart
+     000000D4  _PWM2H                             uart
+     000000D4  _RS1                               uart
+     000000D5  G$F0$0_0$0                         uart
+     000000D5  G$PWM3H$0_0$0                      uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000D5  _F0                                uart
+     000000D5  _PWM3H                             uart
+     000000D6  G$AC$0_0$0                         uart
+     000000D6  G$PNP$0_0$0                        uart
+     000000D6  _AC                                uart
+     000000D6  _PNP                               uart
+     000000D7  G$CY$0_0$0                         uart
+     000000D7  G$FBD$0_0$0                        uart
+     000000D7  _CY                                uart
+     000000D7  _FBD                               uart
+     000000D8  G$PWMCON0$0_0$0                    uart
+     000000D8  _PWMCON0                           uart
+     000000D9  G$PWMPL$0_0$0                      uart
+     000000D9  _PWMPL                             uart
+     000000DA  G$PWM0L$0_0$0                      uart
+     000000DA  _PWM0L                             uart
+     000000DB  G$PWM1L$0_0$0                      uart
+     000000DB  _PWM1L                             uart
+     000000DC  G$CLRPWM$0_0$0                     uart
+     000000DC  G$PWM2L$0_0$0                      uart
+     000000DC  _CLRPWM                            uart
+     000000DC  _PWM2L                             uart
+     000000DD  G$PWM3L$0_0$0                      uart
+     000000DD  G$PWMF$0_0$0                       uart
+     000000DD  _PWM3L                             uart
+     000000DD  _PWMF                              uart
+     000000DE  G$LOAD$0_0$0                       uart
+     000000DE  G$PIOCON0$0_0$0                    uart
+     000000DE  _LOAD                              uart
+     000000DE  _PIOCON0                           uart
+     000000DF  G$PWMCON1$0_0$0                    uart
+     000000DF  G$PWMRUN$0_0$0                     uart
+     000000DF  _PWMCON1                           uart
+     000000DF  _PWMRUN                            uart
+     000000E0  G$ACC$0_0$0                        uart
+     000000E0  _ACC                               uart
+     000000E1  G$ADCCON1$0_0$0                    uart
+     000000E1  _ADCCON1                           uart
+     000000E2  G$ADCCON2$0_0$0                    uart
+     000000E2  _ADCCON2                           uart
+     000000E3  G$ADCDLY$0_0$0                     uart
+     000000E3  _ADCDLY                            uart
+     000000E4  G$C0L$0_0$0                        uart
+     000000E4  _C0L                               uart
+     000000E5  G$C0H$0_0$0                        uart
+     000000E5  _C0H                               uart
+     000000E6  G$C1L$0_0$0                        uart
+     000000E6  _C1L                               uart
+     000000E7  G$C1H$0_0$0                        uart
+     000000E7  _C1H                               uart
+     000000E8  G$ADCCON0$0_0$0                    uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000E8  G$ADCHS0$0_0$0                     uart
+     000000E8  _ADCCON0                           uart
+     000000E8  _ADCHS0                            uart
+     000000E9  G$ADCHS1$0_0$0                     uart
+     000000E9  G$PICON$0_0$0                      uart
+     000000E9  _ADCHS1                            uart
+     000000E9  _PICON                             uart
+     000000EA  G$ADCHS2$0_0$0                     uart
+     000000EA  G$PINEN$0_0$0                      uart
+     000000EA  _ADCHS2                            uart
+     000000EA  _PINEN                             uart
+     000000EB  G$ADCHS3$0_0$0                     uart
+     000000EB  G$PIPEN$0_0$0                      uart
+     000000EB  _ADCHS3                            uart
+     000000EB  _PIPEN                             uart
+     000000EC  G$ETGSEL0$0_0$0                    uart
+     000000EC  G$PIF$0_0$0                        uart
+     000000EC  _ETGSEL0                           uart
+     000000EC  _PIF                               uart
+     000000ED  G$C2L$0_0$0                        uart
+     000000ED  G$ETGSEL1$0_0$0                    uart
+     000000ED  _C2L                               uart
+     000000ED  _ETGSEL1                           uart
+     000000EE  G$ADCS$0_0$0                       uart
+     000000EE  G$C2H$0_0$0                        uart
+     000000EE  _ADCS                              uart
+     000000EE  _C2H                               uart
+     000000EF  G$ADCF$0_0$0                       uart
+     000000EF  G$EIP$0_0$0                        uart
+     000000EF  _ADCF                              uart
+     000000EF  _EIP                               uart
+     000000F0  G$B$0_0$0                          uart
+     000000F0  _B                                 uart
+     000000F1  G$CAPCON3$0_0$0                    uart
+     000000F1  _CAPCON3                           uart
+     000000F2  G$CAPCON4$0_0$0                    uart
+     000000F2  _CAPCON4                           uart
+     000000F3  G$SPCR$0_0$0                       uart
+     000000F3  G$SPCR2$0_0$0                      uart
+     000000F3  _SPCR                              uart
+     000000F3  _SPCR2                             uart
+     000000F4  G$SPSR$0_0$0                       uart
+     000000F4  _SPSR                              uart
+     000000F5  G$SPDR$0_0$0                       uart
+     000000F5  _B_5                               _gptrget
+     000000F5  _SPDR                              uart
+     000000F6  G$AINDIDS$0_0$0                    uart
+     000000F6  _AINDIDS                           uart
+     000000F6  _B_6                               _gptrget
+     000000F7  G$EIPH$0_0$0                       uart
+     000000F7  _B_7                               _gptrget
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000F7  _EIPH                              uart
+     000000F8  G$RI_1$0_0$0                       uart
+     000000F8  G$SCON_1$0_0$0                     uart
+     000000F8  _RI_1                              uart
+     000000F8  _SCON_1                            uart
+     000000F9  G$PDTEN$0_0$0                      uart
+     000000F9  G$TI_1$0_0$0                       uart
+     000000F9  _PDTEN                             uart
+     000000F9  _TI_1                              uart
+     000000FA  G$PDTCNT$0_0$0                     uart
+     000000FA  G$RB8_1$0_0$0                      uart
+     000000FA  _PDTCNT                            uart
+     000000FA  _RB8_1                             uart
+     000000FB  G$PMEN$0_0$0                       uart
+     000000FB  G$TB8_1$0_0$0                      uart
+     000000FB  _PMEN                              uart
+     000000FB  _TB8_1                             uart
+     000000FC  G$PMD$0_0$0                        uart
+     000000FC  G$REN_1$0_0$0                      uart
+     000000FC  _PMD                               uart
+     000000FC  _REN_1                             uart
+     000000FD  G$SM2_1$0_0$0                      uart
+     000000FD  _SM2_1                             uart
+     000000FE  G$EIP1$0_0$0                       uart
+     000000FE  G$SM1_1$0_0$0                      uart
+     000000FE  _EIP1                              uart
+     000000FE  _SM1_1                             uart
+     000000FF  G$EIPH1$0_0$0                      uart
+     000000FF  G$FE_1$0_0$0                       uart
+     000000FF  G$SM0_1$0_0$0                      uart
+     000000FF  _EIPH1                             uart
+     000000FF  _FE_1                              uart
+     000000FF  _SM0_1                             uart
+     00000100  l_IRAM                          
+     000001B8  l_.debug_loc                    
+     000002E9  l_.debug_abbrev                 
+     000003C8  l_.debug_frame                  
+     00000A49  l_.debug_line                   
+     00001242  l_CSEG                          
+     000012E7  s_CONST                         
+     00001315  s_XINIT                         
+     0000347A  l_.debug_pubnames               
+     000068DE  l_.debug_info                   
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+REG_BANK_0                          00000000    00000008 =           8. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+BSEG_BYTES                          00000020    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DSEG                                00000021    0000000E =          14. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000021  G$TA_REG_TMP$0_0$0                 common
+     00000021  _TA_REG_TMP                        common
+     00000022  G$BYTE_TMP$0_0$0                   common
+     00000022  _BYTE_TMP                          common
+     00000023  G$SFRS_TMP$0_0$0                   common
+     00000023  _SFRS_TMP                          common
+     0000002E  _bp                                _bp
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+OSEG                                0000002F    00000004 =           4. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                00000033    00000001 =           1. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000033  __start__stack                     main
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XSEG                                00000001    00000069 =         105. bytes (REL,CON,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   00000001  Lbod.BOD_Open$u8bodlevel$1_0$153   bod
+D:   00000001  _BOD_Open_PARM_2                   bod
+D:   00000002  Lbod.BOD_Open$u8bodresetstatus$1   bod
+D:   00000002  _BOD_Open_PARM_3                   bod
+D:   00000003  Lbod.BOD_Open$u8bodstatus$1_0$15   bod
+D:   00000004  Lbod.BOD_LowPower$u8LPBDD$1_0$15   bod
+D:   00000005  Lbod.BOD_Interrupt_Enable$u8bodI   bod
+D:   00000006  Lcommon.Read_APROM_BYTE$u16_addr   common
+D:   00000008  Lcommon.Software_Reset$u8Bootare   common
+D:   00000009  Lcommon.PowerDown_Mode$PDStatus$   common
+D:   0000000A  Lcommon.Idle_Mode$IdleStatus$1_0   common
+D:   0000000B  Lcommon.Global_Interrupt$u8IntSt   common
+D:   0000000C  Lsdcc_stdio.putchar$c$1_0$153      sdcc_stdio
+D:   0000000E  Lsdcc_stdio.getchar$c$1_0$156      sdcc_stdio
+D:   0000000F  Lsys.MODIFY_HIRC$u8HIRCSEL$1_0$1   sys
+D:   00000010  Lsys.MODIFY_HIRC$trimvalue16bit$   sys
+D:   00000011  Lsys.FsysSelect$u8FsysMode$1_0$1   sys
+D:   00000012  Lsys.ClockEnable$u8FsysMode$1_0$   sys
+D:   00000013  Lsys.ClockDisable$u8FsysMode$1_0   sys
+D:   00000014  Lsys.ClockSwitch$u8FsysMode$1_0$   sys
+D:   00000015  G$uart0_receive_data$0_0$0         uart
+D:   00000015  _uart0_receive_data                uart
+D:   00000016  G$uart1_receive_data$0_0$0         uart
+D:   00000016  _uart1_receive_data                uart
+D:   00000017  Luart.UART_Open$u8UARTPort$1_0$1   uart
+D:   00000017  _UART_Open_PARM_2                  uart
+D:   00000018  Luart.UART_Open$u32Baudrate$1_0$   uart
+D:   00000018  _UART_Open_PARM_3                  uart
+D:   0000001C  Luart.UART_Open$u32SysClock$1_0$   uart
+D:   00000020  Luart.Receive_Data$UARTPort$1_0$   uart
+D:   00000021  Luart.Receive_Data$c$1_0$157       uart
+D:   00000022  Luart.UART_Send_Data$c$1_0$159     uart
+D:   00000022  _UART_Send_Data_PARM_2             uart
+D:   00000023  Luart.UART_Send_Data$UARTPort$1_   uart
+D:   00000024  __divulong_PARM_2                  _divulong
+D:   00000031  _vprintf_PARM_2                    vprintf
+D:   00000046  __print_format_PARM_2              printf_large
+D:   00000049  __print_format_PARM_3              printf_large
+D:   0000004C  __print_format_PARM_4              printf_large
+D:   00000068  __mulint_PARM_2                    _mulint
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00000000    00000049 =          73. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000000  A$main$796                         main
+C:   00000003  A$main$797                         main
+C:   0000000B  A$main$799                         main
+C:   00000013  A$main$801                         main
+C:   0000001B  A$main$803                         main
+C:   00000023  A$main$805                         main
+C:   0000002B  A$main$807                         main
+C:   00000033  A$main$809                         main
+C:   0000003B  A$main$811                         main
+C:   00000043  A$main$813                         main
+C:   00000046  A$main$835                         main
+C:   00000046  __sdcc_program_startup             main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT0                             00000049    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000049  __sdcc_gsinit_startup              
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT2                             0000004C    0000000A =          10. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT3                             00000056    00000022 =          34. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000056  __mcs51_genXINIT                   
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT4                             00000078    0000002A =          42. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000078  __mcs51_genRAMCLEAR                
+C:   0000007E  __mcs51_genXRAMCLEAR               
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             000000A2    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000A2  A$main$828                         main
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000A5  A$main$858                         main
+C:   000000A5  Smain$BOD_ISR$0                    main
+C:   000000A5  _BOD_ISR                           main
+C:   000000A7  A$main$859                         main
+C:   000000A9  A$main$863                         main
+C:   000000A9  Smain$BOD_ISR$1                    main
+C:   000000A9  Smain$BOD_ISR$2                    main
+C:   000000AC  A$main$867                         main
+C:   000000AC  Smain$BOD_ISR$3                    main
+C:   000000AE  A$main$868                         main
+C:   000000B0  A$main$870                         main
+C:   000000B2  A$main$871                         main
+C:   000000B5  A$main$872                         main
+C:   000000B8  A$main$873                         main
+C:   000000BB  A$main$875                         main
+C:   000000BD  A$main$876                         main
+C:   000000BF  A$main$880                         main
+C:   000000BF  Smain$BOD_ISR$4                    main
+C:   000000C1  A$main$883                         main
+C:   000000C1  Smain$BOD_ISR$5                    main
+C:   000000C3  A$main$884                         main
+C:   000000C5  A$main$889                         main
+C:   000000C5  Smain$BOD_ISR$6                    main
+C:   000000C5  Smain$BOD_ISR$7                    main
+C:   000000C7  A$main$890                         main
+C:   000000C9  A$main$892                         main
+C:   000000CB  A$main$893                         main
+C:   000000CE  A$main$894                         main
+C:   000000D1  A$main$895                         main
+C:   000000D4  A$main$897                         main
+C:   000000D6  A$main$898                         main
+C:   000000D8  A$main$903                         main
+C:   000000D8  Smain$BOD_ISR$8                    main
+C:   000000D8  Smain$BOD_ISR$9                    main
+C:   000000DA  A$main$904                         main
+C:   000000DC  A$main$907                         main
+C:   000000DC  Smain$BOD_ISR$10                   main
+C:   000000DC  XG$BOD_ISR$0$0                     main
+C:   000000DD  A$main$925                         main
+C:   000000DD  Smain$BOD_ISR$11                   main
+C:   000000DD  Smain$main$12                      main
+C:   000000DD  Smain$main$13                      main
+C:   000000DD  Smain$main$14                      main
+C:   000000DD  _main                              main
+C:   000000E0  A$main$926                         main
+C:   000000E3  A$main$929                         main
+C:   000000E3  Smain$main$15                      main
+C:   000000E6  A$main$932                         main
+C:   000000E6  Smain$main$16                      main
+C:   000000E8  A$main$933                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000EA  A$main$934                         main
+C:   000000EC  A$main$935                         main
+C:   000000EE  A$main$936                         main
+C:   000000F0  A$main$937                         main
+C:   000000F2  A$main$938                         main
+C:   000000F5  A$main$939                         main
+C:   000000F7  A$main$940                         main
+C:   000000F9  A$main$941                         main
+C:   000000FB  A$main$944                         main
+C:   000000FB  Smain$main$17                      main
+C:   000000FE  A$main$945                         main
+C:   00000100  A$main$946                         main
+C:   00000101  A$main$947                         main
+C:   00000104  A$main$948                         main
+C:   00000105  A$main$949                         main
+C:   00000106  A$main$950                         main
+C:   00000109  A$main$951                         main
+C:   0000010C  A$main$954                         main
+C:   0000010C  Smain$main$18                      main
+C:   0000010F  A$main$955                         main
+C:   00000112  A$main$958                         main
+C:   00000112  Smain$main$19                      main
+C:   00000115  A$main$959                         main
+C:   00000118  A$main$963                         main
+C:   00000118  Smain$main$20                      main
+C:   0000011A  A$main$974                         main
+C:   0000011A  Smain$main$21                      main
+C:   0000011A  Smain$main$22                      main
+C:   0000011A  Smain$main$23                      main
+C:   0000011A  Smain$main$24                      main
+C:   0000011A  Smain$main$25                      main
+C:   0000011D  A$main$975                         main
+C:   0000011F  A$main$979                         main
+C:   0000011F  Smain$main$26                      main
+C:   00000121  A$main$980                         main
+C:   00000123  A$main$981                         main
+C:   00000125  A$main$982                         main
+C:   00000127  A$main$983                         main
+C:   00000129  A$main$984                         main
+C:   0000012B  A$main$985                         main
+C:   0000012E  A$main$986                         main
+C:   00000130  A$main$987                         main
+C:   00000132  A$main$988                         main
+C:   00000134  A$main$990                         main
+C:   00000134  Smain$main$27                      main
+C:   00000136  A$main$995                         main
+C:   00000136  Smain$main$28                      main
+C:   00000136  Smain$main$29                      main
+C:   00000136  XG$main$0$0                        main
+C:   00000137  A$bod$830                          bod
+C:   00000137  Fmain$__str_1$0_0$0                main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000137  Sbod$BOD_Open$0                    bod
+C:   00000137  Sbod$BOD_Open$1                    bod
+C:   00000137  Smain$main$30                      main
+C:   00000137  _BOD_Open                          bod
+C:   00000139  A$bod$831                          bod
+C:   0000013C  A$bod$832                          bod
+C:   0000013D  A$bod$835                          bod
+C:   0000013D  Sbod$BOD_Open$2                    bod
+C:   00000140  A$bod$836                          bod
+C:   00000143  A$bod$839                          bod
+C:   00000143  Sbod$BOD_Open$3                    bod
+C:   00000146  A$bod$840                          bod
+C:   00000147  A$bod$841                          bod
+C:   00000148  A$bod$842                          bod
+C:   0000014B  A$bod$843                          bod
+C:   0000014C  A$bod$844                          bod
+C:   0000014D  A$bod$845                          bod
+C:   0000014F  A$bod$848                          bod
+C:   0000014F  Sbod$BOD_Open$4                    bod
+C:   00000152  A$bod$849                          bod
+C:   00000153  A$bod$850                          bod
+C:   00000154  A$bod$851                          bod
+C:   00000156  A$bod$852                          bod
+C:   00000158  A$bod$855                          bod
+C:   00000158  Sbod$BOD_Open$5                    bod
+C:   0000015B  A$bod$858                          bod
+C:   0000015B  Sbod$BOD_Open$6                    bod
+C:   0000015E  A$bod$861                          bod
+C:   0000015E  Sbod$BOD_Open$7                    bod
+C:   00000161  A$bod$866                          bod
+C:   00000161  Sbod$BOD_Open$8                    bod
+C:   00000161  Sbod$BOD_Open$9                    bod
+C:   00000161  XG$BOD_Open$0$0                    bod
+C:   00000162  A$bod$880                          bod
+C:   00000162  Sbod$BOD_LowPower$11               bod
+C:   00000162  Sbod$BOD_LowPower$12               bod
+C:   00000162  Sbod$BOD_Open$10                   bod
+C:   00000162  _BOD_LowPower                      bod
+C:   00000164  A$bod$881                          bod
+C:   00000167  A$bod$882                          bod
+C:   00000168  A$bod$885                          bod
+C:   00000168  Sbod$BOD_LowPower$13               bod
+C:   0000016B  A$bod$886                          bod
+C:   0000016E  A$bod$889                          bod
+C:   0000016E  Sbod$BOD_LowPower$14               bod
+C:   00000171  A$bod$890                          bod
+C:   00000174  A$bod$891                          bod
+C:   00000175  A$bod$892                          bod
+C:   00000177  A$bod$897                          bod
+C:   00000177  Sbod$BOD_LowPower$15               bod
+C:   00000177  Sbod$BOD_LowPower$16               bod
+ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000177  XG$BOD_LowPower$0$0                bod
+C:   00000178  A$bod$911                          bod
+C:   00000178  Sbod$BOD_Interrupt_Enable$18       bod
+C:   00000178  Sbod$BOD_Interrupt_Enable$19       bod
+C:   00000178  Sbod$BOD_LowPower$17               bod
+C:   00000178  _BOD_Interrupt_Enable              bod
+C:   0000017A  A$bod$912                          bod
+C:   0000017D  A$bod$913                          bod
+C:   0000017E  A$bod$916                          bod
+C:   0000017E  Sbod$BOD_Interrupt_Enable$20       bod
+C:   00000181  A$bod$919                          bod
+C:   00000181  Sbod$BOD_Interrupt_Enable$21       bod
+C:   00000184  A$bod$920                          bod
+C:   00000185  A$bod$921                          bod
+C:   00000186  A$bod$922                          bod
+C:   00000187  A$bod$923                          bod
+C:   00000189  A$bod$924                          bod
+C:   0000018B  A$bod$929                          bod
+C:   0000018B  Sbod$BOD_Interrupt_Enable$22       bod
+C:   0000018B  Sbod$BOD_Interrupt_Enable$23       bod
+C:   0000018B  XG$BOD_Interrupt_Enable$0$0        bod
+C:   0000018C  A$common$846                       common
+C:   0000018C  Sbod$BOD_Interrupt_Enable$24       bod
+C:   0000018C  Scommon$Read_APROM_BYTE$0          common
+C:   0000018C  Scommon$Read_APROM_BYTE$1          common
+C:   0000018C  _Read_APROM_BYTE                   common
+C:   0000018E  A$common$847                       common
+C:   00000190  A$common$848                       common
+C:   00000193  A$common$849                       common
+C:   00000194  A$common$850                       common
+C:   00000195  A$common$851                       common
+C:   00000196  A$common$852                       common
+C:   00000197  A$common$855                       common
+C:   00000197  Scommon$Read_APROM_BYTE$2          common
+C:   0000019A  A$common$856                       common
+C:   0000019B  A$common$857                       common
+C:   0000019C  A$common$858                       common
+C:   0000019D  A$common$859                       common
+C:   0000019E  A$common$860                       common
+C:   0000019F  A$common$861                       common
+C:   000001A1  A$common$862                       common
+C:   000001A3  A$common$863                       common
+C:   000001A4  A$common$864                       common
+C:   000001A5  A$common$865                       common
+C:   000001A6  A$common$866                       common
+C:   000001A7  A$common$867                       common
+C:   000001A8  A$common$874                       common
+C:   000001A8  Scommon$Read_APROM_BYTE$3          common
+C:   000001A8  Scommon$Read_APROM_BYTE$4          common
+C:   000001A8  Scommon$Read_APROM_BYTE$5          common
+C:   000001A8  XG$Read_APROM_BYTE$0$0             common
+ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000001AA  A$common$875                       common
+C:   000001AB  A$common$890                       common
+C:   000001AB  Scommon$Read_APROM_BYTE$6          common
+C:   000001AB  Scommon$Software_Reset$7           common
+C:   000001AB  Scommon$Software_Reset$8           common
+C:   000001AB  _Software_Reset                    common
+C:   000001AD  A$common$891                       common
+C:   000001B0  A$common$892                       common
+C:   000001B1  A$common$895                       common
+C:   000001B1  Scommon$Software_Reset$9           common
+C:   000001B2  A$common$896                       common
+C:   000001B4  A$common$897                       common
+C:   000001B5  A$common$900                       common
+C:   000001B5  Scommon$Software_Reset$10          common
+C:   000001B8  A$common$903                       common
+C:   000001B8  Scommon$Software_Reset$11          common
+C:   000001BB  A$common$906                       common
+C:   000001BB  Scommon$Software_Reset$12          common
+C:   000001BD  A$common$911                       common
+C:   000001BD  Scommon$Software_Reset$13          common
+C:   000001BD  Scommon$Software_Reset$14          common
+C:   000001BD  XG$Software_Reset$0$0              common
+C:   000001BE  A$common$925                       common
+C:   000001BE  Scommon$PowerDown_Mode$16          common
+C:   000001BE  Scommon$PowerDown_Mode$17          common
+C:   000001BE  Scommon$Software_Reset$15          common
+C:   000001BE  _PowerDown_Mode                    common
+C:   000001C0  A$common$926                       common
+C:   000001C3  A$common$927                       common
+C:   000001C4  A$common$930                       common
+C:   000001C4  Scommon$PowerDown_Mode$18          common
+C:   000001C5  A$common$931                       common
+C:   000001C7  A$common$935                       common
+C:   000001C7  Scommon$PowerDown_Mode$19          common
+C:   000001C7  Scommon$PowerDown_Mode$20          common
+C:   000001CA  A$common$938                       common
+C:   000001CA  Scommon$PowerDown_Mode$21          common
+C:   000001CB  A$common$941                       common
+C:   000001CB  Scommon$PowerDown_Mode$22          common
+C:   000001CC  A$common$948                       common
+C:   000001CC  Scommon$PowerDown_Mode$23          common
+C:   000001CC  Scommon$PowerDown_Mode$24          common
+C:   000001CC  Scommon$PowerDown_Mode$25          common
+C:   000001CC  XG$PowerDown_Mode$0$0              common
+C:   000001CD  A$common$962                       common
+C:   000001CD  Scommon$Idle_Mode$27               common
+C:   000001CD  Scommon$Idle_Mode$28               common
+C:   000001CD  Scommon$PowerDown_Mode$26          common
+C:   000001CD  _Idle_Mode                         common
+C:   000001CF  A$common$963                       common
+C:   000001D2  A$common$964                       common
+ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000001D3  A$common$967                       common
+C:   000001D3  Scommon$Idle_Mode$29               common
+C:   000001D4  A$common$968                       common
+C:   000001D6  A$common$972                       common
+C:   000001D6  Scommon$Idle_Mode$30               common
+C:   000001D6  Scommon$Idle_Mode$31               common
+C:   000001D9  A$common$975                       common
+C:   000001D9  Scommon$Idle_Mode$32               common
+C:   000001DA  A$common$978                       common
+C:   000001DA  Scommon$Idle_Mode$33               common
+C:   000001DB  A$common$985                       common
+C:   000001DB  Scommon$Idle_Mode$34               common
+C:   000001DB  Scommon$Idle_Mode$35               common
+C:   000001DB  Scommon$Idle_Mode$36               common
+C:   000001DB  XG$Idle_Mode$0$0                   common
+C:   000001DC  A$common$1002                      common
+C:   000001DC  Scommon$Idle_Mode$37               common
+C:   000001DC  Scommon$_delay_$38                 common
+C:   000001DC  Scommon$_delay_$39                 common
+C:   000001DC  Scommon$_delay_$40                 common
+C:   000001DC  __delay_                           common
+C:   000001DE  A$common$1006                      common
+C:   000001DE  Scommon$_delay_$41                 common
+C:   000001E0  A$common$1012                      common
+C:   000001E0  Scommon$_delay_$42                 common
+C:   000001E0  Scommon$_delay_$43                 common
+C:   000001E0  Scommon$_delay_$44                 common
+C:   000001E1  A$common$1015                      common
+C:   000001E1  Scommon$_delay_$45                 common
+C:   000001E3  A$common$1019                      common
+C:   000001E3  Scommon$_delay_$46                 common
+C:   000001E3  Scommon$_delay_$47                 common
+C:   000001E4  A$common$1020                      common
+C:   000001E7  A$common$1022                      common
+C:   000001E9  A$common$1027                      common
+C:   000001E9  Scommon$_delay_$48                 common
+C:   000001E9  Scommon$_delay_$49                 common
+C:   000001E9  XG$_delay_$0$0                     common
+C:   000001EA  A$common$1041                      common
+C:   000001EA  Scommon$Global_Interrupt$51        common
+C:   000001EA  Scommon$Global_Interrupt$52        common
+C:   000001EA  Scommon$_delay_$50                 common
+C:   000001EA  _Global_Interrupt                  common
+C:   000001EC  A$common$1042                      common
+C:   000001EF  A$common$1043                      common
+C:   000001F0  A$common$1046                      common
+C:   000001F0  Scommon$Global_Interrupt$53        common
+C:   000001F1  A$common$1048                      common
+C:   000001F3  A$common$1049                      common
+C:   000001F5  A$common$1054                      common
+C:   000001F5  Scommon$Global_Interrupt$54        common
+ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000001F5  Scommon$Global_Interrupt$55        common
+C:   000001F5  XG$Global_Interrupt$0$0            common
+C:   000001F6  A$sdcc_stdio$816                   sdcc_stdio
+C:   000001F6  Scommon$Global_Interrupt$56        common
+C:   000001F6  Ssdcc_stdio$putchar$0              sdcc_stdio
+C:   000001F6  Ssdcc_stdio$putchar$1              sdcc_stdio
+C:   000001F6  _putchar                           sdcc_stdio
+C:   000001F8  A$sdcc_stdio$817                   sdcc_stdio
+C:   000001FA  A$sdcc_stdio$818                   sdcc_stdio
+C:   000001FD  A$sdcc_stdio$819                   sdcc_stdio
+C:   000001FE  A$sdcc_stdio$820                   sdcc_stdio
+C:   000001FF  A$sdcc_stdio$821                   sdcc_stdio
+C:   00000200  A$sdcc_stdio$822                   sdcc_stdio
+C:   00000201  A$sdcc_stdio$829                   sdcc_stdio
+C:   00000201  Ssdcc_stdio$putchar$2              sdcc_stdio
+C:   00000201  Ssdcc_stdio$putchar$3              sdcc_stdio
+C:   00000204  A$sdcc_stdio$830                   sdcc_stdio
+C:   00000206  A$sdcc_stdio$834                   sdcc_stdio
+C:   00000206  Ssdcc_stdio$putchar$4              sdcc_stdio
+C:   00000209  A$sdcc_stdio$835                   sdcc_stdio
+C:   0000020A  A$sdcc_stdio$836                   sdcc_stdio
+C:   0000020B  A$sdcc_stdio$837                   sdcc_stdio
+C:   0000020C  A$sdcc_stdio$838                   sdcc_stdio
+C:   0000020D  A$sdcc_stdio$839                   sdcc_stdio
+C:   0000020F  A$sdcc_stdio$840                   sdcc_stdio
+C:   00000211  A$sdcc_stdio$841                   sdcc_stdio
+C:   00000213  A$sdcc_stdio$842                   sdcc_stdio
+C:   00000215  A$sdcc_stdio$847                   sdcc_stdio
+C:   00000215  Ssdcc_stdio$putchar$5              sdcc_stdio
+C:   00000215  Ssdcc_stdio$putchar$6              sdcc_stdio
+C:   00000215  XG$putchar$0$0                     sdcc_stdio
+C:   00000216  A$sdcc_stdio$864                   sdcc_stdio
+C:   00000216  Ssdcc_stdio$getchar$10             sdcc_stdio
+C:   00000216  Ssdcc_stdio$getchar$8              sdcc_stdio
+C:   00000216  Ssdcc_stdio$getchar$9              sdcc_stdio
+C:   00000216  Ssdcc_stdio$putchar$7              sdcc_stdio
+C:   00000216  _getchar                           sdcc_stdio
+C:   00000219  A$sdcc_stdio$867                   sdcc_stdio
+C:   00000219  Ssdcc_stdio$getchar$11             sdcc_stdio
+C:   0000021C  A$sdcc_stdio$868                   sdcc_stdio
+C:   0000021E  A$sdcc_stdio$869                   sdcc_stdio
+C:   0000021F  A$sdcc_stdio$873                   sdcc_stdio
+C:   0000021F  Ssdcc_stdio$getchar$12             sdcc_stdio
+C:   00000221  A$sdcc_stdio$876                   sdcc_stdio
+C:   00000221  Ssdcc_stdio$getchar$13             sdcc_stdio
+C:   00000224  A$sdcc_stdio$877                   sdcc_stdio
+C:   00000225  A$sdcc_stdio$882                   sdcc_stdio
+C:   00000225  Ssdcc_stdio$getchar$14             sdcc_stdio
+C:   00000225  Ssdcc_stdio$getchar$15             sdcc_stdio
+C:   00000225  XG$getchar$0$0                     sdcc_stdio
+C:   00000227  A$sdcc_stdio$883                   sdcc_stdio
+ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000228  A$sys$837                          sys
+C:   00000228  Ssdcc_stdio$getchar$16             sdcc_stdio
+C:   00000228  Ssys$MODIFY_HIRC$0                 sys
+C:   00000228  Ssys$MODIFY_HIRC$1                 sys
+C:   00000228  _MODIFY_HIRC                       sys
+C:   0000022A  A$sys$838                          sys
+C:   0000022D  A$sys$839                          sys
+C:   0000022E  A$sys$843                          sys
+C:   0000022E  Ssys$MODIFY_HIRC$2                 sys
+C:   00000230  A$sys$844                          sys
+C:   00000232  A$sys$846                          sys
+C:   00000234  A$sys$847                          sys
+C:   00000237  A$sys$848                          sys
+C:   0000023A  A$sys$849                          sys
+C:   0000023D  A$sys$851                          sys
+C:   0000023F  A$sys$852                          sys
+C:   00000241  A$sys$855                          sys
+C:   00000241  Ssys$MODIFY_HIRC$3                 sys
+C:   00000244  A$sys$858                          sys
+C:   00000244  Ssys$MODIFY_HIRC$4                 sys
+C:   00000247  A$sys$859                          sys
+C:   00000248  A$sys$860                          sys
+C:   00000249  A$sys$861                          sys
+C:   0000024C  A$sys$862                          sys
+C:   0000024E  A$sys$864                          sys
+C:   00000251  A$sys$865                          sys
+C:   00000253  A$sys$870                          sys
+C:   00000253  Ssys$MODIFY_HIRC$5                 sys
+C:   00000253  Ssys$MODIFY_HIRC$6                 sys
+C:   00000256  A$sys$871                          sys
+C:   00000258  A$sys$875                          sys
+C:   00000258  Ssys$MODIFY_HIRC$7                 sys
+C:   0000025B  A$sys$880                          sys
+C:   0000025B  Ssys$MODIFY_HIRC$8                 sys
+C:   0000025B  Ssys$MODIFY_HIRC$9                 sys
+C:   0000025D  A$sys$884                          sys
+C:   0000025D  Ssys$MODIFY_HIRC$10                sys
+C:   00000260  A$sys$889                          sys
+C:   00000260  Ssys$MODIFY_HIRC$11                sys
+C:   00000260  Ssys$MODIFY_HIRC$12                sys
+C:   00000262  A$sys$893                          sys
+C:   00000262  Ssys$MODIFY_HIRC$13                sys
+C:   00000265  A$sys$900                          sys
+C:   00000265  Ssys$MODIFY_HIRC$14                sys
+C:   00000265  Ssys$MODIFY_HIRC$15                sys
+C:   00000265  Ssys$MODIFY_HIRC$16                sys
+C:   00000268  A$sys$903                          sys
+C:   00000268  Ssys$MODIFY_HIRC$17                sys
+C:   0000026B  A$sys$907                          sys
+C:   0000026B  Ssys$MODIFY_HIRC$18                sys
+C:   0000026D  A$sys$908                          sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000026F  A$sys$910                          sys
+C:   00000271  A$sys$911                          sys
+C:   00000274  A$sys$912                          sys
+C:   00000277  A$sys$913                          sys
+C:   0000027A  A$sys$915                          sys
+C:   0000027C  A$sys$916                          sys
+C:   0000027E  A$sys$919                          sys
+C:   0000027E  Ssys$MODIFY_HIRC$19                sys
+C:   00000280  A$sys$922                          sys
+C:   00000280  Ssys$MODIFY_HIRC$20                sys
+C:   00000282  A$sys$923                          sys
+C:   00000283  A$sys$924                          sys
+C:   00000285  A$sys$928                          sys
+C:   00000285  Ssys$MODIFY_HIRC$21                sys
+C:   00000287  A$sys$929                          sys
+C:   00000289  A$sys$931                          sys
+C:   0000028B  A$sys$932                          sys
+C:   0000028E  A$sys$933                          sys
+C:   00000291  A$sys$934                          sys
+C:   00000294  A$sys$936                          sys
+C:   00000296  A$sys$937                          sys
+C:   00000298  A$sys$940                          sys
+C:   00000298  Ssys$MODIFY_HIRC$22                sys
+C:   0000029A  A$sys$943                          sys
+C:   0000029A  Ssys$MODIFY_HIRC$23                sys
+C:   0000029D  A$sys$944                          sys
+C:   0000029F  A$sys$946                          sys
+C:   000002A2  A$sys$951                          sys
+C:   000002A2  Ssys$MODIFY_HIRC$24                sys
+C:   000002A2  Ssys$MODIFY_HIRC$25                sys
+C:   000002A4  A$sys$952                          sys
+C:   000002A5  A$sys$953                          sys
+C:   000002A6  A$sys$954                          sys
+C:   000002A7  A$sys$955                          sys
+C:   000002A9  A$sys$956                          sys
+C:   000002AB  A$sys$957                          sys
+C:   000002AC  A$sys$958                          sys
+C:   000002AD  A$sys$959                          sys
+C:   000002AE  A$sys$962                          sys
+C:   000002AE  Ssys$MODIFY_HIRC$26                sys
+C:   000002B0  A$sys$963                          sys
+C:   000002B1  A$sys$964                          sys
+C:   000002B2  A$sys$967                          sys
+C:   000002B2  Ssys$MODIFY_HIRC$27                sys
+C:   000002B4  A$sys$968                          sys
+C:   000002B5  A$sys$969                          sys
+C:   000002B6  A$sys$972                          sys
+C:   000002B6  Ssys$MODIFY_HIRC$28                sys
+C:   000002B7  A$sys$973                          sys
+C:   000002B9  A$sys$974                          sys
+C:   000002BA  A$sys$975                          sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000002BD  A$sys$976                          sys
+C:   000002BE  A$sys$979                          sys
+C:   000002BE  Ssys$MODIFY_HIRC$29                sys
+C:   000002C1  A$sys$982                          sys
+C:   000002C1  Ssys$MODIFY_HIRC$30                sys
+C:   000002C4  A$sys$985                          sys
+C:   000002C4  Ssys$MODIFY_HIRC$31                sys
+C:   000002C7  A$sys$988                          sys
+C:   000002C7  Ssys$MODIFY_HIRC$32                sys
+C:   000002C9  A$sys$990                          sys
+C:   000002CB  A$sys$992                          sys
+C:   000002CD  A$sys$993                          sys
+C:   000002CF  A$sys$995                          sys
+C:   000002D1  A$sys$996                          sys
+C:   000002D4  A$sys$997                          sys
+C:   000002D7  A$sys$998                          sys
+C:   000002DA  A$sys$1000                         sys
+C:   000002DC  A$sys$1001                         sys
+C:   000002DE  A$sys$1002                         sys
+C:   000002E1  A$sys$1003                         sys
+C:   000002E4  A$sys$1004                         sys
+C:   000002E7  A$sys$1006                         sys
+C:   000002E9  A$sys$1007                         sys
+C:   000002EB  A$sys$1010                         sys
+C:   000002EB  Ssys$MODIFY_HIRC$33                sys
+C:   000002ED  A$sys$1011                         sys
+C:   000002F0  A$sys$1012                         sys
+C:   000002F2  A$sys$1014                         sys
+C:   000002F4  A$sys$1015                         sys
+C:   000002F7  A$sys$1016                         sys
+C:   000002F9  A$sys$1018                         sys
+C:   000002FB  A$sys$1019                         sys
+C:   000002FE  A$sys$1024                         sys
+C:   000002FE  Ssys$MODIFY_HIRC$34                sys
+C:   000002FE  Ssys$MODIFY_HIRC$35                sys
+C:   00000301  A$sys$1026                         sys
+C:   00000303  A$sys$1030                         sys
+C:   00000303  Ssys$MODIFY_HIRC$36                sys
+C:   00000303  Ssys$MODIFY_HIRC$37                sys
+C:   00000306  A$sys$1031                         sys
+C:   00000308  A$sys$1033                         sys
+C:   0000030B  A$sys$1034                         sys
+C:   0000030D  A$sys$1036                         sys
+C:   00000310  A$sys$1040                         sys
+C:   00000310  Ssys$MODIFY_HIRC$38                sys
+C:   00000312  A$sys$1041                         sys
+C:   00000313  A$sys$1042                         sys
+C:   00000315  A$sys$1043                         sys
+C:   00000318  A$sys$1044                         sys
+C:   00000319  A$sys$1046                         sys
+C:   00000319  Ssys$MODIFY_HIRC$39                sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000031B  A$sys$1050                         sys
+C:   0000031B  Ssys$MODIFY_HIRC$40                sys
+C:   0000031C  A$sys$1051                         sys
+C:   0000031E  A$sys$1052                         sys
+C:   00000321  A$sys$1053                         sys
+C:   00000322  A$sys$1058                         sys
+C:   00000322  Ssys$MODIFY_HIRC$41                sys
+C:   00000322  Ssys$MODIFY_HIRC$42                sys
+C:   00000325  A$sys$1059                         sys
+C:   00000326  A$sys$1060                         sys
+C:   00000327  A$sys$1061                         sys
+C:   00000328  A$sys$1062                         sys
+C:   00000329  A$sys$1063                         sys
+C:   0000032A  A$sys$1070                         sys
+C:   0000032A  Ssys$MODIFY_HIRC$43                sys
+C:   0000032A  Ssys$MODIFY_HIRC$44                sys
+C:   0000032A  Ssys$MODIFY_HIRC$45                sys
+C:   0000032D  A$sys$1073                         sys
+C:   0000032D  Ssys$MODIFY_HIRC$46                sys
+C:   00000330  A$sys$1076                         sys
+C:   00000330  Ssys$MODIFY_HIRC$47                sys
+C:   00000332  A$sys$1079                         sys
+C:   00000332  Ssys$MODIFY_HIRC$48                sys
+C:   00000335  A$sys$1082                         sys
+C:   00000335  Ssys$MODIFY_HIRC$49                sys
+C:   00000338  A$sys$1085                         sys
+C:   00000338  Ssys$MODIFY_HIRC$50                sys
+C:   0000033A  A$sys$1089                         sys
+C:   0000033A  Ssys$MODIFY_HIRC$51                sys
+C:   0000033C  A$sys$1090                         sys
+C:   0000033E  A$sys$1092                         sys
+C:   00000340  A$sys$1093                         sys
+C:   00000343  A$sys$1094                         sys
+C:   00000346  A$sys$1095                         sys
+C:   00000349  A$sys$1097                         sys
+C:   0000034B  A$sys$1098                         sys
+C:   0000034D  A$sys$1103                         sys
+C:   0000034D  Ssys$MODIFY_HIRC$52                sys
+C:   0000034D  Ssys$MODIFY_HIRC$53                sys
+C:   0000034D  XG$MODIFY_HIRC$0$0                 sys
+C:   0000034E  A$sys$1117                         sys
+C:   0000034E  Ssys$FsysSelect$55                 sys
+C:   0000034E  Ssys$FsysSelect$56                 sys
+C:   0000034E  Ssys$MODIFY_HIRC$54                sys
+C:   0000034E  _FsysSelect                        sys
+C:   00000350  A$sys$1118                         sys
+C:   00000353  A$sys$1119                         sys
+C:   00000354  A$sys$1122                         sys
+C:   00000354  Ssys$FsysSelect$57                 sys
+C:   00000355  A$sys$1123                         sys
+C:   00000356  A$sys$1124                         sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 35.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000359  A$sys$1125                         sys
+C:   0000035B  A$sys$1127                         sys
+C:   0000035E  A$sys$1128                         sys
+C:   00000360  A$sys$1133                         sys
+C:   00000360  Ssys$FsysSelect$58                 sys
+C:   00000360  Ssys$FsysSelect$59                 sys
+C:   00000363  A$sys$1134                         sys
+C:   00000365  A$sys$1138                         sys
+C:   00000365  Ssys$FsysSelect$60                 sys
+C:   00000368  A$sys$1139                         sys
+C:   0000036B  A$sys$1142                         sys
+C:   0000036B  Ssys$FsysSelect$61                 sys
+C:   0000036E  A$sys$1143                         sys
+C:   00000371  A$sys$1148                         sys
+C:   00000371  Ssys$FsysSelect$62                 sys
+C:   00000371  Ssys$FsysSelect$63                 sys
+C:   00000373  A$sys$1152                         sys
+C:   00000373  Ssys$FsysSelect$64                 sys
+C:   00000376  A$sys$1153                         sys
+C:   00000379  A$sys$1157                         sys
+C:   00000379  Ssys$FsysSelect$65                 sys
+C:   0000037B  A$sys$1158                         sys
+C:   0000037D  A$sys$1160                         sys
+C:   0000037F  A$sys$1161                         sys
+C:   00000382  A$sys$1162                         sys
+C:   00000385  A$sys$1163                         sys
+C:   00000388  A$sys$1165                         sys
+C:   0000038A  A$sys$1166                         sys
+C:   0000038C  A$sys$1171                         sys
+C:   0000038C  Ssys$FsysSelect$66                 sys
+C:   0000038C  Ssys$FsysSelect$67                 sys
+C:   0000038E  A$sys$1175                         sys
+C:   0000038E  Ssys$FsysSelect$68                 sys
+C:   00000391  A$sys$1176                         sys
+C:   00000394  A$sys$1179                         sys
+C:   00000394  Ssys$FsysSelect$69                 sys
+C:   00000397  A$sys$1180                         sys
+C:   0000039A  A$sys$1183                         sys
+C:   0000039A  Ssys$FsysSelect$70                 sys
+C:   0000039D  A$sys$1184                         sys
+C:   000003A0  A$sys$1187                         sys
+C:   000003A0  Ssys$FsysSelect$71                 sys
+C:   000003A3  A$sys$1188                         sys
+C:   000003A6  A$sys$1192                         sys
+C:   000003A6  Ssys$FsysSelect$72                 sys
+C:   000003A8  A$sys$1193                         sys
+C:   000003AA  A$sys$1195                         sys
+C:   000003AC  A$sys$1196                         sys
+C:   000003AF  A$sys$1197                         sys
+C:   000003B2  A$sys$1198                         sys
+C:   000003B5  A$sys$1200                         sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 36.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000003B7  A$sys$1201                         sys
+C:   000003B9  A$sys$1210                         sys
+C:   000003B9  Ssys$FsysSelect$73                 sys
+C:   000003B9  Ssys$FsysSelect$74                 sys
+C:   000003B9  Ssys$FsysSelect$75                 sys
+C:   000003B9  Ssys$FsysSelect$76                 sys
+C:   000003B9  XG$FsysSelect$0$0                  sys
+C:   000003BA  A$sys$1224                         sys
+C:   000003BA  Ssys$ClockEnable$78                sys
+C:   000003BA  Ssys$ClockEnable$79                sys
+C:   000003BA  Ssys$FsysSelect$77                 sys
+C:   000003BA  _ClockEnable                       sys
+C:   000003BC  A$sys$1225                         sys
+C:   000003BF  A$sys$1226                         sys
+C:   000003C0  A$sys$1229                         sys
+C:   000003C0  Ssys$ClockEnable$80                sys
+C:   000003C1  A$sys$1230                         sys
+C:   000003C2  A$sys$1231                         sys
+C:   000003C5  A$sys$1232                         sys
+C:   000003C7  A$sys$1237                         sys
+C:   000003C7  Ssys$ClockEnable$81                sys
+C:   000003C7  Ssys$ClockEnable$82                sys
+C:   000003CA  A$sys$1238                         sys
+C:   000003CC  A$sys$1243                         sys
+C:   000003CC  Ssys$ClockEnable$83                sys
+C:   000003CE  A$sys$1244                         sys
+C:   000003D0  A$sys$1246                         sys
+C:   000003D2  A$sys$1247                         sys
+C:   000003D5  A$sys$1248                         sys
+C:   000003D8  A$sys$1249                         sys
+C:   000003DB  A$sys$1251                         sys
+C:   000003DD  A$sys$1252                         sys
+C:   000003DF  A$sys$1256                         sys
+C:   000003DF  Ssys$ClockEnable$84                sys
+C:   000003E1  A$sys$1257                         sys
+C:   000003E4  A$sys$1260                         sys
+C:   000003E4  Ssys$ClockEnable$85                sys
+C:   000003E6  A$sys$1264                         sys
+C:   000003E6  Ssys$ClockEnable$86                sys
+C:   000003E9  A$sys$1265                         sys
+C:   000003EC  A$sys$1266                         sys
+C:   000003EF  A$sys$1270                         sys
+C:   000003EF  Ssys$ClockEnable$87                sys
+C:   000003F1  A$sys$1271                         sys
+C:   000003F4  A$sys$1280                         sys
+C:   000003F4  Ssys$ClockEnable$88                sys
+C:   000003F4  Ssys$ClockEnable$89                sys
+C:   000003F4  Ssys$ClockEnable$90                sys
+C:   000003F4  Ssys$ClockEnable$91                sys
+C:   000003F4  XG$ClockEnable$0$0                 sys
+C:   000003F5  A$sys$1294                         sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 37.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000003F5  Ssys$ClockDisable$93               sys
+C:   000003F5  Ssys$ClockDisable$94               sys
+C:   000003F5  Ssys$ClockEnable$92                sys
+C:   000003F5  _ClockDisable                      sys
+C:   000003F7  A$sys$1295                         sys
+C:   000003FA  A$sys$1296                         sys
+C:   000003FB  A$sys$1299                         sys
+C:   000003FB  Ssys$ClockDisable$95               sys
+C:   000003FE  A$sys$1302                         sys
+C:   000003FE  Ssys$ClockDisable$96               sys
+C:   000003FF  A$sys$1303                         sys
+C:   00000400  A$sys$1304                         sys
+C:   00000403  A$sys$1305                         sys
+C:   00000405  A$sys$1310                         sys
+C:   00000405  Ssys$ClockDisable$97               sys
+C:   00000405  Ssys$ClockDisable$98               sys
+C:   00000408  A$sys$1311                         sys
+C:   0000040A  A$sys$1316                         sys
+C:   0000040A  Ssys$ClockDisable$99               sys
+C:   0000040C  A$sys$1317                         sys
+C:   0000040E  A$sys$1319                         sys
+C:   00000410  A$sys$1320                         sys
+C:   00000413  A$sys$1321                         sys
+C:   00000416  A$sys$1322                         sys
+C:   00000419  A$sys$1324                         sys
+C:   0000041B  A$sys$1325                         sys
+C:   0000041D  A$sys$1330                         sys
+C:   0000041D  Ssys$ClockDisable$100              sys
+C:   0000041D  Ssys$ClockDisable$101              sys
+C:   0000041F  A$sys$1334                         sys
+C:   0000041F  Ssys$ClockDisable$102              sys
+C:   00000422  A$sys$1335                         sys
+C:   00000425  A$sys$1336                         sys
+C:   00000428  A$sys$1345                         sys
+C:   00000428  Ssys$ClockDisable$103              sys
+C:   00000428  Ssys$ClockDisable$104              sys
+C:   00000428  Ssys$ClockDisable$105              sys
+C:   00000428  Ssys$ClockDisable$106              sys
+C:   00000428  XG$ClockDisable$0$0                sys
+C:   00000429  A$sys$1359                         sys
+C:   00000429  Ssys$ClockDisable$107              sys
+C:   00000429  Ssys$ClockSwitch$108               sys
+C:   00000429  Ssys$ClockSwitch$109               sys
+C:   00000429  _ClockSwitch                       sys
+C:   0000042B  A$sys$1360                         sys
+C:   0000042E  A$sys$1361                         sys
+C:   0000042F  A$sys$1364                         sys
+C:   0000042F  Ssys$ClockSwitch$110               sys
+C:   00000432  A$sys$1368                         sys
+C:   00000432  Ssys$ClockSwitch$111               sys
+C:   00000434  A$sys$1369                         sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 38.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000436  A$sys$1371                         sys
+C:   00000438  A$sys$1374                         sys
+C:   00000438  Ssys$ClockSwitch$112               sys
+C:   0000043B  A$sys$1375                         sys
+C:   0000043C  A$sys$1376                         sys
+C:   0000043D  A$sys$1377                         sys
+C:   00000440  A$sys$1378                         sys
+C:   00000442  A$sys$1380                         sys
+C:   00000445  A$sys$1381                         sys
+C:   00000447  A$sys$1386                         sys
+C:   00000447  Ssys$ClockSwitch$113               sys
+C:   00000447  Ssys$ClockSwitch$114               sys
+C:   0000044A  A$sys$1387                         sys
+C:   0000044C  A$sys$1392                         sys
+C:   0000044C  Ssys$ClockSwitch$115               sys
+C:   0000044E  A$sys$1393                         sys
+C:   00000450  A$sys$1395                         sys
+C:   00000452  A$sys$1396                         sys
+C:   00000455  A$sys$1397                         sys
+C:   00000458  A$sys$1398                         sys
+C:   0000045B  A$sys$1400                         sys
+C:   0000045D  A$sys$1401                         sys
+C:   0000045F  A$sys$1405                         sys
+C:   0000045F  Ssys$ClockSwitch$116               sys
+C:   00000461  A$sys$1406                         sys
+C:   00000463  A$sys$1408                         sys
+C:   00000465  A$sys$1409                         sys
+C:   00000468  A$sys$1410                         sys
+C:   0000046B  A$sys$1411                         sys
+C:   0000046E  A$sys$1413                         sys
+C:   00000470  A$sys$1414                         sys
+C:   00000472  A$sys$1419                         sys
+C:   00000472  Ssys$ClockSwitch$117               sys
+C:   00000472  Ssys$ClockSwitch$118               sys
+C:   00000474  A$sys$1424                         sys
+C:   00000474  Ssys$ClockSwitch$119               sys
+C:   00000476  A$sys$1425                         sys
+C:   00000478  A$sys$1427                         sys
+C:   0000047A  A$sys$1428                         sys
+C:   0000047D  A$sys$1429                         sys
+C:   00000480  A$sys$1430                         sys
+C:   00000483  A$sys$1432                         sys
+C:   00000485  A$sys$1433                         sys
+C:   00000487  A$sys$1437                         sys
+C:   00000487  Ssys$ClockSwitch$120               sys
+C:   00000489  A$sys$1438                         sys
+C:   0000048B  A$sys$1440                         sys
+C:   0000048D  A$sys$1441                         sys
+C:   00000490  A$sys$1442                         sys
+C:   00000493  A$sys$1443                         sys
+C:   00000496  A$sys$1445                         sys
+ASxxxx Linker V03.00 + NoICE + sdld,  page 39.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000498  A$sys$1446                         sys
+C:   0000049A  A$sys$1451                         sys
+C:   0000049A  Ssys$ClockSwitch$121               sys
+C:   0000049A  Ssys$ClockSwitch$122               sys
+C:   0000049C  A$sys$1456                         sys
+C:   0000049C  Ssys$ClockSwitch$123               sys
+C:   0000049E  A$sys$1457                         sys
+C:   000004A0  A$sys$1459                         sys
+C:   000004A2  A$sys$1460                         sys
+C:   000004A5  A$sys$1461                         sys
+C:   000004A8  A$sys$1462                         sys
+C:   000004AB  A$sys$1464                         sys
+C:   000004AD  A$sys$1465                         sys
+C:   000004AF  A$sys$1473                         sys
+C:   000004AF  Ssys$ClockSwitch$124               sys
+C:   000004AF  Ssys$ClockSwitch$125               sys
+C:   000004AF  Ssys$ClockSwitch$126               sys
+C:   000004B1  A$sys$1474                         sys
+C:   000004B3  A$sys$1479                         sys
+C:   000004B3  Ssys$ClockSwitch$127               sys
+C:   000004B3  Ssys$ClockSwitch$128               sys
+C:   000004B3  XG$ClockSwitch$0$0                 sys
+C:   000004B4  A$uart$858                         uart
+C:   000004B4  Ssys$ClockSwitch$129               sys
+C:   000004B4  Suart$UART_Open$0                  uart
+C:   000004B4  Suart$UART_Open$1                  uart
+C:   000004B4  _UART_Open                         uart
+C:   000004B6  A$uart$859                         uart
+C:   000004B8  A$uart$860                         uart
+C:   000004BA  A$uart$861                         uart
+C:   000004BB  A$uart$862                         uart
+C:   000004BE  A$uart$863                         uart
+C:   000004BF  A$uart$864                         uart
+C:   000004C0  A$uart$865                         uart
+C:   000004C1  A$uart$866                         uart
+C:   000004C2  A$uart$867                         uart
+C:   000004C3  A$uart$868                         uart
+C:   000004C4  A$uart$869                         uart
+C:   000004C5  A$uart$870                         uart
+C:   000004C6  A$uart$871                         uart
+C:   000004C7  A$uart$872                         uart
+C:   000004C8  A$uart$873                         uart
+C:   000004C9  A$uart$876                         uart
+C:   000004C9  Suart$UART_Open$2                  uart
+C:   000004CC  A$uart$877                         uart
+C:   000004CD  A$uart$878                         uart
+C:   000004CE  A$uart$879                         uart
+C:   000004D0  A$uart$880                         uart
+C:   000004D3  A$uart$881                         uart
+C:   000004D6  A$uart$883                         uart
+C:   000004D9  A$uart$884                         uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 40.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000004DC  A$uart$886                         uart
+C:   000004DF  A$uart$893                         uart
+C:   000004DF  Suart$UART_Open$3                  uart
+C:   000004DF  Suart$UART_Open$4                  uart
+C:   000004DF  Suart$UART_Open$5                  uart
+C:   000004E2  A$uart$896                         uart
+C:   000004E2  Suart$UART_Open$6                  uart
+C:   000004E5  A$uart$899                         uart
+C:   000004E5  Suart$UART_Open$7                  uart
+C:   000004E8  A$uart$902                         uart
+C:   000004E8  Suart$UART_Open$8                  uart
+C:   000004EB  A$uart$906                         uart
+C:   000004EB  Suart$UART_Open$9                  uart
+C:   000004ED  A$uart$907                         uart
+C:   000004EF  A$uart$909                         uart
+C:   000004F1  A$uart$910                         uart
+C:   000004F4  A$uart$911                         uart
+C:   000004F7  A$uart$912                         uart
+C:   000004FA  A$uart$914                         uart
+C:   000004FC  A$uart$915                         uart
+C:   000004FE  A$uart$916                         uart
+C:   00000501  A$uart$919                         uart
+C:   00000501  Suart$UART_Open$10                 uart
+C:   00000504  A$uart$920                         uart
+C:   00000505  A$uart$921                         uart
+C:   00000506  A$uart$922                         uart
+C:   00000507  A$uart$923                         uart
+C:   00000508  A$uart$924                         uart
+C:   00000509  A$uart$925                         uart
+C:   0000050A  A$uart$926                         uart
+C:   0000050B  A$uart$927                         uart
+C:   0000050C  A$uart$928                         uart
+C:   0000050D  A$uart$929                         uart
+C:   0000050E  A$uart$930                         uart
+C:   0000050F  A$uart$931                         uart
+C:   00000510  A$uart$932                         uart
+C:   00000511  A$uart$933                         uart
+C:   00000512  A$uart$934                         uart
+C:   00000513  A$uart$935                         uart
+C:   00000515  A$uart$936                         uart
+C:   00000516  A$uart$937                         uart
+C:   00000517  A$uart$938                         uart
+C:   00000519  A$uart$939                         uart
+C:   0000051A  A$uart$940                         uart
+C:   0000051B  A$uart$941                         uart
+C:   0000051C  A$uart$942                         uart
+C:   0000051D  A$uart$943                         uart
+C:   0000051E  A$uart$944                         uart
+C:   0000051F  A$uart$945                         uart
+C:   00000521  A$uart$946                         uart
+C:   00000522  A$uart$947                         uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 41.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000523  A$uart$948                         uart
+C:   00000524  A$uart$949                         uart
+C:   00000525  A$uart$950                         uart
+C:   00000526  A$uart$951                         uart
+C:   00000527  A$uart$952                         uart
+C:   00000529  A$uart$953                         uart
+C:   0000052A  A$uart$954                         uart
+C:   0000052B  A$uart$955                         uart
+C:   0000052D  A$uart$956                         uart
+C:   0000052E  A$uart$957                         uart
+C:   0000052F  A$uart$958                         uart
+C:   00000530  A$uart$959                         uart
+C:   00000531  A$uart$960                         uart
+C:   00000534  A$uart$961                         uart
+C:   00000535  A$uart$962                         uart
+C:   00000536  A$uart$963                         uart
+C:   00000537  A$uart$964                         uart
+C:   00000538  A$uart$965                         uart
+C:   00000539  A$uart$966                         uart
+C:   0000053A  A$uart$967                         uart
+C:   0000053B  A$uart$968                         uart
+C:   0000053C  A$uart$969                         uart
+C:   0000053D  A$uart$970                         uart
+C:   0000053E  A$uart$971                         uart
+C:   0000053F  A$uart$973                         uart
+C:   0000053F  Suart$UART_Open$11                 uart
+C:   00000542  A$uart$974                         uart
+C:   00000543  A$uart$975                         uart
+C:   00000544  A$uart$976                         uart
+C:   00000545  A$uart$977                         uart
+C:   00000546  A$uart$978                         uart
+C:   00000547  A$uart$979                         uart
+C:   00000548  A$uart$980                         uart
+C:   00000549  A$uart$981                         uart
+C:   0000054A  A$uart$982                         uart
+C:   0000054B  A$uart$983                         uart
+C:   0000054C  A$uart$984                         uart
+C:   0000054D  A$uart$985                         uart
+C:   0000054F  A$uart$986                         uart
+C:   00000551  A$uart$987                         uart
+C:   00000553  A$uart$988                         uart
+C:   00000554  A$uart$989                         uart
+C:   00000557  A$uart$990                         uart
+C:   00000559  A$uart$991                         uart
+C:   0000055B  A$uart$992                         uart
+C:   0000055D  A$uart$993                         uart
+C:   0000055E  A$uart$994                         uart
+C:   0000055F  A$uart$995                         uart
+C:   00000560  A$uart$996                         uart
+C:   00000561  A$uart$997                         uart
+C:   00000563  A$uart$1001                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 42.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000563  Suart$UART_Open$12                 uart
+C:   00000565  A$uart$1004                        uart
+C:   00000565  Suart$UART_Open$13                 uart
+C:   00000568  A$uart$1010                        uart
+C:   00000568  Suart$UART_Open$14                 uart
+C:   00000568  Suart$UART_Open$15                 uart
+C:   0000056B  A$uart$1013                        uart
+C:   0000056B  Suart$UART_Open$16                 uart
+C:   0000056E  A$uart$1016                        uart
+C:   0000056E  Suart$UART_Open$17                 uart
+C:   00000571  A$uart$1020                        uart
+C:   00000571  Suart$UART_Open$18                 uart
+C:   00000573  A$uart$1021                        uart
+C:   00000575  A$uart$1023                        uart
+C:   00000577  A$uart$1024                        uart
+C:   0000057A  A$uart$1025                        uart
+C:   0000057D  A$uart$1026                        uart
+C:   00000580  A$uart$1028                        uart
+C:   00000582  A$uart$1029                        uart
+C:   00000584  A$uart$1030                        uart
+C:   00000587  A$uart$1033                        uart
+C:   00000587  Suart$UART_Open$19                 uart
+C:   0000058A  A$uart$1034                        uart
+C:   0000058B  A$uart$1035                        uart
+C:   0000058C  A$uart$1036                        uart
+C:   0000058D  A$uart$1037                        uart
+C:   0000058E  A$uart$1038                        uart
+C:   0000058F  A$uart$1039                        uart
+C:   00000590  A$uart$1040                        uart
+C:   00000591  A$uart$1041                        uart
+C:   00000592  A$uart$1042                        uart
+C:   00000593  A$uart$1043                        uart
+C:   00000594  A$uart$1044                        uart
+C:   00000595  A$uart$1045                        uart
+C:   00000596  A$uart$1046                        uart
+C:   00000597  A$uart$1047                        uart
+C:   00000598  A$uart$1048                        uart
+C:   00000599  A$uart$1049                        uart
+C:   0000059B  A$uart$1050                        uart
+C:   0000059C  A$uart$1051                        uart
+C:   0000059D  A$uart$1052                        uart
+C:   0000059F  A$uart$1053                        uart
+C:   000005A0  A$uart$1054                        uart
+C:   000005A1  A$uart$1055                        uart
+C:   000005A2  A$uart$1056                        uart
+C:   000005A3  A$uart$1057                        uart
+C:   000005A4  A$uart$1058                        uart
+C:   000005A5  A$uart$1059                        uart
+C:   000005A7  A$uart$1060                        uart
+C:   000005A8  A$uart$1061                        uart
+C:   000005A9  A$uart$1062                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 43.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000005AA  A$uart$1063                        uart
+C:   000005AB  A$uart$1064                        uart
+C:   000005AC  A$uart$1065                        uart
+C:   000005AD  A$uart$1066                        uart
+C:   000005AF  A$uart$1067                        uart
+C:   000005B0  A$uart$1068                        uart
+C:   000005B1  A$uart$1069                        uart
+C:   000005B3  A$uart$1070                        uart
+C:   000005B4  A$uart$1071                        uart
+C:   000005B5  A$uart$1072                        uart
+C:   000005B6  A$uart$1073                        uart
+C:   000005B7  A$uart$1074                        uart
+C:   000005BA  A$uart$1075                        uart
+C:   000005BB  A$uart$1076                        uart
+C:   000005BC  A$uart$1077                        uart
+C:   000005BD  A$uart$1078                        uart
+C:   000005BE  A$uart$1079                        uart
+C:   000005BF  A$uart$1080                        uart
+C:   000005C0  A$uart$1081                        uart
+C:   000005C1  A$uart$1082                        uart
+C:   000005C2  A$uart$1083                        uart
+C:   000005C3  A$uart$1084                        uart
+C:   000005C4  A$uart$1085                        uart
+C:   000005C5  A$uart$1086                        uart
+C:   000005C8  A$uart$1087                        uart
+C:   000005C9  A$uart$1088                        uart
+C:   000005CA  A$uart$1089                        uart
+C:   000005CB  A$uart$1090                        uart
+C:   000005CC  A$uart$1091                        uart
+C:   000005CD  A$uart$1092                        uart
+C:   000005CE  A$uart$1093                        uart
+C:   000005CF  A$uart$1094                        uart
+C:   000005D0  A$uart$1095                        uart
+C:   000005D1  A$uart$1096                        uart
+C:   000005D2  A$uart$1097                        uart
+C:   000005D3  A$uart$1098                        uart
+C:   000005D5  A$uart$1099                        uart
+C:   000005D7  A$uart$1100                        uart
+C:   000005D9  A$uart$1101                        uart
+C:   000005DA  A$uart$1102                        uart
+C:   000005DD  A$uart$1103                        uart
+C:   000005DF  A$uart$1104                        uart
+C:   000005E1  A$uart$1105                        uart
+C:   000005E3  A$uart$1106                        uart
+C:   000005E4  A$uart$1107                        uart
+C:   000005E5  A$uart$1108                        uart
+C:   000005E6  A$uart$1109                        uart
+C:   000005E7  A$uart$1110                        uart
+C:   000005E8  A$uart$1111                        uart
+C:   000005E9  A$uart$1112                        uart
+C:   000005EA  A$uart$1113                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 44.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000005EB  A$uart$1114                        uart
+C:   000005ED  A$uart$1115                        uart
+C:   000005EE  A$uart$1116                        uart
+C:   000005EF  A$uart$1117                        uart
+C:   000005F0  A$uart$1118                        uart
+C:   000005F1  A$uart$1119                        uart
+C:   000005F2  A$uart$1120                        uart
+C:   000005F4  A$uart$1123                        uart
+C:   000005F4  Suart$UART_Open$20                 uart
+C:   000005F5  A$uart$1124                        uart
+C:   000005F6  A$uart$1125                        uart
+C:   000005F7  A$uart$1126                        uart
+C:   000005F8  A$uart$1127                        uart
+C:   000005FA  A$uart$1131                        uart
+C:   000005FA  Suart$UART_Open$21                 uart
+C:   000005FC  A$uart$1132                        uart
+C:   000005FE  A$uart$1134                        uart
+C:   00000600  A$uart$1135                        uart
+C:   00000603  A$uart$1136                        uart
+C:   00000606  A$uart$1137                        uart
+C:   00000609  A$uart$1139                        uart
+C:   0000060B  A$uart$1140                        uart
+C:   0000060D  A$uart$1141                        uart
+C:   00000610  A$uart$1144                        uart
+C:   00000610  Suart$UART_Open$22                 uart
+C:   00000613  A$uart$1150                        uart
+C:   00000613  Suart$UART_Open$23                 uart
+C:   00000613  Suart$UART_Open$24                 uart
+C:   00000616  A$uart$1153                        uart
+C:   00000616  Suart$UART_Open$25                 uart
+C:   00000619  A$uart$1156                        uart
+C:   00000619  Suart$UART_Open$26                 uart
+C:   0000061C  A$uart$1157                        uart
+C:   0000061D  A$uart$1158                        uart
+C:   0000061E  A$uart$1159                        uart
+C:   0000061F  A$uart$1160                        uart
+C:   00000620  A$uart$1161                        uart
+C:   00000621  A$uart$1162                        uart
+C:   00000622  A$uart$1163                        uart
+C:   00000623  A$uart$1164                        uart
+C:   00000624  A$uart$1165                        uart
+C:   00000625  A$uart$1166                        uart
+C:   00000626  A$uart$1167                        uart
+C:   00000627  A$uart$1168                        uart
+C:   00000628  A$uart$1169                        uart
+C:   00000629  A$uart$1170                        uart
+C:   0000062A  A$uart$1171                        uart
+C:   0000062B  A$uart$1172                        uart
+C:   0000062D  A$uart$1173                        uart
+C:   0000062E  A$uart$1174                        uart
+C:   0000062F  A$uart$1175                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 45.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000631  A$uart$1176                        uart
+C:   00000632  A$uart$1177                        uart
+C:   00000633  A$uart$1178                        uart
+C:   00000634  A$uart$1179                        uart
+C:   00000635  A$uart$1180                        uart
+C:   00000636  A$uart$1181                        uart
+C:   00000637  A$uart$1182                        uart
+C:   00000639  A$uart$1183                        uart
+C:   0000063A  A$uart$1184                        uart
+C:   0000063B  A$uart$1185                        uart
+C:   0000063C  A$uart$1186                        uart
+C:   0000063D  A$uart$1187                        uart
+C:   0000063E  A$uart$1188                        uart
+C:   0000063F  A$uart$1189                        uart
+C:   00000641  A$uart$1190                        uart
+C:   00000642  A$uart$1191                        uart
+C:   00000643  A$uart$1192                        uart
+C:   00000645  A$uart$1193                        uart
+C:   00000646  A$uart$1194                        uart
+C:   00000647  A$uart$1195                        uart
+C:   00000648  A$uart$1196                        uart
+C:   00000649  A$uart$1197                        uart
+C:   0000064C  A$uart$1198                        uart
+C:   0000064D  A$uart$1199                        uart
+C:   0000064E  A$uart$1200                        uart
+C:   0000064F  A$uart$1201                        uart
+C:   00000650  A$uart$1202                        uart
+C:   00000651  A$uart$1203                        uart
+C:   00000652  A$uart$1204                        uart
+C:   00000653  A$uart$1205                        uart
+C:   00000654  A$uart$1206                        uart
+C:   00000655  A$uart$1207                        uart
+C:   00000656  A$uart$1208                        uart
+C:   00000657  A$uart$1209                        uart
+C:   0000065A  A$uart$1210                        uart
+C:   0000065B  A$uart$1211                        uart
+C:   0000065C  A$uart$1212                        uart
+C:   0000065D  A$uart$1213                        uart
+C:   0000065E  A$uart$1214                        uart
+C:   0000065F  A$uart$1215                        uart
+C:   00000660  A$uart$1216                        uart
+C:   00000661  A$uart$1217                        uart
+C:   00000662  A$uart$1218                        uart
+C:   00000663  A$uart$1219                        uart
+C:   00000664  A$uart$1220                        uart
+C:   00000665  A$uart$1221                        uart
+C:   00000667  A$uart$1222                        uart
+C:   00000669  A$uart$1223                        uart
+C:   0000066B  A$uart$1224                        uart
+C:   0000066C  A$uart$1225                        uart
+C:   0000066F  A$uart$1226                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 46.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000671  A$uart$1227                        uart
+C:   00000673  A$uart$1228                        uart
+C:   00000675  A$uart$1229                        uart
+C:   00000676  A$uart$1230                        uart
+C:   00000677  A$uart$1231                        uart
+C:   00000678  A$uart$1232                        uart
+C:   00000679  A$uart$1233                        uart
+C:   0000067A  A$uart$1234                        uart
+C:   0000067B  A$uart$1235                        uart
+C:   0000067C  A$uart$1236                        uart
+C:   0000067D  A$uart$1237                        uart
+C:   0000067F  A$uart$1238                        uart
+C:   00000680  A$uart$1239                        uart
+C:   00000681  A$uart$1240                        uart
+C:   00000682  A$uart$1241                        uart
+C:   00000683  A$uart$1242                        uart
+C:   00000684  A$uart$1243                        uart
+C:   00000686  A$uart$1246                        uart
+C:   00000686  Suart$UART_Open$27                 uart
+C:   00000687  A$uart$1247                        uart
+C:   00000688  A$uart$1248                        uart
+C:   00000689  A$uart$1249                        uart
+C:   0000068A  A$uart$1250                        uart
+C:   0000068C  A$uart$1254                        uart
+C:   0000068C  Suart$UART_Open$28                 uart
+C:   0000068E  A$uart$1255                        uart
+C:   00000690  A$uart$1257                        uart
+C:   00000692  A$uart$1258                        uart
+C:   00000695  A$uart$1259                        uart
+C:   00000698  A$uart$1260                        uart
+C:   0000069B  A$uart$1262                        uart
+C:   0000069D  A$uart$1263                        uart
+C:   0000069F  A$uart$1264                        uart
+C:   000006A2  A$uart$1272                        uart
+C:   000006A2  Suart$UART_Open$29                 uart
+C:   000006A2  Suart$UART_Open$30                 uart
+C:   000006A2  Suart$UART_Open$31                 uart
+C:   000006A2  XG$UART_Open$0$0                   uart
+C:   000006A3  A$uart$1287                        uart
+C:   000006A3  Suart$Receive_Data$33              uart
+C:   000006A3  Suart$Receive_Data$34              uart
+C:   000006A3  Suart$UART_Open$32                 uart
+C:   000006A3  _Receive_Data                      uart
+C:   000006A5  A$uart$1288                        uart
+C:   000006A8  A$uart$1289                        uart
+C:   000006A9  A$uart$1292                        uart
+C:   000006A9  Suart$Receive_Data$35              uart
+C:   000006AC  A$uart$1293                        uart
+C:   000006AD  A$uart$1294                        uart
+C:   000006AE  A$uart$1297                        uart
+C:   000006AE  Suart$Receive_Data$36              uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 47.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000006B1  A$uart$1298                        uart
+C:   000006B2  A$uart$1299                        uart
+C:   000006B3  A$uart$1300                        uart
+C:   000006B5  A$uart$1304                        uart
+C:   000006B5  Suart$Receive_Data$37              uart
+C:   000006B5  Suart$Receive_Data$38              uart
+C:   000006B8  A$uart$1305                        uart
+C:   000006BA  A$uart$1307                        uart
+C:   000006BD  A$uart$1310                        uart
+C:   000006BD  Suart$Receive_Data$39              uart
+C:   000006C0  A$uart$1311                        uart
+C:   000006C2  A$uart$1312                        uart
+C:   000006C3  A$uart$1316                        uart
+C:   000006C3  Suart$Receive_Data$40              uart
+C:   000006C5  A$uart$1321                        uart
+C:   000006C5  Suart$Receive_Data$41              uart
+C:   000006C5  Suart$Receive_Data$42              uart
+C:   000006C7  A$uart$1323                        uart
+C:   000006CA  A$uart$1326                        uart
+C:   000006CA  Suart$Receive_Data$43              uart
+C:   000006CD  A$uart$1327                        uart
+C:   000006CF  A$uart$1328                        uart
+C:   000006D0  A$uart$1332                        uart
+C:   000006D0  Suart$Receive_Data$44              uart
+C:   000006D2  A$uart$1339                        uart
+C:   000006D2  Suart$Receive_Data$45              uart
+C:   000006D2  Suart$Receive_Data$46              uart
+C:   000006D2  Suart$Receive_Data$47              uart
+C:   000006D5  A$uart$1340                        uart
+C:   000006D6  A$uart$1345                        uart
+C:   000006D6  Suart$Receive_Data$48              uart
+C:   000006D6  Suart$Receive_Data$49              uart
+C:   000006D6  XG$Receive_Data$0$0                uart
+C:   000006D8  A$uart$1346                        uart
+C:   000006D9  A$uart$1361                        uart
+C:   000006D9  Suart$Receive_Data$50              uart
+C:   000006D9  Suart$UART_Send_Data$51            uart
+C:   000006D9  Suart$UART_Send_Data$52            uart
+C:   000006D9  _UART_Send_Data                    uart
+C:   000006DB  A$uart$1362                        uart
+C:   000006DE  A$uart$1363                        uart
+C:   000006DF  A$uart$1366                        uart
+C:   000006DF  Suart$UART_Send_Data$53            uart
+C:   000006E0  A$uart$1367                        uart
+C:   000006E1  A$uart$1368                        uart
+C:   000006E3  A$uart$1372                        uart
+C:   000006E3  Suart$UART_Send_Data$54            uart
+C:   000006E3  Suart$UART_Send_Data$55            uart
+C:   000006E6  A$uart$1373                        uart
+C:   000006E8  A$uart$1378                        uart
+C:   000006E8  Suart$UART_Send_Data$56            uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 48.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000006EA  A$uart$1381                        uart
+C:   000006EA  Suart$UART_Send_Data$57            uart
+C:   000006ED  A$uart$1382                        uart
+C:   000006EE  A$uart$1383                        uart
+C:   000006F0  A$uart$1390                        uart
+C:   000006F0  Suart$UART_Send_Data$58            uart
+C:   000006F0  Suart$UART_Send_Data$59            uart
+C:   000006F3  A$uart$1391                        uart
+C:   000006F5  A$uart$1396                        uart
+C:   000006F5  Suart$UART_Send_Data$60            uart
+C:   000006F7  A$uart$1401                        uart
+C:   000006F7  Suart$UART_Send_Data$61            uart
+C:   000006F7  Suart$UART_Send_Data$62            uart
+C:   000006F9  A$uart$1405                        uart
+C:   000006F9  Suart$UART_Send_Data$63            uart
+C:   000006FC  A$uart$1408                        uart
+C:   000006FC  Suart$UART_Send_Data$64            uart
+C:   000006FF  A$uart$1409                        uart
+C:   00000700  A$uart$1410                        uart
+C:   00000702  A$uart$1417                        uart
+C:   00000702  Suart$UART_Send_Data$65            uart
+C:   00000702  Suart$UART_Send_Data$66            uart
+C:   00000705  A$uart$1418                        uart
+C:   00000707  A$uart$1422                        uart
+C:   00000707  Suart$UART_Send_Data$67            uart
+C:   0000070A  A$uart$1426                        uart
+C:   0000070A  Suart$UART_Send_Data$68            uart
+C:   0000070C  A$uart$1435                        uart
+C:   0000070C  Suart$UART_Send_Data$69            uart
+C:   0000070C  Suart$UART_Send_Data$70            uart
+C:   0000070C  Suart$UART_Send_Data$71            uart
+C:   0000070C  Suart$UART_Send_Data$72            uart
+C:   0000070C  XG$UART_Send_Data$0$0              uart
+C:   0000070D  A$uart$1449                        uart
+C:   0000070D  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   0000070D  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   0000070D  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   0000070D  Suart$UART_Send_Data$73            uart
+C:   0000070D  _Enable_UART0_VCOM_printf_24M_11   uart
+C:   00000710  A$uart$1450                        uart
+C:   00000713  A$uart$1453                        uart
+C:   00000713  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   00000716  A$uart$1454                        uart
+C:   00000717  A$uart$1455                        uart
+C:   00000718  A$uart$1456                        uart
+C:   0000071B  A$uart$1457                        uart
+C:   0000071C  A$uart$1458                        uart
+C:   0000071E  A$uart$1459                        uart
+C:   0000071F  A$uart$1460                        uart
+C:   00000720  A$uart$1461                        uart
+C:   00000722  A$uart$1462                        uart
+ASxxxx Linker V03.00 + NoICE + sdld,  page 49.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000A5    00001242 =        4674. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000723  A$uart$1463                        uart
+C:   00000724  A$uart$1464                        uart
+C:   00000725  A$uart$1465                        uart
+C:   00000726  A$uart$1466                        uart
+C:   00000727  A$uart$1467                        uart
+C:   0000072A  A$uart$1468                        uart
+C:   0000072D  A$uart$1469                        uart
+C:   0000072F  A$uart$1470                        uart
+C:   00000732  A$uart$1474                        uart
+C:   00000732  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   00000734  A$uart$1476                        uart
+C:   00000736  A$uart$1480                        uart
+C:   00000736  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   00000738  A$uart$1485                        uart
+C:   00000738  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   00000738  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   00000738  XG$Enable_UART0_VCOM_printf_24M_   uart
+C:   00000739  Suart$Enable_UART0_VCOM_printf_2   uart
+C:   00000739  __divulong                         _divulong
+C:   0000083C  _vprintf                           vprintf
+C:   0000087B  _printf                            vprintf
+C:   00000981  __print_format                     printf_large
+C:   0000128F  _strlen                            _strlen
+C:   000012A7  __mulint                           _mulint
+C:   000012C7  __gptrget                          _gptrget
+C:   000012E3  __sdcc_external_startup            _startup
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 50.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CONST                               000012E7    0000002E =          46. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000012E7  Fmain$__str_0$0_0$0                main
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 51.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.debug_line                         00000000    00000A49 =        2633. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 52.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.debug_loc                          00000000    000001B8 =         440. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 53.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.debug_abbrev                       00000000    000002E9 =         745. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 54.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.debug_info                         00000000    000068DE =       26846. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 55.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.debug_pubnames                     00000000    0000347A =       13434. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 56.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.debug_frame                        00000000    000003C8 =         968. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 57.
+
+Files Linked                              [ module(s) ]
+
+./User/main.rel                           [  ]
+./Library/bod.rel                         [  ]
+./Library/common.rel                      [  ]
+./Library/sdcc_stdio.rel                  [  ]
+./Library/sys.rel                         [  ]
+./Library/uart.rel                        [  ]
+
+
+Libraries Linked                          [ object file ]
+
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/liblong.lib
+                                          [ _divulong.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/mcs51.lib
+                                          [ crtclear.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/mcs51.lib
+                                          [ crtxinit.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/mcs51.lib
+                                          [ crtxclear.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/libsdcc.lib
+                                          [ vprintf.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/libsdcc.lib
+                                          [ printf_large.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/mcs51.lib
+                                          [ crtpagesfr.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/libsdcc.lib
+                                          [ _strlen.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/libint.lib
+                                          [ _mulint.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/mcs51.lib
+                                          [ crtstart.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/libsdcc.lib
+                                          [ _gptrget.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/libsdcc.lib
+                                          [ _startup.rel ]
+C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large/libsdcc.lib
+                                          [ _bp.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 58.
+
+User Base Address Definitions
+
+HOME = 0x0000
+XSEG = 0x0001
+PSEG = 0x0001
+ISEG = 0x0000
+BSEG = 0x0000
+
+

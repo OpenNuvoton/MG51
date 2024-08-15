@@ -1,0 +1,85 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:40:53 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          #define     DATA_START_ADDR     0x3800 
+  10          
+  11          /************************************************
+  12            * @brief     Main loop.
+  13            * @param[in] None.
+  14            * @return    None.
+  15          *************************************************/
+  16          void main (void) 
+  17          {
+  18   1          unsigned char i, temp;
+  19   1      
+  20   1          MODIFY_HIRC(HIRC_24);
+  21   1          Enable_UART0_VCOM_printf_24M_115200();
+  22   1      
+  23   1          printf ("\n Toggle P05 to low to start test ...");
+  24   1          GPIO_LED_QUASI_MODE;
+  25   1      
+  26   1          for(i=0;i<128;i++)
+  27   1             IAPDataBuf[i] =  i;
+  28   1             
+  29   1          while(GPIO_LED);
+  30   1          Erase_APROM(DATA_START_ADDR,128);
+  31   1          Erase_Verify_APROM(DATA_START_ADDR,128);
+  32   1          Program_APROM(DATA_START_ADDR,128);
+  33   1          Program_Verify_APROM(DATA_START_ADDR,128);
+  34   1      
+  35   1      #if defined __C51__
+  36   1          temp = Read_APROM_BYTE (DATA_START_ADDR+0x0A);
+  37   1          printf ("\n\r Read out Value = 0x%bx", temp);
+  38   1      #elif defined __ICC8051__
+                  temp = Read_APROM_BYTE ((uint16_t __code *)(DATA_START_ADDR+0x09));
+                  printf ("\n\r Read out Value = 0x%hx", temp);
+              #elif defined __SDCC__
+                  temp = Read_APROM_BYTE ((uint16_t __code *)(DATA_START_ADDR+0x09));
+                  printf ("\n\r Read out Value = 0x%hx", temp);
+              #endif
+  45   1      
+  46   1          while(1);
+  47   1      }
+  48          //--------------------------------------------------------------------------------------------------------
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:40:53 PAGE 2   
+
+             ----
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    121    ----
+   CONSTANT SIZE    =     64    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

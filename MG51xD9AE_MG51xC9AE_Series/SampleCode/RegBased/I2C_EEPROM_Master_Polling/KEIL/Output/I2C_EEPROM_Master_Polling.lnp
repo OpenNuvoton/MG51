@@ -1,0 +1,9 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\I2C_EEPROM_Master_Polling" 
+
+PRINT(".\LST\I2C_EEPROM_Master_Polling.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

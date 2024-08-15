@@ -1,0 +1,97 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:41:12 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          /******************************
+  10            * @brief     Main loop.
+  11            * @param[in] None.
+  12            * @return    None.
+  13          ******************************/
+  14          void main (void) 
+  15          {
+  16   1          uint8_t   ct;
+  17   1      
+  18   1          MODIFY_HIRC(HIRC_24);
+  19   1          Enable_UART0_VCOM_printf_24M_115200();
+  20   1          printf ("\n\r MCU Reset.   ");
+  21   1          printf ("\n\r Toggle P0.5 to low to start test... \n\r ");
+  22   1      
+  23   1      
+  24   1          /* printf  now CONFIG value */
+  25   1          Read_CONFIG();
+  26   1          printf ("\n\r Now config value is :   ");
+  27   1          for(ct=0;ct<5;ct++)
+  28   1          {
+  29   2      #if defined __C51__
+  30   2            printf ("\r 0x%bX", IAPCFBuf[ct]);
+  31   2      #elif defined __ICC8051__
+                    printf ("\r 0x%hX", IAPCFBuf[ct]);
+              #elif defined __SDCC__
+                    printf ("\r 0x%bX", IAPCFBuf[ct]);
+              #endif
+  36   2          }
+  37   1          printf ("\n\r ");
+  38   1      
+  39   1          /* Start modify CONFIG */
+  40   1          GPIO_LED_QUASI_MODE;
+  41   1          while(GPIO_LED);
+  42   1          Timer0_Delay(24000000,200,1000);
+  43   1          Modify_CONFIG(0xEF,0xFB,0x6B,0xFF,0xFF);
+  44   1      
+  45   1          SFRS=0;
+  46   1          if(ConfigModifyFlag)        /* Check with power on flag. Only the first power on check with CONFIG */
+  47   1          {
+  48   2              SFRS=0;printf ("\n\r CONFIG MODIFY to 0xEF,0xFB,0x6B,0xFF,0xFF !!!");
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:41:12 PAGE 2   
+
+  49   2              printf ("\n\r Reset MCU to take effect...  \n\r ");
+  50   2              ConfigModifyFlag=0;
+  51   2              Software_Reset(BOOT_APROM);    // IMPORTANT !! only after reset the modify  take effect
+  52   2          }
+  53   1          else
+  54   1          {
+  55   2               SFRS=0;
+  56   2               printf ("\n\r CONFIG same as last time modify value ... not Modify again");
+  57   2               printf ("\n\r or Modify_CONFIG API Only allowed ONCE after Power ON reset");
+  58   2          }
+  59   1      
+  60   1          while(1);
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    211    ----
+   CONSTANT SIZE    =    310    ----
+   XDATA SIZE       =   ----       1
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

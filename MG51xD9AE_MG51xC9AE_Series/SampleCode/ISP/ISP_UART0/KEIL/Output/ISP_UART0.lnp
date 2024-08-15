@@ -1,0 +1,7 @@
+".\Output\main.obj",
+".\Output\isp_uart0.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\ISP_UART0" 
+
+PRINT(".\LST\ISP_UART0.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

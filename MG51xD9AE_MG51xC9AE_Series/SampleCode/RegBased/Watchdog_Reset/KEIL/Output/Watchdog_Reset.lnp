@@ -1,0 +1,12 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\common.obj",
+".\Output\delay.obj",
+".\Output\uart.obj",
+".\Output\wdt.obj",
+".\Output\iap.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\Watchdog_Reset" 
+
+PRINT(".\lst\Watchdog_Reset.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

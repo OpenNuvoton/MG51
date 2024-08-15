@@ -1,0 +1,235 @@
+C51 COMPILER V9.60.0.0   ISP_UART0                                                         06/25/2024 11:39:30 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ISP_UART0
+OBJECT MODULE PLACED IN .\Output\isp_uart0.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\isp_uart0.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Li
+                    -brary\Device\Include;..\..\..\..\Library\StdDriver\inc;..\include) DEBUG PRINT(.\LST\isp_uart0.lst) TABS(2) OBJECT(.\Out
+                    -put\isp_uart0.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          #include "isp_uart0.h"
+   9          
+  10          BIT volatile bUartDataReady;
+  11          BIT volatile g_timer0Over;
+  12          BIT volatile g_timer1Over;
+  13          BIT volatile g_programflag;
+  14          BIT BIT_TMP;
+  15          
+  16          #if defined __C51__
+  17          xdata volatile uint8_t uart_rcvbuf[64];
+  18          xdata volatile uint8_t uart_txbuf[64];
+  19          data volatile uint8_t bufhead;
+  20          data volatile uint16_t flash_address;
+  21          data volatile uint16_t AP_size;
+  22          data volatile uint8_t g_timer1Counter;
+  23          data volatile uint8_t count;
+  24          data volatile uint16_t g_timer0Counter;
+  25          data volatile uint32_t g_checksum;
+  26          data volatile uint32_t g_totalchecksum;
+  27          data volatile uint8_t PID_highB, PID_lowB, DID_highB, DID_lowB, CONF0, CONF1, CONF2, CONF4;
+  28          data volatile uint8_t recv_CONF0, recv_CONF1, recv_CONF2, recv_CONF4;
+  29          data uint8_t  hircmap0,hircmap1;
+  30          
+  31          #elif defined __ICC8051__
+              __xdata volatile uint8_t uart_rcvbuf[64];
+              __xdata volatile uint8_t uart_txbuf[64];
+              __data volatile uint8_t bufhead;
+              __data volatile uint16_t flash_address;
+              __data volatile uint16_t AP_size;
+              __data volatile uint8_t g_timer1Counter;
+              __data volatile uint8_t count;
+              __data volatile uint16_t g_timer0Counter;
+              __data volatile uint32_t g_checksum;
+              __data volatile uint32_t g_totalchecksum;
+              __data volatile uint8_t PID_highB, PID_lowB, DID_highB, DID_lowB, CONF0, CONF1, CONF2, CONF4;
+              __data volatile uint8_t recv_CONF0, recv_CONF1, recv_CONF2, recv_CONF4;
+              __data uint8_t  hircmap0,hircmap1;
+              
+              #elif defined __SDCC__
+              __xdata volatile uint8_t uart_rcvbuf[64];
+C51 COMPILER V9.60.0.0   ISP_UART0                                                         06/25/2024 11:39:30 PAGE 2   
+
+              __xdata volatile uint8_t uart_txbuf[64];
+              __data volatile uint8_t bufhead;
+              __data volatile uint16_t flash_address;
+              __data volatile uint16_t AP_size;
+              __data volatile uint8_t g_timer1Counter;
+              __data volatile uint8_t count;
+              __data volatile uint16_t g_timer0Counter;
+              __data volatile uint32_t g_checksum;
+              __data volatile uint32_t g_totalchecksum;
+              __data volatile uint8_t PID_highB, PID_lowB, DID_highB, DID_lowB, CONF0, CONF1, CONF2, CONF4;
+              __data volatile uint8_t recv_CONF0, recv_CONF1, recv_CONF2, recv_CONF4;
+              __data uint8_t  hircmap0,hircmap1;
+              #endif
+  61          
+  62          void MODIFY_HIRC_24(void)
+  63          {
+  64   1          /* Check if power on reset, modify HIRC */
+  65   1          IAPAH = 0x00;
+  66   1          IAPAL = 0x38;
+  67   1          IAPCN = READ_UID;
+  68   1          set_IAPTRG_IAPGO;
+  69   1          hircmap0 = IAPFD;
+  70   1          IAPAL = 0x39;
+  71   1          set_IAPTRG_IAPGO;
+  72   1          hircmap1 = IAPFD;
+  73   1      
+  74   1          TA = 0XAA;
+  75   1          TA = 0X55;
+  76   1          RCTRIM0 = hircmap0;
+  77   1          TA = 0XAA;
+  78   1          TA = 0X55;
+  79   1          RCTRIM1 = hircmap1;
+  80   1      }
+  81          
+  82          void MODIFY_HIRC_16(void)
+  83          {
+  84   1          IAPAH = 0x00;
+  85   1          IAPAL = 0x30;
+  86   1          IAPCN = READ_UID;
+  87   1          set_IAPTRG_IAPGO;
+  88   1          hircmap0 = IAPFD;
+  89   1          IAPAL = 0x31;
+  90   1          set_IAPTRG_IAPGO;
+  91   1          hircmap1 = IAPFD;
+  92   1      
+  93   1          TA = 0xAA;
+  94   1          TA = 0x55;
+  95   1          RCTRIM0 = hircmap0;
+  96   1          TA = 0xAA;
+  97   1          TA = 0x55;
+  98   1          RCTRIM1 = hircmap1;
+  99   1      }
+ 100          
+ 101          void READ_ID(void)
+ 102          {
+ 103   1          IAPCN = READ_DID;
+ 104   1          IAPAH = 0x00;
+ 105   1          IAPAL = 0x00;
+ 106   1          set_IAPTRG_IAPGO;
+ 107   1          DID_lowB = IAPFD;
+ 108   1          IAPAL = 0x01;
+ 109   1          set_IAPTRG_IAPGO;
+C51 COMPILER V9.60.0.0   ISP_UART0                                                         06/25/2024 11:39:30 PAGE 3   
+
+ 110   1          DID_highB = IAPFD;
+ 111   1          IAPAL = 0x02;
+ 112   1          set_IAPTRG_IAPGO;
+ 113   1          PID_lowB = IAPFD;
+ 114   1          IAPAL = 0x03;
+ 115   1          set_IAPTRG_IAPGO;
+ 116   1          PID_highB = IAPFD;
+ 117   1      }
+ 118          void READ_CONFIG(void)
+ 119          {
+ 120   1          IAPCN = BYTE_READ_CONFIG;
+ 121   1          IAPAL = 0x00;
+ 122   1          IAPAH = 0x00;
+ 123   1          set_IAPTRG_IAPGO;
+ 124   1          CONF0 = IAPFD;
+ 125   1          IAPAL = 0x01;
+ 126   1          set_IAPTRG_IAPGO;
+ 127   1          CONF1 = IAPFD;
+ 128   1          IAPAL = 0x02;
+ 129   1          set_IAPTRG_IAPGO;
+ 130   1          CONF2 = IAPFD;
+ 131   1          IAPAL = 0x04;
+ 132   1          set_IAPTRG_IAPGO;
+ 133   1          CONF4 = IAPFD;
+ 134   1      }
+ 135          
+ 136          void TM0_ini(void)
+ 137          {
+ 138   1          TH0 = TL0 = 0;     // Interrupt timer 140us
+ 139   1          set_TCON_TR0;      // Start timer0
+ 140   1          set_IPH_PSH;       // Serial port 0 interrupt level2
+ 141   1          set_IE_ET0;
+ 142   1      }
+ 143          
+ 144          
+ 145          void UART0_ini_115200_24MHz(void)
+ 146          {
+ 147   1          P06_QUASI_MODE;
+ 148   1      
+ 149   1          SCON = 0x50;            /*UART0 Mode1,REN=1,TI=1*/
+ 150   1          set_PCON_SMOD;          /*UART0 Double Rate Enable*/
+ 151   1          T3CON &= 0xF8;          /*T3PS2=0,T3PS1=0,T3PS0=0(Prescale=1)*/
+ 152   1          set_T3CON_BRCK;         /*UART0 baud rate clock source = Timer3*/
+ 153   1          RH3    = 0xFF;          /*HIBYTE(65536 - 13)*/
+ 154   1          RL3    = 0xF3;          /*LOBYTE(65536 - 13)*/
+ 155   1          set_T3CON_TR3;          /*Trigger Timer3*/
+ 156   1      
+ 157   1          ES = 1;
+ 158   1          EA = 1;
+ 159   1      }
+ 160          
+ 161          
+ 162          void Package_checksum(void)
+ 163          {
+ 164   1          uint8_t  votemp;
+ 165   1          g_checksum = 0;
+ 166   1      
+ 167   1          for (count = 0; count < 64; count++)
+ 168   1          {
+ 169   2              votemp = uart_rcvbuf[count];
+ 170   2              g_checksum += votemp;
+ 171   2          }
+C51 COMPILER V9.60.0.0   ISP_UART0                                                         06/25/2024 11:39:30 PAGE 4   
+
+ 172   1      
+ 173   1          uart_txbuf[0] = g_checksum & 0xff;
+ 174   1          uart_txbuf[1] = (g_checksum >> 8) & 0xff;
+ 175   1          uart_txbuf[4] = uart_rcvbuf[4] + 1;
+ 176   1          uart_txbuf[5] = uart_rcvbuf[5];
+ 177   1      
+ 178   1          if (uart_txbuf[4] == 0x00)
+ 179   1              uart_txbuf[5]++;
+ 180   1      }
+ 181          
+ 182          
+ 183          void Send_64byte_To_UART0(void)
+ 184          {
+ 185   1          SFRS = 0;
+ 186   1          for (count = 0; count < 64; count++)
+ 187   1          {
+ 188   2              TI = 0;
+ 189   2              SBUF = uart_txbuf[count];
+ 190   2              while (TI == 0);
+ 191   2              set_WDCON_WDCLR;
+ 192   2          }
+ 193   1      }
+ 194          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    644    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    128    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     31    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      5    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

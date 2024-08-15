@@ -1,0 +1,10 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\pwm.obj",
+".\Output\common.obj",
+".\Output\delay.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\PWM_Independent_Reload" 
+
+PRINT(".\LST\PWM_Independent_Reload.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

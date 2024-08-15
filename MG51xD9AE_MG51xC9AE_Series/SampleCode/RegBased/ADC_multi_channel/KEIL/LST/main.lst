@@ -1,0 +1,86 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:39:59 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEFINE(FOSC_160000) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Outp
+                    -ut\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          /*****************************************************************************/
+  10          /*The main C function.  Program execution starts                             */
+  11          /*here after stack initialization.                                           */
+  12          /*****************************************************************************/
+  13          void main (void) 
+  14          {
+  15   1        uint16_t  ADCdataAIN5, ADCdataVBG;
+  16   1      
+  17   1        /* UART0 settting for printf function */
+  18   1          MODIFY_HIRC(HIRC_24);
+  19   1          Enable_UART0_VCOM_printf_24M_115200();
+  20   1          printf ("\n Test start ...");
+  21   1      
+  22   1        /*Enable Bandgap */
+  23   1          ENABLE_ADC_BANDGAP;
+  24   1          ADCCON1|=0X30;            /* clock divider */
+  25   1          ADCCON2|=0X0E;            /* AQT time */
+  26   1          clr_ADCCON0_ADCF;
+  27   1          set_ADCCON0_ADCS;
+  28   1          while(!(ADCCON0&SET_BIT7));;
+  29   1          ADCdataVBG = ADCRH<<4;
+  30   1          ADCdataVBG |= ADCRL&0x0F;
+  31   1          DISABLE_ADC;
+  32   1          printf("\n ADC channel bandgap =0x%x", ADCdataVBG);
+  33   1          Timer0_Delay(24000000,200,1000);
+  34   1      
+  35   1        /*Enable channel 5 */
+  36   1          ENABLE_ADC_AIN5;
+  37   1          ADCCON1|=0X30;            /* clock divider */
+  38   1          ADCCON2|=0X0E;            /* AQT time */
+  39   1          clr_ADCCON0_ADCF;
+  40   1          set_ADCCON0_ADCS;
+  41   1          while(!(ADCCON0&SET_BIT7)); /* wait ADCF */
+  42   1          ADCdataAIN5 = ADCRH<<4;
+  43   1          ADCdataAIN5 |= ADCRL&0x0F;
+  44   1          DISABLE_ADC;
+  45   1          printf("\n ADC channel 5 =0x%x", ADCdataAIN5);
+  46   1          Timer0_Delay(24000000,200,1000);
+  47   1      
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:39:59 PAGE 2   
+
+  48   1          while(1);
+  49   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    443    ----
+   CONSTANT SIZE    =     67    ----
+   XDATA SIZE       =   ----       4
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,10 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\common.obj",
+".\Output\pwm.obj",
+".\Output\uart.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\PWM_DeadTime" 
+
+PRINT(".\LST\PWM_DeadTime.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

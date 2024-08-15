@@ -1,0 +1,25 @@
+-muwx
+-E ADC_Compare_Mode1.elf
+-M
+-y
+-b HOME = 0x0000
+-b XSEG = 0x0001
+-b PSEG = 0x0001
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-k C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large
+-k /../lib/small
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+./User/main.rel
+./Library/adc.rel
+./Library/common.rel
+./Library/delay.rel
+./Library/sdcc_stdio.rel
+./Library/sys.rel
+./Library/uart.rel
+
+-e

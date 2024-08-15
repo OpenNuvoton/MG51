@@ -1,0 +1,76 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:39:40 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          /******************************
+  10            * @brief     Main loop.
+  11            * @param[in] None.
+  12            * @return    None.
+  13            * MG51 power down code for test power down current, BOD disabled.
+  14          ******************************/
+  15          void main (void) 
+  16          {
+  17   1      /* UART0 settting for printf function */
+  18   1          MODIFY_HIRC(HIRC_24);
+  19   1          Enable_UART0_VCOM_printf_24M_115200();
+  20   1          printf ("\n Test start ...");
+  21   1      
+  22   1      
+  23   1      /* Quasi mode better for power down power comsuption (necessary) */
+  24   1          ALL_GPIO_QUASI_MODE;
+  25   1          P0=0;
+  26   1          P1=0;
+  27   1          P2=0;
+  28   1      /* clock only for reference, real chip please don't output clock (necessary)*/
+  29   1          set_CKCON_CLOEN;
+  30   1      /*MUST Disable BOD to low power (necessary) */
+  31   1          BOD_DISABLE;              //BOD enable power down current please check datasheet DC charactor.
+  32   1      
+  33   1      /* Real into power down mode (necessary) */
+  34   1          set_PCON_PD;
+  35   1          while(1);
+  36   1        
+  37   1      }
+  38          
+  39          
+  40          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     72    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              06/25/2024 11:39:40 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

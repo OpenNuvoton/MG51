@@ -1,0 +1,10 @@
+".\Output\main.obj",
+".\Output\common.obj",
+".\Output\bod.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\BOD_Interrupt" 
+
+PRINT(".\LST\BOD_Interrupt.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

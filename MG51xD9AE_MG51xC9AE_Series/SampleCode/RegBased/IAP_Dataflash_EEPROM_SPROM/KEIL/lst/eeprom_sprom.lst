@@ -1,0 +1,197 @@
+C51 COMPILER V9.60.0.0   EEPROM_SPROM                                                      06/25/2024 11:41:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE EEPROM_SPROM
+OBJECT MODULE PLACED IN .\Output\eeprom_sprom.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\..\..\Library\StdDriver\src\eeprom_sprom.c LARGE OMF2 OPTIMIZE(4,S
+                    -PEED) BROWSE INCDIR(..\..\..\..\Library\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\eeprom_sprom
+                    -.lst) TABS(2) OBJECT(.\Output\eeprom_sprom.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          BIT   SPCHECKFLAG;
+  10          #if defined __C51__
+  11          uint8_t xdata sppage_buffer[127];
+  12          uint8_t xd_tmp[127];
+  13          
+  14          #elif defined __ICC8051__
+              uint8_t __xdata sppage_buffer[127];
+              uint8_t __xdata xd_tmp[127];
+              
+              #elif defined __SDCC__
+              uint8_t __xdata sppage_buffer[127];
+              uint8_t __xdata xd_tmp[127];
+              #endif
+  22          
+  23          void WriteDataToSPOnePage(uint8_t u8_addr, uint8_t *pDat, uint16_t num);
+  24          
+  25          /**
+  26           * @brief       Read SPROM 
+  27           * @param       u8_addr SPROM start address
+  28           * @return      SPROM Value
+  29           * @details     None
+  30           */
+  31          #if defined __C51__
+  32          uint8_t Read_SPROM_BYTE(const uint8_t code *u8_addr)
+  33          #elif defined __ICC8051__
+              uint8_t Read_SPROM_BYTE(const uint8_t __code *u8_addr)
+              #elif defined __SDCC__
+              uint8_t Read_SPROM_BYTE(const uint8_t __code *u8_addr)
+              #endif
+  38          {
+  39   1          uint8_t rdata;
+  40   1      
+  41   1          set_IAPUEN_SPMEN;
+  42   1          rdata = *(0xFF80+u8_addr);
+  43   1          return rdata;
+  44   1      }
+  45          
+  46          /**
+  47           * @brief       Write SPROM as EEPROM, 
+C51 COMPILER V9.60.0.0   EEPROM_SPROM                                                      06/25/2024 11:41:05 PAGE 2   
+
+  48           * @param       u16EPAddr the 9bit SPROM start address. Any of SPROM address can be defined as start addre
+             -ss escept last byte.
+  49           * @param       u8EPData the 8bit value need storage in (0x3800)
+  50           * @return      none
+  51           * @details     Storage dataflash page data into XRAM, modify data in XRAM, Erase dataflash page, writer u
+             -pdated XRAM data into dataflash
+  52           */
+  53          void Read_SPROM_DATAFLASH_ARRAY(uint16_t u8_addr, uint8_t *pDat, uint16_t num)
+  54          {
+  55   1          uint16_t i;
+  56   1      
+  57   1          set_IAPUEN_SPMEN;
+  58   1          for (i = 0; i < num; i++)
+  59   1          {
+  60   2      #if defined __C51__
+  61   2              pDat[i] = *(uint8_t code *)(u8_addr+0xFF80 + i);
+  62   2      #elif defined __ICC8051__
+                      pDat[i] = *(uint8_t __code *)(u8_addr+0xFF80 + i);
+              #elif defined __SDCC__
+                      pDat[i] = *(uint8_t __code *)(u8_addr+0xFF80 + i);
+              #endif
+  67   2          }
+  68   1      }
+  69          
+  70          /**
+  71           * @brief       Write SPROM as EEPROM with array format
+  72           * @param       u8_addr the 8bit EEPROM start address. Any of APROM address can be defined as start addres
+             -s 
+  73           * @param       pDat the 8bit value need storage in 
+  74           * @param       num the number that need to write.
+  75           * @return      none
+  76           */
+  77          uint8_t Write_SPROM_DATAFLASH_ARRAY(uint8_t u8_addr, uint8_t *pDat, uint16_t num)
+  78          {
+  79   1          SPCHECKFLAG = 0;
+  80   1          WriteDataToSPOnePage(u8_addr,pDat,num);
+  81   1          return SPCHECKFLAG;
+  82   1      }
+  83          //-------------------------------------------------------------------------
+  84          void WriteDataToSPOnePage(uint8_t u8_addr, uint8_t *pDat, uint16_t num)
+  85          {
+  86   1      #if defined __C51__
+  87   1          uint8_t code *pCode;
+  88   1      #elif defined __ICC8051__
+                  uint8_t __code *pCode;
+              #elif defined __SDCC__
+                  uint8_t __code *pCode;
+              #endif
+  93   1          uint8_t i,checkdatatemp;
+  94   1      
+  95   1          set_CHPCON_IAPEN;
+  96   1          set_IAPUEN_SPMEN;
+  97   1          set_IAPUEN_SPUEN;
+  98   1          
+  99   1      #if defined __C51__
+ 100   1          pCode = (uint8_t code *)u8_addr;
+ 101   1      #elif defined __ICC8051__
+                  pCode = (uint8_t __code *)u8_addr;
+              #elif defined __SDCC__
+                  pCode = (uint8_t __code *)u8_addr;
+              #endif
+ 106   1      
+C51 COMPILER V9.60.0.0   EEPROM_SPROM                                                      06/25/2024 11:41:05 PAGE 3   
+
+ 107   1          for(i=0;i<127;i++)
+ 108   1          {
+ 109   2      #if defined __C51__
+ 110   2              xd_tmp[i] = Read_SPROM_BYTE((uint8_t code *)i);
+ 111   2      #elif defined __ICC8051__
+                      xd_tmp[i] = Read_SPROM_BYTE((uint8_t __code *)i);
+              #elif defined __SDCC__
+                      xd_tmp[i] = Read_SPROM_BYTE((uint8_t __code *)i);
+              #endif
+ 116   2          }
+ 117   1          for(i=0;i<num;i++)
+ 118   1          {
+ 119   2              xd_tmp[u8_addr+i] = pDat[i];
+ 120   2          }
+ 121   1      
+ 122   1          IAPCN = PAGE_ERASE_SPROM;
+ 123   1          IAPAL = 0x80;
+ 124   1          IAPAH = 0x01;
+ 125   1          IAPFD = 0xFF;
+ 126   1          set_IAPTRG_IAPGO; 
+ 127   1      
+ 128   1          for(i=0;i<127;i++)
+ 129   1          {
+ 130   2              IAPCN =BYTE_PROGRAM_SPROM;
+ 131   2              IAPFD = xd_tmp[i];
+ 132   2              set_IAPTRG_IAPGO;
+ 133   2              IAPCN =BYTE_READ_SPROM;
+ 134   2              IAPFD = 0xFF;
+ 135   2              set_IAPTRG_IAPGO;
+ 136   2              checkdatatemp = IAPFD;
+ 137   2              if (checkdatatemp!=xd_tmp[i])
+ 138   2              {
+ 139   3                   SPCHECKFLAG = 1;
+ 140   3                   goto WriteDataToSPEnd;
+ 141   3              }
+ 142   2              IAPAL++;
+ 143   2          }
+ 144   1          for(i=0;i<127;i++)
+ 145   1          {
+ 146   2            if(pCode[i]!=xd_tmp[i])break;
+ 147   2          }
+ 148   1      WriteDataToSPEnd:
+ 149   1          clr_IAPUEN_SPUEN;
+ 150   1          clr_CHPCON_IAPEN;
+ 151   1      }
+ 152          
+ 153          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    616    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    254      22
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.60.0.0   EEPROM_SPROM                                                      06/25/2024 11:41:05 PAGE 4   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
