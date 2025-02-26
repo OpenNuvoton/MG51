@@ -1,9 +1,0 @@
-".\Output\main.obj",
-".\Output\sys.obj",
-".\Output\common.obj",
-".\Output\uart.obj",
-".\Output\STARTUP.obj" 
-TO ".\Output\Idle_Current" 
-
-PRINT(".\LST\Idle_Current.map") DISABLEWARNING (16) 
-REMOVEUNUSED 

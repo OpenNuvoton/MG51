@@ -1,7 +1,0 @@
-".\Output\main.obj",
-".\Output\isp_i2c.obj",
-".\Output\STARTUP.obj" 
-TO ".\Output\ISP_I2C" 
-
-PRINT(".\LST\ISP_I2C.map") DISABLEWARNING (16) 
-REMOVEUNUSED 

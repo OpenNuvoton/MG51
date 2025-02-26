@@ -1,0 +1,10 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\adc.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\ADC_Bandgap_VDD" 
+
+PRINT(".\lst\ADC_Bandgap_VDD.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

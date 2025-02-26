@@ -1,0 +1,174 @@
+C51 COMPILER V9.60.0.0   COMMON                                                            10/07/2024 11:23:11 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE COMMON
+OBJECT MODULE PLACED IN .\Output\common.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\..\..\Library\StdDriver\src\common.c LARGE OMF2 OPTIMIZE(7,SPEED) 
+                    -BROWSE INCDIR(..\..\..\..\Library\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\common.lst) TABS(2
+                    -) OBJECT(.\Output\common.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          BIT BIT_TMP;
+  10          
+  11          #if defined __C51__
+  12          uint8_t data  TA_REG_TMP,BYTE_TMP,SFRS_TMP;
+  13          #elif defined __ICC8051__
+              uint8_t __data  TA_REG_TMP,BYTE_TMP,SFRS_TMP;
+              #elif defined __SDCC__
+              __data uint8_t TA_REG_TMP,BYTE_TMP,SFRS_TMP;
+              #endif
+  18          
+  19          #if defined __C51__
+  20          uint8_t data dtemp _at_ 0x70;
+  21          uint8_t idata itemp _at_ 0x90;
+  22          uint8_t xdata xtemp _at_ 0x90;
+  23          #elif defined __ICC8051__
+              __data __no_init uint8_t  dtemp @ 0x70;
+              __idata __no_init uint8_t itemp @ 0x90;
+              __xdata __no_init uint8_t xtemp @ 0x90;
+              #elif defined __SDCC__
+              __data  uint8_t  __at (0x70) dtemp;
+              __idata uint8_t  __at (0x90) itemp;
+              __xdata uint8_t  __at (0x90) xtemp;
+              #endif
+  32          
+  33          /**
+  34           * @brief       Read Dataflash
+  35           * @param       Dataflash start address
+  36           * @return      Dataflash Value
+  37           * @details     None
+  38          **/
+  39          #if defined __C51__
+  40          uint8_t Read_APROM_BYTE(uint16_t code *u16_addr)
+  41          
+  42          #elif defined __ICC8051__
+              uint8_t Read_APROM_BYTE(const uint16_t __code *u16_addr)
+              
+              #elif defined __SDCC__
+              uint8_t Read_APROM_BYTE(const uint16_t __code *u16_addr)
+              
+C51 COMPILER V9.60.0.0   COMMON                                                            10/07/2024 11:23:11 PAGE 2   
+
+              #endif
+  49          {
+  50   1          uint8_t rdata;
+  51   1          rdata = *u16_addr >> 8;
+  52   1          return rdata;
+  53   1      }
+  54          
+  55          /**
+  56           * @brief       Software reset API
+  57           * @param       Run in APROM/LDROM after reset
+  58           *                       - \ref BOOT_APROM: Run in APROM after reset .
+  59           *                       - \ref BOOT_LDROM: Run in LDROM after reset.
+  60           * @return      None
+  61           * @details     None
+  62           */
+  63          void Software_Reset(uint8_t u8Bootarea)
+  64          {
+  65   1          uint8_t boottemp;
+  66   1          boottemp = (0x80|u8Bootarea);
+  67   1          TA = 0xAA;
+  68   1          TA = 0x55;
+  69   1          CHPCON = boottemp;                   //software reset enable
+  70   1      }
+  71          
+  72          /**
+  73           * @brief       MCU power down mode enable API
+  74           * @param       Enable power down mode
+  75           *                       - \ref ENABLE: Run into power down mode .
+  76           * @return      None
+  77           * @details     None
+  78           */
+  79          void PowerDown_Mode(uint8_t PDStatus)
+  80          {
+  81   1          if (PDStatus)
+  82   1          {
+  83   2             ENABLE_POWERDOWN_MODE;
+  84   2             CALL_NOP;
+  85   2             CALL_NOP;
+  86   2          }
+  87   1      }
+  88          
+  89          /**
+  90           * @brief       MCU idle mode enable API
+  91           * @param       Enable idle mode
+  92           *                       - \ref ENABLE: Run into idle mode .
+  93           * @return      None
+  94           * @details     None
+  95           */
+  96          void Idle_Mode(uint8_t IdleStatus)
+  97          {
+  98   1          if (IdleStatus)
+  99   1          {
+ 100   2             ENABLE_IDLE_MODE;
+ 101   2             CALL_NOP;
+ 102   2             CALL_NOP;
+ 103   2          }
+ 104   1      }
+ 105          
+ 106          /**
+ 107           * @brief       Software loop delay by HIRC, about 3ms
+ 108           * @param       None
+ 109           * @return      None
+C51 COMPILER V9.60.0.0   COMMON                                                            10/07/2024 11:23:11 PAGE 3   
+
+ 110           * @details     None
+ 111           */
+ 112          void _delay_(void)
+ 113          {
+ 114   1          uint8_t t1,t2;
+ 115   1      
+ 116   1          for (t2=0;t2<0x1A;t2++)
+ 117   1          {
+ 118   2             for (t1=0;t1<0x7f;t1++)
+ 119   2             {
+ 120   3                CALL_NOP;
+ 121   3             }
+ 122   2          }
+ 123   1      }
+ 124          
+ 125          /**
+ 126           * @brief       Global Interrupt Status (EA)
+ 127           * @param       ENABLE / DISABLE
+ 128           * @return      None
+ 129           * @details     after all IP interrupt enable. Must enable gloabl interrupt.
+ 130           * @Example     Global_Interrupt(ENABLE);
+ 131           */
+ 132          void Global_Interrupt(uint8_t u8IntStatus)
+ 133          {
+ 134   1          EA = u8IntStatus;
+ 135   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     77    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

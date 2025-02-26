@@ -1,0 +1,161 @@
+C51 COMPILER V9.60.0.0   ADC                                                               10/07/2024 11:23:11 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
+OBJECT MODULE PLACED IN .\Output\adc.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\..\..\Library\StdDriver\src\adc.c LARGE OMF2 OPTIMIZE(7,SPEED) BRO
+                    -WSE INCDIR(..\..\..\..\Library\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\adc.lst) TABS(2) OBJE
+                    -CT(.\Output\adc.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9           /**
+  10            * @brief This configures ADC module to be ready for convert the input from selected channel
+  11            * @param[in] u16ADCRBase Decides the ADC RAM Base Address High byte + Low byte total
+  12            * @param[in] u8ADCRLength Decides the ADC continui The total sampling numbers for ADC continue sampling 
+             -select. 
+  13            * @param[in] u8ADCSpeed is the ADCSR.7 Setting for select ADC low speed. 
+  14            * @return  None
+  15            * @note MG51_64K series MCU ADC can only convert 1 channel at a time. If more than 1 channels are enable
+             -d, only channel
+  16            *       with smallest number will be convert.
+  17            * @example ADC_InitialContinous(0x0300,128);
+  18            */
+  19          void ADC_InitialContinous(uint16_t u16ADCRBase, uint8_t u8ADCRLength)
+  20          {
+  21   1        SFRS=2;
+  22   1        ADCBAL=u16ADCRBase;
+  23   1        ADCBAH = u16ADCRBase>>8;
+  24   1        ADCSN  = u8ADCRLength - 1;   //Offset value, since the actually sampling number= ADCSN[7:0] + 1
+  25   1        SFRS = 0;
+  26   1      }
+  27          
+  28          
+  29           /**
+  30            * @brief This configures ADC Sampling time 
+  31            * @param[in] u8ADCDIV Decides the ADC clock devider value. Value from 0 ~ 7, devider is from 1 ~ 128, de
+             -fault value is 0 means Fadc = Fsys/1 
+  32            * @param[in] u8ADCAQT Decides the ADC acquisition time base to add sampling time for ADC input, value is
+             - from 0 ~ 7, time = (4*u8ADCAQT+10)/Fadc, default value is 10/Fsys = 417ns.
+  33            * @return  None
+  34            * @note 
+  35            * @example ADC_ConvertTime(ADC_CH10,2,7);
+  36            */
+  37          void ADC_ConvertTime(uint8_t u8AINCHNSEL, uint8_t u8ADCDIV, uint8_t u8ADCAQT)
+  38          {
+  39   1        SFRS=0;
+  40   1        ADCCON1 &= 0xCF;
+  41   1        ADCCON1 |= (u8ADCDIV&0x07)<<4;
+  42   1        switch (u8AINCHNSEL)
+  43   1        {
+C51 COMPILER V9.60.0.0   ADC                                                               10/07/2024 11:23:11 PAGE 2   
+
+  44   2            case ADC_CH0:
+  45   2            case ADC_CH1:
+  46   2            case ADC_CH2:
+  47   2            case ADC_CH3:
+  48   2            case ADC_CH4:
+  49   2            case ADC_CH5:
+  50   2            case ADC_CH6:
+  51   2            case ADC_CH7:
+  52   2            case ADC_BANDGAP:
+  53   2                 ADCCON2&=0xF1;
+  54   2                 ADCCON2|=(u8ADCAQT&0x07)<<1;
+  55   2                 break;
+  56   2            
+  57   2            case ADC_CH9:
+  58   2            case ADC_CH10:
+  59   2            case ADC_CH11:
+  60   2            case ADC_CH12:
+  61   2            case ADC_CH13:
+  62   2            case ADC_CH14:
+  63   2            case ADC_CH15:
+  64   2                 SFRS = 2;
+  65   2                 ADCCON3&=0xF1;
+  66   2                 ADCCON3|=(u8ADCAQT&0x07)<<1;
+  67   2                 break;
+  68   2         }
+  69   1      }
+  70          
+  71          /**
+  72            * @brief Read the bandgap value base on Vref = 3.072V storage address after UID area.
+  73            * @param[in] none
+  74            * @return 12bit bandgap value
+  75            * @example temp = READ_BANDGAP();
+  76            */
+  77          uint16_t READ_BANDGAP(void)
+  78          {
+  79   1          uint8_t BandgapHigh,BandgapLow;
+  80   1          uint16_t u16bgvalue;
+  81   1          set_CHPCON_IAPEN;
+  82   1          IAPCN = READ_UID;
+  83   1          IAPAL = 0x0d;
+  84   1          IAPAH = 0x00;
+  85   1          set_IAPTRG_IAPGO;
+  86   1          BandgapLow = IAPFD&0x0F;
+  87   1          IAPAL = 0x0C;
+  88   1          IAPAH = 0x00;
+  89   1          set_IAPTRG_IAPGO;
+  90   1          BandgapHigh = IAPFD;
+  91   1          u16bgvalue = (BandgapHigh<<4)+BandgapLow;
+  92   1          clr_CHPCON_IAPEN;
+  93   1          return (u16bgvalue);
+  94   1      }
+  95          
+  96           /**
+  97            * @brief This configures ADC module compare mode 
+  98            * @param[u8ADCCMPEN]  Decides the ADC Compare mode enable / disable
+  99            * @param[u16ADCCMPVALUE] u16ADCCMPVALUE Decides the ADC comapre value. 
+ 100            * @return  None
+ 101            * @note  for MG51 Series ONLY when the compare value is same as the ADCMPH+ADCMPL the ADCF flag will be 
+             -set to 1.
+ 102            * @example ADC_ComapreMode(ENABLE,0x3FF);
+ 103            */
+ 104          void ADC_ComapreMode(uint8_t u8ADCCMPEN, uint16_t u16ADCCMPVALUE)
+C51 COMPILER V9.60.0.0   ADC                                                               10/07/2024 11:23:11 PAGE 3   
+
+ 105          {
+ 106   1          SFRS=0;
+ 107   1          ADCMPL = u16ADCCMPVALUE&0x000F;
+ 108   1          ADCMPH = u16ADCCMPVALUE>>4;
+ 109   1          if (u8ADCCMPEN)
+ 110   1          {
+ 111   2            set_ADCCON2_ADCMPEN;
+ 112   2          }
+ 113   1          else
+ 114   1          {
+ 115   2            clr_ADCCON2_ADCMPEN;
+ 116   2          }
+ 117   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    231    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,328 @@
+C51 COMPILER V9.60.0.0   SYS                                                               10/07/2024 11:23:11 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SYS
+OBJECT MODULE PLACED IN .\Output\sys.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\..\..\Library\StdDriver\src\sys.c LARGE OMF2 OPTIMIZE(7,SPEED) BRO
+                    -WSE INCDIR(..\..\..\..\Library\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\sys.lst) TABS(2) OBJE
+                    -CT(.\Output\sys.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2024 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9            /**
+  10            * @brief This API configures modify system HIRC value
+  11            * @param[in] u8FsysMode . Valid values are:
+  12            *                       - \ref HIRC_24                 :Internal HIRC 24MHz .
+  13            *                       - \ref HIRC_16                 :Internal HIRC 16MHz.
+  14            *                       - \ref HIRC_166                :Internal HIRC 16.6MHz.
+  15            * @note      None.
+  16            * @exmaple : MODIFY_HIRC(HIRC_24);
+  17            */
+  18          void MODIFY_HIRC(uint8_t u8HIRCSEL)
+  19          {
+  20   1      #if defined __C51__
+  21   1          uint8_t data hircmap0,hircmap1, offset,judge;
+  22   1      #elif defined __ICC8051__
+                  uint8_t hircmap0, hircmap1, offset,judge;
+              #elif defined __SDCC__
+                  uint8_t __data hircmap0,hircmap1, offset,judge;
+              #endif
+  27   1          uint8_t trimvalue16bit;
+  28   1          /* Check if power on reset, modify HIRC */
+  29   1          SFRS = 0 ;
+  30   1          switch (u8HIRCSEL)
+  31   1          {
+  32   2            case HIRC_24:
+  33   2              IAPAL = 0x38;
+  34   2            break;
+  35   2            case HIRC_16:
+  36   2              IAPAL = 0x30;
+  37   2            break;
+  38   2            case HIRC_166:
+  39   2              IAPAL = 0x30;
+  40   2            break;
+  41   2          }
+  42   1          set_CHPCON_IAPEN;
+  43   1          IAPAH = 0x00;
+  44   1          IAPCN = READ_UID;
+  45   1          set_IAPTRG_IAPGO;
+  46   1          hircmap0 = IAPFD;
+  47   1          IAPAL++;
+C51 COMPILER V9.60.0.0   SYS                                                               10/07/2024 11:23:11 PAGE 2   
+
+  48   1          set_IAPTRG_IAPGO;
+  49   1          hircmap1 = IAPFD;
+  50   1      
+  51   1          switch (u8HIRCSEL)
+  52   1          {
+  53   2            case HIRC_166:
+  54   2              trimvalue16bit = ((hircmap0 << 1) + (hircmap1 & 0x01));
+  55   2              judge = trimvalue16bit&0xC0;
+  56   2              offset = trimvalue16bit&0x3F;
+  57   2              trimvalue16bit -= 14;
+  58   2      
+  59   2              IAPCN = READ_DID;
+  60   2              IAPAL = 1;
+  61   2              IAPAH = 0;
+  62   2              set_IAPTRG_IAPGO;
+  63   2              if ((IAPFD==0x4B)||(IAPFD==0x52)||(IAPFD==0x53))    /* MS51 process */
+  64   2              {
+  65   3                if (offset<15)
+  66   3                {
+  67   4                    if ((judge==0x40)||(judge==0x80)||(judge==0xC0))
+  68   4                    trimvalue16bit -= 14;
+  69   4                }
+  70   3                else 
+  71   3                  trimvalue16bit -= 4;
+  72   3              }
+  73   2              hircmap0 = trimvalue16bit >> 1;
+  74   2      
+  75   2            break;
+  76   2            default: break;
+  77   2          }
+  78   1      
+  79   1          TA = 0xAA;
+  80   1          TA = 0x55;
+  81   1          RCTRIM0 = hircmap0;
+  82   1          TA = 0xAA;
+  83   1          TA = 0x55;
+  84   1          RCTRIM1 = hircmap1;
+  85   1          clr_CHPCON_IAPEN;
+  86   1          PCON &= CLR_BIT4;
+  87   1      }
+  88          
+  89          
+  90            /**
+  91            * @brief This API configures system clock source
+  92            * @param[in] u8FsysMode . Valid values are:
+  93            *                       - \ref FSYS_HXT                 :External crsytal input.
+  94            *                       - \ref FSYS_HIRC                :Internal HIRC (16MHz as default).
+  95            *                       - \ref FSYS_LIRC                :Internal LIRC.
+  96            *                       - \ref FSYS_OSCIN_P30            :External clock input from P3.0.
+  97            *                       - \ref FSYS_HXTIN_P00            :External clock input from P0.0.
+  98            * @note      None.
+  99            * @exmaple : FsysSelect(FSYS_HXT);
+ 100            */
+ 101          void FsysSelect(uint8_t u8FsysMode)
+ 102          {
+ 103   1        switch (u8FsysMode)
+ 104   1        {
+ 105   2          //***** HXT enable part*****
+ 106   2          case FSYS_HXT:
+ 107   2              ClockEnable(FSYS_HIRC);                      /*step1: switching system clock to HIRC */
+ 108   2              ClockSwitch(FSYS_HIRC);
+ 109   2              ClockEnable(FSYS_HXT);                       /*step2: switching system clock to HXT  */
+C51 COMPILER V9.60.0.0   SYS                                                               10/07/2024 11:23:11 PAGE 3   
+
+ 110   2              ClockSwitch(FSYS_HXT);
+ 111   2              clr_CKEN_HIRCEN;                             /*step4: disable HIRC if needed  */
+ 112   2          break;    
+ 113   2              
+ 114   2              //***** HIRC enable part *****  
+ 115   2          case FSYS_HIRC:
+ 116   2              ClockEnable(FSYS_HIRC);                      /*step1: switching system clock HIRC */
+ 117   2              ClockSwitch(FSYS_HIRC);
+ 118   2          break;
+ 119   2          
+ 120   2          //***** LIRC enable part*****
+ 121   2          case FSYS_LIRC:
+ 122   2              ClockEnable(FSYS_LIRC);                      /*step2: switching system clock LIRC  */
+ 123   2              ClockSwitch(FSYS_LIRC);
+ 124   2              clr_CKEN_HIRCEN;                             /*step4: disable HIRC if needed  */
+ 125   2          break;
+ 126   2              
+ 127   2          /***** ECLK enable part clock in with P3.0 *****/      
+ 128   2          case FSYS_OSCIN_P30:
+ 129   2              ClockEnable(FSYS_HIRC);                      /*step1: switching system clock to HIRC  */
+ 130   2              ClockSwitch(FSYS_HIRC);
+ 131   2              ClockEnable(FSYS_OSCIN_P30);                 /*step1: switching system clock to External clock  */
+ 132   2              ClockSwitch(FSYS_OSCIN_P30);
+ 133   2              clr_CKEN_HIRCEN;                             /*step5: disable HIRC if needed */
+ 134   2          break;
+ 135   2          
+ 136   2          /***** ECLK enable part clock in with P0.0 *****/ 
+ 137   2          case FSYS_OSCIN_P00:
+ 138   2              ClockEnable(FSYS_HIRC);                      /*step1: switching system clock to HIRC */
+ 139   2              ClockSwitch(FSYS_HIRC);
+ 140   2              ClockEnable(FSYS_OSCIN_P00);                 /*step1: switching system clock to External clock */
+ 141   2              ClockSwitch(FSYS_OSCIN_P00);
+ 142   2              clr_CKEN_HIRCEN;                             /*step5: disable HIRC if needed */
+ 143   2          break;
+ 144   2        }
+ 145   1      }
+ 146          
+ 147          void ClockEnable(uint8_t u8FsysMode)
+ 148          {
+ 149   1        switch (u8FsysMode)
+ 150   1        {
+ 151   2          /***** HIRC enable part ******/
+ 152   2          case FSYS_HXT:
+ 153   2              clr_CKEN_EXTEN1;                          /*step1: Enable extnal 4~ 24MHz crystal clock source.*/
+ 154   2              set_CKEN_EXTEN0;
+ 155   2              while(!(CKSWT&SET_BIT7));                 /*step2: check clock source status and wait for ready*/
+ 156   2          break;
+ 157   2         
+ 158   2          /***** HIRC enable part ******/
+ 159   2          case FSYS_HIRC:
+ 160   2              set_CKEN_HIRCEN;                          /*step1: Enable extnal clock source.                  */
+ 161   2              while(!(CKSWT&SET_BIT5));                 /*step2: check clock source status and wait for ready */
+ 162   2          break;
+ 163   2         
+ 164   2          /***** LIRC enable part******/
+ 165   2          case FSYS_LIRC:
+ 166   2              set_CKEN_LIRCEN;                         /*step1: Enable extnal clock source.                   */
+ 167   2              while(!(CKSWT&SET_BIT4));                /*step2: check clock source status and wait for ready */
+ 168   2          break;
+ 169   2          
+ 170   2          /***** ECLK P30 enable part ******/
+ 171   2          case FSYS_OSCIN_P30:
+C51 COMPILER V9.60.0.0   SYS                                                               10/07/2024 11:23:11 PAGE 4   
+
+ 172   2              set_CKEN_EXTEN1;                        /*step1: Enable extnal clock source. */
+ 173   2              set_CKEN_EXTEN0;
+ 174   2              while(!(CKSWT&SET_BIT3));               /*step2: check clock source status and wait for ready  */
+ 175   2          break;
+ 176   2          
+ 177   2          /***** HXT P00 enable part ******/
+ 178   2          case FSYS_OSCIN_P00:
+ 179   2              set_CKEN_EXTEN1;                        /*step1: Enable extnal clock source. */
+ 180   2              clr_CKEN_EXTEN0;
+ 181   2              while(!(CKSWT&SET_BIT6));               /*step2: check clock source status and wait for ready */
+ 182   2          break;
+ 183   2        }
+ 184   1      }
+ 185          
+ 186          void ClockDisable(uint8_t u8FsysMode)
+ 187          {
+ 188   1      #if defined __C51__
+ 189   1          uint8_t data closeflag;
+ 190   1      #elif defined __ICC8051__
+                  uint8_t closeflag;
+              #elif defined __SDCC__
+                  uint8_t __data closeflag;
+              #endif
+ 195   1      
+ 196   1        closeflag = 0;
+ 197   1        SFRS = 0;
+ 198   1        switch (u8FsysMode)
+ 199   1        {
+ 200   2          /***** HXT  part ******/
+ 201   2          case FSYS_HXT:
+ 202   2            closeflag = 1;
+ 203   2          break;
+ 204   2           /***** HIRC  part ******/
+ 205   2          case FSYS_HIRC:
+ 206   2              clr_CKEN_HIRCEN;
+ 207   2          break;
+ 208   2          /***** LIRC  part******/
+ 209   2          case FSYS_LIRC:
+ 210   2              clr_CKEN_LIRCEN;
+ 211   2          break;
+ 212   2          //***** External clock OSCIN from P3.0 ******/
+ 213   2          case FSYS_OSCIN_P30:
+ 214   2              closeflag = 1; 
+ 215   2          break;
+ 216   2          //***** External clock OSCIN from P0.0 ******/
+ 217   2          case FSYS_OSCIN_P00:
+ 218   2              closeflag = 1;
+ 219   2          break;
+ 220   2        }
+ 221   1        if (closeflag)
+ 222   1        {
+ 223   2          SFRS=0;BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CKEN&=0x3F;EA=BIT_TMP;
+ 224   2          closeflag = 0;
+ 225   2        }
+ 226   1        
+ 227   1      }
+ 228          
+ 229          void ClockSwitch(uint8_t u8FsysMode)
+ 230          {
+ 231   1        SFRS = 0 ;
+ 232   1        BIT_TMP=EA;EA=0;
+ 233   1        switch (u8FsysMode)
+C51 COMPILER V9.60.0.0   SYS                                                               10/07/2024 11:23:11 PAGE 5   
+
+ 234   1        {
+ 235   2          /***** HIRC  part ******/
+ 236   2          case FSYS_HIRC:
+ 237   2              clr_CKSWT_OSC1;
+ 238   2              clr_CKSWT_OSC0;
+ 239   2          break;
+ 240   2          /***** LIRC  part******/
+ 241   2          case FSYS_LIRC:
+ 242   2              set_CKSWT_OSC1;
+ 243   2              clr_CKSWT_OSC0;
+ 244   2          break;
+ 245   2          /***** External clock OSCIN from P3.0 ******/
+ 246   2          case FSYS_OSCIN_P30:
+ 247   2              set_CKSWT_ECKP30ST;
+ 248   2          /***** External clock OSCIN from P0.0 ******/
+ 249   2          break;
+ 250   2              case FSYS_OSCIN_P00:
+ 251   2              set_CKSWT_ECKP00ST;
+ 252   2          break;
+ 253   2          
+ 254   2        }
+ 255   1        EA = BIT_TMP;
+ 256   1      }
+ 257          
+ 258          
+ 259          void HXTGain(uint8_t u8HXTGainLevel)
+ 260          {
+ 261   1        SFRS = 2;
+ 262   1        switch (u8HXTGainLevel)
+ 263   1        {
+ 264   2          /***** HXT L0 ******/
+ 265   2          case HXTGainL0:
+ 266   2            XTLCON = 0;
+ 267   2          break;
+ 268   2           /***** HXT L1 ******/
+ 269   2          case HXTGainL1:
+ 270   2            XTLCON = 0x0C;
+ 271   2          break;
+ 272   2          /***** HXT L2 ******/
+ 273   2          case HXTGainL2:
+ 274   2            XTLCON = 0x18;
+ 275   2          break;
+ 276   2          /***** HXT L3 ******/
+ 277   2          case HXTGainL3:
+ 278   2            XTLCON = 0x28;
+ 279   2          break;
+ 280   2        }
+ 281   1        SFRS = 0;
+ 282   1      }
+ 283          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1033    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   SYS                                                               10/07/2024 11:23:11 PAGE 6   
+
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

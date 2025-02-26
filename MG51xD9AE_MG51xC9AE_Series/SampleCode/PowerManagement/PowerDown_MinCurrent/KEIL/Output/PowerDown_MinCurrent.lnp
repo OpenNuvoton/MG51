@@ -1,9 +1,0 @@
-".\Output\main.obj",
-".\Output\sys.obj",
-".\Output\common.obj",
-".\Output\uart.obj",
-".\Output\STARTUP.obj" 
-TO ".\Output\PowerDown_MinCurrent" 
-
-PRINT(".\lst\PowerDown_MinCurrent.map") DISABLEWARNING (16) 
-REMOVEUNUSED 

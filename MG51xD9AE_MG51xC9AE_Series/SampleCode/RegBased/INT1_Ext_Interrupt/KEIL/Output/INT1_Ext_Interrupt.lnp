@@ -1,9 +1,0 @@
-".\Output\main.obj",
-".\Output\sys.obj",
-".\Output\common.obj",
-".\Output\uart.obj",
-".\Output\STARTUP.obj" 
-TO ".\Output\INT1_Ext_Interrupt" 
-
-PRINT(".\LST\INT1_Ext_Interrupt.map") DISABLEWARNING (16) 
-REMOVEUNUSED 

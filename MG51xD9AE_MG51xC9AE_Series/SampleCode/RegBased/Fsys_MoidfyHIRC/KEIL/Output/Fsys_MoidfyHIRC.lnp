@@ -1,9 +1,0 @@
-".\Output\main.obj",
-".\Output\sys.obj",
-".\Output\delay.obj",
-".\Output\common.obj",
-".\Output\STARTUP.obj" 
-TO ".\Output\Fsys_MoidfyHIRC" 
-
-PRINT(".\LST\Fsys_MoidfyHIRC.map") DISABLEWARNING (16) 
-REMOVEUNUSED 
