@@ -30,7 +30,7 @@ void main (void)
 
   BOD_Open(Enable, VBOD_2_7, BOD_Reset_Disable);
   BOD_LowPower(LPBOD_Mode_3);
-  BOD_Interrupt(Enable);
+  BOD_Interrupt_Enable(Enable);
   ENABLE_GLOBAL_INTERRUPT;
   while(1)
   {

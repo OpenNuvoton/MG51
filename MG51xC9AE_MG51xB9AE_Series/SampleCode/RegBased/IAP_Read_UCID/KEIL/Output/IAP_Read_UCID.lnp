@@ -1,0 +1,10 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\IAP.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\IAP_Read_UCID" 
+
+PRINT(".\LST\IAP_Read_UCID.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

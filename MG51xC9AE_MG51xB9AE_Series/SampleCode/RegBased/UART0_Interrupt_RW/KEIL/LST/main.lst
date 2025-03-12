@@ -1,0 +1,106 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:54 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          #if defined __C51__
+  10          void Serial_ISR(void)  interrupt 4
+  11          
+  12          #elif defined __ICC8051__
+              #pragma vector=0x23
+              __interrupt void SerialPort0_ISR(void)
+              
+              #elif defined __SDCC__
+              void Serial_ISR(void) __interrupt (4)
+              #endif
+  19          {
+  20   1          SFRS_TMP = SFRS;              /* for SFRS page */
+  21   1      
+  22   1          if (RI)
+  23   1          {
+  24   2              uart0_receive_flag = 1;
+  25   2              uart0_receive_data = SBUF;
+  26   2              clr_SCON_RI;                                         // Clear RI (Receive Interrupt).
+  27   2          }
+  28   1      
+  29   1          if (TI)
+  30   1          {
+  31   2              if (!PRINTFG)
+  32   2              {
+  33   3                  TI = 0;
+  34   3              }
+  35   2          }
+  36   1      
+  37   1          if (SFRS_TMP)                 /* for SFRS page */
+  38   1          {
+  39   2            ENABLE_SFR_PAGE1;
+  40   2          }
+  41   1      }
+  42          
+  43          
+  44          /*********************************************************************************************************
+             -***/
+  45          /*  Main function                                                                                         
+             -  */
+  46          /*********************************************************************************************************
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:54 PAGE 2   
+
+             -***/
+  47           void main(void)
+  48          {
+  49   1          GPIO_LED_QUASI_MODE;
+  50   1      /* Modify HIRC to 24MHz for UART baud rate */
+  51   1          MODIFY_HIRC(HIRC_24);
+  52   1          P06_QUASI_MODE;
+  53   1          UART_Open(24000000,UART0_Timer3,115200);
+  54   1          ENABLE_UART0_INTERRUPT;                                   /* Enable UART0 interrupt */
+  55   1          ENABLE_GLOBAL_INTERRUPT;                                  /* Global interrupt enable */
+  56   1        
+  57   1      /* while receive data from RXD, send this data to TXD */
+  58   1        while(1)
+  59   1        {
+  60   2          if (uart0_receive_flag)
+  61   2          {
+  62   3            GPIO_LED ^= 1;
+  63   3            UART_Send_Data(UART0,uart0_receive_data);
+  64   3            uart0_receive_flag = 0;
+  65   3          }
+  66   2        }
+  67   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    136    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

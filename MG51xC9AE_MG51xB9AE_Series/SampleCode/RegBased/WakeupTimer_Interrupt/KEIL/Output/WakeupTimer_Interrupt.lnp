@@ -1,0 +1,11 @@
+".\Output\main.obj",
+".\Output\delay.obj",
+".\Output\sys.obj",
+".\Output\common.obj",
+".\Output\wkt.obj",
+".\Output\uart.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\WakeupTimer_Interrupt" 
+
+PRINT(".\LST\WakeupTimer_Interrupt.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

@@ -1,0 +1,11 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\IAP.obj",
+".\Output\common.obj",
+".\Output\uart.obj",
+".\Output\delay.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\IAP_program_CONFIG" 
+
+PRINT(".\lst\IAP_program_CONFIG.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

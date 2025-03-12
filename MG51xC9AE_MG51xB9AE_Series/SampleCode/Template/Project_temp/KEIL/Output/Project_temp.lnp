@@ -1,0 +1,9 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\Project_temp" 
+
+PRINT(".\LST\Project_temp.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

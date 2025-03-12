@@ -1,0 +1,92 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:40 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\lst\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          
+  10          /******************************
+  11            * @brief     Main loop.
+  12            * @param[in] None.
+  13            * @return    None.
+  14          ******************************/
+  15          #if defined __C51__
+  16          void Timer1_ISR (void) interrupt 3             // vector=0x1B
+  17          
+  18          #elif defined __ICC8051__
+              #pragma vector=0x1B                            //* interrupt 3
+              __interrupt void Timer1_ISR(void)
+              
+              #elif defined __SDCC__
+              void Timer1_ISR (void) __interrupt (3)         // vector=0x1B
+              #endif
+  25          {
+  26   1          SFRS_TMP = SFRS;              /* for SFRS page */
+  27   1        /* following setting for reload Timer 0 counter, this is must for next time*/
+  28   1          TH1 = TH1TMP;
+  29   1          TL1 = TL1TMP;
+  30   1        /* following clear flag is necessary for next time */
+  31   1          clr_TCON_TF1;
+  32   1          GPIO_LED ^= 1;
+  33   1          if (SFRS_TMP)                 /* for SFRS page */
+  34   1          {
+  35   2            ENABLE_SFR_PAGE1;
+  36   2          }
+  37   1      }
+  38          
+  39          
+  40          /******************************
+  41            * @brief     Main loop.
+  42            * @param[in] None.
+  43            * @return    None.
+  44          ******************************/
+  45          void main (void)
+  46          {
+  47   1      
+  48   1          MODIFY_HIRC(HIRC_24);
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:40 PAGE 2   
+
+  49   1          GPIO_LED_QUASI_MODE;
+  50   1      
+  51   1          Timer1_AutoReload_Interrupt_Initial(24,6400);
+  52   1          ENABLE_GLOBAL_INTERRUPT;
+  53   1      
+  54   1          while(1);
+  55   1      }
+  56          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     81    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

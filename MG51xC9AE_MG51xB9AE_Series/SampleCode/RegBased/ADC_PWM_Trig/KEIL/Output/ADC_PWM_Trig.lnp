@@ -1,0 +1,9 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\ADC_PWM_Trig" 
+
+PRINT(".\LST\ADC_PWM_Trig.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

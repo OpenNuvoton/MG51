@@ -1,0 +1,115 @@
+C51 COMPILER V9.60.0.0   ADC                                                               03/12/2025 14:03:28 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
+OBJECT MODULE PLACED IN .\Output\adc.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\..\..\Library\StdDriver\src\adc.c LARGE OMF2 OPTIMIZE(7,SPEED) BRO
+                    -WSE INCDIR(..\..\..\..\Library\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\adc.lst) TABS(2) OBJE
+                    -CT(.\Output\adc.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   4          /*                                                                                                        
+             - */
+   5          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   6          #include "numicro_8051.h"
+   7          
+   8           /**
+   9            * @brief This configures ADC module compare mode 
+  10            * @param[u8ADCCMPEN]  Decides the ADC Compare mode enable / disable
+  11            * @param[u16ADCCMPVALUE] u16ADCCMPVALUE Decides the ADC comapre value. 
+  12            * @return  None
+  13            * @note  for MG51 Series ONLY when the compare value is same as the ADCMPH+ADCMPL the ADCF flag will be 
+             -set to 1.
+  14            * @example ADC_ComapreMode(ENABLE,0x3FF);
+  15            */
+  16          void ADC_ComapreMode(uint8_t u8ADCCMPEN, uint16_t u16ADCCMPVALUE)
+  17          {
+  18   1          SFRS=0;
+  19   1          ADCMPL = u16ADCCMPVALUE&0x000F;
+  20   1          ADCMPH = u16ADCCMPVALUE>>4;
+  21   1          if (u8ADCCMPEN)
+  22   1          {
+  23   2            set_ADCCON2_ADCMPEN;
+  24   2          }
+  25   1          else
+  26   1          {
+  27   2            clr_ADCCON2_ADCMPEN;
+  28   2          }
+  29   1      }
+  30          
+  31          
+  32           /**
+  33            * @brief This configures ADC Sampling time 
+  34            * @param[u8ADCDIV] Decides the ADC clock devider value. Value from 0 ~ 3, devider is from 1 ~ 128, defau
+             -lt value is 0 means Fadc = Fsys/1 
+  35            * @param[u8ADCAQT] Decides the ADC acquisition time base to add sampling time for ADC input, value is fr
+             -om 0 ~ 7, time = (4*u8ADCAQT+6)/Fadc, default value is 10/Fsys = 417ns.
+  36            * @return  None
+  37            * @note 
+  38            * @example ADC_ConvertTime(ADC_ADCDIV2,ADC_ADCAQT5);
+  39            */
+  40          void ADC_ConvertTime(uint8_t u8ADCDIV, uint8_t u8ADCAQT)
+  41          {
+  42   1          SFRS=0;
+  43   1          ADCCON1 &= 0x8F;
+  44   1          ADCCON1 |= (u8ADCDIV&0x07)<<4;
+  45   1          ADCCON2&=0xF1;
+C51 COMPILER V9.60.0.0   ADC                                                               03/12/2025 14:03:28 PAGE 2   
+
+  46   1          ADCCON2|=(u8ADCAQT&0x07)<<1;
+  47   1      }
+  48          
+  49          
+  50          /**
+  51            * @brief Read the bandgap value base on Vref = 3.072V storage address after UID area.
+  52            * @param[in] none
+  53            * @return 12bit bandgap value
+  54            * @example temp = READ_BANDGAP();
+  55            */
+  56          
+  57          uint16_t READ_BANDGAP(void)
+  58          {
+  59   1          uint8_t BandgapHigh,BandgapLow;
+  60   1          uint16_t u16bgvalue;
+  61   1          
+  62   1          set_CHPCON_IAPEN;
+  63   1          IAPCN = READ_UID;
+  64   1          IAPAL = 0x0d;
+  65   1          IAPAH = 0x00;
+  66   1          set_IAPTRG_IAPGO;
+  67   1          BandgapLow = IAPFD&0x0F;
+  68   1          IAPAL = 0x0C;
+  69   1          IAPAH = 0x00;
+  70   1          set_IAPTRG_IAPGO;
+  71   1          BandgapHigh = IAPFD;
+  72   1          u16bgvalue = (BandgapHigh<<4)+BandgapLow;
+  73   1          clr_CHPCON_IAPEN;
+  74   1          return (u16bgvalue);
+  75   1      }
+  76          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    212    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,20 @@
+-muwx
+-E ISP_UART1.elf
+-M
+-y
+-b HOME = 0x0000
+-b XSEG = 0x0001
+-b PSEG = 0x0001
+-b ISEG = 0x0080
+-b BSEG = 0x0000
+-k C:/Program Files (x86)/Nuvoton Tools/OpenOCD/bin/../../Toolchain/SDCC/lib/large
+-k /../lib/small
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+./User/isp_uart1.rel
+./User/main.rel
+
+-e

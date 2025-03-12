@@ -1,0 +1,11 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\common.obj",
+".\Output\adc.obj",
+".\Output\delay.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\ADC_GPIO_Trig" 
+
+PRINT(".\LST\ADC_GPIO_Trig.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

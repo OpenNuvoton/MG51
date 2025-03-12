@@ -1,0 +1,96 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:10 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          /******************************
+  10           * @brief       PWM indepedent mode PWM0 channel 0~5 output demo and reload PWM0_CH0 every 3s.
+  11           * @param[in]   None
+  12           * @return      None
+  13           * @details     Channel 0 high duty 10%, Channel 1 high duty 20% ..... Channel 5 high duty 60%.
+  14          ******************************/
+  15          void main (void) 
+  16          {
+  17   1        MODIFY_HIRC(HIRC_24);
+  18   1          PWM0_ClockSource(PWM_FSYS,128);                                  // define PWM0 clock source and divid
+             -er.
+  19   1        
+  20   1          ENABLE_PWM0_CH0_P12_OUTPUT;                                      //Mark since P0.2 also ICE_CLK pin
+  21   1          P12_PUSHPULL_MODE;
+  22   1          PWM0_ConfigOutputChannel(0,Independent,EdgeAligned,0x6FF,10);    // setting PWM channel 0 as 10% duty 
+             -high of 0x6FF PWM period = 0x00B3
+  23   1      
+  24   1          ENABLE_PWM0_CH2_P10_OUTPUT;
+  25   1          P10_PUSHPULL_MODE;
+  26   1          PWM0_ConfigOutputChannel(2,Independent,EdgeAligned,0x6FF,30);    // setting PWM channel 2 as 30% duty 
+             -high of 0x6FF PWM period = 0x0219
+  27   1        
+  28   1          ENABLE_PWM0_CH3_P00_OUTPUT;
+  29   1          P00_PUSHPULL_MODE;
+  30   1          PWM0_ConfigOutputChannel(3,Independent,EdgeAligned,0x6FF,40);    // setting PWM channel 3 as 40% duty 
+             -high of 0x6FF PWM period = 0x02CC
+  31   1      
+  32   1          ENABLE_PWM0_CH4_P01_OUTPUT;
+  33   1          P01_PUSHPULL_MODE;
+  34   1          PWM0_ConfigOutputChannel(4,Independent,EdgeAligned,0x6FF,50);    // setting PWM channel 4 as 50% duty 
+             -high of 0x6FF PWM period = 0x037F
+  35   1      
+  36   1          ENABLE_PWM0_CH5_P03_OUTPUT;
+  37   1          P03_PUSHPULL_MODE;
+  38   1          PWM0_ConfigOutputChannel(5,Independent,EdgeAligned,0x6FF,60);    // setting PWM channel 5 as 60% duty 
+             -high of 0x6FF PWM period = 0x0432
+  39   1      
+  40   1          PWM0_RUN();
+  41   1      
+  42   1          while(1)
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:10 PAGE 2   
+
+  43   1          {
+  44   2            Timer2_Delay(24000000,128,3000,1000);
+  45   2            PWM0_ChannelDuty(0,90);
+  46   2            PWM0_Reload();
+  47   2            Timer2_Delay(24000000,128,3000,1000);
+  48   2            PWM0_ChannelDuty(0,10);
+  49   2            PWM0_Reload();
+  50   2          }      
+  51   1      }
+  52          
+  53          
+  54          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    283    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

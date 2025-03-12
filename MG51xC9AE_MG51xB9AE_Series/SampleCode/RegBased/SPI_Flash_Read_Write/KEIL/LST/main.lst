@@ -1,0 +1,246 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:18 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          #define SPI_CMD_WRITE_ENABLE    0x06
+  10          #define SPI_CMD_WRITE_DISABLE   0x04
+  11          #define SPI_CMD_READ_DATA       0x03
+  12          #define SPI_CMD_PAGE_PROGRAM    0x02
+  13          #define SPI_CMD_CHIP_ERASE      0xC7
+  14          #define SPI_CMD_SECTOR_ERASE    0x20
+  15          #define SPI_CMD_READ_STATUS1    0x05
+  16          /****************************************************************/
+  17          void SPI_Error(void)
+  18          {
+  19   1          printf ("\n SPI transfer error!");
+  20   1          while(1);
+  21   1      }
+  22          /****************************************************************/
+  23          void Flash_Check_StatusBusy(void)
+  24          {
+  25   1          uint8_t u8Status;
+  26   1      
+  27   1          SS_PIN = 0;
+  28   1          do{
+  29   2              Spi_Write_Byte(SPI_CMD_READ_STATUS1);
+  30   2              u8Status = Spi_Read_Byte(0xFF);
+  31   2          }while((u8Status&0x01)==0x01);
+  32   1          SS_PIN = 1;
+  33   1      }
+  34          /****************************************************************/
+  35          void SpiFlash_Write_Enable(void)
+  36          {
+  37   1          SS_PIN = 0;
+  38   1          Spi_Write_Byte(SPI_CMD_WRITE_ENABLE);
+  39   1          SS_PIN = 1;
+  40   1      }
+  41          /****************************************************************/
+  42          void SpiFlash_Write_Disable(void)
+  43          {
+  44   1          SS_PIN = 0;
+  45   1          Spi_Write_Byte(SPI_CMD_WRITE_DISABLE);
+  46   1          SS_PIN = 1; 
+  47   1      }
+  48          
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:18 PAGE 2   
+
+  49          /****************************************************************/
+  50          void SpiFlash_Read_MID_DID(uint8_t *pu8A, uint8_t *pu8B)
+  51          {
+  52   1          SS_PIN = 0;
+  53   1          Spi_Write_Byte(0x90);
+  54   1          Spi_Write_Byte(0x00);
+  55   1          Spi_Write_Byte(0x00);
+  56   1          Spi_Write_Byte(0x00);
+  57   1          *pu8A = Spi_Read_Byte(0xFF);
+  58   1          *pu8B = Spi_Read_Byte(0xFF);
+  59   1          SS_PIN = 1;    
+  60   1      }
+  61          /****************************************************************/
+  62          void SpiFlash_Chip_Erase(void)
+  63          {
+  64   1          SpiFlash_Write_Enable();
+  65   1          SS_PIN = 0;
+  66   1          Spi_Write_Byte(SPI_CMD_CHIP_ERASE);
+  67   1          SS_PIN = 1;
+  68   1          Flash_Check_StatusBusy();
+  69   1          SpiFlash_Write_Disable();
+  70   1      }
+  71          /****************************************************************/
+  72          void SpiFlash_Sector_Erase(uint8_t u8add0, uint8_t u8add1, uint8_t u8add2)
+  73          {
+  74   1          SpiFlash_Write_Enable();
+  75   1          SS_PIN = 0;
+  76   1          Spi_Write_Byte(SPI_CMD_SECTOR_ERASE);
+  77   1          Spi_Write_Byte(u8add0);
+  78   1          Spi_Write_Byte(u8add1);
+  79   1          Spi_Write_Byte(u8add2);
+  80   1          SS_PIN = 1;
+  81   1          Flash_Check_StatusBusy();
+  82   1          SpiFlash_Write_Disable();
+  83   1      }
+  84          
+  85          void SPI_Initial(void)
+  86          {
+  87   1          P15_QUASI_MODE;                            // P15 (SS) Quasi mode
+  88   1          P10_QUASI_MODE;                            // P10 (SPCLK) Quasi mode
+  89   1          P00_QUASI_MODE;                            // P00 (MOSI) Quasi mode
+  90   1          P01_QUASI_MODE;                            // P22 (MISO) Quasi mode
+  91   1      
+  92   1      
+  93   1          set_SPCR_SPR1;
+  94   1          clr_SPCR_SPR0;
+  95   1        /* /SS General purpose I/O ( No Mode Fault ) */
+  96   1          set_SPSR_DISMODF;
+  97   1          clr_SPCR_SSOE;
+  98   1      
+  99   1        /* SPI in Master mode */
+ 100   1          set_SPCR_MSTR;
+ 101   1      
+ 102   1        /* MSB first */
+ 103   1          clr_SPCR_LSBFE;
+ 104   1      
+ 105   1          clr_SPCR_CPOL;
+ 106   1          clr_SPCR_CPHA;
+ 107   1          
+ 108   1        /* Enable SPI function */
+ 109   1          set_SPCR_SPIEN;
+ 110   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:18 PAGE 3   
+
+ 111          /****************************************************************/
+ 112          void SpiFlash_Erase_Verify(void)
+ 113          {
+ 114   1          uint16_t  u16CNT;
+ 115   1          uint8_t u8Data;
+ 116   1      
+ 117   1          SS_PIN = 0;
+ 118   1          Spi_Write_Byte(SPI_CMD_READ_DATA);
+ 119   1        /* 24-bit Address */
+ 120   1          Spi_Write_Byte(0x00);
+ 121   1          Spi_Write_Byte(0x00);
+ 122   1          Spi_Write_Byte(0x00);
+ 123   1          for(u16CNT=0;u16CNT<256;u16CNT++)
+ 124   1          {
+ 125   2              u8Data = Spi_Read_Byte(0x00);
+ 126   2              if(u8Data != 0xFF)
+ 127   2              {
+ 128   3                  SPI_Error();
+ 129   3              }
+ 130   2          }
+ 131   1           SS_PIN = 1; 
+ 132   1      }
+ 133          /****************************************************************/
+ 134          void SpiFlash_Program(void)
+ 135          {
+ 136   1          uint16_t  u16CNT;
+ 137   1      
+ 138   1          SpiFlash_Write_Enable();
+ 139   1          SS_PIN = 0;
+ 140   1          Spi_Write_Byte(SPI_CMD_PAGE_PROGRAM);
+ 141   1        /* 24-bit Address */
+ 142   1          Spi_Write_Byte(0x00);
+ 143   1          Spi_Write_Byte(0x00);
+ 144   1          Spi_Write_Byte(0x00);
+ 145   1          for(u16CNT=0;u16CNT<256;u16CNT++)
+ 146   1              Spi_Write_Byte((uint8_t)u16CNT);
+ 147   1          SS_PIN = 1;
+ 148   1      
+ 149   1          Flash_Check_StatusBusy();
+ 150   1          SpiFlash_Write_Disable();
+ 151   1      }
+ 152          /****************************************************************/
+ 153          void SpiFlash_Program_Verify(void)
+ 154          {
+ 155   1          uint16_t  u16CNT;
+ 156   1          uint8_t   u8Data;
+ 157   1      
+ 158   1          SS_PIN = 0;
+ 159   1          Spi_Write_Byte(SPI_CMD_READ_DATA);
+ 160   1        /* 24-bit Address */
+ 161   1          Spi_Write_Byte(0x00);
+ 162   1          Spi_Write_Byte(0x00);
+ 163   1          Spi_Write_Byte(0x00);
+ 164   1          for(u16CNT=0;u16CNT<256;u16CNT++)
+ 165   1          {
+ 166   2              u8Data = Spi_Read_Byte(0x00);
+ 167   2              if(u8Data != (uint8_t)u16CNT)
+ 168   2              {
+ 169   3                  SPI_Error();
+ 170   3              }
+ 171   2          }
+ 172   1           SS_PIN = 1;
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:18 PAGE 4   
+
+ 173   1      }
+ 174          
+ 175          
+ 176          /******************************
+ 177            * @brief     Main loop.
+ 178            * @param[in] None.
+ 179            * @return    None.
+ 180          ******************************/
+ 181          void main(void)
+ 182          {      
+ 183   1          uint8_t u8MID,u8DID;
+ 184   1      
+ 185   1          MODIFY_HIRC(HIRC_24);
+ 186   1          Enable_UART0_VCOM_printf_24M_115200();
+ 187   1          printf ("\n\r Test start...");
+ 188   1      
+ 189   1          SPI_Initial();
+ 190   1      
+ 191   1          SpiFlash_Read_MID_DID (&u8MID,&u8DID);
+ 192   1          if((u8MID != 0xEF)&&(u8DID != 0x14))
+ 193   1          {
+ 194   2              SPI_Error();
+ 195   2          }
+ 196   1        /* The procedure of SPI Flash at erase mode */
+ 197   1          SpiFlash_Sector_Erase(0,0,0);
+ 198   1          SpiFlash_Erase_Verify();
+ 199   1      
+ 200   1        /* The procedure of SPI Flash at program mode */
+ 201   1          SpiFlash_Program();
+ 202   1          SpiFlash_Program_Verify();
+ 203   1      
+ 204   1          printf ("\n\r SPI transfer done!");
+ 205   1          while(1);
+ 206   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    701    ----
+   CONSTANT SIZE    =     61    ----
+   XDATA SIZE       =   ----      17
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

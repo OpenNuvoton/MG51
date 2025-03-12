@@ -1,0 +1,441 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              01/13/2025 13:48:07 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc;..\include) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.o
+                    -bj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          #include "isp_uart0.h"
+   9          
+  10          #if defined __C51__
+  11          xdata uint16_t start_address,u16_addr;
+  12          #elif defined __ICC8051__
+              __xdata uint16_t start_address,u16_addr;
+              #elif defined __SDCC__
+              __xdata uint16_t start_address,u16_addr;
+              #endif
+  17          
+  18          uint8_t  vo8temp;
+  19          uint16_t vo16temp;
+  20          uint32_t vo32temp;
+  21          
+  22          /****************************************
+  23            * @brief     UART interrupt subroutine.
+  24            * @param[in] None.
+  25            * @return    None.
+  26          ****************************************/
+  27          #if defined __C51__
+  28          void Serial_ISR(void) interrupt 4
+  29          #elif defined __ICC8051__
+              #pragma vector=0x23
+              __interrupt void UART0_ISR(void)
+              #elif defined __SDCC__
+              void Serial_ISR(void) __interrupt (4)
+              #endif
+  35          {
+  36   1          uint8_t  votemp;
+  37   1          
+  38   1          if (RI == 1)
+  39   1          {
+  40   2              votemp = SBUF;
+  41   2              uart_rcvbuf[bufhead++] =  votemp;
+  42   2              clr_SCON_RI;                                         // Clear RI (Receive Interrupt).
+  43   2          }
+  44   1          if (TI == 1)
+  45   1          {
+  46   2              clr_SCON_TI;                                         // Clear TI (Transmit Interrupt).
+  47   2          }
+C51 COMPILER V9.60.0.0   MAIN                                                              01/13/2025 13:48:07 PAGE 2   
+
+  48   1          if (bufhead == 1)
+  49   1          {
+  50   2              g_timer1Over = 0;
+  51   2              g_timer1Counter = 90; //for check uart timeout using
+  52   2          }
+  53   1          if (bufhead == 64)
+  54   1          {
+  55   2              bUartDataReady = TRUE;
+  56   2              g_timer1Counter = 0;
+  57   2              g_timer1Over = 0;
+  58   2              bufhead = 0;
+  59   2          }
+  60   1      }
+  61          
+  62          /****************************************
+  63            * @brief     Timer0 interrupt subroutine.
+  64            * @param[in] None.
+  65            * @return    None.
+  66          ****************************************/
+  67          #if defined __C51__
+  68          void Timer0_ISR(void) interrupt 1
+  69          #elif defined __ICC8051__
+              #pragma vector=0x0B
+              __interrupt void Timer0_ISR(void)
+              #elif defined __SDCC__
+              void Timer0_ISR(void) __interrupt (1)
+              #endif
+  75          {
+  76   1          if (g_timer0Counter)
+  77   1          {
+  78   2              g_timer0Counter--;
+  79   2              if (!g_timer0Counter)
+  80   2              {
+  81   3                  g_timer0Over = 1;
+  82   3              }
+  83   2          }
+  84   1          if (g_timer1Counter)
+  85   1          {
+  86   2              g_timer1Counter--;
+  87   2              if (!g_timer1Counter)
+  88   2              {
+  89   3                  g_timer1Over = 1;
+  90   3              }
+  91   2          }
+  92   1      }
+  93          
+  94          
+  95          /******************************
+  96            * @brief     Main loop.
+  97            * @param[in] None.
+  98            * @return    None.
+  99          ******************************/
+ 100          void main (void)
+ 101          {
+ 102   1        
+ 103   1          set_CHPCON_IAPEN;
+ 104   1          MODIFY_HIRC_24();
+ 105   1      #ifdef  isp_with_wdt
+                  TA=0x55;TA=0xAA;WDCON=0x07;
+              #endif
+ 108   1      //uart initial for ISP programmer GUI, always use 115200 baudrate
+ 109   1        UART0_ini_115200_24MHz();
+C51 COMPILER V9.60.0.0   MAIN                                                              01/13/2025 13:48:07 PAGE 3   
+
+ 110   1        TM0_ini();
+ 111   1      
+ 112   1        g_timer0Over=0;
+ 113   1        g_timer0Counter=Timer0Out_Counter;
+ 114   1        g_programflag=0;
+ 115   1      
+ 116   1      while(1)
+ 117   1      {
+ 118   2              if(bUartDataReady == TRUE)
+ 119   2              {
+ 120   3                EA=0; //DISABLE ALL INTERRUPT
+ 121   3                if(g_programflag==1)
+ 122   3                {
+ 123   4                  for(count=8;count<64;count++)
+ 124   4                  {
+ 125   5                    IAPCN = BYTE_PROGRAM_AP;          //program byte
+ 126   5                    IAPAL = flash_address&0xff;
+ 127   5                    IAPAH = (flash_address>>8)&0xff;
+ 128   5                    IAPFD=uart_rcvbuf[count];
+ 129   5      #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 132   5                    trig_IAPGO;
+ 133   5      #endif
+ 134   5                
+ 135   5                    IAPCN = BYTE_READ_AP;              //program byte verify
+ 136   5                    vo8temp = uart_rcvbuf[count];
+ 137   5                    if(IAPFD!=vo8temp)
+ 138   5                    while(1);                          
+ 139   5                    if (CHPCON==0x43)              //if error flag set, program error stop ISP
+ 140   5                    while(1);
+ 141   5      
+ 142   5                    g_totalchecksum += vo8temp;
+ 143   5                    flash_address++;
+ 144   5                    vo16temp = AP_size;
+ 145   5                    if(flash_address==vo16temp)
+ 146   5                    {
+ 147   6                       g_programflag=0;
+ 148   6                       g_timer0Over =1;
+ 149   6                       goto END_2;
+ 150   6                    }
+ 151   5                  } 
+ 152   4      END_2:
+ 153   4                  Package_checksum();
+ 154   4                  uart_txbuf[8]=g_totalchecksum&0xff;
+ 155   4                  uart_txbuf[9]=(g_totalchecksum>>8)&0xff;
+ 156   4                  Send_64byte_To_UART0();
+ 157   4                }
+ 158   3                  
+ 159   3                switch(uart_rcvbuf[0])
+ 160   3                {
+ 161   4                  case CMD_CONNECT:
+ 162   4                  case CMD_SYNC_PACKNO:
+ 163   4                  {
+ 164   5                    Package_checksum();
+ 165   5                    Send_64byte_To_UART0();    
+ 166   5                    g_timer0Counter=0; //clear timer 0 for no reset
+ 167   5                    g_timer0Over=0;
+ 168   5                    break;
+ 169   5                  }
+ 170   4      
+ 171   4                  case CMD_GET_FWVER:
+C51 COMPILER V9.60.0.0   MAIN                                                              01/13/2025 13:48:07 PAGE 4   
+
+ 172   4                  {
+ 173   5                    Package_checksum();
+ 174   5                    uart_txbuf[8]=FW_VERSION;
+ 175   5                    Send_64byte_To_UART0();
+ 176   5                    break;
+ 177   5                  }
+ 178   4                  
+ 179   4                  case CMD_RUN_APROM:
+ 180   4                  {
+ 181   5                    goto _APROM;
+ 182   5                    break;
+ 183   5                  }
+ 184   4      
+ 185   4                  //please for ISP programmer GUI, ID always use following rule to transmit.
+ 186   4                  case CMD_GET_DEVICEID:
+ 187   4                  {
+ 188   5                    READ_ID();
+ 189   5                    Package_checksum();
+ 190   5                    uart_txbuf[8]=DID_lowB;  
+ 191   5                    uart_txbuf[9]=DID_highB;  
+ 192   5                    uart_txbuf[10]=PID_lowB;  
+ 193   5                    uart_txbuf[11]=PID_highB;  
+ 194   5                    Send_64byte_To_UART0();  
+ 195   5                    break;
+ 196   5                  }
+ 197   4      
+ 198   4                  case CMD_ERASE_ALL:
+ 199   4                  {
+ 200   5                    set_IAPUEN_APUEN;
+ 201   5                    IAPFD = 0xFF;          //Erase must set IAPFD = 0xFF
+ 202   5                    IAPCN = PAGE_ERASE_AP;
+ 203   5                    for(flash_address=0x0000;flash_address<APROM_SIZE/PAGE_SIZE;flash_address++)
+ 204   5                    {        
+ 205   6                      IAPAL = LOBYTE(flash_address*PAGE_SIZE);
+ 206   6                      IAPAH = HIBYTE(flash_address*PAGE_SIZE);
+ 207   6      #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 210   6                    trig_IAPGO;
+ 211   6      #endif
+ 212   6                    }
+ 213   5                    Package_checksum();
+ 214   5                    Send_64byte_To_UART0();  
+ 215   5                    break;
+ 216   5                  }
+ 217   4      
+ 218   4                  case CMD_READ_CONFIG:
+ 219   4                  {
+ 220   5                    READ_CONFIG();
+ 221   5                    Package_checksum();
+ 222   5                    uart_txbuf[8]=CONF0;
+ 223   5                    uart_txbuf[9]=CONF1;
+ 224   5                    uart_txbuf[10]=CONF2;
+ 225   5                    uart_txbuf[11]=0xff;
+ 226   5                    uart_txbuf[12]=CONF4;
+ 227   5                    uart_txbuf[13]=0xff;
+ 228   5                    uart_txbuf[14]=0xff;
+ 229   5                    uart_txbuf[15]=0xff;
+ 230   5                    Send_64byte_To_UART0();
+ 231   5                  break;
+ 232   5                  }
+ 233   4                  
+C51 COMPILER V9.60.0.0   MAIN                                                              01/13/2025 13:48:07 PAGE 5   
+
+ 234   4                  case CMD_UPDATE_CONFIG:
+ 235   4                  {
+ 236   5                    recv_CONF0 = uart_rcvbuf[8];
+ 237   5                    recv_CONF1 = uart_rcvbuf[9];
+ 238   5                    recv_CONF2 = uart_rcvbuf[10];
+ 239   5                    recv_CONF4 = uart_rcvbuf[12];
+ 240   5      
+ 241   5                    set_IAPUEN_CFUEN;                  /*Erase CONFIG */
+ 242   5                    IAPCN = PAGE_ERASE_CONFIG;
+ 243   5                    IAPAL = 0x00;
+ 244   5                    IAPAH = 0x00;
+ 245   5                    IAPFD = 0xFF;
+ 246   5      #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 249   5                    trig_IAPGO;
+ 250   5      #endif
+ 251   5                    IAPCN = BYTE_PROGRAM_CONFIG;        /*Program CONFIG*/ 
+ 252   5                    IAPFD = recv_CONF0;
+ 253   5      #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 256   5                    trig_IAPGO;
+ 257   5      #endif
+ 258   5                    IAPFD = recv_CONF1;
+ 259   5                    IAPAL = 0x01;
+ 260   5      #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 263   5                    trig_IAPGO;
+ 264   5      #endif
+ 265   5                    IAPAL = 0x02;
+ 266   5                    IAPFD = recv_CONF2;
+ 267   5        #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 270   5                    trig_IAPGO;
+ 271   5      #endif
+ 272   5                    IAPAL = 0x04;
+ 273   5                    IAPFD = recv_CONF4;
+ 274   5      #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 277   5                    trig_IAPGO;
+ 278   5      #endif
+ 279   5                    clr_IAPUEN_CFUEN;
+ 280   5      
+ 281   5                    READ_CONFIG();                        /*Read new CONFIG*/  
+ 282   5                    Package_checksum();
+ 283   5                    uart_txbuf[8]=CONF0;
+ 284   5                    uart_txbuf[9]=CONF1;
+ 285   5                    uart_txbuf[10]=CONF2;
+ 286   5                    uart_txbuf[11]=0xff;
+ 287   5                    uart_txbuf[12]=CONF4;
+ 288   5                    uart_txbuf[13]=0xff;
+ 289   5                    uart_txbuf[14]=0xff;
+ 290   5                    uart_txbuf[15]=0xff;
+ 291   5                    Send_64byte_To_UART0();
+ 292   5                    break;
+ 293   5                  }
+ 294   4      
+ 295   4                  case CMD_UPDATE_APROM:
+C51 COMPILER V9.60.0.0   MAIN                                                              01/13/2025 13:48:07 PAGE 6   
+
+ 296   4                  {
+ 297   5                    set_IAPUEN_APUEN;
+ 298   5                    IAPFD = 0xFF;          //Erase must set IAPFD = 0xFF
+ 299   5                    IAPCN = PAGE_ERASE_AP;
+ 300   5                    
+ 301   5                    start_address = 0;
+ 302   5                    start_address = uart_rcvbuf[8];
+ 303   5                    start_address |= ((uart_rcvbuf[9]<<8)&0xFF00);
+ 304   5                    AP_size = 0;
+ 305   5                    AP_size = uart_rcvbuf[12];
+ 306   5                    vo8temp = uart_rcvbuf[13];
+ 307   5                    AP_size |= ((vo8temp<<8)&0xFF00);
+ 308   5      
+ 309   5                    u16_addr = start_address + AP_size;
+ 310   5                    flash_address = (start_address&0xFF00);
+ 311   5       
+ 312   5                    while(flash_address< u16_addr)
+ 313   5                    {
+ 314   6                      IAPAL = LOBYTE(flash_address);
+ 315   6                      IAPAH = HIBYTE(flash_address);
+ 316   6      #ifdef isp_with_wdt
+                              set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 319   6                      trig_IAPGO;
+ 320   6      #endif
+ 321   6                      flash_address += PAGE_SIZE;
+ 322   6                    }
+ 323   5                    
+ 324   5                    g_totalchecksum = 0;
+ 325   5                    flash_address = start_address;
+ 326   5                    g_programflag = 1;
+ 327   5      
+ 328   5                    for(count=16;count<64;count++)
+ 329   5                    {
+ 330   6                      IAPCN = BYTE_PROGRAM_AP;
+ 331   6                      IAPAL = flash_address&0xff;
+ 332   6                      IAPAH = (flash_address>>8)&0xff;
+ 333   6                      IAPFD = uart_rcvbuf[count];
+ 334   6      #ifdef isp_with_wdt
+                            set_IAPTRG_IAPGO_WDCLR;
+              #else
+ 337   6                    trig_IAPGO;
+ 338   6      #endif
+ 339   6                      IAPCN = BYTE_READ_AP;                //program byte verify
+ 340   6                      trig_IAPGO;
+ 341   6                      vo8temp = uart_rcvbuf[count];
+ 342   6                      if(IAPFD!=vo8temp)
+ 343   6                      while(1);
+ 344   6                      if (CHPCON==0x43)                //if error flag set, program error stop ISP
+ 345   6                      while(1);
+ 346   6      
+ 347   6                      g_totalchecksum += vo8temp;
+ 348   6                      flash_address++;
+ 349   6                      vo16temp = AP_size;
+ 350   6                      if(flash_address==vo16temp)
+ 351   6                      {
+ 352   7                        g_programflag=0;
+ 353   7                         goto END_1;
+ 354   7                      }
+ 355   6                    }
+ 356   5      END_1:                
+ 357   5                    Package_checksum();
+C51 COMPILER V9.60.0.0   MAIN                                                              01/13/2025 13:48:07 PAGE 7   
+
+ 358   5                    uart_txbuf[8]=g_totalchecksum&0xff;
+ 359   5                    uart_txbuf[9]=(g_totalchecksum>>8)&0xff;
+ 360   5                    Send_64byte_To_UART0();  
+ 361   5                    break;
+ 362   5                  }
+ 363   4                }  
+ 364   3                bUartDataReady = FALSE;
+ 365   3                bufhead = 0;
+ 366   3      
+ 367   3                EA=1;
+ 368   3            }
+ 369   2            /*For connect timer out   */
+ 370   2            if(g_timer0Over==1)
+ 371   2            {
+ 372   3              CALL_NOP;
+ 373   3              goto _APROM;
+ 374   3            }
+ 375   2            
+ 376   2            /*for uart time out or buffer error  */
+ 377   2             if(g_timer1Over==1)
+ 378   2            {
+ 379   3             if((bufhead<64)&&(bufhead>0)||(bufhead>64))
+ 380   3               {
+ 381   4                   bufhead=0;
+ 382   4               }
+ 383   3            }  
+ 384   2      }   
+ 385   1      
+ 386   1      _APROM:
+ 387   1          MODIFY_HIRC_16();
+ 388   1          clr_CHPCON_IAPEN;
+ 389   1          TA = 0xAA; TA = 0x55; CHPCON = 0x80;                   //software reset enable boot from APROM
+ 390   1          /* Trap the CPU */
+ 391   1          while(1);  
+ 392   1      }
+ 393          
+ 394          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1246    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     11    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

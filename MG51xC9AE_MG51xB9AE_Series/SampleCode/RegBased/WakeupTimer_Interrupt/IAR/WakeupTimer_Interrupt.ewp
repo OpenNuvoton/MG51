@@ -251,11 +251,11 @@
                 </option>
                 <option>
                     <name>OGChipSelectMenu</name>
-                    <state>MG51_32K_16K	MG51_32K_16K</state>
+                    <state>MG51xC9AE	MG51xC9AE</state>
                 </option>
                 <option>
                     <name>OGChipSelectMenuSlave</name>
-                    <state>MG51_32K_16K	MG51_32K_16K</state>
+                    <state>MG51xC9AE	MG51xC9AE</state>
                 </option>
                 <option>
                     <name>DPC Address</name>
@@ -818,7 +818,7 @@
                 </option>
                 <option>
                     <name>XclFile</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\lnk51ew_MG51_32K_16K.xcl</state>
+                    <state>$TOOLKIT_DIR$\config\devices\Nuvoton\lnk51ew_MG51xC9AE.xcl</state>
                 </option>
                 <option>
                     <name>XclFileSlave</name>
@@ -1363,11 +1363,11 @@
                 </option>
                 <option>
                     <name>OGChipSelectMenu</name>
-                    <state>MG51_32K_16K	MG51_32K_16K</state>
+                    <state>MG51xC9AE	MG51xC9AE</state>
                 </option>
                 <option>
                     <name>OGChipSelectMenuSlave</name>
-                    <state>MG51_32K_16K	MG51_32K_16K</state>
+                    <state>MG51xC9AE	MG51xC9AE</state>
                 </option>
                 <option>
                     <name>DPC Address</name>
@@ -1391,7 +1391,7 @@
                 </option>
                 <option>
                     <name>OGChipConfigPath</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\MG51\MG51_32K_16K.i51</state>
+                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\MG51\MG51xC9AE.i51</state>
                 </option>
             </data>
         </settings>

@@ -64,7 +64,7 @@ void BOD_LowPower(uint8_t u8LPBDD)
   * @note    None
   * @exmaple :  BOD_LowPower(LPBOD_MODE3);
 */
-void BOD_Interrupt (uint8_t u8bodINTstatus)
+void BOD_Interrupt_Enable (uint8_t u8bodINTstatus)
 {
     IE &= CLR_BIT5;
     IE |= (u8bodINTstatus<<5)&SET_BIT5;

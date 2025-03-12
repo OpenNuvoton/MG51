@@ -7,22 +7,26 @@
 #include "numicro_8051.h"
 
  /**
-  * @brief This configures ADC module to be ready for convert the input from selected channel
-  * @param[in] u16ADCRBase Decides the ADC RAM Base Address High byte + Low byte total
-  * @param[in] u8ADCRLength Decides the ADC continui The total sampling numbers for ADC continue sampling select. 
-  * @param[in] u8ADCSpeed is the ADCSR.7 Setting for select ADC low speed. 
+  * @brief This configures ADC module compare mode 
+  * @param[u8ADCCMPEN]  Decides the ADC Compare mode enable / disable
+  * @param[u16ADCCMPVALUE] u16ADCCMPVALUE Decides the ADC comapre value. 
   * @return  None
-  * @note MG51_64K series MCU ADC can only convert 1 channel at a time. If more than 1 channels are enabled, only channel
-  *       with smallest number will be convert.
-  * @example ADC_InitialContinous(0x0300,128);
+  * @note  for MG51 Series ONLY when the compare value is same as the ADCMPH+ADCMPL the ADCF flag will be set to 1.
+  * @example ADC_ComapreMode(ENABLE,0x3FF);
   */
-void ADC_InitialContinous(uint16_t u16ADCRBase, uint8_t u8ADCRLength)
+void ADC_ComapreMode(uint8_t u8ADCCMPEN, uint16_t u16ADCCMPVALUE)
 {
-  SFRS=2;
-  ADCBAL=u16ADCRBase;
-  ADCBAH = u16ADCRBase>>8;
-  ADCSN  = u8ADCRLength - 1;   //Offset value, since the actually sampling number= ADCSN[7:0] + 1
-	SFRS = 0;
+    SFRS=0;
+    ADCMPL = u16ADCCMPVALUE&0x000F;
+    ADCMPH = u16ADCCMPVALUE>>4;
+    if (u8ADCCMPEN)
+    {
+      set_ADCCON2_ADCMPEN;
+    }
+    else
+    {
+      clr_ADCCON2_ADCMPEN;
+    }
 }
 
 
@@ -93,25 +97,22 @@ uint16_t READ_BANDGAP(void)
     return (u16bgvalue);
 }
 
+
  /**
-  * @brief This configures ADC module compare mode 
-  * @param[u8ADCCMPEN]  Decides the ADC Compare mode enable / disable
-  * @param[u16ADCCMPVALUE] u16ADCCMPVALUE Decides the ADC comapre value. 
+  * @brief This configures ADC module to be ready for convert the input from selected channel
+  * @param[in] u16ADCRBase Decides the ADC RAM Base Address High byte + Low byte total
+  * @param[in] u8ADCRLength Decides the ADC continui The total sampling numbers for ADC continue sampling select. 
+  * @param[in] u8ADCSpeed is the ADCSR.7 Setting for select ADC low speed. 
   * @return  None
-  * @note  for MG51 Series ONLY when the compare value is same as the ADCMPH+ADCMPL the ADCF flag will be set to 1.
-  * @example ADC_ComapreMode(ENABLE,0x3FF);
+  * @note MG51_64K series MCU ADC can only convert 1 channel at a time. If more than 1 channels are enabled, only channel
+  *       with smallest number will be convert.
+  * @example ADC_InitialContinous(0x0300,128);
   */
-void ADC_ComapreMode(uint8_t u8ADCCMPEN, uint16_t u16ADCCMPVALUE)
+void ADC_InitialContinous(uint16_t u16ADCRBase, uint8_t u8ADCRLength)
 {
-    SFRS=0;
-    ADCMPL = u16ADCCMPVALUE&0x000F;
-    ADCMPH = u16ADCCMPVALUE>>4;
-    if (u8ADCCMPEN)
-    {
-      set_ADCCON2_ADCMPEN;
-    }
-    else
-    {
-      clr_ADCCON2_ADCMPEN;
-    }
+  SFRS=2;
+  ADCBAL=u16ADCRBase;
+  ADCBAH = u16ADCRBase>>8;
+  ADCSN  = u8ADCRLength - 1;   //Offset value, since the actually sampling number= ADCSN[7:0] + 1
+	SFRS = 0;
 }

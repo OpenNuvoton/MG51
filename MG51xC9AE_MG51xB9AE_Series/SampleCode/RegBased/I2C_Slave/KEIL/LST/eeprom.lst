@@ -1,0 +1,302 @@
+C51 COMPILER V9.60.0.0   EEPROM                                                            03/12/2025 14:04:26 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE EEPROM
+OBJECT MODULE PLACED IN .\Output\eeprom.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\..\..\Library\StdDriver\src\eeprom.c LARGE OMF2 OPTIMIZE(8,SPEED) 
+                    -BROWSE INCDIR(..\..\..\..\Library\Device\Include;..\..\..\..\Library\StdDriver\inc) DEFINE(FOSC_160000) DEBUG PRINT(.\LS
+                    -T\eeprom.lst) TABS(2) OBJECT(.\Output\eeprom.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          
+  10          BIT  EECHECKFLAG;
+  11          #if defined __C51__
+  12          volatile uint8_t xdata page_buffer[128];
+  13          volatile uint8_t xdata xd_tmp[128];
+  14          
+  15          #elif defined __ICC8051__
+              uint8_t __xdata page_buffer[128];
+              uint8_t __xdata xd_tmp[128];
+              
+              #elif defined __SDCC__
+              uint8_t __xdata page_buffer[128];
+              uint8_t __xdata xd_tmp[128];
+              #endif
+  23          
+  24          uint8_t WriteDataToOnePage(uint16_t u16_addr,const uint8_t *pDat,uint8_t num);
+  25          
+  26          /**
+  27           * @brief       Write Dataflash as EEPROM, 
+  28           * @param       u16EPAddr the 16bit EEPROM start address. Any of APROM address can be defined as start add
+             -ress (0x3800)
+  29           * @param       u8EPData the 8bit value need storage in (0x3800)
+  30           * @return      none
+  31           * @details     Storage dataflash page data into XRAM, modify data in XRAM, Erase dataflash page, writer u
+             -pdated XRAM data into dataflash
+  32           */
+  33          uint8_t Write_DATAFLASH_BYTE(uint16_t u16EPAddr, uint8_t u8EPData)
+  34          {
+  35   1          uint8_t   looptmp,RAMtmp,checkdatatemp;
+  36   1          uint16_t  u16_addrl_r;
+  37   1      
+  38   1          EECHECKFLAG = 0;
+  39   1        /* Check page start address  */
+  40   1          u16_addrl_r=(u16EPAddr/128)*128;
+  41   1        /*Save APROM data to XRAM0  */
+  42   1          for(looptmp=0;looptmp<0x80;looptmp++)
+  43   1          {
+  44   2      #if defined __C51__
+  45   2              RAMtmp = Read_APROM_BYTE((uint16_t code *)(u16_addrl_r+looptmp));
+C51 COMPILER V9.60.0.0   EEPROM                                                            03/12/2025 14:04:26 PAGE 2   
+
+  46   2      #elif defined __ICC8051__
+                      RAMtmp = Read_APROM_BYTE((uint16_t __code *)(u16_addrl_r+looptmp));
+              #elif defined __SDCC__
+                      RAMtmp = Read_APROM_BYTE((uint16_t __code *)(u16_addrl_r+looptmp));
+              #endif
+  51   2              page_buffer[looptmp]=RAMtmp;
+  52   2          }
+  53   1        /* Modify customer data in XRAM */
+  54   1          page_buffer[u16EPAddr&0x7f] = u8EPData;
+  55   1      
+  56   1        /* Erase APROM DATAFLASH page  */
+  57   1          IAPAL = u16_addrl_r&0xff;
+  58   1          IAPAH = (u16_addrl_r>>8)&0xff;
+  59   1          IAPFD = 0xFF;
+  60   1          set_CHPCON_IAPEN; 
+  61   1          set_IAPUEN_APUEN;
+  62   1          IAPCN = PAGE_ERASE_APROM;
+  63   1          set_IAPTRG_IAPGO; 
+  64   1      
+  65   1        /* Save changed RAM data to APROM DATAFLASH  */
+  66   1      
+  67   1          for(looptmp=0;looptmp<0x80;looptmp++)
+  68   1          {
+  69   2              IAPAL = (u16_addrl_r&0xff)+looptmp;
+  70   2              IAPAH = (u16_addrl_r>>8)&0xff;
+  71   2              IAPCN = BYTE_PROGRAM_APROM;
+  72   2              IAPFD = page_buffer[looptmp];
+  73   2              set_IAPTRG_IAPGO;
+  74   2              IAPCN = BYTE_READ_APROM;
+  75   2              IAPFD = 0xFF;
+  76   2              set_IAPTRG_IAPGO;
+  77   2              checkdatatemp = IAPFD;
+  78   2              if (checkdatatemp!= page_buffer[looptmp])
+  79   2              {
+  80   3                EECHECKFLAG = 1;
+  81   3                goto WriteByteEnd;
+  82   3              }
+  83   2          }
+  84   1      WriteByteEnd:
+  85   1          clr_IAPUEN_APUEN;
+  86   1          clr_CHPCON_IAPEN;
+  87   1          
+  88   1          return EECHECKFLAG;
+  89   1      }
+  90          
+  91          
+  92          /**
+  93           * @brief       Read Dataflash as array format 
+  94           * @param       u16_addr the 16bit EEPROM start address. Any of APROM address can be defined as start addr
+             -ess
+  95           * @param       *pDat the 8bit value
+  96           * @param       num the number that need read.
+  97           * @return      storage the data into pDat[i] array.
+  98           */
+  99          void Read_DATAFLASH_ARRAY(uint16_t u16_addr, uint8_t *pDat, uint16_t num)
+ 100          {
+ 101   1          uint16_t i;
+ 102   1      
+ 103   1          for(i=0;i<num;i++)
+ 104   1          {
+ 105   2      #if defined __C51__
+ 106   2              pDat[i] = *(uint8_t code *)(u16_addr+i);
+C51 COMPILER V9.60.0.0   EEPROM                                                            03/12/2025 14:04:26 PAGE 3   
+
+ 107   2      #elif defined __ICC8051__
+                      pDat[i] = *(uint8_t __code *)(u16_addr+i);
+              #elif defined __SDCC__
+                      pDat[i] = *(uint8_t __code *)(u16_addr+i);
+              #endif
+ 112   2          }
+ 113   1      }
+ 114          
+ 115          
+ 116          /**
+ 117           * @brief       Write Dataflash as EEPROM with array format
+ 118           * @param       u16_addr the 16bit EEPROM start address. Any of APROM address can be defined as start addr
+             -ess 
+ 119           * @param       pDat the 8bit value need storage in 
+ 120           * @param       num the number that need to write.
+ 121           * @return      none
+ 122           */
+ 123          uint8_t  Write_DATAFLASH_ARRAY(uint16_t u16_addr, uint8_t *pDat, uint16_t num)
+ 124          {
+ 125   1          uint8_t CPageAddr,EPageAddr,cnt;
+ 126   1      
+ 127   1          EECHECKFLAG=0;
+ 128   1          CPageAddr=u16_addr>>7;
+ 129   1          EPageAddr=(u16_addr+num)>>7;
+ 130   1          while(CPageAddr!=EPageAddr)
+ 131   1          {
+ 132   2              cnt=WriteDataToOnePage(u16_addr,pDat,128);
+ 133   2              u16_addr+=cnt;
+ 134   2              pDat+=cnt;
+ 135   2              num-=cnt;
+ 136   2              CPageAddr=u16_addr>>7;
+ 137   2          }
+ 138   1          if(num)
+ 139   1          {
+ 140   2              WriteDataToOnePage(u16_addr,pDat,num);
+ 141   2          }
+ 142   1          return EECHECKFLAG;
+ 143   1      }
+ 144          
+ 145          //---------------------------------------------------------------------------------
+ 146          uint8_t WriteDataToOnePage(uint16_t u16_addr,const uint8_t *pDat,uint8_t num)
+ 147          {
+ 148   1        
+ 149   1      #if defined __C51__
+ 150   1        uint8_t code *pCode;
+ 151   1      #elif defined __ICC8051__
+                uint8_t __code *pCode;
+              #elif defined __SDCC__
+                uint8_t __code *pCode;
+              #endif
+ 156   1        uint8_t i,offset,checkdatatemp;
+ 157   1      
+ 158   1          set_CHPCON_IAPEN; 
+ 159   1          set_IAPUEN_APUEN;
+ 160   1      
+ 161   1          offset=u16_addr&0x007F;
+ 162   1          i = PAGE_SIZE - offset;
+ 163   1          if(num>i)num=i;
+ 164   1      #if defined __C51__
+ 165   1          pCode = (uint8_t code *)u16_addr;
+ 166   1      #elif defined __ICC8051__
+                  pCode = (uint8_t __code *)u16_addr;
+C51 COMPILER V9.60.0.0   EEPROM                                                            03/12/2025 14:04:26 PAGE 4   
+
+              #elif defined __SDCC__
+                  pCode = (uint8_t __code *)u16_addr;
+              #endif
+ 171   1      
+ 172   1          for(i=0;i<num;i++)
+ 173   1          {
+ 174   2              if(pCode[i]!=0xFF)break;
+ 175   2          }
+ 176   1          if(i==num)
+ 177   1          {
+ 178   2      
+ 179   2              IAPAL = u16_addr;
+ 180   2              IAPAH = u16_addr>>8;
+ 181   2              for(i=0;i<num;i++)
+ 182   2              {
+ 183   3                IAPCN =BYTE_PROGRAM_APROM;
+ 184   3                IAPFD = pDat[i];
+ 185   3                set_IAPTRG_IAPGO;
+ 186   3                IAPCN =BYTE_PROGRAM_APROM;
+ 187   3                IAPFD = 0xFF;
+ 188   3                set_IAPTRG_IAPGO;
+ 189   3                checkdatatemp = IAPFD;
+ 190   3                if (checkdatatemp!=pDat[i])
+ 191   3                {
+ 192   4                  EECHECKFLAG = 1; 
+ 193   4                  goto WriteDataEnd;
+ 194   4                }
+ 195   3                IAPAL++;
+ 196   3              }
+ 197   2              for(i=0;i<num;i++)
+ 198   2              {
+ 199   3                if(pCode[i]!=pDat[i])break;
+ 200   3              }
+ 201   2              if(i!=num) goto WriteDataToPage20;
+ 202   2          }
+ 203   1          else
+ 204   1          {
+ 205   2      WriteDataToPage20:
+ 206   2      #if defined __C51__
+ 207   2              pCode = (uint8_t code *)(u16_addr&0xff80);
+ 208   2      #elif defined __ICC8051__
+                      pCode = (uint8_t __code *)(u16_addr&0xff80);
+              #elif defined __SDCC__
+                      pCode = (uint8_t __code *)(u16_addr&0xff80);
+              #endif
+ 213   2      
+ 214   2              for(i=0;i<128;i++)
+ 215   2              {
+ 216   3                xd_tmp[i] = pCode[i];
+ 217   3              }
+ 218   2              for(i=0;i<num;i++)
+ 219   2              {
+ 220   3                xd_tmp[offset+i] = pDat[i];
+ 221   3              }
+ 222   2              do
+ 223   2              {
+ 224   3                IAPAL = (u16_addr&0xff80);
+ 225   3                IAPAH = u16_addr>>8;
+ 226   3                IAPCN = PAGE_ERASE_APROM;
+ 227   3                IAPFD = 0xFF;  
+ 228   3                set_IAPTRG_IAPGO; 
+ 229   3                for(i=0;i<128;i++)
+C51 COMPILER V9.60.0.0   EEPROM                                                            03/12/2025 14:04:26 PAGE 5   
+
+ 230   3                {
+ 231   4                  IAPCN =BYTE_PROGRAM_APROM;
+ 232   4                  IAPFD = xd_tmp[i];
+ 233   4                  set_IAPTRG_IAPGO;
+ 234   4                  IAPCN =BYTE_READ_APROM;
+ 235   4                  IAPFD = 0xFF;
+ 236   4                  set_IAPTRG_IAPGO;
+ 237   4                  checkdatatemp = IAPFD;
+ 238   4                  if (checkdatatemp!=xd_tmp[i])
+ 239   4                  {
+ 240   5                    EECHECKFLAG = 1; 
+ 241   5                    goto WriteDataEnd;
+ 242   5                  }
+ 243   4                  IAPAL++;
+ 244   4                }
+ 245   3                for(i=0;i<128;i++)
+ 246   3                {
+ 247   4                  if(pCode[i]!=xd_tmp[i])break;
+ 248   4                }
+ 249   3              }while(i!=128);
+ 250   2          }
+ 251   1      WriteDataEnd:
+ 252   1          clr_CHPCON_IAPEN;
+ 253   1      
+ 254   1          return num;
+ 255   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1428    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    256      34
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

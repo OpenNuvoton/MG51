@@ -22,9 +22,9 @@ uint8_t __xdata xd_sp_tmp[127];
 
 void WriteDataToSPOnePage(uint8_t u8_addr, uint8_t *pDat, uint16_t num);
 /**
- * @brief       Read Dataflash
- * @param       Dataflash start address
- * @return      Dataflash Value
+ * @brief       Read SPROM 
+ * @param       u8_addr SPROM start address
+ * @return      SPROM Value
  * @details     None
  */
 #if defined __C51__

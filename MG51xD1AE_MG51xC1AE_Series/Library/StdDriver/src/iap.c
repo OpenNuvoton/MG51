@@ -471,7 +471,7 @@ void Read_UCID(void)
  * @details     IAP command read UID area storage data in XRAM LIB_UIDBuffer[0:8]
  * @example      UID_Read();
 */
-void DID_Read(void)
+void Read_DID(void)
 {   
     uint8_t u8Count;
 
@@ -496,7 +496,7 @@ void DID_Read(void)
  * @details     IAP command read UID area storage data in XRAM LIB_UIDBuffer[0:8]
  * @example      UID_Read();
 */
-void PID_Read(void)
+void Read_PID(void)
 {   
     uint8_t u8Count;
 

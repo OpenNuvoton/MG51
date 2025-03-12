@@ -1,0 +1,164 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:25 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          uint8_t   u8Receive_Data[5];
+  10          uint8_t   u8CNT;
+  11          BIT       SPI_Send_Flag, SPI_Receive_Finish_Flag;
+  12          
+  13          #if defined __C51__
+  14          const  uint8_t  u8Transmit_Data[5] = {0x4E, 0x55, 0x56, 0x4F, 0x54};
+  15          #elif defined __ICC8051__
+              const  __code   uint8_t  u8Transmit_Data[5] = {0x4E, 0x55, 0x56, 0x4F, 0x54};
+              #elif defined __SDCC__
+              const  __code   uint8_t  u8Transmit_Data[5] = {0x4E, 0x55, 0x56, 0x4F, 0x54};
+              #endif
+  20          
+  21          /*****************************
+  22          * @brief     Main loop.
+  23          * @param[in] None.
+  24          * @return    None.
+  25          ******************************/
+  26          #if defined __C51__
+  27          void SPI_ISR(void) interrupt 9                  // Vecotr @  0x4B
+  28          
+  29          #elif defined __ICC8051__
+              #pragma vector=0x4B
+              __interrupt void SPI_ISR(void)
+              
+              #elif defined __SDCC__
+              void SPI_ISR(void) __interrupt (9)                  // Vecotr @  0x4B
+              #endif
+  36          {
+  37   1          clr_SPIF;
+  38   1          if(!SPI_Send_Flag)
+  39   1          {
+  40   2              u8Receive_Data[u8CNT] = SPDR;
+  41   2              u8CNT ++;
+  42   2              SPDR = u8Transmit_Data[u8CNT];
+  43   2          }
+  44   1          SPI_Send_Flag = 0; 
+  45   1      
+  46   1          if (u8CNT==5)
+  47   1            SPI_Receive_Finish_Flag = 1;
+  48   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:25 PAGE 2   
+
+  49          
+  50          //--------------------------------------------------------------------------------------------------------
+             ----
+  51          void SPI_Error(void)
+  52          {
+  53   1          printf ("\n SPI transfer error!");
+  54   1          while (1);
+  55   1      }
+  56          //--------------------------------------------------------------------------------------------------------
+             ----
+  57          void SPI_Initial(void)
+  58          { 
+  59   1          P15_QUASI_MODE;                            //P15 (SS) Quasi mode
+  60   1          P10_QUASI_MODE;                            //P10(SPCLK) Quasi mode
+  61   1          P00_QUASI_MODE;                            //P00 (MOSI) Quasi mode
+  62   1          P01_QUASI_MODE;                            //P01 (MISO) Quasi mode;
+  63   1      
+  64   1          clr_SPCR_MSTR;                             // SPI in Slave mode 
+  65   1          clr_SPCR_LSBFE;                            // MSB first 
+  66   1      
+  67   1          clr_SPCR_CPOL;                             // The SPI clock is low in idle mode
+  68   1          set_SPCR_CPHA;                             // The data is sample on the second edge of SPI clock
+  69   1             
+  70   1          ENABLE_SPI0_INTERRUPT;                     // Enable SPI interrupt
+  71   1          set_IE_EA;
+  72   1          set_SPCR_SPIEN;                            // Enable SPI function
+  73   1          
+  74   1          clr_SPSR_SPIF;                             // Clear SPI flag
+  75   1          SPDR = u8Transmit_Data[0];
+  76   1      }
+  77          
+  78          //--------------------------------------------------------------------------------------------------------
+             ----
+  79          void Slave_Polling_Send_Data(void)
+  80          {
+  81   1      
+  82   1          DISABLE_SPI0_INTERRUPT;
+  83   1          SPI_Send_Flag = 1;
+  84   1      
+  85   1          Spi_Write_Byte(0x4F);
+  86   1          Spi_Write_Byte(0x4E);
+  87   1      
+  88   1          ENABLE_SPI0_INTERRUPT;
+  89   1      }
+  90          //--------------------------------------------------------------------------------------------------------
+             ----
+  91          
+  92          
+  93          void main(void)
+  94          {   
+  95   1          MODIFY_HIRC(HIRC_24);
+  96   1          Enable_UART0_VCOM_printf_24M_115200();
+  97   1          printf ("\n\r SPI slave receive start...");
+  98   1      
+  99   1          SPI_Initial();
+ 100   1        /* Slave interrupt receive data */
+ 101   1          while (!SPI_Receive_Finish_Flag);           // Wait Slave receive data from master use the interrupt
+ 102   1      
+ 103   1        /* Slave interrupt receive data */
+ 104   1          Slave_Polling_Send_Data();                  // Slave transmit data to master
+ 105   1          clr_SPIF;
+ 106   1          SPDR = 0x00;
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:05:25 PAGE 3   
+
+ 107   1      
+ 108   1          if(u8Receive_Data[0] != 0x90)               // Receive 1st DATA form master 
+ 109   1              SPI_Error(); 
+ 110   1          if(u8Receive_Data[1] != 0x01)               // Receive 2nd DATA form master 
+ 111   1              SPI_Error();
+ 112   1          if(u8Receive_Data[2] != 0x02)               // Receive 3rd DATA form master 
+ 113   1              SPI_Error();
+ 114   1          if(u8Receive_Data[3] != 0x03)               // Receive 4th DATA form master 
+ 115   1              SPI_Error();
+ 116   1          if(u8Receive_Data[4] != 0x04)               // Receive 5th DATA form master 
+ 117   1              SPI_Error();
+ 118   1      
+ 119   1          printf ("\n\r SPI slave receive done.");
+ 120   1          while(1);                                    // SPI transmission finish
+ 121   1      }
+ 122          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    346    ----
+   CONSTANT SIZE    =     79    ----
+   XDATA SIZE       =     11    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

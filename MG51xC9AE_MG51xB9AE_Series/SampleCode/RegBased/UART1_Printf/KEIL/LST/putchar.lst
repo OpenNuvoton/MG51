@@ -1,0 +1,86 @@
+C51 COMPILER V9.60.0.0   PUTCHAR                                                           03/12/2025 14:06:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PUTCHAR
+OBJECT MODULE PLACED IN .\Output\putchar.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\putchar.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Libr
+                    -ary\Device\Include;..\..\..\..\Library\StdDriver\inc) DEFINE(FOSC_160000) DEBUG PRINT(.\LST\putchar.lst) TABS(2) OBJECT(
+                    -.\Output\putchar.obj)
+
+line level    source
+
+   1          /***********************************************************************/
+   2          /*  This file is part of the C51 Compiler package                      */
+   3          /*  Copyright KEIL ELEKTRONIK GmbH 1990 - 2002                         */
+   4          /***********************************************************************/
+   5          /*                                                                     */
+   6          /*  PUTCHAR.C:  This routine is the general character output of C51.   */
+   7          /*  You may add this file to a uVision2 project.                       */
+   8          /*                                                                     */
+   9          /*  To translate this file use C51 with the following invocation:      */
+  10          /*     C51 PUTCHAR.C <memory model>                                    */
+  11          /*                                                                     */
+  12          /*  To link the modified PUTCHAR.OBJ file to your application use the  */
+  13          /*  following Lx51 invocation:                                         */
+  14          /*     Lx51 <your object file list>, PUTCHAR.OBJ <controls>            */
+  15          /*                                                                     */
+  16          /***********************************************************************/
+  17          #include "numicro_8051.h"
+  18          
+  19          /*****************************************************************************/
+  20          /* Define putchar send from UART1, printf function will send from P1.6(TXD_1)*/
+  21          /* NOTICE: Since UART1 pin is multi-function with OCD DATA/CLK pin.          */
+  22          /* Suggest download than use run with realchip but not OCD mode.             */
+  23          /*****************************************************************************/
+  24          /*
+  25           * putchar (mini version): outputs charcter only
+  26           */
+  27          #if 0                                               /* for UART0 */
+              #if defined __C51__
+              char putchar (char c)
+              
+              #elif defined __ICC8051__
+              int putchar (int c)
+              
+              #elif defined __SDCC__
+              #endif
+              {
+                UART_Send_Data(UART0,c);
+                return (c);
+              }
+              #endif
+  41          
+  42          #if 1                                                /* for UART0 */
+  43          #if defined __C51__
+  44          char putchar (char c)
+  45          
+  46          #elif defined __ICC8051__
+              int putchar (int c)
+              
+              #elif defined __SDCC__
+              #endif
+  51          {
+  52   1        UART_Send_Data(UART1,c);
+  53   1        return (c);
+C51 COMPILER V9.60.0.0   PUTCHAR                                                           03/12/2025 14:06:05 PAGE 2   
+
+  54   1      }
+  55          #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     17    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       1
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

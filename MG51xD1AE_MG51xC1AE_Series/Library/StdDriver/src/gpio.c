@@ -168,7 +168,7 @@ void GPIO_SetMode(uint8_t u8Port, uint8_t u8PinMask, uint8_t u8Mode)
   * @note none
   * @exmaple :   GPIO_Pull_Enable(P1,SET_BIT0 | SET_BIT5,PullUp);
   */
-void GPIO_SchmittTrigger(unsigned char u8Port, unsigned char u8PinMask, unsigned char u8SStauts)
+void GPIO_SchmittTrigger(uint8_t u8Port, uint8_t u8PinMask, uint8_t u8SStauts)
 {
   SFRS=1;
   switch (u8SStauts)
@@ -225,7 +225,7 @@ POP_SFRS;
   * @note none
   * @exmaple :   GPIO_Pull_Enable(P1,SET_BIT0 | SET_BIT5,PullUp);
   */
-void GPIO_SlewRate(unsigned char u8Port, unsigned char u8PinMask, unsigned char u8SRStauts)
+void GPIO_SlewRate(uint8_t u8Port, uint8_t u8PinMask, uint8_t u8SRStauts)
 {
   SFRS=1;
   switch (u8SRStauts)

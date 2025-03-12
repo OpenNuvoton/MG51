@@ -1,0 +1,179 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:04:17 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main.c LARGE OMF2 OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\..\..\Library
+                    -\Device\Include;..\..\..\..\Library\StdDriver\inc) DEBUG PRINT(.\LST\main.lst) TABS(2) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* SPDX-License-Identifier: Apache-2.0                                                                    
+             - */
+   4          /* Copyright(c) 2023 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   5          /*                                                                                                        
+             - */
+   6          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   7          #include "numicro_8051.h"
+   8          
+   9          
+  10          #define I2C_CLOCK                 13
+  11          #define I2C_SLAVE_ADDRESS         0xA4
+  12          #define I2C_WR                    0
+  13          #define I2C_RD                    1
+  14          
+  15          #define LOOP_SIZE                 10
+  16          
+  17          //========================================================================================================
+  18          void Init_I2C(void)
+  19          {
+  20   1          P13_OPENDRAIN_MODE;          // Modify SCL pin to Open drain mode. don't forget the pull high resister
+             - in circuit
+  21   1          P14_OPENDRAIN_MODE;          // Modify SDA pin to Open drain mode. don't forget the pull high resister
+             - in circuit
+  22   1      
+  23   1          /* Set I2C clock rate */
+  24   1          I2CLK = I2C_CLOCK; 
+  25   1      
+  26   1          /* Enable I2C */
+  27   1          set_I2CON_I2CEN;                                   
+  28   1      }
+  29          //========================================================================================================
+  30          void I2C_Error(void)
+  31          {
+  32   1          while (1);    
+  33   1      }
+  34          //========================================================================================================
+  35          
+  36          //--------------------------------------------------------------------------------------------
+  37          //----  Page Write----------------------------------------------------------------------------
+  38          //--------------------------------------------------------------------------------------------
+  39          void I2C_Write_Process(uint8_t u8DAT)
+  40          {
+  41   1          uint8_t  u8Count;
+  42   1          /* Write Step1 */
+  43   1          set_I2CON_STA;                                    /* Send Start bit to I2C EEPROM */
+  44   1          clr_I2CON_SI;
+  45   1          while (!SI);                                /*Check SI set or not  */
+  46   1          if (I2STAT != 0x08)                         /*Check status value after every step   */
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:04:17 PAGE 2   
+
+  47   1              I2C_Error();
+  48   1          
+  49   1          /* Write Step2 */
+  50   1          clr_I2CON_STA;                                    /*STA=0*/
+  51   1          I2DAT = (I2C_SLAVE_ADDRESS | I2C_WR);
+  52   1          clr_I2CON_SI;
+  53   1          while (!SI);                                /*Check SI set or not */
+  54   1          if (I2STAT != 0x18)              
+  55   1              I2C_Error();
+  56   1      
+  57   1          /* Write Step3 */
+  58   1          for (u8Count = 0; u8Count < LOOP_SIZE; u8Count++)
+  59   1          {
+  60   2              I2DAT = u8DAT;
+  61   2              clr_I2CON_SI;
+  62   2              while (!SI);                            /*Check SI set or not*/
+  63   2              if (I2STAT != 0x28)              
+  64   2                  I2C_Error();
+  65   2      
+  66   2              u8DAT = ~u8DAT;        
+  67   2          }
+  68   1      
+  69   1          /* Write Step4 */
+  70   1          set_I2CON_STO;
+  71   1          clr_I2CON_SI;
+  72   1          while (STO);                                /* Check STOP signal */
+  73   1        }
+  74            
+  75          //--------------------------------------------------------------------------------------------
+  76          //----  Page Read ----------------------------------------------------------------------------
+  77          //--------------------------------------------------------------------------------------------
+  78          void I2C_Read_Process(uint8_t u8DAT)
+  79          {
+  80   1          uint8_t  u8Count;
+  81   1          /* Read Step1 */
+  82   1          set_I2CON_STA;
+  83   1          clr_I2CON_SI;          
+  84   1          while (!SI);                                //Check SI set or not
+  85   1          if (I2STAT != 0x08)                         //Check status value after every step
+  86   1              I2C_Error();
+  87   1      
+  88   1          /* Step13 */
+  89   1          clr_I2CON_STA;                                    //STA needs to be cleared after START codition is ge
+             -nerated
+  90   1          I2DAT = (I2C_SLAVE_ADDRESS | I2C_RD);
+  91   1          clr_I2CON_SI;
+  92   1          while (!SI);                                //Check SI set or not
+  93   1          if (I2STAT != 0x40)              
+  94   1              I2C_Error();
+  95   1          
+  96   1          /* Step14 */
+  97   1          for (u8Count = 0; u8Count <LOOP_SIZE; u8Count++)
+  98   1          {
+  99   2              set_I2CON_AA;
+ 100   2              clr_I2CON_SI;        
+ 101   2              while (!SI);                            //Check SI set or not
+ 102   2      
+ 103   2              if (I2STAT != 0x50)              
+ 104   2                  I2C_Error();
+ 105   2              
+ 106   2              if (I2DAT != u8DAT)             
+ 107   2                  I2C_Error();
+C51 COMPILER V9.60.0.0   MAIN                                                              03/12/2025 14:04:17 PAGE 3   
+
+ 108   2              u8DAT = ~u8DAT; 
+ 109   2          } 
+ 110   1          
+ 111   1          /* Step15 */
+ 112   1          clr_I2CON_AA;
+ 113   1          clr_I2CON_SI;
+ 114   1          while (!SI);                                //Check SI set or not
+ 115   1          if (I2STAT != 0x58)              
+ 116   1              I2C_Error();
+ 117   1      
+ 118   1          /* Step16 */
+ 119   1          set_I2CON_STO;
+ 120   1          clr_I2CON_SI;
+ 121   1          while (STO);                                /* Check STOP signal */ 
+ 122   1      }
+ 123          //========================================================================================================
+ 124          void main(void)
+ 125          {
+ 126   1          /* Note
+ 127   1             MCU power on system clock is HIRC (22.1184MHz), so Fsys = 22.1184MHz
+ 128   1          */
+ 129   1          
+ 130   1          Init_I2C();                                 /* initial I2C circuit  */
+ 131   1          I2C_Write_Process(0x55);                          /* I2C Master will send 10 byte 0x55,0xAA,.... to sl
+             -ave */
+ 132   1          I2C_Read_Process(0x55);
+ 133   1      
+ 134   1          while (1);
+ 135   1      /* =================== */
+ 136   1      }
+ 137          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    222    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

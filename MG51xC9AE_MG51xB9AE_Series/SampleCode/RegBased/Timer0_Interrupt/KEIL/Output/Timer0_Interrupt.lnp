@@ -1,0 +1,9 @@
+".\Output\main.obj",
+".\Output\common.obj",
+".\Output\timer.obj",
+".\Output\sys.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\Timer0_Interrupt" 
+
+PRINT(".\lst\Timer0_Interrupt.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

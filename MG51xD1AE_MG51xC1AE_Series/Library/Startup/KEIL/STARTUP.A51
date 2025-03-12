@@ -97,9 +97,9 @@ DPH     DATA    83H
 
 STARTUP1:
 ;Disable POR 
-;    MOV 0C7H,#0AAH
-;    MOV 0C7H,#55H
-;    MOV 0FDH,#5AH
+    MOV 0C7H,#0AAH
+    MOV 0C7H,#55H
+    MOV 0FDH,#5AH
     
 ;    MOV 0C7H,#0AAH
 ;    MOV 0C7H,#55H

@@ -1,0 +1,3733 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.6 #13647 (MINGW32)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mmcs51 --model-large
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _Enable_UART0_VCOM_printf_24M_115200
+                                     13 	.globl _MODIFY_HIRC
+                                     14 	.globl _printf
+                                     15 	.globl _MOSI
+                                     16 	.globl _P00
+                                     17 	.globl _MISO
+                                     18 	.globl _P01
+                                     19 	.globl _RXD_1
+                                     20 	.globl _P02
+                                     21 	.globl _P03
+                                     22 	.globl _STADC
+                                     23 	.globl _P04
+                                     24 	.globl _P05
+                                     25 	.globl _TXD
+                                     26 	.globl _P06
+                                     27 	.globl _RXD
+                                     28 	.globl _P07
+                                     29 	.globl _IT0
+                                     30 	.globl _IE0
+                                     31 	.globl _IT1
+                                     32 	.globl _IE1
+                                     33 	.globl _TR0
+                                     34 	.globl _TF0
+                                     35 	.globl _TR1
+                                     36 	.globl _TF1
+                                     37 	.globl _P10
+                                     38 	.globl _P11
+                                     39 	.globl _P12
+                                     40 	.globl _SCL
+                                     41 	.globl _P13
+                                     42 	.globl _SDA
+                                     43 	.globl _P14
+                                     44 	.globl _P15
+                                     45 	.globl _TXD_1
+                                     46 	.globl _P16
+                                     47 	.globl _P17
+                                     48 	.globl _RI
+                                     49 	.globl _TI
+                                     50 	.globl _RB8
+                                     51 	.globl _TB8
+                                     52 	.globl _REN
+                                     53 	.globl _SM2
+                                     54 	.globl _SM1
+                                     55 	.globl _FE
+                                     56 	.globl _SM0
+                                     57 	.globl _P20
+                                     58 	.globl _EX0
+                                     59 	.globl _ET0
+                                     60 	.globl _EX1
+                                     61 	.globl _ET1
+                                     62 	.globl _ES
+                                     63 	.globl _EBOD
+                                     64 	.globl _EADC
+                                     65 	.globl _EA
+                                     66 	.globl _P30
+                                     67 	.globl _PX0
+                                     68 	.globl _PT0
+                                     69 	.globl _PX1
+                                     70 	.globl _PT1
+                                     71 	.globl _PS
+                                     72 	.globl _PBOD
+                                     73 	.globl _PADC
+                                     74 	.globl _I2CPX
+                                     75 	.globl _AA
+                                     76 	.globl _SI
+                                     77 	.globl _STO
+                                     78 	.globl _STA
+                                     79 	.globl _I2CEN
+                                     80 	.globl _CM_RL2
+                                     81 	.globl _TR2
+                                     82 	.globl _TF2
+                                     83 	.globl _P
+                                     84 	.globl _OV
+                                     85 	.globl _RS0
+                                     86 	.globl _RS1
+                                     87 	.globl _F0
+                                     88 	.globl _AC
+                                     89 	.globl _CY
+                                     90 	.globl _CLRPWM
+                                     91 	.globl _PWMF
+                                     92 	.globl _LOAD
+                                     93 	.globl _PWMRUN
+                                     94 	.globl _ADCHS0
+                                     95 	.globl _ADCHS1
+                                     96 	.globl _ADCHS2
+                                     97 	.globl _ADCHS3
+                                     98 	.globl _ETGSEL0
+                                     99 	.globl _ETGSEL1
+                                    100 	.globl _ADCS
+                                    101 	.globl _ADCF
+                                    102 	.globl _RI_1
+                                    103 	.globl _TI_1
+                                    104 	.globl _RB8_1
+                                    105 	.globl _TB8_1
+                                    106 	.globl _REN_1
+                                    107 	.globl _SM2_1
+                                    108 	.globl _SM1_1
+                                    109 	.globl _FE_1
+                                    110 	.globl _SM0_1
+                                    111 	.globl _EIPH1
+                                    112 	.globl _EIP1
+                                    113 	.globl _PMD
+                                    114 	.globl _PMEN
+                                    115 	.globl _PDTCNT
+                                    116 	.globl _PDTEN
+                                    117 	.globl _SCON_1
+                                    118 	.globl _EIPH
+                                    119 	.globl _AINDIDS
+                                    120 	.globl _SPDR
+                                    121 	.globl _SPSR
+                                    122 	.globl _SPCR2
+                                    123 	.globl _SPCR
+                                    124 	.globl _CAPCON4
+                                    125 	.globl _CAPCON3
+                                    126 	.globl _B
+                                    127 	.globl _EIP
+                                    128 	.globl _C2H
+                                    129 	.globl _C2L
+                                    130 	.globl _PIF
+                                    131 	.globl _PIPEN
+                                    132 	.globl _PINEN
+                                    133 	.globl _PICON
+                                    134 	.globl _ADCCON0
+                                    135 	.globl _C1H
+                                    136 	.globl _C1L
+                                    137 	.globl _C0H
+                                    138 	.globl _C0L
+                                    139 	.globl _ADCDLY
+                                    140 	.globl _ADCCON2
+                                    141 	.globl _ADCCON1
+                                    142 	.globl _ACC
+                                    143 	.globl _PWMCON1
+                                    144 	.globl _PIOCON0
+                                    145 	.globl _PWM3L
+                                    146 	.globl _PWM2L
+                                    147 	.globl _PWM1L
+                                    148 	.globl _PWM0L
+                                    149 	.globl _PWMPL
+                                    150 	.globl _PWMCON0
+                                    151 	.globl _FBD
+                                    152 	.globl _PNP
+                                    153 	.globl _PWM3H
+                                    154 	.globl _PWM2H
+                                    155 	.globl _PWM1H
+                                    156 	.globl _PWM0H
+                                    157 	.globl _PWMPH
+                                    158 	.globl _PSW
+                                    159 	.globl _ADCMPH
+                                    160 	.globl _ADCMPL
+                                    161 	.globl _PWM5L
+                                    162 	.globl _TH2
+                                    163 	.globl _PWM4L
+                                    164 	.globl _TL2
+                                    165 	.globl _RCMP2H
+                                    166 	.globl _RCMP2L
+                                    167 	.globl _T2MOD
+                                    168 	.globl _T2CON
+                                    169 	.globl _TA
+                                    170 	.globl _PIOCON1
+                                    171 	.globl _RH3
+                                    172 	.globl _PWM5H
+                                    173 	.globl _RL3
+                                    174 	.globl _PWM4H
+                                    175 	.globl _T3CON
+                                    176 	.globl _ADCRH
+                                    177 	.globl _ADCRL
+                                    178 	.globl _I2ADDR
+                                    179 	.globl _I2CON
+                                    180 	.globl _I2TOC
+                                    181 	.globl _I2CLK
+                                    182 	.globl _I2STAT
+                                    183 	.globl _I2DAT
+                                    184 	.globl _SADDR_1
+                                    185 	.globl _SADEN_1
+                                    186 	.globl _SADEN
+                                    187 	.globl _IP
+                                    188 	.globl _PWMINTC
+                                    189 	.globl _IPH
+                                    190 	.globl _P2S
+                                    191 	.globl _P1SR
+                                    192 	.globl _P1M2
+                                    193 	.globl _P1S
+                                    194 	.globl _P1M1
+                                    195 	.globl _P0SR
+                                    196 	.globl _P0M2
+                                    197 	.globl _P0S
+                                    198 	.globl _P0M1
+                                    199 	.globl _P3
+                                    200 	.globl _IAPCN
+                                    201 	.globl _IAPFD
+                                    202 	.globl _P3SR
+                                    203 	.globl _P3M2
+                                    204 	.globl _P3S
+                                    205 	.globl _P3M1
+                                    206 	.globl _BODCON1
+                                    207 	.globl _WDCON
+                                    208 	.globl _SADDR
+                                    209 	.globl _IE
+                                    210 	.globl _IAPAH
+                                    211 	.globl _IAPAL
+                                    212 	.globl _IAPUEN
+                                    213 	.globl _IAPTRG
+                                    214 	.globl _BODCON0
+                                    215 	.globl _AUXR1
+                                    216 	.globl _P2
+                                    217 	.globl _CHPCON
+                                    218 	.globl _EIE1
+                                    219 	.globl _EIE
+                                    220 	.globl _SBUF_1
+                                    221 	.globl _SBUF
+                                    222 	.globl _SCON
+                                    223 	.globl _CKEN
+                                    224 	.globl _CKSWT
+                                    225 	.globl _CKDIV
+                                    226 	.globl _CAPCON2
+                                    227 	.globl _CAPCON1
+                                    228 	.globl _CAPCON0
+                                    229 	.globl _SFRS
+                                    230 	.globl _P1
+                                    231 	.globl _WKCON
+                                    232 	.globl _CKCON
+                                    233 	.globl _TH1
+                                    234 	.globl _TH0
+                                    235 	.globl _TL1
+                                    236 	.globl _TL0
+                                    237 	.globl _TMOD
+                                    238 	.globl _TCON
+                                    239 	.globl _PCON
+                                    240 	.globl _RWK
+                                    241 	.globl _RCTRIM1
+                                    242 	.globl _RCTRIM0
+                                    243 	.globl _DPH
+                                    244 	.globl _DPL
+                                    245 	.globl _SP
+                                    246 	.globl _P0
+                                    247 ;--------------------------------------------------------
+                                    248 ; special function registers
+                                    249 ;--------------------------------------------------------
+                                    250 	.area RSEG    (ABS,DATA)
+      000000                        251 	.org 0x0000
+                           000080   252 G$P0$0_0$0 == 0x0080
+                           000080   253 _P0	=	0x0080
+                           000081   254 G$SP$0_0$0 == 0x0081
+                           000081   255 _SP	=	0x0081
+                           000082   256 G$DPL$0_0$0 == 0x0082
+                           000082   257 _DPL	=	0x0082
+                           000083   258 G$DPH$0_0$0 == 0x0083
+                           000083   259 _DPH	=	0x0083
+                           000084   260 G$RCTRIM0$0_0$0 == 0x0084
+                           000084   261 _RCTRIM0	=	0x0084
+                           000085   262 G$RCTRIM1$0_0$0 == 0x0085
+                           000085   263 _RCTRIM1	=	0x0085
+                           000086   264 G$RWK$0_0$0 == 0x0086
+                           000086   265 _RWK	=	0x0086
+                           000087   266 G$PCON$0_0$0 == 0x0087
+                           000087   267 _PCON	=	0x0087
+                           000088   268 G$TCON$0_0$0 == 0x0088
+                           000088   269 _TCON	=	0x0088
+                           000089   270 G$TMOD$0_0$0 == 0x0089
+                           000089   271 _TMOD	=	0x0089
+                           00008A   272 G$TL0$0_0$0 == 0x008a
+                           00008A   273 _TL0	=	0x008a
+                           00008B   274 G$TL1$0_0$0 == 0x008b
+                           00008B   275 _TL1	=	0x008b
+                           00008C   276 G$TH0$0_0$0 == 0x008c
+                           00008C   277 _TH0	=	0x008c
+                           00008D   278 G$TH1$0_0$0 == 0x008d
+                           00008D   279 _TH1	=	0x008d
+                           00008E   280 G$CKCON$0_0$0 == 0x008e
+                           00008E   281 _CKCON	=	0x008e
+                           00008F   282 G$WKCON$0_0$0 == 0x008f
+                           00008F   283 _WKCON	=	0x008f
+                           000090   284 G$P1$0_0$0 == 0x0090
+                           000090   285 _P1	=	0x0090
+                           000091   286 G$SFRS$0_0$0 == 0x0091
+                           000091   287 _SFRS	=	0x0091
+                           000092   288 G$CAPCON0$0_0$0 == 0x0092
+                           000092   289 _CAPCON0	=	0x0092
+                           000093   290 G$CAPCON1$0_0$0 == 0x0093
+                           000093   291 _CAPCON1	=	0x0093
+                           000094   292 G$CAPCON2$0_0$0 == 0x0094
+                           000094   293 _CAPCON2	=	0x0094
+                           000095   294 G$CKDIV$0_0$0 == 0x0095
+                           000095   295 _CKDIV	=	0x0095
+                           000096   296 G$CKSWT$0_0$0 == 0x0096
+                           000096   297 _CKSWT	=	0x0096
+                           000097   298 G$CKEN$0_0$0 == 0x0097
+                           000097   299 _CKEN	=	0x0097
+                           000098   300 G$SCON$0_0$0 == 0x0098
+                           000098   301 _SCON	=	0x0098
+                           000099   302 G$SBUF$0_0$0 == 0x0099
+                           000099   303 _SBUF	=	0x0099
+                           00009A   304 G$SBUF_1$0_0$0 == 0x009a
+                           00009A   305 _SBUF_1	=	0x009a
+                           00009B   306 G$EIE$0_0$0 == 0x009b
+                           00009B   307 _EIE	=	0x009b
+                           00009C   308 G$EIE1$0_0$0 == 0x009c
+                           00009C   309 _EIE1	=	0x009c
+                           00009F   310 G$CHPCON$0_0$0 == 0x009f
+                           00009F   311 _CHPCON	=	0x009f
+                           0000A0   312 G$P2$0_0$0 == 0x00a0
+                           0000A0   313 _P2	=	0x00a0
+                           0000A2   314 G$AUXR1$0_0$0 == 0x00a2
+                           0000A2   315 _AUXR1	=	0x00a2
+                           0000A3   316 G$BODCON0$0_0$0 == 0x00a3
+                           0000A3   317 _BODCON0	=	0x00a3
+                           0000A4   318 G$IAPTRG$0_0$0 == 0x00a4
+                           0000A4   319 _IAPTRG	=	0x00a4
+                           0000A5   320 G$IAPUEN$0_0$0 == 0x00a5
+                           0000A5   321 _IAPUEN	=	0x00a5
+                           0000A6   322 G$IAPAL$0_0$0 == 0x00a6
+                           0000A6   323 _IAPAL	=	0x00a6
+                           0000A7   324 G$IAPAH$0_0$0 == 0x00a7
+                           0000A7   325 _IAPAH	=	0x00a7
+                           0000A8   326 G$IE$0_0$0 == 0x00a8
+                           0000A8   327 _IE	=	0x00a8
+                           0000A9   328 G$SADDR$0_0$0 == 0x00a9
+                           0000A9   329 _SADDR	=	0x00a9
+                           0000AA   330 G$WDCON$0_0$0 == 0x00aa
+                           0000AA   331 _WDCON	=	0x00aa
+                           0000AB   332 G$BODCON1$0_0$0 == 0x00ab
+                           0000AB   333 _BODCON1	=	0x00ab
+                           0000AC   334 G$P3M1$0_0$0 == 0x00ac
+                           0000AC   335 _P3M1	=	0x00ac
+                           0000AC   336 G$P3S$0_0$0 == 0x00ac
+                           0000AC   337 _P3S	=	0x00ac
+                           0000AD   338 G$P3M2$0_0$0 == 0x00ad
+                           0000AD   339 _P3M2	=	0x00ad
+                           0000AD   340 G$P3SR$0_0$0 == 0x00ad
+                           0000AD   341 _P3SR	=	0x00ad
+                           0000AE   342 G$IAPFD$0_0$0 == 0x00ae
+                           0000AE   343 _IAPFD	=	0x00ae
+                           0000AF   344 G$IAPCN$0_0$0 == 0x00af
+                           0000AF   345 _IAPCN	=	0x00af
+                           0000B0   346 G$P3$0_0$0 == 0x00b0
+                           0000B0   347 _P3	=	0x00b0
+                           0000B1   348 G$P0M1$0_0$0 == 0x00b1
+                           0000B1   349 _P0M1	=	0x00b1
+                           0000B1   350 G$P0S$0_0$0 == 0x00b1
+                           0000B1   351 _P0S	=	0x00b1
+                           0000B2   352 G$P0M2$0_0$0 == 0x00b2
+                           0000B2   353 _P0M2	=	0x00b2
+                           0000B2   354 G$P0SR$0_0$0 == 0x00b2
+                           0000B2   355 _P0SR	=	0x00b2
+                           0000B3   356 G$P1M1$0_0$0 == 0x00b3
+                           0000B3   357 _P1M1	=	0x00b3
+                           0000B3   358 G$P1S$0_0$0 == 0x00b3
+                           0000B3   359 _P1S	=	0x00b3
+                           0000B4   360 G$P1M2$0_0$0 == 0x00b4
+                           0000B4   361 _P1M2	=	0x00b4
+                           0000B4   362 G$P1SR$0_0$0 == 0x00b4
+                           0000B4   363 _P1SR	=	0x00b4
+                           0000B5   364 G$P2S$0_0$0 == 0x00b5
+                           0000B5   365 _P2S	=	0x00b5
+                           0000B7   366 G$IPH$0_0$0 == 0x00b7
+                           0000B7   367 _IPH	=	0x00b7
+                           0000B7   368 G$PWMINTC$0_0$0 == 0x00b7
+                           0000B7   369 _PWMINTC	=	0x00b7
+                           0000B8   370 G$IP$0_0$0 == 0x00b8
+                           0000B8   371 _IP	=	0x00b8
+                           0000B9   372 G$SADEN$0_0$0 == 0x00b9
+                           0000B9   373 _SADEN	=	0x00b9
+                           0000BA   374 G$SADEN_1$0_0$0 == 0x00ba
+                           0000BA   375 _SADEN_1	=	0x00ba
+                           0000BB   376 G$SADDR_1$0_0$0 == 0x00bb
+                           0000BB   377 _SADDR_1	=	0x00bb
+                           0000BC   378 G$I2DAT$0_0$0 == 0x00bc
+                           0000BC   379 _I2DAT	=	0x00bc
+                           0000BD   380 G$I2STAT$0_0$0 == 0x00bd
+                           0000BD   381 _I2STAT	=	0x00bd
+                           0000BE   382 G$I2CLK$0_0$0 == 0x00be
+                           0000BE   383 _I2CLK	=	0x00be
+                           0000BF   384 G$I2TOC$0_0$0 == 0x00bf
+                           0000BF   385 _I2TOC	=	0x00bf
+                           0000C0   386 G$I2CON$0_0$0 == 0x00c0
+                           0000C0   387 _I2CON	=	0x00c0
+                           0000C1   388 G$I2ADDR$0_0$0 == 0x00c1
+                           0000C1   389 _I2ADDR	=	0x00c1
+                           0000C2   390 G$ADCRL$0_0$0 == 0x00c2
+                           0000C2   391 _ADCRL	=	0x00c2
+                           0000C3   392 G$ADCRH$0_0$0 == 0x00c3
+                           0000C3   393 _ADCRH	=	0x00c3
+                           0000C4   394 G$T3CON$0_0$0 == 0x00c4
+                           0000C4   395 _T3CON	=	0x00c4
+                           0000C4   396 G$PWM4H$0_0$0 == 0x00c4
+                           0000C4   397 _PWM4H	=	0x00c4
+                           0000C5   398 G$RL3$0_0$0 == 0x00c5
+                           0000C5   399 _RL3	=	0x00c5
+                           0000C5   400 G$PWM5H$0_0$0 == 0x00c5
+                           0000C5   401 _PWM5H	=	0x00c5
+                           0000C6   402 G$RH3$0_0$0 == 0x00c6
+                           0000C6   403 _RH3	=	0x00c6
+                           0000C6   404 G$PIOCON1$0_0$0 == 0x00c6
+                           0000C6   405 _PIOCON1	=	0x00c6
+                           0000C7   406 G$TA$0_0$0 == 0x00c7
+                           0000C7   407 _TA	=	0x00c7
+                           0000C8   408 G$T2CON$0_0$0 == 0x00c8
+                           0000C8   409 _T2CON	=	0x00c8
+                           0000C9   410 G$T2MOD$0_0$0 == 0x00c9
+                           0000C9   411 _T2MOD	=	0x00c9
+                           0000CA   412 G$RCMP2L$0_0$0 == 0x00ca
+                           0000CA   413 _RCMP2L	=	0x00ca
+                           0000CB   414 G$RCMP2H$0_0$0 == 0x00cb
+                           0000CB   415 _RCMP2H	=	0x00cb
+                           0000CC   416 G$TL2$0_0$0 == 0x00cc
+                           0000CC   417 _TL2	=	0x00cc
+                           0000CC   418 G$PWM4L$0_0$0 == 0x00cc
+                           0000CC   419 _PWM4L	=	0x00cc
+                           0000CD   420 G$TH2$0_0$0 == 0x00cd
+                           0000CD   421 _TH2	=	0x00cd
+                           0000CD   422 G$PWM5L$0_0$0 == 0x00cd
+                           0000CD   423 _PWM5L	=	0x00cd
+                           0000CE   424 G$ADCMPL$0_0$0 == 0x00ce
+                           0000CE   425 _ADCMPL	=	0x00ce
+                           0000CF   426 G$ADCMPH$0_0$0 == 0x00cf
+                           0000CF   427 _ADCMPH	=	0x00cf
+                           0000D0   428 G$PSW$0_0$0 == 0x00d0
+                           0000D0   429 _PSW	=	0x00d0
+                           0000D1   430 G$PWMPH$0_0$0 == 0x00d1
+                           0000D1   431 _PWMPH	=	0x00d1
+                           0000D2   432 G$PWM0H$0_0$0 == 0x00d2
+                           0000D2   433 _PWM0H	=	0x00d2
+                           0000D3   434 G$PWM1H$0_0$0 == 0x00d3
+                           0000D3   435 _PWM1H	=	0x00d3
+                           0000D4   436 G$PWM2H$0_0$0 == 0x00d4
+                           0000D4   437 _PWM2H	=	0x00d4
+                           0000D5   438 G$PWM3H$0_0$0 == 0x00d5
+                           0000D5   439 _PWM3H	=	0x00d5
+                           0000D6   440 G$PNP$0_0$0 == 0x00d6
+                           0000D6   441 _PNP	=	0x00d6
+                           0000D7   442 G$FBD$0_0$0 == 0x00d7
+                           0000D7   443 _FBD	=	0x00d7
+                           0000D8   444 G$PWMCON0$0_0$0 == 0x00d8
+                           0000D8   445 _PWMCON0	=	0x00d8
+                           0000D9   446 G$PWMPL$0_0$0 == 0x00d9
+                           0000D9   447 _PWMPL	=	0x00d9
+                           0000DA   448 G$PWM0L$0_0$0 == 0x00da
+                           0000DA   449 _PWM0L	=	0x00da
+                           0000DB   450 G$PWM1L$0_0$0 == 0x00db
+                           0000DB   451 _PWM1L	=	0x00db
+                           0000DC   452 G$PWM2L$0_0$0 == 0x00dc
+                           0000DC   453 _PWM2L	=	0x00dc
+                           0000DD   454 G$PWM3L$0_0$0 == 0x00dd
+                           0000DD   455 _PWM3L	=	0x00dd
+                           0000DE   456 G$PIOCON0$0_0$0 == 0x00de
+                           0000DE   457 _PIOCON0	=	0x00de
+                           0000DF   458 G$PWMCON1$0_0$0 == 0x00df
+                           0000DF   459 _PWMCON1	=	0x00df
+                           0000E0   460 G$ACC$0_0$0 == 0x00e0
+                           0000E0   461 _ACC	=	0x00e0
+                           0000E1   462 G$ADCCON1$0_0$0 == 0x00e1
+                           0000E1   463 _ADCCON1	=	0x00e1
+                           0000E2   464 G$ADCCON2$0_0$0 == 0x00e2
+                           0000E2   465 _ADCCON2	=	0x00e2
+                           0000E3   466 G$ADCDLY$0_0$0 == 0x00e3
+                           0000E3   467 _ADCDLY	=	0x00e3
+                           0000E4   468 G$C0L$0_0$0 == 0x00e4
+                           0000E4   469 _C0L	=	0x00e4
+                           0000E5   470 G$C0H$0_0$0 == 0x00e5
+                           0000E5   471 _C0H	=	0x00e5
+                           0000E6   472 G$C1L$0_0$0 == 0x00e6
+                           0000E6   473 _C1L	=	0x00e6
+                           0000E7   474 G$C1H$0_0$0 == 0x00e7
+                           0000E7   475 _C1H	=	0x00e7
+                           0000E8   476 G$ADCCON0$0_0$0 == 0x00e8
+                           0000E8   477 _ADCCON0	=	0x00e8
+                           0000E9   478 G$PICON$0_0$0 == 0x00e9
+                           0000E9   479 _PICON	=	0x00e9
+                           0000EA   480 G$PINEN$0_0$0 == 0x00ea
+                           0000EA   481 _PINEN	=	0x00ea
+                           0000EB   482 G$PIPEN$0_0$0 == 0x00eb
+                           0000EB   483 _PIPEN	=	0x00eb
+                           0000EC   484 G$PIF$0_0$0 == 0x00ec
+                           0000EC   485 _PIF	=	0x00ec
+                           0000ED   486 G$C2L$0_0$0 == 0x00ed
+                           0000ED   487 _C2L	=	0x00ed
+                           0000EE   488 G$C2H$0_0$0 == 0x00ee
+                           0000EE   489 _C2H	=	0x00ee
+                           0000EF   490 G$EIP$0_0$0 == 0x00ef
+                           0000EF   491 _EIP	=	0x00ef
+                           0000F0   492 G$B$0_0$0 == 0x00f0
+                           0000F0   493 _B	=	0x00f0
+                           0000F1   494 G$CAPCON3$0_0$0 == 0x00f1
+                           0000F1   495 _CAPCON3	=	0x00f1
+                           0000F2   496 G$CAPCON4$0_0$0 == 0x00f2
+                           0000F2   497 _CAPCON4	=	0x00f2
+                           0000F3   498 G$SPCR$0_0$0 == 0x00f3
+                           0000F3   499 _SPCR	=	0x00f3
+                           0000F3   500 G$SPCR2$0_0$0 == 0x00f3
+                           0000F3   501 _SPCR2	=	0x00f3
+                           0000F4   502 G$SPSR$0_0$0 == 0x00f4
+                           0000F4   503 _SPSR	=	0x00f4
+                           0000F5   504 G$SPDR$0_0$0 == 0x00f5
+                           0000F5   505 _SPDR	=	0x00f5
+                           0000F6   506 G$AINDIDS$0_0$0 == 0x00f6
+                           0000F6   507 _AINDIDS	=	0x00f6
+                           0000F7   508 G$EIPH$0_0$0 == 0x00f7
+                           0000F7   509 _EIPH	=	0x00f7
+                           0000F8   510 G$SCON_1$0_0$0 == 0x00f8
+                           0000F8   511 _SCON_1	=	0x00f8
+                           0000F9   512 G$PDTEN$0_0$0 == 0x00f9
+                           0000F9   513 _PDTEN	=	0x00f9
+                           0000FA   514 G$PDTCNT$0_0$0 == 0x00fa
+                           0000FA   515 _PDTCNT	=	0x00fa
+                           0000FB   516 G$PMEN$0_0$0 == 0x00fb
+                           0000FB   517 _PMEN	=	0x00fb
+                           0000FC   518 G$PMD$0_0$0 == 0x00fc
+                           0000FC   519 _PMD	=	0x00fc
+                           0000FE   520 G$EIP1$0_0$0 == 0x00fe
+                           0000FE   521 _EIP1	=	0x00fe
+                           0000FF   522 G$EIPH1$0_0$0 == 0x00ff
+                           0000FF   523 _EIPH1	=	0x00ff
+                                    524 ;--------------------------------------------------------
+                                    525 ; special function bits
+                                    526 ;--------------------------------------------------------
+                                    527 	.area RSEG    (ABS,DATA)
+      000000                        528 	.org 0x0000
+                           0000FF   529 G$SM0_1$0_0$0 == 0x00ff
+                           0000FF   530 _SM0_1	=	0x00ff
+                           0000FF   531 G$FE_1$0_0$0 == 0x00ff
+                           0000FF   532 _FE_1	=	0x00ff
+                           0000FE   533 G$SM1_1$0_0$0 == 0x00fe
+                           0000FE   534 _SM1_1	=	0x00fe
+                           0000FD   535 G$SM2_1$0_0$0 == 0x00fd
+                           0000FD   536 _SM2_1	=	0x00fd
+                           0000FC   537 G$REN_1$0_0$0 == 0x00fc
+                           0000FC   538 _REN_1	=	0x00fc
+                           0000FB   539 G$TB8_1$0_0$0 == 0x00fb
+                           0000FB   540 _TB8_1	=	0x00fb
+                           0000FA   541 G$RB8_1$0_0$0 == 0x00fa
+                           0000FA   542 _RB8_1	=	0x00fa
+                           0000F9   543 G$TI_1$0_0$0 == 0x00f9
+                           0000F9   544 _TI_1	=	0x00f9
+                           0000F8   545 G$RI_1$0_0$0 == 0x00f8
+                           0000F8   546 _RI_1	=	0x00f8
+                           0000EF   547 G$ADCF$0_0$0 == 0x00ef
+                           0000EF   548 _ADCF	=	0x00ef
+                           0000EE   549 G$ADCS$0_0$0 == 0x00ee
+                           0000EE   550 _ADCS	=	0x00ee
+                           0000ED   551 G$ETGSEL1$0_0$0 == 0x00ed
+                           0000ED   552 _ETGSEL1	=	0x00ed
+                           0000EC   553 G$ETGSEL0$0_0$0 == 0x00ec
+                           0000EC   554 _ETGSEL0	=	0x00ec
+                           0000EB   555 G$ADCHS3$0_0$0 == 0x00eb
+                           0000EB   556 _ADCHS3	=	0x00eb
+                           0000EA   557 G$ADCHS2$0_0$0 == 0x00ea
+                           0000EA   558 _ADCHS2	=	0x00ea
+                           0000E9   559 G$ADCHS1$0_0$0 == 0x00e9
+                           0000E9   560 _ADCHS1	=	0x00e9
+                           0000E8   561 G$ADCHS0$0_0$0 == 0x00e8
+                           0000E8   562 _ADCHS0	=	0x00e8
+                           0000DF   563 G$PWMRUN$0_0$0 == 0x00df
+                           0000DF   564 _PWMRUN	=	0x00df
+                           0000DE   565 G$LOAD$0_0$0 == 0x00de
+                           0000DE   566 _LOAD	=	0x00de
+                           0000DD   567 G$PWMF$0_0$0 == 0x00dd
+                           0000DD   568 _PWMF	=	0x00dd
+                           0000DC   569 G$CLRPWM$0_0$0 == 0x00dc
+                           0000DC   570 _CLRPWM	=	0x00dc
+                           0000D7   571 G$CY$0_0$0 == 0x00d7
+                           0000D7   572 _CY	=	0x00d7
+                           0000D6   573 G$AC$0_0$0 == 0x00d6
+                           0000D6   574 _AC	=	0x00d6
+                           0000D5   575 G$F0$0_0$0 == 0x00d5
+                           0000D5   576 _F0	=	0x00d5
+                           0000D4   577 G$RS1$0_0$0 == 0x00d4
+                           0000D4   578 _RS1	=	0x00d4
+                           0000D3   579 G$RS0$0_0$0 == 0x00d3
+                           0000D3   580 _RS0	=	0x00d3
+                           0000D2   581 G$OV$0_0$0 == 0x00d2
+                           0000D2   582 _OV	=	0x00d2
+                           0000D0   583 G$P$0_0$0 == 0x00d0
+                           0000D0   584 _P	=	0x00d0
+                           0000CF   585 G$TF2$0_0$0 == 0x00cf
+                           0000CF   586 _TF2	=	0x00cf
+                           0000CA   587 G$TR2$0_0$0 == 0x00ca
+                           0000CA   588 _TR2	=	0x00ca
+                           0000C8   589 G$CM_RL2$0_0$0 == 0x00c8
+                           0000C8   590 _CM_RL2	=	0x00c8
+                           0000C6   591 G$I2CEN$0_0$0 == 0x00c6
+                           0000C6   592 _I2CEN	=	0x00c6
+                           0000C5   593 G$STA$0_0$0 == 0x00c5
+                           0000C5   594 _STA	=	0x00c5
+                           0000C4   595 G$STO$0_0$0 == 0x00c4
+                           0000C4   596 _STO	=	0x00c4
+                           0000C3   597 G$SI$0_0$0 == 0x00c3
+                           0000C3   598 _SI	=	0x00c3
+                           0000C2   599 G$AA$0_0$0 == 0x00c2
+                           0000C2   600 _AA	=	0x00c2
+                           0000C0   601 G$I2CPX$0_0$0 == 0x00c0
+                           0000C0   602 _I2CPX	=	0x00c0
+                           0000BE   603 G$PADC$0_0$0 == 0x00be
+                           0000BE   604 _PADC	=	0x00be
+                           0000BD   605 G$PBOD$0_0$0 == 0x00bd
+                           0000BD   606 _PBOD	=	0x00bd
+                           0000BC   607 G$PS$0_0$0 == 0x00bc
+                           0000BC   608 _PS	=	0x00bc
+                           0000BB   609 G$PT1$0_0$0 == 0x00bb
+                           0000BB   610 _PT1	=	0x00bb
+                           0000BA   611 G$PX1$0_0$0 == 0x00ba
+                           0000BA   612 _PX1	=	0x00ba
+                           0000B9   613 G$PT0$0_0$0 == 0x00b9
+                           0000B9   614 _PT0	=	0x00b9
+                           0000B8   615 G$PX0$0_0$0 == 0x00b8
+                           0000B8   616 _PX0	=	0x00b8
+                           0000B0   617 G$P30$0_0$0 == 0x00b0
+                           0000B0   618 _P30	=	0x00b0
+                           0000AF   619 G$EA$0_0$0 == 0x00af
+                           0000AF   620 _EA	=	0x00af
+                           0000AE   621 G$EADC$0_0$0 == 0x00ae
+                           0000AE   622 _EADC	=	0x00ae
+                           0000AD   623 G$EBOD$0_0$0 == 0x00ad
+                           0000AD   624 _EBOD	=	0x00ad
+                           0000AC   625 G$ES$0_0$0 == 0x00ac
+                           0000AC   626 _ES	=	0x00ac
+                           0000AB   627 G$ET1$0_0$0 == 0x00ab
+                           0000AB   628 _ET1	=	0x00ab
+                           0000AA   629 G$EX1$0_0$0 == 0x00aa
+                           0000AA   630 _EX1	=	0x00aa
+                           0000A9   631 G$ET0$0_0$0 == 0x00a9
+                           0000A9   632 _ET0	=	0x00a9
+                           0000A8   633 G$EX0$0_0$0 == 0x00a8
+                           0000A8   634 _EX0	=	0x00a8
+                           0000A0   635 G$P20$0_0$0 == 0x00a0
+                           0000A0   636 _P20	=	0x00a0
+                           00009F   637 G$SM0$0_0$0 == 0x009f
+                           00009F   638 _SM0	=	0x009f
+                           00009F   639 G$FE$0_0$0 == 0x009f
+                           00009F   640 _FE	=	0x009f
+                           00009E   641 G$SM1$0_0$0 == 0x009e
+                           00009E   642 _SM1	=	0x009e
+                           00009D   643 G$SM2$0_0$0 == 0x009d
+                           00009D   644 _SM2	=	0x009d
+                           00009C   645 G$REN$0_0$0 == 0x009c
+                           00009C   646 _REN	=	0x009c
+                           00009B   647 G$TB8$0_0$0 == 0x009b
+                           00009B   648 _TB8	=	0x009b
+                           00009A   649 G$RB8$0_0$0 == 0x009a
+                           00009A   650 _RB8	=	0x009a
+                           000099   651 G$TI$0_0$0 == 0x0099
+                           000099   652 _TI	=	0x0099
+                           000098   653 G$RI$0_0$0 == 0x0098
+                           000098   654 _RI	=	0x0098
+                           000097   655 G$P17$0_0$0 == 0x0097
+                           000097   656 _P17	=	0x0097
+                           000096   657 G$P16$0_0$0 == 0x0096
+                           000096   658 _P16	=	0x0096
+                           000096   659 G$TXD_1$0_0$0 == 0x0096
+                           000096   660 _TXD_1	=	0x0096
+                           000095   661 G$P15$0_0$0 == 0x0095
+                           000095   662 _P15	=	0x0095
+                           000094   663 G$P14$0_0$0 == 0x0094
+                           000094   664 _P14	=	0x0094
+                           000094   665 G$SDA$0_0$0 == 0x0094
+                           000094   666 _SDA	=	0x0094
+                           000093   667 G$P13$0_0$0 == 0x0093
+                           000093   668 _P13	=	0x0093
+                           000093   669 G$SCL$0_0$0 == 0x0093
+                           000093   670 _SCL	=	0x0093
+                           000092   671 G$P12$0_0$0 == 0x0092
+                           000092   672 _P12	=	0x0092
+                           000091   673 G$P11$0_0$0 == 0x0091
+                           000091   674 _P11	=	0x0091
+                           000090   675 G$P10$0_0$0 == 0x0090
+                           000090   676 _P10	=	0x0090
+                           00008F   677 G$TF1$0_0$0 == 0x008f
+                           00008F   678 _TF1	=	0x008f
+                           00008E   679 G$TR1$0_0$0 == 0x008e
+                           00008E   680 _TR1	=	0x008e
+                           00008D   681 G$TF0$0_0$0 == 0x008d
+                           00008D   682 _TF0	=	0x008d
+                           00008C   683 G$TR0$0_0$0 == 0x008c
+                           00008C   684 _TR0	=	0x008c
+                           00008B   685 G$IE1$0_0$0 == 0x008b
+                           00008B   686 _IE1	=	0x008b
+                           00008A   687 G$IT1$0_0$0 == 0x008a
+                           00008A   688 _IT1	=	0x008a
+                           000089   689 G$IE0$0_0$0 == 0x0089
+                           000089   690 _IE0	=	0x0089
+                           000088   691 G$IT0$0_0$0 == 0x0088
+                           000088   692 _IT0	=	0x0088
+                           000087   693 G$P07$0_0$0 == 0x0087
+                           000087   694 _P07	=	0x0087
+                           000087   695 G$RXD$0_0$0 == 0x0087
+                           000087   696 _RXD	=	0x0087
+                           000086   697 G$P06$0_0$0 == 0x0086
+                           000086   698 _P06	=	0x0086
+                           000086   699 G$TXD$0_0$0 == 0x0086
+                           000086   700 _TXD	=	0x0086
+                           000085   701 G$P05$0_0$0 == 0x0085
+                           000085   702 _P05	=	0x0085
+                           000084   703 G$P04$0_0$0 == 0x0084
+                           000084   704 _P04	=	0x0084
+                           000084   705 G$STADC$0_0$0 == 0x0084
+                           000084   706 _STADC	=	0x0084
+                           000083   707 G$P03$0_0$0 == 0x0083
+                           000083   708 _P03	=	0x0083
+                           000082   709 G$P02$0_0$0 == 0x0082
+                           000082   710 _P02	=	0x0082
+                           000082   711 G$RXD_1$0_0$0 == 0x0082
+                           000082   712 _RXD_1	=	0x0082
+                           000081   713 G$P01$0_0$0 == 0x0081
+                           000081   714 _P01	=	0x0081
+                           000081   715 G$MISO$0_0$0 == 0x0081
+                           000081   716 _MISO	=	0x0081
+                           000080   717 G$P00$0_0$0 == 0x0080
+                           000080   718 _P00	=	0x0080
+                           000080   719 G$MOSI$0_0$0 == 0x0080
+                           000080   720 _MOSI	=	0x0080
+                                    721 ;--------------------------------------------------------
+                                    722 ; overlayable register banks
+                                    723 ;--------------------------------------------------------
+                                    724 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        725 	.ds 8
+                                    726 ;--------------------------------------------------------
+                                    727 ; internal ram data
+                                    728 ;--------------------------------------------------------
+                                    729 	.area DSEG    (DATA)
+                                    730 ;--------------------------------------------------------
+                                    731 ; internal ram data
+                                    732 ;--------------------------------------------------------
+                                    733 	.area INITIALIZED
+                                    734 ;--------------------------------------------------------
+                                    735 ; overlayable items in internal ram
+                                    736 ;--------------------------------------------------------
+                                    737 ;--------------------------------------------------------
+                                    738 ; Stack segment in internal ram
+                                    739 ;--------------------------------------------------------
+                                    740 	.area SSEG
+      000033                        741 __start__stack:
+      000033                        742 	.ds	1
+                                    743 
+                                    744 ;--------------------------------------------------------
+                                    745 ; indirectly addressable internal ram data
+                                    746 ;--------------------------------------------------------
+                                    747 	.area ISEG    (DATA)
+                                    748 ;--------------------------------------------------------
+                                    749 ; absolute internal ram data
+                                    750 ;--------------------------------------------------------
+                                    751 	.area IABS    (ABS,DATA)
+                                    752 	.area IABS    (ABS,DATA)
+                                    753 ;--------------------------------------------------------
+                                    754 ; bit data
+                                    755 ;--------------------------------------------------------
+                                    756 	.area BSEG    (BIT)
+                                    757 ;--------------------------------------------------------
+                                    758 ; paged external ram data
+                                    759 ;--------------------------------------------------------
+                                    760 	.area PSEG    (PAG,XDATA)
+                                    761 ;--------------------------------------------------------
+                                    762 ; uninitialized external ram data
+                                    763 ;--------------------------------------------------------
+                                    764 	.area XSEG    (XDATA)
+                                    765 ;--------------------------------------------------------
+                                    766 ; absolute external ram data
+                                    767 ;--------------------------------------------------------
+                                    768 	.area XABS    (ABS,XDATA)
+                                    769 ;--------------------------------------------------------
+                                    770 ; initialized external ram data
+                                    771 ;--------------------------------------------------------
+                                    772 	.area XISEG   (XDATA)
+                                    773 	.area HOME    (CODE)
+                                    774 	.area GSINIT0 (CODE)
+                                    775 	.area GSINIT1 (CODE)
+                                    776 	.area GSINIT2 (CODE)
+                                    777 	.area GSINIT3 (CODE)
+                                    778 	.area GSINIT4 (CODE)
+                                    779 	.area GSINIT5 (CODE)
+                                    780 	.area GSINIT  (CODE)
+                                    781 	.area GSFINAL (CODE)
+                                    782 	.area CSEG    (CODE)
+                                    783 ;--------------------------------------------------------
+                                    784 ; interrupt vector
+                                    785 ;--------------------------------------------------------
+                                    786 	.area HOME    (CODE)
+      000000                        787 __interrupt_vect:
+      000000 02 00 06         [24]  788 	ljmp	__sdcc_gsinit_startup
+                                    789 ;--------------------------------------------------------
+                                    790 ; global & static initialisations
+                                    791 ;--------------------------------------------------------
+                                    792 	.area HOME    (CODE)
+                                    793 	.area GSINIT  (CODE)
+                                    794 	.area GSFINAL (CODE)
+                                    795 	.area GSINIT  (CODE)
+                                    796 	.globl __sdcc_gsinit_startup
+                                    797 	.globl __sdcc_program_startup
+                                    798 	.globl __start__stack
+                                    799 	.globl __mcs51_genXINIT
+                                    800 	.globl __mcs51_genXRAMCLEAR
+                                    801 	.globl __mcs51_genRAMCLEAR
+                                    802 	.area GSFINAL (CODE)
+      00005F 02 00 03         [24]  803 	ljmp	__sdcc_program_startup
+                                    804 ;--------------------------------------------------------
+                                    805 ; Home
+                                    806 ;--------------------------------------------------------
+                                    807 	.area HOME    (CODE)
+                                    808 	.area HOME    (CODE)
+      000003                        809 __sdcc_program_startup:
+      000003 02 00 62         [24]  810 	ljmp	_main
+                                    811 ;	return from main will return to caller
+                                    812 ;--------------------------------------------------------
+                                    813 ; code
+                                    814 ;--------------------------------------------------------
+                                    815 	.area CSEG    (CODE)
+                                    816 ;------------------------------------------------------------
+                                    817 ;Allocation info for local variables in function 'main'
+                                    818 ;------------------------------------------------------------
+                           000000   819 	Smain$main$0 ==.
+                                    820 ;	C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c:9: void main (void) 
+                                    821 ;	-----------------------------------------
+                                    822 ;	 function main
+                                    823 ;	-----------------------------------------
+      000062                        824 _main:
+                           000007   825 	ar7 = 0x07
+                           000006   826 	ar6 = 0x06
+                           000005   827 	ar5 = 0x05
+                           000004   828 	ar4 = 0x04
+                           000003   829 	ar3 = 0x03
+                           000002   830 	ar2 = 0x02
+                           000001   831 	ar1 = 0x01
+                           000000   832 	ar0 = 0x00
+                           000000   833 	Smain$main$1 ==.
+                           000000   834 	Smain$main$2 ==.
+                                    835 ;	C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c:13: MODIFY_HIRC(HIRC_24);
+      000062 75 82 06         [24]  836 	mov	dpl,#0x06
+      000065 12 01 1F         [24]  837 	lcall	_MODIFY_HIRC
+                           000006   838 	Smain$main$3 ==.
+                                    839 ;	C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c:14: Enable_UART0_VCOM_printf_24M_115200();
+      000068 12 06 04         [24]  840 	lcall	_Enable_UART0_VCOM_printf_24M_115200
+                           000009   841 	Smain$main$4 ==.
+                                    842 ;	C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c:16: printf("\n Hello world!");
+      00006B 74 DE            [12]  843 	mov	a,#___str_0
+      00006D C0 E0            [24]  844 	push	acc
+      00006F 74 11            [12]  845 	mov	a,#(___str_0 >> 8)
+      000071 C0 E0            [24]  846 	push	acc
+      000073 74 80            [12]  847 	mov	a,#0x80
+      000075 C0 E0            [24]  848 	push	acc
+      000077 12 07 72         [24]  849 	lcall	_printf
+      00007A 15 81            [12]  850 	dec	sp
+      00007C 15 81            [12]  851 	dec	sp
+      00007E 15 81            [12]  852 	dec	sp
+                           00001E   853 	Smain$main$5 ==.
+                                    854 ;	C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c:17: while(1);
+      000080                        855 00102$:
+      000080 80 FE            [24]  856 	sjmp	00102$
+                           000020   857 	Smain$main$6 ==.
+                                    858 ;	C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c:18: }
+                           000020   859 	Smain$main$7 ==.
+                           000020   860 	XG$main$0$0 ==.
+      000082 22               [24]  861 	ret
+                           000021   862 	Smain$main$8 ==.
+                                    863 	.area CSEG    (CODE)
+                                    864 	.area CONST   (CODE)
+                           000000   865 Fmain$__str_0$0_0$0 == .
+                                    866 	.area CONST   (CODE)
+      0011DE                        867 ___str_0:
+      0011DE 0A                     868 	.db 0x0a
+      0011DF 20 48 65 6C 6C 6F 20   869 	.ascii " Hello world!"
+             77 6F 72 6C 64 21
+      0011EC 00                     870 	.db 0x00
+                                    871 	.area CSEG    (CODE)
+                                    872 	.area XINIT   (CODE)
+                                    873 	.area INITIALIZER
+                                    874 	.area CABS    (ABS,CODE)
+                                    875 
+                                    876 	.area .debug_line (NOLOAD)
+      000000 00 00 00 AF            877 	.dw	0,Ldebug_line_end-Ldebug_line_start
+      000004                        878 Ldebug_line_start:
+      000004 00 02                  879 	.dw	2
+      000006 00 00 00 7B            880 	.dw	0,Ldebug_line_stmt-6-Ldebug_line_start
+      00000A 01                     881 	.db	1
+      00000B 01                     882 	.db	1
+      00000C FB                     883 	.db	-5
+      00000D 0F                     884 	.db	15
+      00000E 0A                     885 	.db	10
+      00000F 00                     886 	.db	0
+      000010 01                     887 	.db	1
+      000011 01                     888 	.db	1
+      000012 01                     889 	.db	1
+      000013 01                     890 	.db	1
+      000014 00                     891 	.db	0
+      000015 00                     892 	.db	0
+      000016 00                     893 	.db	0
+      000017 01                     894 	.db	1
+      000018 2F 2E 2E 2F 69 6E 63   895 	.ascii "/../include/mcs51"
+             6C 75 64 65 2F 6D 63
+             73 35 31
+      000029 00                     896 	.db	0
+      00002A 2F 2E 2E 2F 69 6E 63   897 	.ascii "/../include"
+             6C 75 64 65
+      000035 00                     898 	.db	0
+      000036 00                     899 	.db	0
+      000037 43 3A 2F 42 53 50 2F   900 	.ascii "C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c"
+             4D 47 35 31 78 43 39
+             41 45 5F 4D 47 35 31
+             78 42 39 41 45 5F 53
+             65 72 69 65 73 2F 53
+             61 6D 70 6C 65 43 6F
+             64 65 2F 52 65 67 42
+             61 73 65 64 2F 55 41
+             52 54 30 5F 50 72 69
+             6E 74 66 2F 6D 61 69
+             6E 2E 63
+      000080 00                     901 	.db	0
+      000081 00                     902 	.uleb128	0
+      000082 00                     903 	.uleb128	0
+      000083 00                     904 	.uleb128	0
+      000084 00                     905 	.db	0
+      000085                        906 Ldebug_line_stmt:
+      000085 00                     907 	.db	0
+      000086 05                     908 	.uleb128	5
+      000087 02                     909 	.db	2
+      000088 00 00 00 62            910 	.dw	0,(Smain$main$0)
+      00008C 03                     911 	.db	3
+      00008D 08                     912 	.sleb128	8
+      00008E 01                     913 	.db	1
+      00008F 09                     914 	.db	9
+      000090 00 00                  915 	.dw	Smain$main$2-Smain$main$0
+      000092 03                     916 	.db	3
+      000093 04                     917 	.sleb128	4
+      000094 01                     918 	.db	1
+      000095 09                     919 	.db	9
+      000096 00 06                  920 	.dw	Smain$main$3-Smain$main$2
+      000098 03                     921 	.db	3
+      000099 01                     922 	.sleb128	1
+      00009A 01                     923 	.db	1
+      00009B 09                     924 	.db	9
+      00009C 00 03                  925 	.dw	Smain$main$4-Smain$main$3
+      00009E 03                     926 	.db	3
+      00009F 02                     927 	.sleb128	2
+      0000A0 01                     928 	.db	1
+      0000A1 09                     929 	.db	9
+      0000A2 00 15                  930 	.dw	Smain$main$5-Smain$main$4
+      0000A4 03                     931 	.db	3
+      0000A5 01                     932 	.sleb128	1
+      0000A6 01                     933 	.db	1
+      0000A7 09                     934 	.db	9
+      0000A8 00 02                  935 	.dw	Smain$main$6-Smain$main$5
+      0000AA 03                     936 	.db	3
+      0000AB 01                     937 	.sleb128	1
+      0000AC 01                     938 	.db	1
+      0000AD 09                     939 	.db	9
+      0000AE 00 01                  940 	.dw	1+Smain$main$7-Smain$main$6
+      0000B0 00                     941 	.db	0
+      0000B1 01                     942 	.uleb128	1
+      0000B2 01                     943 	.db	1
+      0000B3                        944 Ldebug_line_end:
+                                    945 
+                                    946 	.area .debug_loc (NOLOAD)
+      000000                        947 Ldebug_loc_start:
+      000000 00 00 00 62            948 	.dw	0,(Smain$main$1)
+      000004 00 00 00 83            949 	.dw	0,(Smain$main$8)
+      000008 00 02                  950 	.dw	2
+      00000A 86                     951 	.db	134
+      00000B 01                     952 	.sleb128	1
+      00000C 00 00 00 00            953 	.dw	0,0
+      000010 00 00 00 00            954 	.dw	0,0
+                                    955 
+                                    956 	.area .debug_abbrev (NOLOAD)
+      000000                        957 Ldebug_abbrev:
+      000000 01                     958 	.uleb128	1
+      000001 11                     959 	.uleb128	17
+      000002 01                     960 	.db	1
+      000003 03                     961 	.uleb128	3
+      000004 08                     962 	.uleb128	8
+      000005 10                     963 	.uleb128	16
+      000006 06                     964 	.uleb128	6
+      000007 13                     965 	.uleb128	19
+      000008 0B                     966 	.uleb128	11
+      000009 25                     967 	.uleb128	37
+      00000A 08                     968 	.uleb128	8
+      00000B 00                     969 	.uleb128	0
+      00000C 00                     970 	.uleb128	0
+      00000D 02                     971 	.uleb128	2
+      00000E 2E                     972 	.uleb128	46
+      00000F 00                     973 	.db	0
+      000010 03                     974 	.uleb128	3
+      000011 08                     975 	.uleb128	8
+      000012 11                     976 	.uleb128	17
+      000013 01                     977 	.uleb128	1
+      000014 12                     978 	.uleb128	18
+      000015 01                     979 	.uleb128	1
+      000016 3F                     980 	.uleb128	63
+      000017 0C                     981 	.uleb128	12
+      000018 40                     982 	.uleb128	64
+      000019 06                     983 	.uleb128	6
+      00001A 00                     984 	.uleb128	0
+      00001B 00                     985 	.uleb128	0
+      00001C 03                     986 	.uleb128	3
+      00001D 24                     987 	.uleb128	36
+      00001E 00                     988 	.db	0
+      00001F 03                     989 	.uleb128	3
+      000020 08                     990 	.uleb128	8
+      000021 0B                     991 	.uleb128	11
+      000022 0B                     992 	.uleb128	11
+      000023 3E                     993 	.uleb128	62
+      000024 0B                     994 	.uleb128	11
+      000025 00                     995 	.uleb128	0
+      000026 00                     996 	.uleb128	0
+      000027 04                     997 	.uleb128	4
+      000028 35                     998 	.uleb128	53
+      000029 00                     999 	.db	0
+      00002A 49                    1000 	.uleb128	73
+      00002B 13                    1001 	.uleb128	19
+      00002C 00                    1002 	.uleb128	0
+      00002D 00                    1003 	.uleb128	0
+      00002E 05                    1004 	.uleb128	5
+      00002F 34                    1005 	.uleb128	52
+      000030 00                    1006 	.db	0
+      000031 02                    1007 	.uleb128	2
+      000032 0A                    1008 	.uleb128	10
+      000033 03                    1009 	.uleb128	3
+      000034 08                    1010 	.uleb128	8
+      000035 3F                    1011 	.uleb128	63
+      000036 0C                    1012 	.uleb128	12
+      000037 49                    1013 	.uleb128	73
+      000038 13                    1014 	.uleb128	19
+      000039 00                    1015 	.uleb128	0
+      00003A 00                    1016 	.uleb128	0
+      00003B 06                    1017 	.uleb128	6
+      00003C 26                    1018 	.uleb128	38
+      00003D 00                    1019 	.db	0
+      00003E 49                    1020 	.uleb128	73
+      00003F 13                    1021 	.uleb128	19
+      000040 00                    1022 	.uleb128	0
+      000041 00                    1023 	.uleb128	0
+      000042 07                    1024 	.uleb128	7
+      000043 01                    1025 	.uleb128	1
+      000044 01                    1026 	.db	1
+      000045 01                    1027 	.uleb128	1
+      000046 13                    1028 	.uleb128	19
+      000047 0B                    1029 	.uleb128	11
+      000048 0B                    1030 	.uleb128	11
+      000049 49                    1031 	.uleb128	73
+      00004A 13                    1032 	.uleb128	19
+      00004B 00                    1033 	.uleb128	0
+      00004C 00                    1034 	.uleb128	0
+      00004D 08                    1035 	.uleb128	8
+      00004E 21                    1036 	.uleb128	33
+      00004F 00                    1037 	.db	0
+      000050 2F                    1038 	.uleb128	47
+      000051 0B                    1039 	.uleb128	11
+      000052 00                    1040 	.uleb128	0
+      000053 00                    1041 	.uleb128	0
+      000054 09                    1042 	.uleb128	9
+      000055 34                    1043 	.uleb128	52
+      000056 00                    1044 	.db	0
+      000057 02                    1045 	.uleb128	2
+      000058 0A                    1046 	.uleb128	10
+      000059 03                    1047 	.uleb128	3
+      00005A 08                    1048 	.uleb128	8
+      00005B 49                    1049 	.uleb128	73
+      00005C 13                    1050 	.uleb128	19
+      00005D 00                    1051 	.uleb128	0
+      00005E 00                    1052 	.uleb128	0
+      00005F 00                    1053 	.uleb128	0
+                                   1054 
+                                   1055 	.area .debug_info (NOLOAD)
+      000000 00 00 10 67           1056 	.dw	0,Ldebug_info_end-Ldebug_info_start
+      000004                       1057 Ldebug_info_start:
+      000004 00 02                 1058 	.dw	2
+      000006 00 00 00 00           1059 	.dw	0,(Ldebug_abbrev)
+      00000A 04                    1060 	.db	4
+      00000B 01                    1061 	.uleb128	1
+      00000C 43 3A 2F 42 53 50 2F  1062 	.ascii "C:/BSP/MG51xC9AE_MG51xB9AE_Series/SampleCode/RegBased/UART0_Printf/main.c"
+             4D 47 35 31 78 43 39
+             41 45 5F 4D 47 35 31
+             78 42 39 41 45 5F 53
+             65 72 69 65 73 2F 53
+             61 6D 70 6C 65 43 6F
+             64 65 2F 52 65 67 42
+             61 73 65 64 2F 55 41
+             52 54 30 5F 50 72 69
+             6E 74 66 2F 6D 61 69
+             6E 2E 63
+      000055 00                    1063 	.db	0
+      000056 00 00 00 00           1064 	.dw	0,(Ldebug_line_start+-4)
+      00005A 01                    1065 	.db	1
+      00005B 53 44 43 43 20 76 65  1066 	.ascii "SDCC version 4.2.6 #13647"
+             72 73 69 6F 6E 20 34
+             2E 32 2E 36 20 23 31
+             33 36 34 37
+      000074 00                    1067 	.db	0
+      000075 02                    1068 	.uleb128	2
+      000076 6D 61 69 6E           1069 	.ascii "main"
+      00007A 00                    1070 	.db	0
+      00007B 00 00 00 62           1071 	.dw	0,(_main)
+      00007F 00 00 00 83           1072 	.dw	0,(XG$main$0$0+1)
+      000083 01                    1073 	.db	1
+      000084 00 00 00 00           1074 	.dw	0,(Ldebug_loc_start)
+      000088 03                    1075 	.uleb128	3
+      000089 75 6E 73 69 67 6E 65  1076 	.ascii "unsigned char"
+             64 20 63 68 61 72
+      000096 00                    1077 	.db	0
+      000097 01                    1078 	.db	1
+      000098 08                    1079 	.db	8
+      000099 04                    1080 	.uleb128	4
+      00009A 00 00 00 88           1081 	.dw	0,136
+      00009E 05                    1082 	.uleb128	5
+      00009F 05                    1083 	.db	5
+      0000A0 03                    1084 	.db	3
+      0000A1 00 00 00 80           1085 	.dw	0,(_P0)
+      0000A5 50 30                 1086 	.ascii "P0"
+      0000A7 00                    1087 	.db	0
+      0000A8 01                    1088 	.db	1
+      0000A9 00 00 00 99           1089 	.dw	0,153
+      0000AD 05                    1090 	.uleb128	5
+      0000AE 05                    1091 	.db	5
+      0000AF 03                    1092 	.db	3
+      0000B0 00 00 00 81           1093 	.dw	0,(_SP)
+      0000B4 53 50                 1094 	.ascii "SP"
+      0000B6 00                    1095 	.db	0
+      0000B7 01                    1096 	.db	1
+      0000B8 00 00 00 99           1097 	.dw	0,153
+      0000BC 05                    1098 	.uleb128	5
+      0000BD 05                    1099 	.db	5
+      0000BE 03                    1100 	.db	3
+      0000BF 00 00 00 82           1101 	.dw	0,(_DPL)
+      0000C3 44 50 4C              1102 	.ascii "DPL"
+      0000C6 00                    1103 	.db	0
+      0000C7 01                    1104 	.db	1
+      0000C8 00 00 00 99           1105 	.dw	0,153
+      0000CC 05                    1106 	.uleb128	5
+      0000CD 05                    1107 	.db	5
+      0000CE 03                    1108 	.db	3
+      0000CF 00 00 00 83           1109 	.dw	0,(_DPH)
+      0000D3 44 50 48              1110 	.ascii "DPH"
+      0000D6 00                    1111 	.db	0
+      0000D7 01                    1112 	.db	1
+      0000D8 00 00 00 99           1113 	.dw	0,153
+      0000DC 05                    1114 	.uleb128	5
+      0000DD 05                    1115 	.db	5
+      0000DE 03                    1116 	.db	3
+      0000DF 00 00 00 84           1117 	.dw	0,(_RCTRIM0)
+      0000E3 52 43 54 52 49 4D 30  1118 	.ascii "RCTRIM0"
+      0000EA 00                    1119 	.db	0
+      0000EB 01                    1120 	.db	1
+      0000EC 00 00 00 99           1121 	.dw	0,153
+      0000F0 05                    1122 	.uleb128	5
+      0000F1 05                    1123 	.db	5
+      0000F2 03                    1124 	.db	3
+      0000F3 00 00 00 85           1125 	.dw	0,(_RCTRIM1)
+      0000F7 52 43 54 52 49 4D 31  1126 	.ascii "RCTRIM1"
+      0000FE 00                    1127 	.db	0
+      0000FF 01                    1128 	.db	1
+      000100 00 00 00 99           1129 	.dw	0,153
+      000104 05                    1130 	.uleb128	5
+      000105 05                    1131 	.db	5
+      000106 03                    1132 	.db	3
+      000107 00 00 00 86           1133 	.dw	0,(_RWK)
+      00010B 52 57 4B              1134 	.ascii "RWK"
+      00010E 00                    1135 	.db	0
+      00010F 01                    1136 	.db	1
+      000110 00 00 00 99           1137 	.dw	0,153
+      000114 05                    1138 	.uleb128	5
+      000115 05                    1139 	.db	5
+      000116 03                    1140 	.db	3
+      000117 00 00 00 87           1141 	.dw	0,(_PCON)
+      00011B 50 43 4F 4E           1142 	.ascii "PCON"
+      00011F 00                    1143 	.db	0
+      000120 01                    1144 	.db	1
+      000121 00 00 00 99           1145 	.dw	0,153
+      000125 05                    1146 	.uleb128	5
+      000126 05                    1147 	.db	5
+      000127 03                    1148 	.db	3
+      000128 00 00 00 88           1149 	.dw	0,(_TCON)
+      00012C 54 43 4F 4E           1150 	.ascii "TCON"
+      000130 00                    1151 	.db	0
+      000131 01                    1152 	.db	1
+      000132 00 00 00 99           1153 	.dw	0,153
+      000136 05                    1154 	.uleb128	5
+      000137 05                    1155 	.db	5
+      000138 03                    1156 	.db	3
+      000139 00 00 00 89           1157 	.dw	0,(_TMOD)
+      00013D 54 4D 4F 44           1158 	.ascii "TMOD"
+      000141 00                    1159 	.db	0
+      000142 01                    1160 	.db	1
+      000143 00 00 00 99           1161 	.dw	0,153
+      000147 05                    1162 	.uleb128	5
+      000148 05                    1163 	.db	5
+      000149 03                    1164 	.db	3
+      00014A 00 00 00 8A           1165 	.dw	0,(_TL0)
+      00014E 54 4C 30              1166 	.ascii "TL0"
+      000151 00                    1167 	.db	0
+      000152 01                    1168 	.db	1
+      000153 00 00 00 99           1169 	.dw	0,153
+      000157 05                    1170 	.uleb128	5
+      000158 05                    1171 	.db	5
+      000159 03                    1172 	.db	3
+      00015A 00 00 00 8B           1173 	.dw	0,(_TL1)
+      00015E 54 4C 31              1174 	.ascii "TL1"
+      000161 00                    1175 	.db	0
+      000162 01                    1176 	.db	1
+      000163 00 00 00 99           1177 	.dw	0,153
+      000167 05                    1178 	.uleb128	5
+      000168 05                    1179 	.db	5
+      000169 03                    1180 	.db	3
+      00016A 00 00 00 8C           1181 	.dw	0,(_TH0)
+      00016E 54 48 30              1182 	.ascii "TH0"
+      000171 00                    1183 	.db	0
+      000172 01                    1184 	.db	1
+      000173 00 00 00 99           1185 	.dw	0,153
+      000177 05                    1186 	.uleb128	5
+      000178 05                    1187 	.db	5
+      000179 03                    1188 	.db	3
+      00017A 00 00 00 8D           1189 	.dw	0,(_TH1)
+      00017E 54 48 31              1190 	.ascii "TH1"
+      000181 00                    1191 	.db	0
+      000182 01                    1192 	.db	1
+      000183 00 00 00 99           1193 	.dw	0,153
+      000187 05                    1194 	.uleb128	5
+      000188 05                    1195 	.db	5
+      000189 03                    1196 	.db	3
+      00018A 00 00 00 8E           1197 	.dw	0,(_CKCON)
+      00018E 43 4B 43 4F 4E        1198 	.ascii "CKCON"
+      000193 00                    1199 	.db	0
+      000194 01                    1200 	.db	1
+      000195 00 00 00 99           1201 	.dw	0,153
+      000199 05                    1202 	.uleb128	5
+      00019A 05                    1203 	.db	5
+      00019B 03                    1204 	.db	3
+      00019C 00 00 00 8F           1205 	.dw	0,(_WKCON)
+      0001A0 57 4B 43 4F 4E        1206 	.ascii "WKCON"
+      0001A5 00                    1207 	.db	0
+      0001A6 01                    1208 	.db	1
+      0001A7 00 00 00 99           1209 	.dw	0,153
+      0001AB 05                    1210 	.uleb128	5
+      0001AC 05                    1211 	.db	5
+      0001AD 03                    1212 	.db	3
+      0001AE 00 00 00 90           1213 	.dw	0,(_P1)
+      0001B2 50 31                 1214 	.ascii "P1"
+      0001B4 00                    1215 	.db	0
+      0001B5 01                    1216 	.db	1
+      0001B6 00 00 00 99           1217 	.dw	0,153
+      0001BA 05                    1218 	.uleb128	5
+      0001BB 05                    1219 	.db	5
+      0001BC 03                    1220 	.db	3
+      0001BD 00 00 00 91           1221 	.dw	0,(_SFRS)
+      0001C1 53 46 52 53           1222 	.ascii "SFRS"
+      0001C5 00                    1223 	.db	0
+      0001C6 01                    1224 	.db	1
+      0001C7 00 00 00 99           1225 	.dw	0,153
+      0001CB 05                    1226 	.uleb128	5
+      0001CC 05                    1227 	.db	5
+      0001CD 03                    1228 	.db	3
+      0001CE 00 00 00 92           1229 	.dw	0,(_CAPCON0)
+      0001D2 43 41 50 43 4F 4E 30  1230 	.ascii "CAPCON0"
+      0001D9 00                    1231 	.db	0
+      0001DA 01                    1232 	.db	1
+      0001DB 00 00 00 99           1233 	.dw	0,153
+      0001DF 05                    1234 	.uleb128	5
+      0001E0 05                    1235 	.db	5
+      0001E1 03                    1236 	.db	3
+      0001E2 00 00 00 93           1237 	.dw	0,(_CAPCON1)
+      0001E6 43 41 50 43 4F 4E 31  1238 	.ascii "CAPCON1"
+      0001ED 00                    1239 	.db	0
+      0001EE 01                    1240 	.db	1
+      0001EF 00 00 00 99           1241 	.dw	0,153
+      0001F3 05                    1242 	.uleb128	5
+      0001F4 05                    1243 	.db	5
+      0001F5 03                    1244 	.db	3
+      0001F6 00 00 00 94           1245 	.dw	0,(_CAPCON2)
+      0001FA 43 41 50 43 4F 4E 32  1246 	.ascii "CAPCON2"
+      000201 00                    1247 	.db	0
+      000202 01                    1248 	.db	1
+      000203 00 00 00 99           1249 	.dw	0,153
+      000207 05                    1250 	.uleb128	5
+      000208 05                    1251 	.db	5
+      000209 03                    1252 	.db	3
+      00020A 00 00 00 95           1253 	.dw	0,(_CKDIV)
+      00020E 43 4B 44 49 56        1254 	.ascii "CKDIV"
+      000213 00                    1255 	.db	0
+      000214 01                    1256 	.db	1
+      000215 00 00 00 99           1257 	.dw	0,153
+      000219 05                    1258 	.uleb128	5
+      00021A 05                    1259 	.db	5
+      00021B 03                    1260 	.db	3
+      00021C 00 00 00 96           1261 	.dw	0,(_CKSWT)
+      000220 43 4B 53 57 54        1262 	.ascii "CKSWT"
+      000225 00                    1263 	.db	0
+      000226 01                    1264 	.db	1
+      000227 00 00 00 99           1265 	.dw	0,153
+      00022B 05                    1266 	.uleb128	5
+      00022C 05                    1267 	.db	5
+      00022D 03                    1268 	.db	3
+      00022E 00 00 00 97           1269 	.dw	0,(_CKEN)
+      000232 43 4B 45 4E           1270 	.ascii "CKEN"
+      000236 00                    1271 	.db	0
+      000237 01                    1272 	.db	1
+      000238 00 00 00 99           1273 	.dw	0,153
+      00023C 05                    1274 	.uleb128	5
+      00023D 05                    1275 	.db	5
+      00023E 03                    1276 	.db	3
+      00023F 00 00 00 98           1277 	.dw	0,(_SCON)
+      000243 53 43 4F 4E           1278 	.ascii "SCON"
+      000247 00                    1279 	.db	0
+      000248 01                    1280 	.db	1
+      000249 00 00 00 99           1281 	.dw	0,153
+      00024D 05                    1282 	.uleb128	5
+      00024E 05                    1283 	.db	5
+      00024F 03                    1284 	.db	3
+      000250 00 00 00 99           1285 	.dw	0,(_SBUF)
+      000254 53 42 55 46           1286 	.ascii "SBUF"
+      000258 00                    1287 	.db	0
+      000259 01                    1288 	.db	1
+      00025A 00 00 00 99           1289 	.dw	0,153
+      00025E 05                    1290 	.uleb128	5
+      00025F 05                    1291 	.db	5
+      000260 03                    1292 	.db	3
+      000261 00 00 00 9A           1293 	.dw	0,(_SBUF_1)
+      000265 53 42 55 46 5F 31     1294 	.ascii "SBUF_1"
+      00026B 00                    1295 	.db	0
+      00026C 01                    1296 	.db	1
+      00026D 00 00 00 99           1297 	.dw	0,153
+      000271 05                    1298 	.uleb128	5
+      000272 05                    1299 	.db	5
+      000273 03                    1300 	.db	3
+      000274 00 00 00 9B           1301 	.dw	0,(_EIE)
+      000278 45 49 45              1302 	.ascii "EIE"
+      00027B 00                    1303 	.db	0
+      00027C 01                    1304 	.db	1
+      00027D 00 00 00 99           1305 	.dw	0,153
+      000281 05                    1306 	.uleb128	5
+      000282 05                    1307 	.db	5
+      000283 03                    1308 	.db	3
+      000284 00 00 00 9C           1309 	.dw	0,(_EIE1)
+      000288 45 49 45 31           1310 	.ascii "EIE1"
+      00028C 00                    1311 	.db	0
+      00028D 01                    1312 	.db	1
+      00028E 00 00 00 99           1313 	.dw	0,153
+      000292 05                    1314 	.uleb128	5
+      000293 05                    1315 	.db	5
+      000294 03                    1316 	.db	3
+      000295 00 00 00 9F           1317 	.dw	0,(_CHPCON)
+      000299 43 48 50 43 4F 4E     1318 	.ascii "CHPCON"
+      00029F 00                    1319 	.db	0
+      0002A0 01                    1320 	.db	1
+      0002A1 00 00 00 99           1321 	.dw	0,153
+      0002A5 05                    1322 	.uleb128	5
+      0002A6 05                    1323 	.db	5
+      0002A7 03                    1324 	.db	3
+      0002A8 00 00 00 A0           1325 	.dw	0,(_P2)
+      0002AC 50 32                 1326 	.ascii "P2"
+      0002AE 00                    1327 	.db	0
+      0002AF 01                    1328 	.db	1
+      0002B0 00 00 00 99           1329 	.dw	0,153
+      0002B4 05                    1330 	.uleb128	5
+      0002B5 05                    1331 	.db	5
+      0002B6 03                    1332 	.db	3
+      0002B7 00 00 00 A2           1333 	.dw	0,(_AUXR1)
+      0002BB 41 55 58 52 31        1334 	.ascii "AUXR1"
+      0002C0 00                    1335 	.db	0
+      0002C1 01                    1336 	.db	1
+      0002C2 00 00 00 99           1337 	.dw	0,153
+      0002C6 05                    1338 	.uleb128	5
+      0002C7 05                    1339 	.db	5
+      0002C8 03                    1340 	.db	3
+      0002C9 00 00 00 A3           1341 	.dw	0,(_BODCON0)
+      0002CD 42 4F 44 43 4F 4E 30  1342 	.ascii "BODCON0"
+      0002D4 00                    1343 	.db	0
+      0002D5 01                    1344 	.db	1
+      0002D6 00 00 00 99           1345 	.dw	0,153
+      0002DA 05                    1346 	.uleb128	5
+      0002DB 05                    1347 	.db	5
+      0002DC 03                    1348 	.db	3
+      0002DD 00 00 00 A4           1349 	.dw	0,(_IAPTRG)
+      0002E1 49 41 50 54 52 47     1350 	.ascii "IAPTRG"
+      0002E7 00                    1351 	.db	0
+      0002E8 01                    1352 	.db	1
+      0002E9 00 00 00 99           1353 	.dw	0,153
+      0002ED 05                    1354 	.uleb128	5
+      0002EE 05                    1355 	.db	5
+      0002EF 03                    1356 	.db	3
+      0002F0 00 00 00 A5           1357 	.dw	0,(_IAPUEN)
+      0002F4 49 41 50 55 45 4E     1358 	.ascii "IAPUEN"
+      0002FA 00                    1359 	.db	0
+      0002FB 01                    1360 	.db	1
+      0002FC 00 00 00 99           1361 	.dw	0,153
+      000300 05                    1362 	.uleb128	5
+      000301 05                    1363 	.db	5
+      000302 03                    1364 	.db	3
+      000303 00 00 00 A6           1365 	.dw	0,(_IAPAL)
+      000307 49 41 50 41 4C        1366 	.ascii "IAPAL"
+      00030C 00                    1367 	.db	0
+      00030D 01                    1368 	.db	1
+      00030E 00 00 00 99           1369 	.dw	0,153
+      000312 05                    1370 	.uleb128	5
+      000313 05                    1371 	.db	5
+      000314 03                    1372 	.db	3
+      000315 00 00 00 A7           1373 	.dw	0,(_IAPAH)
+      000319 49 41 50 41 48        1374 	.ascii "IAPAH"
+      00031E 00                    1375 	.db	0
+      00031F 01                    1376 	.db	1
+      000320 00 00 00 99           1377 	.dw	0,153
+      000324 05                    1378 	.uleb128	5
+      000325 05                    1379 	.db	5
+      000326 03                    1380 	.db	3
+      000327 00 00 00 A8           1381 	.dw	0,(_IE)
+      00032B 49 45                 1382 	.ascii "IE"
+      00032D 00                    1383 	.db	0
+      00032E 01                    1384 	.db	1
+      00032F 00 00 00 99           1385 	.dw	0,153
+      000333 05                    1386 	.uleb128	5
+      000334 05                    1387 	.db	5
+      000335 03                    1388 	.db	3
+      000336 00 00 00 A9           1389 	.dw	0,(_SADDR)
+      00033A 53 41 44 44 52        1390 	.ascii "SADDR"
+      00033F 00                    1391 	.db	0
+      000340 01                    1392 	.db	1
+      000341 00 00 00 99           1393 	.dw	0,153
+      000345 05                    1394 	.uleb128	5
+      000346 05                    1395 	.db	5
+      000347 03                    1396 	.db	3
+      000348 00 00 00 AA           1397 	.dw	0,(_WDCON)
+      00034C 57 44 43 4F 4E        1398 	.ascii "WDCON"
+      000351 00                    1399 	.db	0
+      000352 01                    1400 	.db	1
+      000353 00 00 00 99           1401 	.dw	0,153
+      000357 05                    1402 	.uleb128	5
+      000358 05                    1403 	.db	5
+      000359 03                    1404 	.db	3
+      00035A 00 00 00 AB           1405 	.dw	0,(_BODCON1)
+      00035E 42 4F 44 43 4F 4E 31  1406 	.ascii "BODCON1"
+      000365 00                    1407 	.db	0
+      000366 01                    1408 	.db	1
+      000367 00 00 00 99           1409 	.dw	0,153
+      00036B 05                    1410 	.uleb128	5
+      00036C 05                    1411 	.db	5
+      00036D 03                    1412 	.db	3
+      00036E 00 00 00 AC           1413 	.dw	0,(_P3M1)
+      000372 50 33 4D 31           1414 	.ascii "P3M1"
+      000376 00                    1415 	.db	0
+      000377 01                    1416 	.db	1
+      000378 00 00 00 99           1417 	.dw	0,153
+      00037C 05                    1418 	.uleb128	5
+      00037D 05                    1419 	.db	5
+      00037E 03                    1420 	.db	3
+      00037F 00 00 00 AC           1421 	.dw	0,(_P3S)
+      000383 50 33 53              1422 	.ascii "P3S"
+      000386 00                    1423 	.db	0
+      000387 01                    1424 	.db	1
+      000388 00 00 00 99           1425 	.dw	0,153
+      00038C 05                    1426 	.uleb128	5
+      00038D 05                    1427 	.db	5
+      00038E 03                    1428 	.db	3
+      00038F 00 00 00 AD           1429 	.dw	0,(_P3M2)
+      000393 50 33 4D 32           1430 	.ascii "P3M2"
+      000397 00                    1431 	.db	0
+      000398 01                    1432 	.db	1
+      000399 00 00 00 99           1433 	.dw	0,153
+      00039D 05                    1434 	.uleb128	5
+      00039E 05                    1435 	.db	5
+      00039F 03                    1436 	.db	3
+      0003A0 00 00 00 AD           1437 	.dw	0,(_P3SR)
+      0003A4 50 33 53 52           1438 	.ascii "P3SR"
+      0003A8 00                    1439 	.db	0
+      0003A9 01                    1440 	.db	1
+      0003AA 00 00 00 99           1441 	.dw	0,153
+      0003AE 05                    1442 	.uleb128	5
+      0003AF 05                    1443 	.db	5
+      0003B0 03                    1444 	.db	3
+      0003B1 00 00 00 AE           1445 	.dw	0,(_IAPFD)
+      0003B5 49 41 50 46 44        1446 	.ascii "IAPFD"
+      0003BA 00                    1447 	.db	0
+      0003BB 01                    1448 	.db	1
+      0003BC 00 00 00 99           1449 	.dw	0,153
+      0003C0 05                    1450 	.uleb128	5
+      0003C1 05                    1451 	.db	5
+      0003C2 03                    1452 	.db	3
+      0003C3 00 00 00 AF           1453 	.dw	0,(_IAPCN)
+      0003C7 49 41 50 43 4E        1454 	.ascii "IAPCN"
+      0003CC 00                    1455 	.db	0
+      0003CD 01                    1456 	.db	1
+      0003CE 00 00 00 99           1457 	.dw	0,153
+      0003D2 05                    1458 	.uleb128	5
+      0003D3 05                    1459 	.db	5
+      0003D4 03                    1460 	.db	3
+      0003D5 00 00 00 B0           1461 	.dw	0,(_P3)
+      0003D9 50 33                 1462 	.ascii "P3"
+      0003DB 00                    1463 	.db	0
+      0003DC 01                    1464 	.db	1
+      0003DD 00 00 00 99           1465 	.dw	0,153
+      0003E1 05                    1466 	.uleb128	5
+      0003E2 05                    1467 	.db	5
+      0003E3 03                    1468 	.db	3
+      0003E4 00 00 00 B1           1469 	.dw	0,(_P0M1)
+      0003E8 50 30 4D 31           1470 	.ascii "P0M1"
+      0003EC 00                    1471 	.db	0
+      0003ED 01                    1472 	.db	1
+      0003EE 00 00 00 99           1473 	.dw	0,153
+      0003F2 05                    1474 	.uleb128	5
+      0003F3 05                    1475 	.db	5
+      0003F4 03                    1476 	.db	3
+      0003F5 00 00 00 B1           1477 	.dw	0,(_P0S)
+      0003F9 50 30 53              1478 	.ascii "P0S"
+      0003FC 00                    1479 	.db	0
+      0003FD 01                    1480 	.db	1
+      0003FE 00 00 00 99           1481 	.dw	0,153
+      000402 05                    1482 	.uleb128	5
+      000403 05                    1483 	.db	5
+      000404 03                    1484 	.db	3
+      000405 00 00 00 B2           1485 	.dw	0,(_P0M2)
+      000409 50 30 4D 32           1486 	.ascii "P0M2"
+      00040D 00                    1487 	.db	0
+      00040E 01                    1488 	.db	1
+      00040F 00 00 00 99           1489 	.dw	0,153
+      000413 05                    1490 	.uleb128	5
+      000414 05                    1491 	.db	5
+      000415 03                    1492 	.db	3
+      000416 00 00 00 B2           1493 	.dw	0,(_P0SR)
+      00041A 50 30 53 52           1494 	.ascii "P0SR"
+      00041E 00                    1495 	.db	0
+      00041F 01                    1496 	.db	1
+      000420 00 00 00 99           1497 	.dw	0,153
+      000424 05                    1498 	.uleb128	5
+      000425 05                    1499 	.db	5
+      000426 03                    1500 	.db	3
+      000427 00 00 00 B3           1501 	.dw	0,(_P1M1)
+      00042B 50 31 4D 31           1502 	.ascii "P1M1"
+      00042F 00                    1503 	.db	0
+      000430 01                    1504 	.db	1
+      000431 00 00 00 99           1505 	.dw	0,153
+      000435 05                    1506 	.uleb128	5
+      000436 05                    1507 	.db	5
+      000437 03                    1508 	.db	3
+      000438 00 00 00 B3           1509 	.dw	0,(_P1S)
+      00043C 50 31 53              1510 	.ascii "P1S"
+      00043F 00                    1511 	.db	0
+      000440 01                    1512 	.db	1
+      000441 00 00 00 99           1513 	.dw	0,153
+      000445 05                    1514 	.uleb128	5
+      000446 05                    1515 	.db	5
+      000447 03                    1516 	.db	3
+      000448 00 00 00 B4           1517 	.dw	0,(_P1M2)
+      00044C 50 31 4D 32           1518 	.ascii "P1M2"
+      000450 00                    1519 	.db	0
+      000451 01                    1520 	.db	1
+      000452 00 00 00 99           1521 	.dw	0,153
+      000456 05                    1522 	.uleb128	5
+      000457 05                    1523 	.db	5
+      000458 03                    1524 	.db	3
+      000459 00 00 00 B4           1525 	.dw	0,(_P1SR)
+      00045D 50 31 53 52           1526 	.ascii "P1SR"
+      000461 00                    1527 	.db	0
+      000462 01                    1528 	.db	1
+      000463 00 00 00 99           1529 	.dw	0,153
+      000467 05                    1530 	.uleb128	5
+      000468 05                    1531 	.db	5
+      000469 03                    1532 	.db	3
+      00046A 00 00 00 B5           1533 	.dw	0,(_P2S)
+      00046E 50 32 53              1534 	.ascii "P2S"
+      000471 00                    1535 	.db	0
+      000472 01                    1536 	.db	1
+      000473 00 00 00 99           1537 	.dw	0,153
+      000477 05                    1538 	.uleb128	5
+      000478 05                    1539 	.db	5
+      000479 03                    1540 	.db	3
+      00047A 00 00 00 B7           1541 	.dw	0,(_IPH)
+      00047E 49 50 48              1542 	.ascii "IPH"
+      000481 00                    1543 	.db	0
+      000482 01                    1544 	.db	1
+      000483 00 00 00 99           1545 	.dw	0,153
+      000487 05                    1546 	.uleb128	5
+      000488 05                    1547 	.db	5
+      000489 03                    1548 	.db	3
+      00048A 00 00 00 B7           1549 	.dw	0,(_PWMINTC)
+      00048E 50 57 4D 49 4E 54 43  1550 	.ascii "PWMINTC"
+      000495 00                    1551 	.db	0
+      000496 01                    1552 	.db	1
+      000497 00 00 00 99           1553 	.dw	0,153
+      00049B 05                    1554 	.uleb128	5
+      00049C 05                    1555 	.db	5
+      00049D 03                    1556 	.db	3
+      00049E 00 00 00 B8           1557 	.dw	0,(_IP)
+      0004A2 49 50                 1558 	.ascii "IP"
+      0004A4 00                    1559 	.db	0
+      0004A5 01                    1560 	.db	1
+      0004A6 00 00 00 99           1561 	.dw	0,153
+      0004AA 05                    1562 	.uleb128	5
+      0004AB 05                    1563 	.db	5
+      0004AC 03                    1564 	.db	3
+      0004AD 00 00 00 B9           1565 	.dw	0,(_SADEN)
+      0004B1 53 41 44 45 4E        1566 	.ascii "SADEN"
+      0004B6 00                    1567 	.db	0
+      0004B7 01                    1568 	.db	1
+      0004B8 00 00 00 99           1569 	.dw	0,153
+      0004BC 05                    1570 	.uleb128	5
+      0004BD 05                    1571 	.db	5
+      0004BE 03                    1572 	.db	3
+      0004BF 00 00 00 BA           1573 	.dw	0,(_SADEN_1)
+      0004C3 53 41 44 45 4E 5F 31  1574 	.ascii "SADEN_1"
+      0004CA 00                    1575 	.db	0
+      0004CB 01                    1576 	.db	1
+      0004CC 00 00 00 99           1577 	.dw	0,153
+      0004D0 05                    1578 	.uleb128	5
+      0004D1 05                    1579 	.db	5
+      0004D2 03                    1580 	.db	3
+      0004D3 00 00 00 BB           1581 	.dw	0,(_SADDR_1)
+      0004D7 53 41 44 44 52 5F 31  1582 	.ascii "SADDR_1"
+      0004DE 00                    1583 	.db	0
+      0004DF 01                    1584 	.db	1
+      0004E0 00 00 00 99           1585 	.dw	0,153
+      0004E4 05                    1586 	.uleb128	5
+      0004E5 05                    1587 	.db	5
+      0004E6 03                    1588 	.db	3
+      0004E7 00 00 00 BC           1589 	.dw	0,(_I2DAT)
+      0004EB 49 32 44 41 54        1590 	.ascii "I2DAT"
+      0004F0 00                    1591 	.db	0
+      0004F1 01                    1592 	.db	1
+      0004F2 00 00 00 99           1593 	.dw	0,153
+      0004F6 05                    1594 	.uleb128	5
+      0004F7 05                    1595 	.db	5
+      0004F8 03                    1596 	.db	3
+      0004F9 00 00 00 BD           1597 	.dw	0,(_I2STAT)
+      0004FD 49 32 53 54 41 54     1598 	.ascii "I2STAT"
+      000503 00                    1599 	.db	0
+      000504 01                    1600 	.db	1
+      000505 00 00 00 99           1601 	.dw	0,153
+      000509 05                    1602 	.uleb128	5
+      00050A 05                    1603 	.db	5
+      00050B 03                    1604 	.db	3
+      00050C 00 00 00 BE           1605 	.dw	0,(_I2CLK)
+      000510 49 32 43 4C 4B        1606 	.ascii "I2CLK"
+      000515 00                    1607 	.db	0
+      000516 01                    1608 	.db	1
+      000517 00 00 00 99           1609 	.dw	0,153
+      00051B 05                    1610 	.uleb128	5
+      00051C 05                    1611 	.db	5
+      00051D 03                    1612 	.db	3
+      00051E 00 00 00 BF           1613 	.dw	0,(_I2TOC)
+      000522 49 32 54 4F 43        1614 	.ascii "I2TOC"
+      000527 00                    1615 	.db	0
+      000528 01                    1616 	.db	1
+      000529 00 00 00 99           1617 	.dw	0,153
+      00052D 05                    1618 	.uleb128	5
+      00052E 05                    1619 	.db	5
+      00052F 03                    1620 	.db	3
+      000530 00 00 00 C0           1621 	.dw	0,(_I2CON)
+      000534 49 32 43 4F 4E        1622 	.ascii "I2CON"
+      000539 00                    1623 	.db	0
+      00053A 01                    1624 	.db	1
+      00053B 00 00 00 99           1625 	.dw	0,153
+      00053F 05                    1626 	.uleb128	5
+      000540 05                    1627 	.db	5
+      000541 03                    1628 	.db	3
+      000542 00 00 00 C1           1629 	.dw	0,(_I2ADDR)
+      000546 49 32 41 44 44 52     1630 	.ascii "I2ADDR"
+      00054C 00                    1631 	.db	0
+      00054D 01                    1632 	.db	1
+      00054E 00 00 00 99           1633 	.dw	0,153
+      000552 05                    1634 	.uleb128	5
+      000553 05                    1635 	.db	5
+      000554 03                    1636 	.db	3
+      000555 00 00 00 C2           1637 	.dw	0,(_ADCRL)
+      000559 41 44 43 52 4C        1638 	.ascii "ADCRL"
+      00055E 00                    1639 	.db	0
+      00055F 01                    1640 	.db	1
+      000560 00 00 00 99           1641 	.dw	0,153
+      000564 05                    1642 	.uleb128	5
+      000565 05                    1643 	.db	5
+      000566 03                    1644 	.db	3
+      000567 00 00 00 C3           1645 	.dw	0,(_ADCRH)
+      00056B 41 44 43 52 48        1646 	.ascii "ADCRH"
+      000570 00                    1647 	.db	0
+      000571 01                    1648 	.db	1
+      000572 00 00 00 99           1649 	.dw	0,153
+      000576 05                    1650 	.uleb128	5
+      000577 05                    1651 	.db	5
+      000578 03                    1652 	.db	3
+      000579 00 00 00 C4           1653 	.dw	0,(_T3CON)
+      00057D 54 33 43 4F 4E        1654 	.ascii "T3CON"
+      000582 00                    1655 	.db	0
+      000583 01                    1656 	.db	1
+      000584 00 00 00 99           1657 	.dw	0,153
+      000588 05                    1658 	.uleb128	5
+      000589 05                    1659 	.db	5
+      00058A 03                    1660 	.db	3
+      00058B 00 00 00 C4           1661 	.dw	0,(_PWM4H)
+      00058F 50 57 4D 34 48        1662 	.ascii "PWM4H"
+      000594 00                    1663 	.db	0
+      000595 01                    1664 	.db	1
+      000596 00 00 00 99           1665 	.dw	0,153
+      00059A 05                    1666 	.uleb128	5
+      00059B 05                    1667 	.db	5
+      00059C 03                    1668 	.db	3
+      00059D 00 00 00 C5           1669 	.dw	0,(_RL3)
+      0005A1 52 4C 33              1670 	.ascii "RL3"
+      0005A4 00                    1671 	.db	0
+      0005A5 01                    1672 	.db	1
+      0005A6 00 00 00 99           1673 	.dw	0,153
+      0005AA 05                    1674 	.uleb128	5
+      0005AB 05                    1675 	.db	5
+      0005AC 03                    1676 	.db	3
+      0005AD 00 00 00 C5           1677 	.dw	0,(_PWM5H)
+      0005B1 50 57 4D 35 48        1678 	.ascii "PWM5H"
+      0005B6 00                    1679 	.db	0
+      0005B7 01                    1680 	.db	1
+      0005B8 00 00 00 99           1681 	.dw	0,153
+      0005BC 05                    1682 	.uleb128	5
+      0005BD 05                    1683 	.db	5
+      0005BE 03                    1684 	.db	3
+      0005BF 00 00 00 C6           1685 	.dw	0,(_RH3)
+      0005C3 52 48 33              1686 	.ascii "RH3"
+      0005C6 00                    1687 	.db	0
+      0005C7 01                    1688 	.db	1
+      0005C8 00 00 00 99           1689 	.dw	0,153
+      0005CC 05                    1690 	.uleb128	5
+      0005CD 05                    1691 	.db	5
+      0005CE 03                    1692 	.db	3
+      0005CF 00 00 00 C6           1693 	.dw	0,(_PIOCON1)
+      0005D3 50 49 4F 43 4F 4E 31  1694 	.ascii "PIOCON1"
+      0005DA 00                    1695 	.db	0
+      0005DB 01                    1696 	.db	1
+      0005DC 00 00 00 99           1697 	.dw	0,153
+      0005E0 05                    1698 	.uleb128	5
+      0005E1 05                    1699 	.db	5
+      0005E2 03                    1700 	.db	3
+      0005E3 00 00 00 C7           1701 	.dw	0,(_TA)
+      0005E7 54 41                 1702 	.ascii "TA"
+      0005E9 00                    1703 	.db	0
+      0005EA 01                    1704 	.db	1
+      0005EB 00 00 00 99           1705 	.dw	0,153
+      0005EF 05                    1706 	.uleb128	5
+      0005F0 05                    1707 	.db	5
+      0005F1 03                    1708 	.db	3
+      0005F2 00 00 00 C8           1709 	.dw	0,(_T2CON)
+      0005F6 54 32 43 4F 4E        1710 	.ascii "T2CON"
+      0005FB 00                    1711 	.db	0
+      0005FC 01                    1712 	.db	1
+      0005FD 00 00 00 99           1713 	.dw	0,153
+      000601 05                    1714 	.uleb128	5
+      000602 05                    1715 	.db	5
+      000603 03                    1716 	.db	3
+      000604 00 00 00 C9           1717 	.dw	0,(_T2MOD)
+      000608 54 32 4D 4F 44        1718 	.ascii "T2MOD"
+      00060D 00                    1719 	.db	0
+      00060E 01                    1720 	.db	1
+      00060F 00 00 00 99           1721 	.dw	0,153
+      000613 05                    1722 	.uleb128	5
+      000614 05                    1723 	.db	5
+      000615 03                    1724 	.db	3
+      000616 00 00 00 CA           1725 	.dw	0,(_RCMP2L)
+      00061A 52 43 4D 50 32 4C     1726 	.ascii "RCMP2L"
+      000620 00                    1727 	.db	0
+      000621 01                    1728 	.db	1
+      000622 00 00 00 99           1729 	.dw	0,153
+      000626 05                    1730 	.uleb128	5
+      000627 05                    1731 	.db	5
+      000628 03                    1732 	.db	3
+      000629 00 00 00 CB           1733 	.dw	0,(_RCMP2H)
+      00062D 52 43 4D 50 32 48     1734 	.ascii "RCMP2H"
+      000633 00                    1735 	.db	0
+      000634 01                    1736 	.db	1
+      000635 00 00 00 99           1737 	.dw	0,153
+      000639 05                    1738 	.uleb128	5
+      00063A 05                    1739 	.db	5
+      00063B 03                    1740 	.db	3
+      00063C 00 00 00 CC           1741 	.dw	0,(_TL2)
+      000640 54 4C 32              1742 	.ascii "TL2"
+      000643 00                    1743 	.db	0
+      000644 01                    1744 	.db	1
+      000645 00 00 00 99           1745 	.dw	0,153
+      000649 05                    1746 	.uleb128	5
+      00064A 05                    1747 	.db	5
+      00064B 03                    1748 	.db	3
+      00064C 00 00 00 CC           1749 	.dw	0,(_PWM4L)
+      000650 50 57 4D 34 4C        1750 	.ascii "PWM4L"
+      000655 00                    1751 	.db	0
+      000656 01                    1752 	.db	1
+      000657 00 00 00 99           1753 	.dw	0,153
+      00065B 05                    1754 	.uleb128	5
+      00065C 05                    1755 	.db	5
+      00065D 03                    1756 	.db	3
+      00065E 00 00 00 CD           1757 	.dw	0,(_TH2)
+      000662 54 48 32              1758 	.ascii "TH2"
+      000665 00                    1759 	.db	0
+      000666 01                    1760 	.db	1
+      000667 00 00 00 99           1761 	.dw	0,153
+      00066B 05                    1762 	.uleb128	5
+      00066C 05                    1763 	.db	5
+      00066D 03                    1764 	.db	3
+      00066E 00 00 00 CD           1765 	.dw	0,(_PWM5L)
+      000672 50 57 4D 35 4C        1766 	.ascii "PWM5L"
+      000677 00                    1767 	.db	0
+      000678 01                    1768 	.db	1
+      000679 00 00 00 99           1769 	.dw	0,153
+      00067D 05                    1770 	.uleb128	5
+      00067E 05                    1771 	.db	5
+      00067F 03                    1772 	.db	3
+      000680 00 00 00 CE           1773 	.dw	0,(_ADCMPL)
+      000684 41 44 43 4D 50 4C     1774 	.ascii "ADCMPL"
+      00068A 00                    1775 	.db	0
+      00068B 01                    1776 	.db	1
+      00068C 00 00 00 99           1777 	.dw	0,153
+      000690 05                    1778 	.uleb128	5
+      000691 05                    1779 	.db	5
+      000692 03                    1780 	.db	3
+      000693 00 00 00 CF           1781 	.dw	0,(_ADCMPH)
+      000697 41 44 43 4D 50 48     1782 	.ascii "ADCMPH"
+      00069D 00                    1783 	.db	0
+      00069E 01                    1784 	.db	1
+      00069F 00 00 00 99           1785 	.dw	0,153
+      0006A3 05                    1786 	.uleb128	5
+      0006A4 05                    1787 	.db	5
+      0006A5 03                    1788 	.db	3
+      0006A6 00 00 00 D0           1789 	.dw	0,(_PSW)
+      0006AA 50 53 57              1790 	.ascii "PSW"
+      0006AD 00                    1791 	.db	0
+      0006AE 01                    1792 	.db	1
+      0006AF 00 00 00 99           1793 	.dw	0,153
+      0006B3 05                    1794 	.uleb128	5
+      0006B4 05                    1795 	.db	5
+      0006B5 03                    1796 	.db	3
+      0006B6 00 00 00 D1           1797 	.dw	0,(_PWMPH)
+      0006BA 50 57 4D 50 48        1798 	.ascii "PWMPH"
+      0006BF 00                    1799 	.db	0
+      0006C0 01                    1800 	.db	1
+      0006C1 00 00 00 99           1801 	.dw	0,153
+      0006C5 05                    1802 	.uleb128	5
+      0006C6 05                    1803 	.db	5
+      0006C7 03                    1804 	.db	3
+      0006C8 00 00 00 D2           1805 	.dw	0,(_PWM0H)
+      0006CC 50 57 4D 30 48        1806 	.ascii "PWM0H"
+      0006D1 00                    1807 	.db	0
+      0006D2 01                    1808 	.db	1
+      0006D3 00 00 00 99           1809 	.dw	0,153
+      0006D7 05                    1810 	.uleb128	5
+      0006D8 05                    1811 	.db	5
+      0006D9 03                    1812 	.db	3
+      0006DA 00 00 00 D3           1813 	.dw	0,(_PWM1H)
+      0006DE 50 57 4D 31 48        1814 	.ascii "PWM1H"
+      0006E3 00                    1815 	.db	0
+      0006E4 01                    1816 	.db	1
+      0006E5 00 00 00 99           1817 	.dw	0,153
+      0006E9 05                    1818 	.uleb128	5
+      0006EA 05                    1819 	.db	5
+      0006EB 03                    1820 	.db	3
+      0006EC 00 00 00 D4           1821 	.dw	0,(_PWM2H)
+      0006F0 50 57 4D 32 48        1822 	.ascii "PWM2H"
+      0006F5 00                    1823 	.db	0
+      0006F6 01                    1824 	.db	1
+      0006F7 00 00 00 99           1825 	.dw	0,153
+      0006FB 05                    1826 	.uleb128	5
+      0006FC 05                    1827 	.db	5
+      0006FD 03                    1828 	.db	3
+      0006FE 00 00 00 D5           1829 	.dw	0,(_PWM3H)
+      000702 50 57 4D 33 48        1830 	.ascii "PWM3H"
+      000707 00                    1831 	.db	0
+      000708 01                    1832 	.db	1
+      000709 00 00 00 99           1833 	.dw	0,153
+      00070D 05                    1834 	.uleb128	5
+      00070E 05                    1835 	.db	5
+      00070F 03                    1836 	.db	3
+      000710 00 00 00 D6           1837 	.dw	0,(_PNP)
+      000714 50 4E 50              1838 	.ascii "PNP"
+      000717 00                    1839 	.db	0
+      000718 01                    1840 	.db	1
+      000719 00 00 00 99           1841 	.dw	0,153
+      00071D 05                    1842 	.uleb128	5
+      00071E 05                    1843 	.db	5
+      00071F 03                    1844 	.db	3
+      000720 00 00 00 D7           1845 	.dw	0,(_FBD)
+      000724 46 42 44              1846 	.ascii "FBD"
+      000727 00                    1847 	.db	0
+      000728 01                    1848 	.db	1
+      000729 00 00 00 99           1849 	.dw	0,153
+      00072D 05                    1850 	.uleb128	5
+      00072E 05                    1851 	.db	5
+      00072F 03                    1852 	.db	3
+      000730 00 00 00 D8           1853 	.dw	0,(_PWMCON0)
+      000734 50 57 4D 43 4F 4E 30  1854 	.ascii "PWMCON0"
+      00073B 00                    1855 	.db	0
+      00073C 01                    1856 	.db	1
+      00073D 00 00 00 99           1857 	.dw	0,153
+      000741 05                    1858 	.uleb128	5
+      000742 05                    1859 	.db	5
+      000743 03                    1860 	.db	3
+      000744 00 00 00 D9           1861 	.dw	0,(_PWMPL)
+      000748 50 57 4D 50 4C        1862 	.ascii "PWMPL"
+      00074D 00                    1863 	.db	0
+      00074E 01                    1864 	.db	1
+      00074F 00 00 00 99           1865 	.dw	0,153
+      000753 05                    1866 	.uleb128	5
+      000754 05                    1867 	.db	5
+      000755 03                    1868 	.db	3
+      000756 00 00 00 DA           1869 	.dw	0,(_PWM0L)
+      00075A 50 57 4D 30 4C        1870 	.ascii "PWM0L"
+      00075F 00                    1871 	.db	0
+      000760 01                    1872 	.db	1
+      000761 00 00 00 99           1873 	.dw	0,153
+      000765 05                    1874 	.uleb128	5
+      000766 05                    1875 	.db	5
+      000767 03                    1876 	.db	3
+      000768 00 00 00 DB           1877 	.dw	0,(_PWM1L)
+      00076C 50 57 4D 31 4C        1878 	.ascii "PWM1L"
+      000771 00                    1879 	.db	0
+      000772 01                    1880 	.db	1
+      000773 00 00 00 99           1881 	.dw	0,153
+      000777 05                    1882 	.uleb128	5
+      000778 05                    1883 	.db	5
+      000779 03                    1884 	.db	3
+      00077A 00 00 00 DC           1885 	.dw	0,(_PWM2L)
+      00077E 50 57 4D 32 4C        1886 	.ascii "PWM2L"
+      000783 00                    1887 	.db	0
+      000784 01                    1888 	.db	1
+      000785 00 00 00 99           1889 	.dw	0,153
+      000789 05                    1890 	.uleb128	5
+      00078A 05                    1891 	.db	5
+      00078B 03                    1892 	.db	3
+      00078C 00 00 00 DD           1893 	.dw	0,(_PWM3L)
+      000790 50 57 4D 33 4C        1894 	.ascii "PWM3L"
+      000795 00                    1895 	.db	0
+      000796 01                    1896 	.db	1
+      000797 00 00 00 99           1897 	.dw	0,153
+      00079B 05                    1898 	.uleb128	5
+      00079C 05                    1899 	.db	5
+      00079D 03                    1900 	.db	3
+      00079E 00 00 00 DE           1901 	.dw	0,(_PIOCON0)
+      0007A2 50 49 4F 43 4F 4E 30  1902 	.ascii "PIOCON0"
+      0007A9 00                    1903 	.db	0
+      0007AA 01                    1904 	.db	1
+      0007AB 00 00 00 99           1905 	.dw	0,153
+      0007AF 05                    1906 	.uleb128	5
+      0007B0 05                    1907 	.db	5
+      0007B1 03                    1908 	.db	3
+      0007B2 00 00 00 DF           1909 	.dw	0,(_PWMCON1)
+      0007B6 50 57 4D 43 4F 4E 31  1910 	.ascii "PWMCON1"
+      0007BD 00                    1911 	.db	0
+      0007BE 01                    1912 	.db	1
+      0007BF 00 00 00 99           1913 	.dw	0,153
+      0007C3 05                    1914 	.uleb128	5
+      0007C4 05                    1915 	.db	5
+      0007C5 03                    1916 	.db	3
+      0007C6 00 00 00 E0           1917 	.dw	0,(_ACC)
+      0007CA 41 43 43              1918 	.ascii "ACC"
+      0007CD 00                    1919 	.db	0
+      0007CE 01                    1920 	.db	1
+      0007CF 00 00 00 99           1921 	.dw	0,153
+      0007D3 05                    1922 	.uleb128	5
+      0007D4 05                    1923 	.db	5
+      0007D5 03                    1924 	.db	3
+      0007D6 00 00 00 E1           1925 	.dw	0,(_ADCCON1)
+      0007DA 41 44 43 43 4F 4E 31  1926 	.ascii "ADCCON1"
+      0007E1 00                    1927 	.db	0
+      0007E2 01                    1928 	.db	1
+      0007E3 00 00 00 99           1929 	.dw	0,153
+      0007E7 05                    1930 	.uleb128	5
+      0007E8 05                    1931 	.db	5
+      0007E9 03                    1932 	.db	3
+      0007EA 00 00 00 E2           1933 	.dw	0,(_ADCCON2)
+      0007EE 41 44 43 43 4F 4E 32  1934 	.ascii "ADCCON2"
+      0007F5 00                    1935 	.db	0
+      0007F6 01                    1936 	.db	1
+      0007F7 00 00 00 99           1937 	.dw	0,153
+      0007FB 05                    1938 	.uleb128	5
+      0007FC 05                    1939 	.db	5
+      0007FD 03                    1940 	.db	3
+      0007FE 00 00 00 E3           1941 	.dw	0,(_ADCDLY)
+      000802 41 44 43 44 4C 59     1942 	.ascii "ADCDLY"
+      000808 00                    1943 	.db	0
+      000809 01                    1944 	.db	1
+      00080A 00 00 00 99           1945 	.dw	0,153
+      00080E 05                    1946 	.uleb128	5
+      00080F 05                    1947 	.db	5
+      000810 03                    1948 	.db	3
+      000811 00 00 00 E4           1949 	.dw	0,(_C0L)
+      000815 43 30 4C              1950 	.ascii "C0L"
+      000818 00                    1951 	.db	0
+      000819 01                    1952 	.db	1
+      00081A 00 00 00 99           1953 	.dw	0,153
+      00081E 05                    1954 	.uleb128	5
+      00081F 05                    1955 	.db	5
+      000820 03                    1956 	.db	3
+      000821 00 00 00 E5           1957 	.dw	0,(_C0H)
+      000825 43 30 48              1958 	.ascii "C0H"
+      000828 00                    1959 	.db	0
+      000829 01                    1960 	.db	1
+      00082A 00 00 00 99           1961 	.dw	0,153
+      00082E 05                    1962 	.uleb128	5
+      00082F 05                    1963 	.db	5
+      000830 03                    1964 	.db	3
+      000831 00 00 00 E6           1965 	.dw	0,(_C1L)
+      000835 43 31 4C              1966 	.ascii "C1L"
+      000838 00                    1967 	.db	0
+      000839 01                    1968 	.db	1
+      00083A 00 00 00 99           1969 	.dw	0,153
+      00083E 05                    1970 	.uleb128	5
+      00083F 05                    1971 	.db	5
+      000840 03                    1972 	.db	3
+      000841 00 00 00 E7           1973 	.dw	0,(_C1H)
+      000845 43 31 48              1974 	.ascii "C1H"
+      000848 00                    1975 	.db	0
+      000849 01                    1976 	.db	1
+      00084A 00 00 00 99           1977 	.dw	0,153
+      00084E 05                    1978 	.uleb128	5
+      00084F 05                    1979 	.db	5
+      000850 03                    1980 	.db	3
+      000851 00 00 00 E8           1981 	.dw	0,(_ADCCON0)
+      000855 41 44 43 43 4F 4E 30  1982 	.ascii "ADCCON0"
+      00085C 00                    1983 	.db	0
+      00085D 01                    1984 	.db	1
+      00085E 00 00 00 99           1985 	.dw	0,153
+      000862 05                    1986 	.uleb128	5
+      000863 05                    1987 	.db	5
+      000864 03                    1988 	.db	3
+      000865 00 00 00 E9           1989 	.dw	0,(_PICON)
+      000869 50 49 43 4F 4E        1990 	.ascii "PICON"
+      00086E 00                    1991 	.db	0
+      00086F 01                    1992 	.db	1
+      000870 00 00 00 99           1993 	.dw	0,153
+      000874 05                    1994 	.uleb128	5
+      000875 05                    1995 	.db	5
+      000876 03                    1996 	.db	3
+      000877 00 00 00 EA           1997 	.dw	0,(_PINEN)
+      00087B 50 49 4E 45 4E        1998 	.ascii "PINEN"
+      000880 00                    1999 	.db	0
+      000881 01                    2000 	.db	1
+      000882 00 00 00 99           2001 	.dw	0,153
+      000886 05                    2002 	.uleb128	5
+      000887 05                    2003 	.db	5
+      000888 03                    2004 	.db	3
+      000889 00 00 00 EB           2005 	.dw	0,(_PIPEN)
+      00088D 50 49 50 45 4E        2006 	.ascii "PIPEN"
+      000892 00                    2007 	.db	0
+      000893 01                    2008 	.db	1
+      000894 00 00 00 99           2009 	.dw	0,153
+      000898 05                    2010 	.uleb128	5
+      000899 05                    2011 	.db	5
+      00089A 03                    2012 	.db	3
+      00089B 00 00 00 EC           2013 	.dw	0,(_PIF)
+      00089F 50 49 46              2014 	.ascii "PIF"
+      0008A2 00                    2015 	.db	0
+      0008A3 01                    2016 	.db	1
+      0008A4 00 00 00 99           2017 	.dw	0,153
+      0008A8 05                    2018 	.uleb128	5
+      0008A9 05                    2019 	.db	5
+      0008AA 03                    2020 	.db	3
+      0008AB 00 00 00 ED           2021 	.dw	0,(_C2L)
+      0008AF 43 32 4C              2022 	.ascii "C2L"
+      0008B2 00                    2023 	.db	0
+      0008B3 01                    2024 	.db	1
+      0008B4 00 00 00 99           2025 	.dw	0,153
+      0008B8 05                    2026 	.uleb128	5
+      0008B9 05                    2027 	.db	5
+      0008BA 03                    2028 	.db	3
+      0008BB 00 00 00 EE           2029 	.dw	0,(_C2H)
+      0008BF 43 32 48              2030 	.ascii "C2H"
+      0008C2 00                    2031 	.db	0
+      0008C3 01                    2032 	.db	1
+      0008C4 00 00 00 99           2033 	.dw	0,153
+      0008C8 05                    2034 	.uleb128	5
+      0008C9 05                    2035 	.db	5
+      0008CA 03                    2036 	.db	3
+      0008CB 00 00 00 EF           2037 	.dw	0,(_EIP)
+      0008CF 45 49 50              2038 	.ascii "EIP"
+      0008D2 00                    2039 	.db	0
+      0008D3 01                    2040 	.db	1
+      0008D4 00 00 00 99           2041 	.dw	0,153
+      0008D8 05                    2042 	.uleb128	5
+      0008D9 05                    2043 	.db	5
+      0008DA 03                    2044 	.db	3
+      0008DB 00 00 00 F0           2045 	.dw	0,(_B)
+      0008DF 42                    2046 	.ascii "B"
+      0008E0 00                    2047 	.db	0
+      0008E1 01                    2048 	.db	1
+      0008E2 00 00 00 99           2049 	.dw	0,153
+      0008E6 05                    2050 	.uleb128	5
+      0008E7 05                    2051 	.db	5
+      0008E8 03                    2052 	.db	3
+      0008E9 00 00 00 F1           2053 	.dw	0,(_CAPCON3)
+      0008ED 43 41 50 43 4F 4E 33  2054 	.ascii "CAPCON3"
+      0008F4 00                    2055 	.db	0
+      0008F5 01                    2056 	.db	1
+      0008F6 00 00 00 99           2057 	.dw	0,153
+      0008FA 05                    2058 	.uleb128	5
+      0008FB 05                    2059 	.db	5
+      0008FC 03                    2060 	.db	3
+      0008FD 00 00 00 F2           2061 	.dw	0,(_CAPCON4)
+      000901 43 41 50 43 4F 4E 34  2062 	.ascii "CAPCON4"
+      000908 00                    2063 	.db	0
+      000909 01                    2064 	.db	1
+      00090A 00 00 00 99           2065 	.dw	0,153
+      00090E 05                    2066 	.uleb128	5
+      00090F 05                    2067 	.db	5
+      000910 03                    2068 	.db	3
+      000911 00 00 00 F3           2069 	.dw	0,(_SPCR)
+      000915 53 50 43 52           2070 	.ascii "SPCR"
+      000919 00                    2071 	.db	0
+      00091A 01                    2072 	.db	1
+      00091B 00 00 00 99           2073 	.dw	0,153
+      00091F 05                    2074 	.uleb128	5
+      000920 05                    2075 	.db	5
+      000921 03                    2076 	.db	3
+      000922 00 00 00 F3           2077 	.dw	0,(_SPCR2)
+      000926 53 50 43 52 32        2078 	.ascii "SPCR2"
+      00092B 00                    2079 	.db	0
+      00092C 01                    2080 	.db	1
+      00092D 00 00 00 99           2081 	.dw	0,153
+      000931 05                    2082 	.uleb128	5
+      000932 05                    2083 	.db	5
+      000933 03                    2084 	.db	3
+      000934 00 00 00 F4           2085 	.dw	0,(_SPSR)
+      000938 53 50 53 52           2086 	.ascii "SPSR"
+      00093C 00                    2087 	.db	0
+      00093D 01                    2088 	.db	1
+      00093E 00 00 00 99           2089 	.dw	0,153
+      000942 05                    2090 	.uleb128	5
+      000943 05                    2091 	.db	5
+      000944 03                    2092 	.db	3
+      000945 00 00 00 F5           2093 	.dw	0,(_SPDR)
+      000949 53 50 44 52           2094 	.ascii "SPDR"
+      00094D 00                    2095 	.db	0
+      00094E 01                    2096 	.db	1
+      00094F 00 00 00 99           2097 	.dw	0,153
+      000953 05                    2098 	.uleb128	5
+      000954 05                    2099 	.db	5
+      000955 03                    2100 	.db	3
+      000956 00 00 00 F6           2101 	.dw	0,(_AINDIDS)
+      00095A 41 49 4E 44 49 44 53  2102 	.ascii "AINDIDS"
+      000961 00                    2103 	.db	0
+      000962 01                    2104 	.db	1
+      000963 00 00 00 99           2105 	.dw	0,153
+      000967 05                    2106 	.uleb128	5
+      000968 05                    2107 	.db	5
+      000969 03                    2108 	.db	3
+      00096A 00 00 00 F7           2109 	.dw	0,(_EIPH)
+      00096E 45 49 50 48           2110 	.ascii "EIPH"
+      000972 00                    2111 	.db	0
+      000973 01                    2112 	.db	1
+      000974 00 00 00 99           2113 	.dw	0,153
+      000978 05                    2114 	.uleb128	5
+      000979 05                    2115 	.db	5
+      00097A 03                    2116 	.db	3
+      00097B 00 00 00 F8           2117 	.dw	0,(_SCON_1)
+      00097F 53 43 4F 4E 5F 31     2118 	.ascii "SCON_1"
+      000985 00                    2119 	.db	0
+      000986 01                    2120 	.db	1
+      000987 00 00 00 99           2121 	.dw	0,153
+      00098B 05                    2122 	.uleb128	5
+      00098C 05                    2123 	.db	5
+      00098D 03                    2124 	.db	3
+      00098E 00 00 00 F9           2125 	.dw	0,(_PDTEN)
+      000992 50 44 54 45 4E        2126 	.ascii "PDTEN"
+      000997 00                    2127 	.db	0
+      000998 01                    2128 	.db	1
+      000999 00 00 00 99           2129 	.dw	0,153
+      00099D 05                    2130 	.uleb128	5
+      00099E 05                    2131 	.db	5
+      00099F 03                    2132 	.db	3
+      0009A0 00 00 00 FA           2133 	.dw	0,(_PDTCNT)
+      0009A4 50 44 54 43 4E 54     2134 	.ascii "PDTCNT"
+      0009AA 00                    2135 	.db	0
+      0009AB 01                    2136 	.db	1
+      0009AC 00 00 00 99           2137 	.dw	0,153
+      0009B0 05                    2138 	.uleb128	5
+      0009B1 05                    2139 	.db	5
+      0009B2 03                    2140 	.db	3
+      0009B3 00 00 00 FB           2141 	.dw	0,(_PMEN)
+      0009B7 50 4D 45 4E           2142 	.ascii "PMEN"
+      0009BB 00                    2143 	.db	0
+      0009BC 01                    2144 	.db	1
+      0009BD 00 00 00 99           2145 	.dw	0,153
+      0009C1 05                    2146 	.uleb128	5
+      0009C2 05                    2147 	.db	5
+      0009C3 03                    2148 	.db	3
+      0009C4 00 00 00 FC           2149 	.dw	0,(_PMD)
+      0009C8 50 4D 44              2150 	.ascii "PMD"
+      0009CB 00                    2151 	.db	0
+      0009CC 01                    2152 	.db	1
+      0009CD 00 00 00 99           2153 	.dw	0,153
+      0009D1 05                    2154 	.uleb128	5
+      0009D2 05                    2155 	.db	5
+      0009D3 03                    2156 	.db	3
+      0009D4 00 00 00 FE           2157 	.dw	0,(_EIP1)
+      0009D8 45 49 50 31           2158 	.ascii "EIP1"
+      0009DC 00                    2159 	.db	0
+      0009DD 01                    2160 	.db	1
+      0009DE 00 00 00 99           2161 	.dw	0,153
+      0009E2 05                    2162 	.uleb128	5
+      0009E3 05                    2163 	.db	5
+      0009E4 03                    2164 	.db	3
+      0009E5 00 00 00 FF           2165 	.dw	0,(_EIPH1)
+      0009E9 45 49 50 48 31        2166 	.ascii "EIPH1"
+      0009EE 00                    2167 	.db	0
+      0009EF 01                    2168 	.db	1
+      0009F0 00 00 00 99           2169 	.dw	0,153
+      0009F4 03                    2170 	.uleb128	3
+      0009F5 5F 73 62 69 74        2171 	.ascii "_sbit"
+      0009FA 00                    2172 	.db	0
+      0009FB 01                    2173 	.db	1
+      0009FC 08                    2174 	.db	8
+      0009FD 04                    2175 	.uleb128	4
+      0009FE 00 00 09 F4           2176 	.dw	0,2548
+      000A02 05                    2177 	.uleb128	5
+      000A03 05                    2178 	.db	5
+      000A04 03                    2179 	.db	3
+      000A05 00 00 00 FF           2180 	.dw	0,(_SM0_1)
+      000A09 53 4D 30 5F 31        2181 	.ascii "SM0_1"
+      000A0E 00                    2182 	.db	0
+      000A0F 01                    2183 	.db	1
+      000A10 00 00 09 FD           2184 	.dw	0,2557
+      000A14 05                    2185 	.uleb128	5
+      000A15 05                    2186 	.db	5
+      000A16 03                    2187 	.db	3
+      000A17 00 00 00 FF           2188 	.dw	0,(_FE_1)
+      000A1B 46 45 5F 31           2189 	.ascii "FE_1"
+      000A1F 00                    2190 	.db	0
+      000A20 01                    2191 	.db	1
+      000A21 00 00 09 FD           2192 	.dw	0,2557
+      000A25 05                    2193 	.uleb128	5
+      000A26 05                    2194 	.db	5
+      000A27 03                    2195 	.db	3
+      000A28 00 00 00 FE           2196 	.dw	0,(_SM1_1)
+      000A2C 53 4D 31 5F 31        2197 	.ascii "SM1_1"
+      000A31 00                    2198 	.db	0
+      000A32 01                    2199 	.db	1
+      000A33 00 00 09 FD           2200 	.dw	0,2557
+      000A37 05                    2201 	.uleb128	5
+      000A38 05                    2202 	.db	5
+      000A39 03                    2203 	.db	3
+      000A3A 00 00 00 FD           2204 	.dw	0,(_SM2_1)
+      000A3E 53 4D 32 5F 31        2205 	.ascii "SM2_1"
+      000A43 00                    2206 	.db	0
+      000A44 01                    2207 	.db	1
+      000A45 00 00 09 FD           2208 	.dw	0,2557
+      000A49 05                    2209 	.uleb128	5
+      000A4A 05                    2210 	.db	5
+      000A4B 03                    2211 	.db	3
+      000A4C 00 00 00 FC           2212 	.dw	0,(_REN_1)
+      000A50 52 45 4E 5F 31        2213 	.ascii "REN_1"
+      000A55 00                    2214 	.db	0
+      000A56 01                    2215 	.db	1
+      000A57 00 00 09 FD           2216 	.dw	0,2557
+      000A5B 05                    2217 	.uleb128	5
+      000A5C 05                    2218 	.db	5
+      000A5D 03                    2219 	.db	3
+      000A5E 00 00 00 FB           2220 	.dw	0,(_TB8_1)
+      000A62 54 42 38 5F 31        2221 	.ascii "TB8_1"
+      000A67 00                    2222 	.db	0
+      000A68 01                    2223 	.db	1
+      000A69 00 00 09 FD           2224 	.dw	0,2557
+      000A6D 05                    2225 	.uleb128	5
+      000A6E 05                    2226 	.db	5
+      000A6F 03                    2227 	.db	3
+      000A70 00 00 00 FA           2228 	.dw	0,(_RB8_1)
+      000A74 52 42 38 5F 31        2229 	.ascii "RB8_1"
+      000A79 00                    2230 	.db	0
+      000A7A 01                    2231 	.db	1
+      000A7B 00 00 09 FD           2232 	.dw	0,2557
+      000A7F 05                    2233 	.uleb128	5
+      000A80 05                    2234 	.db	5
+      000A81 03                    2235 	.db	3
+      000A82 00 00 00 F9           2236 	.dw	0,(_TI_1)
+      000A86 54 49 5F 31           2237 	.ascii "TI_1"
+      000A8A 00                    2238 	.db	0
+      000A8B 01                    2239 	.db	1
+      000A8C 00 00 09 FD           2240 	.dw	0,2557
+      000A90 05                    2241 	.uleb128	5
+      000A91 05                    2242 	.db	5
+      000A92 03                    2243 	.db	3
+      000A93 00 00 00 F8           2244 	.dw	0,(_RI_1)
+      000A97 52 49 5F 31           2245 	.ascii "RI_1"
+      000A9B 00                    2246 	.db	0
+      000A9C 01                    2247 	.db	1
+      000A9D 00 00 09 FD           2248 	.dw	0,2557
+      000AA1 05                    2249 	.uleb128	5
+      000AA2 05                    2250 	.db	5
+      000AA3 03                    2251 	.db	3
+      000AA4 00 00 00 EF           2252 	.dw	0,(_ADCF)
+      000AA8 41 44 43 46           2253 	.ascii "ADCF"
+      000AAC 00                    2254 	.db	0
+      000AAD 01                    2255 	.db	1
+      000AAE 00 00 09 FD           2256 	.dw	0,2557
+      000AB2 05                    2257 	.uleb128	5
+      000AB3 05                    2258 	.db	5
+      000AB4 03                    2259 	.db	3
+      000AB5 00 00 00 EE           2260 	.dw	0,(_ADCS)
+      000AB9 41 44 43 53           2261 	.ascii "ADCS"
+      000ABD 00                    2262 	.db	0
+      000ABE 01                    2263 	.db	1
+      000ABF 00 00 09 FD           2264 	.dw	0,2557
+      000AC3 05                    2265 	.uleb128	5
+      000AC4 05                    2266 	.db	5
+      000AC5 03                    2267 	.db	3
+      000AC6 00 00 00 ED           2268 	.dw	0,(_ETGSEL1)
+      000ACA 45 54 47 53 45 4C 31  2269 	.ascii "ETGSEL1"
+      000AD1 00                    2270 	.db	0
+      000AD2 01                    2271 	.db	1
+      000AD3 00 00 09 FD           2272 	.dw	0,2557
+      000AD7 05                    2273 	.uleb128	5
+      000AD8 05                    2274 	.db	5
+      000AD9 03                    2275 	.db	3
+      000ADA 00 00 00 EC           2276 	.dw	0,(_ETGSEL0)
+      000ADE 45 54 47 53 45 4C 30  2277 	.ascii "ETGSEL0"
+      000AE5 00                    2278 	.db	0
+      000AE6 01                    2279 	.db	1
+      000AE7 00 00 09 FD           2280 	.dw	0,2557
+      000AEB 05                    2281 	.uleb128	5
+      000AEC 05                    2282 	.db	5
+      000AED 03                    2283 	.db	3
+      000AEE 00 00 00 EB           2284 	.dw	0,(_ADCHS3)
+      000AF2 41 44 43 48 53 33     2285 	.ascii "ADCHS3"
+      000AF8 00                    2286 	.db	0
+      000AF9 01                    2287 	.db	1
+      000AFA 00 00 09 FD           2288 	.dw	0,2557
+      000AFE 05                    2289 	.uleb128	5
+      000AFF 05                    2290 	.db	5
+      000B00 03                    2291 	.db	3
+      000B01 00 00 00 EA           2292 	.dw	0,(_ADCHS2)
+      000B05 41 44 43 48 53 32     2293 	.ascii "ADCHS2"
+      000B0B 00                    2294 	.db	0
+      000B0C 01                    2295 	.db	1
+      000B0D 00 00 09 FD           2296 	.dw	0,2557
+      000B11 05                    2297 	.uleb128	5
+      000B12 05                    2298 	.db	5
+      000B13 03                    2299 	.db	3
+      000B14 00 00 00 E9           2300 	.dw	0,(_ADCHS1)
+      000B18 41 44 43 48 53 31     2301 	.ascii "ADCHS1"
+      000B1E 00                    2302 	.db	0
+      000B1F 01                    2303 	.db	1
+      000B20 00 00 09 FD           2304 	.dw	0,2557
+      000B24 05                    2305 	.uleb128	5
+      000B25 05                    2306 	.db	5
+      000B26 03                    2307 	.db	3
+      000B27 00 00 00 E8           2308 	.dw	0,(_ADCHS0)
+      000B2B 41 44 43 48 53 30     2309 	.ascii "ADCHS0"
+      000B31 00                    2310 	.db	0
+      000B32 01                    2311 	.db	1
+      000B33 00 00 09 FD           2312 	.dw	0,2557
+      000B37 05                    2313 	.uleb128	5
+      000B38 05                    2314 	.db	5
+      000B39 03                    2315 	.db	3
+      000B3A 00 00 00 DF           2316 	.dw	0,(_PWMRUN)
+      000B3E 50 57 4D 52 55 4E     2317 	.ascii "PWMRUN"
+      000B44 00                    2318 	.db	0
+      000B45 01                    2319 	.db	1
+      000B46 00 00 09 FD           2320 	.dw	0,2557
+      000B4A 05                    2321 	.uleb128	5
+      000B4B 05                    2322 	.db	5
+      000B4C 03                    2323 	.db	3
+      000B4D 00 00 00 DE           2324 	.dw	0,(_LOAD)
+      000B51 4C 4F 41 44           2325 	.ascii "LOAD"
+      000B55 00                    2326 	.db	0
+      000B56 01                    2327 	.db	1
+      000B57 00 00 09 FD           2328 	.dw	0,2557
+      000B5B 05                    2329 	.uleb128	5
+      000B5C 05                    2330 	.db	5
+      000B5D 03                    2331 	.db	3
+      000B5E 00 00 00 DD           2332 	.dw	0,(_PWMF)
+      000B62 50 57 4D 46           2333 	.ascii "PWMF"
+      000B66 00                    2334 	.db	0
+      000B67 01                    2335 	.db	1
+      000B68 00 00 09 FD           2336 	.dw	0,2557
+      000B6C 05                    2337 	.uleb128	5
+      000B6D 05                    2338 	.db	5
+      000B6E 03                    2339 	.db	3
+      000B6F 00 00 00 DC           2340 	.dw	0,(_CLRPWM)
+      000B73 43 4C 52 50 57 4D     2341 	.ascii "CLRPWM"
+      000B79 00                    2342 	.db	0
+      000B7A 01                    2343 	.db	1
+      000B7B 00 00 09 FD           2344 	.dw	0,2557
+      000B7F 05                    2345 	.uleb128	5
+      000B80 05                    2346 	.db	5
+      000B81 03                    2347 	.db	3
+      000B82 00 00 00 D7           2348 	.dw	0,(_CY)
+      000B86 43 59                 2349 	.ascii "CY"
+      000B88 00                    2350 	.db	0
+      000B89 01                    2351 	.db	1
+      000B8A 00 00 09 FD           2352 	.dw	0,2557
+      000B8E 05                    2353 	.uleb128	5
+      000B8F 05                    2354 	.db	5
+      000B90 03                    2355 	.db	3
+      000B91 00 00 00 D6           2356 	.dw	0,(_AC)
+      000B95 41 43                 2357 	.ascii "AC"
+      000B97 00                    2358 	.db	0
+      000B98 01                    2359 	.db	1
+      000B99 00 00 09 FD           2360 	.dw	0,2557
+      000B9D 05                    2361 	.uleb128	5
+      000B9E 05                    2362 	.db	5
+      000B9F 03                    2363 	.db	3
+      000BA0 00 00 00 D5           2364 	.dw	0,(_F0)
+      000BA4 46 30                 2365 	.ascii "F0"
+      000BA6 00                    2366 	.db	0
+      000BA7 01                    2367 	.db	1
+      000BA8 00 00 09 FD           2368 	.dw	0,2557
+      000BAC 05                    2369 	.uleb128	5
+      000BAD 05                    2370 	.db	5
+      000BAE 03                    2371 	.db	3
+      000BAF 00 00 00 D4           2372 	.dw	0,(_RS1)
+      000BB3 52 53 31              2373 	.ascii "RS1"
+      000BB6 00                    2374 	.db	0
+      000BB7 01                    2375 	.db	1
+      000BB8 00 00 09 FD           2376 	.dw	0,2557
+      000BBC 05                    2377 	.uleb128	5
+      000BBD 05                    2378 	.db	5
+      000BBE 03                    2379 	.db	3
+      000BBF 00 00 00 D3           2380 	.dw	0,(_RS0)
+      000BC3 52 53 30              2381 	.ascii "RS0"
+      000BC6 00                    2382 	.db	0
+      000BC7 01                    2383 	.db	1
+      000BC8 00 00 09 FD           2384 	.dw	0,2557
+      000BCC 05                    2385 	.uleb128	5
+      000BCD 05                    2386 	.db	5
+      000BCE 03                    2387 	.db	3
+      000BCF 00 00 00 D2           2388 	.dw	0,(_OV)
+      000BD3 4F 56                 2389 	.ascii "OV"
+      000BD5 00                    2390 	.db	0
+      000BD6 01                    2391 	.db	1
+      000BD7 00 00 09 FD           2392 	.dw	0,2557
+      000BDB 05                    2393 	.uleb128	5
+      000BDC 05                    2394 	.db	5
+      000BDD 03                    2395 	.db	3
+      000BDE 00 00 00 D0           2396 	.dw	0,(_P)
+      000BE2 50                    2397 	.ascii "P"
+      000BE3 00                    2398 	.db	0
+      000BE4 01                    2399 	.db	1
+      000BE5 00 00 09 FD           2400 	.dw	0,2557
+      000BE9 05                    2401 	.uleb128	5
+      000BEA 05                    2402 	.db	5
+      000BEB 03                    2403 	.db	3
+      000BEC 00 00 00 CF           2404 	.dw	0,(_TF2)
+      000BF0 54 46 32              2405 	.ascii "TF2"
+      000BF3 00                    2406 	.db	0
+      000BF4 01                    2407 	.db	1
+      000BF5 00 00 09 FD           2408 	.dw	0,2557
+      000BF9 05                    2409 	.uleb128	5
+      000BFA 05                    2410 	.db	5
+      000BFB 03                    2411 	.db	3
+      000BFC 00 00 00 CA           2412 	.dw	0,(_TR2)
+      000C00 54 52 32              2413 	.ascii "TR2"
+      000C03 00                    2414 	.db	0
+      000C04 01                    2415 	.db	1
+      000C05 00 00 09 FD           2416 	.dw	0,2557
+      000C09 05                    2417 	.uleb128	5
+      000C0A 05                    2418 	.db	5
+      000C0B 03                    2419 	.db	3
+      000C0C 00 00 00 C8           2420 	.dw	0,(_CM_RL2)
+      000C10 43 4D 5F 52 4C 32     2421 	.ascii "CM_RL2"
+      000C16 00                    2422 	.db	0
+      000C17 01                    2423 	.db	1
+      000C18 00 00 09 FD           2424 	.dw	0,2557
+      000C1C 05                    2425 	.uleb128	5
+      000C1D 05                    2426 	.db	5
+      000C1E 03                    2427 	.db	3
+      000C1F 00 00 00 C6           2428 	.dw	0,(_I2CEN)
+      000C23 49 32 43 45 4E        2429 	.ascii "I2CEN"
+      000C28 00                    2430 	.db	0
+      000C29 01                    2431 	.db	1
+      000C2A 00 00 09 FD           2432 	.dw	0,2557
+      000C2E 05                    2433 	.uleb128	5
+      000C2F 05                    2434 	.db	5
+      000C30 03                    2435 	.db	3
+      000C31 00 00 00 C5           2436 	.dw	0,(_STA)
+      000C35 53 54 41              2437 	.ascii "STA"
+      000C38 00                    2438 	.db	0
+      000C39 01                    2439 	.db	1
+      000C3A 00 00 09 FD           2440 	.dw	0,2557
+      000C3E 05                    2441 	.uleb128	5
+      000C3F 05                    2442 	.db	5
+      000C40 03                    2443 	.db	3
+      000C41 00 00 00 C4           2444 	.dw	0,(_STO)
+      000C45 53 54 4F              2445 	.ascii "STO"
+      000C48 00                    2446 	.db	0
+      000C49 01                    2447 	.db	1
+      000C4A 00 00 09 FD           2448 	.dw	0,2557
+      000C4E 05                    2449 	.uleb128	5
+      000C4F 05                    2450 	.db	5
+      000C50 03                    2451 	.db	3
+      000C51 00 00 00 C3           2452 	.dw	0,(_SI)
+      000C55 53 49                 2453 	.ascii "SI"
+      000C57 00                    2454 	.db	0
+      000C58 01                    2455 	.db	1
+      000C59 00 00 09 FD           2456 	.dw	0,2557
+      000C5D 05                    2457 	.uleb128	5
+      000C5E 05                    2458 	.db	5
+      000C5F 03                    2459 	.db	3
+      000C60 00 00 00 C2           2460 	.dw	0,(_AA)
+      000C64 41 41                 2461 	.ascii "AA"
+      000C66 00                    2462 	.db	0
+      000C67 01                    2463 	.db	1
+      000C68 00 00 09 FD           2464 	.dw	0,2557
+      000C6C 05                    2465 	.uleb128	5
+      000C6D 05                    2466 	.db	5
+      000C6E 03                    2467 	.db	3
+      000C6F 00 00 00 C0           2468 	.dw	0,(_I2CPX)
+      000C73 49 32 43 50 58        2469 	.ascii "I2CPX"
+      000C78 00                    2470 	.db	0
+      000C79 01                    2471 	.db	1
+      000C7A 00 00 09 FD           2472 	.dw	0,2557
+      000C7E 05                    2473 	.uleb128	5
+      000C7F 05                    2474 	.db	5
+      000C80 03                    2475 	.db	3
+      000C81 00 00 00 BE           2476 	.dw	0,(_PADC)
+      000C85 50 41 44 43           2477 	.ascii "PADC"
+      000C89 00                    2478 	.db	0
+      000C8A 01                    2479 	.db	1
+      000C8B 00 00 09 FD           2480 	.dw	0,2557
+      000C8F 05                    2481 	.uleb128	5
+      000C90 05                    2482 	.db	5
+      000C91 03                    2483 	.db	3
+      000C92 00 00 00 BD           2484 	.dw	0,(_PBOD)
+      000C96 50 42 4F 44           2485 	.ascii "PBOD"
+      000C9A 00                    2486 	.db	0
+      000C9B 01                    2487 	.db	1
+      000C9C 00 00 09 FD           2488 	.dw	0,2557
+      000CA0 05                    2489 	.uleb128	5
+      000CA1 05                    2490 	.db	5
+      000CA2 03                    2491 	.db	3
+      000CA3 00 00 00 BC           2492 	.dw	0,(_PS)
+      000CA7 50 53                 2493 	.ascii "PS"
+      000CA9 00                    2494 	.db	0
+      000CAA 01                    2495 	.db	1
+      000CAB 00 00 09 FD           2496 	.dw	0,2557
+      000CAF 05                    2497 	.uleb128	5
+      000CB0 05                    2498 	.db	5
+      000CB1 03                    2499 	.db	3
+      000CB2 00 00 00 BB           2500 	.dw	0,(_PT1)
+      000CB6 50 54 31              2501 	.ascii "PT1"
+      000CB9 00                    2502 	.db	0
+      000CBA 01                    2503 	.db	1
+      000CBB 00 00 09 FD           2504 	.dw	0,2557
+      000CBF 05                    2505 	.uleb128	5
+      000CC0 05                    2506 	.db	5
+      000CC1 03                    2507 	.db	3
+      000CC2 00 00 00 BA           2508 	.dw	0,(_PX1)
+      000CC6 50 58 31              2509 	.ascii "PX1"
+      000CC9 00                    2510 	.db	0
+      000CCA 01                    2511 	.db	1
+      000CCB 00 00 09 FD           2512 	.dw	0,2557
+      000CCF 05                    2513 	.uleb128	5
+      000CD0 05                    2514 	.db	5
+      000CD1 03                    2515 	.db	3
+      000CD2 00 00 00 B9           2516 	.dw	0,(_PT0)
+      000CD6 50 54 30              2517 	.ascii "PT0"
+      000CD9 00                    2518 	.db	0
+      000CDA 01                    2519 	.db	1
+      000CDB 00 00 09 FD           2520 	.dw	0,2557
+      000CDF 05                    2521 	.uleb128	5
+      000CE0 05                    2522 	.db	5
+      000CE1 03                    2523 	.db	3
+      000CE2 00 00 00 B8           2524 	.dw	0,(_PX0)
+      000CE6 50 58 30              2525 	.ascii "PX0"
+      000CE9 00                    2526 	.db	0
+      000CEA 01                    2527 	.db	1
+      000CEB 00 00 09 FD           2528 	.dw	0,2557
+      000CEF 05                    2529 	.uleb128	5
+      000CF0 05                    2530 	.db	5
+      000CF1 03                    2531 	.db	3
+      000CF2 00 00 00 B0           2532 	.dw	0,(_P30)
+      000CF6 50 33 30              2533 	.ascii "P30"
+      000CF9 00                    2534 	.db	0
+      000CFA 01                    2535 	.db	1
+      000CFB 00 00 09 FD           2536 	.dw	0,2557
+      000CFF 05                    2537 	.uleb128	5
+      000D00 05                    2538 	.db	5
+      000D01 03                    2539 	.db	3
+      000D02 00 00 00 AF           2540 	.dw	0,(_EA)
+      000D06 45 41                 2541 	.ascii "EA"
+      000D08 00                    2542 	.db	0
+      000D09 01                    2543 	.db	1
+      000D0A 00 00 09 FD           2544 	.dw	0,2557
+      000D0E 05                    2545 	.uleb128	5
+      000D0F 05                    2546 	.db	5
+      000D10 03                    2547 	.db	3
+      000D11 00 00 00 AE           2548 	.dw	0,(_EADC)
+      000D15 45 41 44 43           2549 	.ascii "EADC"
+      000D19 00                    2550 	.db	0
+      000D1A 01                    2551 	.db	1
+      000D1B 00 00 09 FD           2552 	.dw	0,2557
+      000D1F 05                    2553 	.uleb128	5
+      000D20 05                    2554 	.db	5
+      000D21 03                    2555 	.db	3
+      000D22 00 00 00 AD           2556 	.dw	0,(_EBOD)
+      000D26 45 42 4F 44           2557 	.ascii "EBOD"
+      000D2A 00                    2558 	.db	0
+      000D2B 01                    2559 	.db	1
+      000D2C 00 00 09 FD           2560 	.dw	0,2557
+      000D30 05                    2561 	.uleb128	5
+      000D31 05                    2562 	.db	5
+      000D32 03                    2563 	.db	3
+      000D33 00 00 00 AC           2564 	.dw	0,(_ES)
+      000D37 45 53                 2565 	.ascii "ES"
+      000D39 00                    2566 	.db	0
+      000D3A 01                    2567 	.db	1
+      000D3B 00 00 09 FD           2568 	.dw	0,2557
+      000D3F 05                    2569 	.uleb128	5
+      000D40 05                    2570 	.db	5
+      000D41 03                    2571 	.db	3
+      000D42 00 00 00 AB           2572 	.dw	0,(_ET1)
+      000D46 45 54 31              2573 	.ascii "ET1"
+      000D49 00                    2574 	.db	0
+      000D4A 01                    2575 	.db	1
+      000D4B 00 00 09 FD           2576 	.dw	0,2557
+      000D4F 05                    2577 	.uleb128	5
+      000D50 05                    2578 	.db	5
+      000D51 03                    2579 	.db	3
+      000D52 00 00 00 AA           2580 	.dw	0,(_EX1)
+      000D56 45 58 31              2581 	.ascii "EX1"
+      000D59 00                    2582 	.db	0
+      000D5A 01                    2583 	.db	1
+      000D5B 00 00 09 FD           2584 	.dw	0,2557
+      000D5F 05                    2585 	.uleb128	5
+      000D60 05                    2586 	.db	5
+      000D61 03                    2587 	.db	3
+      000D62 00 00 00 A9           2588 	.dw	0,(_ET0)
+      000D66 45 54 30              2589 	.ascii "ET0"
+      000D69 00                    2590 	.db	0
+      000D6A 01                    2591 	.db	1
+      000D6B 00 00 09 FD           2592 	.dw	0,2557
+      000D6F 05                    2593 	.uleb128	5
+      000D70 05                    2594 	.db	5
+      000D71 03                    2595 	.db	3
+      000D72 00 00 00 A8           2596 	.dw	0,(_EX0)
+      000D76 45 58 30              2597 	.ascii "EX0"
+      000D79 00                    2598 	.db	0
+      000D7A 01                    2599 	.db	1
+      000D7B 00 00 09 FD           2600 	.dw	0,2557
+      000D7F 05                    2601 	.uleb128	5
+      000D80 05                    2602 	.db	5
+      000D81 03                    2603 	.db	3
+      000D82 00 00 00 A0           2604 	.dw	0,(_P20)
+      000D86 50 32 30              2605 	.ascii "P20"
+      000D89 00                    2606 	.db	0
+      000D8A 01                    2607 	.db	1
+      000D8B 00 00 09 FD           2608 	.dw	0,2557
+      000D8F 05                    2609 	.uleb128	5
+      000D90 05                    2610 	.db	5
+      000D91 03                    2611 	.db	3
+      000D92 00 00 00 9F           2612 	.dw	0,(_SM0)
+      000D96 53 4D 30              2613 	.ascii "SM0"
+      000D99 00                    2614 	.db	0
+      000D9A 01                    2615 	.db	1
+      000D9B 00 00 09 FD           2616 	.dw	0,2557
+      000D9F 05                    2617 	.uleb128	5
+      000DA0 05                    2618 	.db	5
+      000DA1 03                    2619 	.db	3
+      000DA2 00 00 00 9F           2620 	.dw	0,(_FE)
+      000DA6 46 45                 2621 	.ascii "FE"
+      000DA8 00                    2622 	.db	0
+      000DA9 01                    2623 	.db	1
+      000DAA 00 00 09 FD           2624 	.dw	0,2557
+      000DAE 05                    2625 	.uleb128	5
+      000DAF 05                    2626 	.db	5
+      000DB0 03                    2627 	.db	3
+      000DB1 00 00 00 9E           2628 	.dw	0,(_SM1)
+      000DB5 53 4D 31              2629 	.ascii "SM1"
+      000DB8 00                    2630 	.db	0
+      000DB9 01                    2631 	.db	1
+      000DBA 00 00 09 FD           2632 	.dw	0,2557
+      000DBE 05                    2633 	.uleb128	5
+      000DBF 05                    2634 	.db	5
+      000DC0 03                    2635 	.db	3
+      000DC1 00 00 00 9D           2636 	.dw	0,(_SM2)
+      000DC5 53 4D 32              2637 	.ascii "SM2"
+      000DC8 00                    2638 	.db	0
+      000DC9 01                    2639 	.db	1
+      000DCA 00 00 09 FD           2640 	.dw	0,2557
+      000DCE 05                    2641 	.uleb128	5
+      000DCF 05                    2642 	.db	5
+      000DD0 03                    2643 	.db	3
+      000DD1 00 00 00 9C           2644 	.dw	0,(_REN)
+      000DD5 52 45 4E              2645 	.ascii "REN"
+      000DD8 00                    2646 	.db	0
+      000DD9 01                    2647 	.db	1
+      000DDA 00 00 09 FD           2648 	.dw	0,2557
+      000DDE 05                    2649 	.uleb128	5
+      000DDF 05                    2650 	.db	5
+      000DE0 03                    2651 	.db	3
+      000DE1 00 00 00 9B           2652 	.dw	0,(_TB8)
+      000DE5 54 42 38              2653 	.ascii "TB8"
+      000DE8 00                    2654 	.db	0
+      000DE9 01                    2655 	.db	1
+      000DEA 00 00 09 FD           2656 	.dw	0,2557
+      000DEE 05                    2657 	.uleb128	5
+      000DEF 05                    2658 	.db	5
+      000DF0 03                    2659 	.db	3
+      000DF1 00 00 00 9A           2660 	.dw	0,(_RB8)
+      000DF5 52 42 38              2661 	.ascii "RB8"
+      000DF8 00                    2662 	.db	0
+      000DF9 01                    2663 	.db	1
+      000DFA 00 00 09 FD           2664 	.dw	0,2557
+      000DFE 05                    2665 	.uleb128	5
+      000DFF 05                    2666 	.db	5
+      000E00 03                    2667 	.db	3
+      000E01 00 00 00 99           2668 	.dw	0,(_TI)
+      000E05 54 49                 2669 	.ascii "TI"
+      000E07 00                    2670 	.db	0
+      000E08 01                    2671 	.db	1
+      000E09 00 00 09 FD           2672 	.dw	0,2557
+      000E0D 05                    2673 	.uleb128	5
+      000E0E 05                    2674 	.db	5
+      000E0F 03                    2675 	.db	3
+      000E10 00 00 00 98           2676 	.dw	0,(_RI)
+      000E14 52 49                 2677 	.ascii "RI"
+      000E16 00                    2678 	.db	0
+      000E17 01                    2679 	.db	1
+      000E18 00 00 09 FD           2680 	.dw	0,2557
+      000E1C 05                    2681 	.uleb128	5
+      000E1D 05                    2682 	.db	5
+      000E1E 03                    2683 	.db	3
+      000E1F 00 00 00 97           2684 	.dw	0,(_P17)
+      000E23 50 31 37              2685 	.ascii "P17"
+      000E26 00                    2686 	.db	0
+      000E27 01                    2687 	.db	1
+      000E28 00 00 09 FD           2688 	.dw	0,2557
+      000E2C 05                    2689 	.uleb128	5
+      000E2D 05                    2690 	.db	5
+      000E2E 03                    2691 	.db	3
+      000E2F 00 00 00 96           2692 	.dw	0,(_P16)
+      000E33 50 31 36              2693 	.ascii "P16"
+      000E36 00                    2694 	.db	0
+      000E37 01                    2695 	.db	1
+      000E38 00 00 09 FD           2696 	.dw	0,2557
+      000E3C 05                    2697 	.uleb128	5
+      000E3D 05                    2698 	.db	5
+      000E3E 03                    2699 	.db	3
+      000E3F 00 00 00 96           2700 	.dw	0,(_TXD_1)
+      000E43 54 58 44 5F 31        2701 	.ascii "TXD_1"
+      000E48 00                    2702 	.db	0
+      000E49 01                    2703 	.db	1
+      000E4A 00 00 09 FD           2704 	.dw	0,2557
+      000E4E 05                    2705 	.uleb128	5
+      000E4F 05                    2706 	.db	5
+      000E50 03                    2707 	.db	3
+      000E51 00 00 00 95           2708 	.dw	0,(_P15)
+      000E55 50 31 35              2709 	.ascii "P15"
+      000E58 00                    2710 	.db	0
+      000E59 01                    2711 	.db	1
+      000E5A 00 00 09 FD           2712 	.dw	0,2557
+      000E5E 05                    2713 	.uleb128	5
+      000E5F 05                    2714 	.db	5
+      000E60 03                    2715 	.db	3
+      000E61 00 00 00 94           2716 	.dw	0,(_P14)
+      000E65 50 31 34              2717 	.ascii "P14"
+      000E68 00                    2718 	.db	0
+      000E69 01                    2719 	.db	1
+      000E6A 00 00 09 FD           2720 	.dw	0,2557
+      000E6E 05                    2721 	.uleb128	5
+      000E6F 05                    2722 	.db	5
+      000E70 03                    2723 	.db	3
+      000E71 00 00 00 94           2724 	.dw	0,(_SDA)
+      000E75 53 44 41              2725 	.ascii "SDA"
+      000E78 00                    2726 	.db	0
+      000E79 01                    2727 	.db	1
+      000E7A 00 00 09 FD           2728 	.dw	0,2557
+      000E7E 05                    2729 	.uleb128	5
+      000E7F 05                    2730 	.db	5
+      000E80 03                    2731 	.db	3
+      000E81 00 00 00 93           2732 	.dw	0,(_P13)
+      000E85 50 31 33              2733 	.ascii "P13"
+      000E88 00                    2734 	.db	0
+      000E89 01                    2735 	.db	1
+      000E8A 00 00 09 FD           2736 	.dw	0,2557
+      000E8E 05                    2737 	.uleb128	5
+      000E8F 05                    2738 	.db	5
+      000E90 03                    2739 	.db	3
+      000E91 00 00 00 93           2740 	.dw	0,(_SCL)
+      000E95 53 43 4C              2741 	.ascii "SCL"
+      000E98 00                    2742 	.db	0
+      000E99 01                    2743 	.db	1
+      000E9A 00 00 09 FD           2744 	.dw	0,2557
+      000E9E 05                    2745 	.uleb128	5
+      000E9F 05                    2746 	.db	5
+      000EA0 03                    2747 	.db	3
+      000EA1 00 00 00 92           2748 	.dw	0,(_P12)
+      000EA5 50 31 32              2749 	.ascii "P12"
+      000EA8 00                    2750 	.db	0
+      000EA9 01                    2751 	.db	1
+      000EAA 00 00 09 FD           2752 	.dw	0,2557
+      000EAE 05                    2753 	.uleb128	5
+      000EAF 05                    2754 	.db	5
+      000EB0 03                    2755 	.db	3
+      000EB1 00 00 00 91           2756 	.dw	0,(_P11)
+      000EB5 50 31 31              2757 	.ascii "P11"
+      000EB8 00                    2758 	.db	0
+      000EB9 01                    2759 	.db	1
+      000EBA 00 00 09 FD           2760 	.dw	0,2557
+      000EBE 05                    2761 	.uleb128	5
+      000EBF 05                    2762 	.db	5
+      000EC0 03                    2763 	.db	3
+      000EC1 00 00 00 90           2764 	.dw	0,(_P10)
+      000EC5 50 31 30              2765 	.ascii "P10"
+      000EC8 00                    2766 	.db	0
+      000EC9 01                    2767 	.db	1
+      000ECA 00 00 09 FD           2768 	.dw	0,2557
+      000ECE 05                    2769 	.uleb128	5
+      000ECF 05                    2770 	.db	5
+      000ED0 03                    2771 	.db	3
+      000ED1 00 00 00 8F           2772 	.dw	0,(_TF1)
+      000ED5 54 46 31              2773 	.ascii "TF1"
+      000ED8 00                    2774 	.db	0
+      000ED9 01                    2775 	.db	1
+      000EDA 00 00 09 FD           2776 	.dw	0,2557
+      000EDE 05                    2777 	.uleb128	5
+      000EDF 05                    2778 	.db	5
+      000EE0 03                    2779 	.db	3
+      000EE1 00 00 00 8E           2780 	.dw	0,(_TR1)
+      000EE5 54 52 31              2781 	.ascii "TR1"
+      000EE8 00                    2782 	.db	0
+      000EE9 01                    2783 	.db	1
+      000EEA 00 00 09 FD           2784 	.dw	0,2557
+      000EEE 05                    2785 	.uleb128	5
+      000EEF 05                    2786 	.db	5
+      000EF0 03                    2787 	.db	3
+      000EF1 00 00 00 8D           2788 	.dw	0,(_TF0)
+      000EF5 54 46 30              2789 	.ascii "TF0"
+      000EF8 00                    2790 	.db	0
+      000EF9 01                    2791 	.db	1
+      000EFA 00 00 09 FD           2792 	.dw	0,2557
+      000EFE 05                    2793 	.uleb128	5
+      000EFF 05                    2794 	.db	5
+      000F00 03                    2795 	.db	3
+      000F01 00 00 00 8C           2796 	.dw	0,(_TR0)
+      000F05 54 52 30              2797 	.ascii "TR0"
+      000F08 00                    2798 	.db	0
+      000F09 01                    2799 	.db	1
+      000F0A 00 00 09 FD           2800 	.dw	0,2557
+      000F0E 05                    2801 	.uleb128	5
+      000F0F 05                    2802 	.db	5
+      000F10 03                    2803 	.db	3
+      000F11 00 00 00 8B           2804 	.dw	0,(_IE1)
+      000F15 49 45 31              2805 	.ascii "IE1"
+      000F18 00                    2806 	.db	0
+      000F19 01                    2807 	.db	1
+      000F1A 00 00 09 FD           2808 	.dw	0,2557
+      000F1E 05                    2809 	.uleb128	5
+      000F1F 05                    2810 	.db	5
+      000F20 03                    2811 	.db	3
+      000F21 00 00 00 8A           2812 	.dw	0,(_IT1)
+      000F25 49 54 31              2813 	.ascii "IT1"
+      000F28 00                    2814 	.db	0
+      000F29 01                    2815 	.db	1
+      000F2A 00 00 09 FD           2816 	.dw	0,2557
+      000F2E 05                    2817 	.uleb128	5
+      000F2F 05                    2818 	.db	5
+      000F30 03                    2819 	.db	3
+      000F31 00 00 00 89           2820 	.dw	0,(_IE0)
+      000F35 49 45 30              2821 	.ascii "IE0"
+      000F38 00                    2822 	.db	0
+      000F39 01                    2823 	.db	1
+      000F3A 00 00 09 FD           2824 	.dw	0,2557
+      000F3E 05                    2825 	.uleb128	5
+      000F3F 05                    2826 	.db	5
+      000F40 03                    2827 	.db	3
+      000F41 00 00 00 88           2828 	.dw	0,(_IT0)
+      000F45 49 54 30              2829 	.ascii "IT0"
+      000F48 00                    2830 	.db	0
+      000F49 01                    2831 	.db	1
+      000F4A 00 00 09 FD           2832 	.dw	0,2557
+      000F4E 05                    2833 	.uleb128	5
+      000F4F 05                    2834 	.db	5
+      000F50 03                    2835 	.db	3
+      000F51 00 00 00 87           2836 	.dw	0,(_P07)
+      000F55 50 30 37              2837 	.ascii "P07"
+      000F58 00                    2838 	.db	0
+      000F59 01                    2839 	.db	1
+      000F5A 00 00 09 FD           2840 	.dw	0,2557
+      000F5E 05                    2841 	.uleb128	5
+      000F5F 05                    2842 	.db	5
+      000F60 03                    2843 	.db	3
+      000F61 00 00 00 87           2844 	.dw	0,(_RXD)
+      000F65 52 58 44              2845 	.ascii "RXD"
+      000F68 00                    2846 	.db	0
+      000F69 01                    2847 	.db	1
+      000F6A 00 00 09 FD           2848 	.dw	0,2557
+      000F6E 05                    2849 	.uleb128	5
+      000F6F 05                    2850 	.db	5
+      000F70 03                    2851 	.db	3
+      000F71 00 00 00 86           2852 	.dw	0,(_P06)
+      000F75 50 30 36              2853 	.ascii "P06"
+      000F78 00                    2854 	.db	0
+      000F79 01                    2855 	.db	1
+      000F7A 00 00 09 FD           2856 	.dw	0,2557
+      000F7E 05                    2857 	.uleb128	5
+      000F7F 05                    2858 	.db	5
+      000F80 03                    2859 	.db	3
+      000F81 00 00 00 86           2860 	.dw	0,(_TXD)
+      000F85 54 58 44              2861 	.ascii "TXD"
+      000F88 00                    2862 	.db	0
+      000F89 01                    2863 	.db	1
+      000F8A 00 00 09 FD           2864 	.dw	0,2557
+      000F8E 05                    2865 	.uleb128	5
+      000F8F 05                    2866 	.db	5
+      000F90 03                    2867 	.db	3
+      000F91 00 00 00 85           2868 	.dw	0,(_P05)
+      000F95 50 30 35              2869 	.ascii "P05"
+      000F98 00                    2870 	.db	0
+      000F99 01                    2871 	.db	1
+      000F9A 00 00 09 FD           2872 	.dw	0,2557
+      000F9E 05                    2873 	.uleb128	5
+      000F9F 05                    2874 	.db	5
+      000FA0 03                    2875 	.db	3
+      000FA1 00 00 00 84           2876 	.dw	0,(_P04)
+      000FA5 50 30 34              2877 	.ascii "P04"
+      000FA8 00                    2878 	.db	0
+      000FA9 01                    2879 	.db	1
+      000FAA 00 00 09 FD           2880 	.dw	0,2557
+      000FAE 05                    2881 	.uleb128	5
+      000FAF 05                    2882 	.db	5
+      000FB0 03                    2883 	.db	3
+      000FB1 00 00 00 84           2884 	.dw	0,(_STADC)
+      000FB5 53 54 41 44 43        2885 	.ascii "STADC"
+      000FBA 00                    2886 	.db	0
+      000FBB 01                    2887 	.db	1
+      000FBC 00 00 09 FD           2888 	.dw	0,2557
+      000FC0 05                    2889 	.uleb128	5
+      000FC1 05                    2890 	.db	5
+      000FC2 03                    2891 	.db	3
+      000FC3 00 00 00 83           2892 	.dw	0,(_P03)
+      000FC7 50 30 33              2893 	.ascii "P03"
+      000FCA 00                    2894 	.db	0
+      000FCB 01                    2895 	.db	1
+      000FCC 00 00 09 FD           2896 	.dw	0,2557
+      000FD0 05                    2897 	.uleb128	5
+      000FD1 05                    2898 	.db	5
+      000FD2 03                    2899 	.db	3
+      000FD3 00 00 00 82           2900 	.dw	0,(_P02)
+      000FD7 50 30 32              2901 	.ascii "P02"
+      000FDA 00                    2902 	.db	0
+      000FDB 01                    2903 	.db	1
+      000FDC 00 00 09 FD           2904 	.dw	0,2557
+      000FE0 05                    2905 	.uleb128	5
+      000FE1 05                    2906 	.db	5
+      000FE2 03                    2907 	.db	3
+      000FE3 00 00 00 82           2908 	.dw	0,(_RXD_1)
+      000FE7 52 58 44 5F 31        2909 	.ascii "RXD_1"
+      000FEC 00                    2910 	.db	0
+      000FED 01                    2911 	.db	1
+      000FEE 00 00 09 FD           2912 	.dw	0,2557
+      000FF2 05                    2913 	.uleb128	5
+      000FF3 05                    2914 	.db	5
+      000FF4 03                    2915 	.db	3
+      000FF5 00 00 00 81           2916 	.dw	0,(_P01)
+      000FF9 50 30 31              2917 	.ascii "P01"
+      000FFC 00                    2918 	.db	0
+      000FFD 01                    2919 	.db	1
+      000FFE 00 00 09 FD           2920 	.dw	0,2557
+      001002 05                    2921 	.uleb128	5
+      001003 05                    2922 	.db	5
+      001004 03                    2923 	.db	3
+      001005 00 00 00 81           2924 	.dw	0,(_MISO)
+      001009 4D 49 53 4F           2925 	.ascii "MISO"
+      00100D 00                    2926 	.db	0
+      00100E 01                    2927 	.db	1
+      00100F 00 00 09 FD           2928 	.dw	0,2557
+      001013 05                    2929 	.uleb128	5
+      001014 05                    2930 	.db	5
+      001015 03                    2931 	.db	3
+      001016 00 00 00 80           2932 	.dw	0,(_P00)
+      00101A 50 30 30              2933 	.ascii "P00"
+      00101D 00                    2934 	.db	0
+      00101E 01                    2935 	.db	1
+      00101F 00 00 09 FD           2936 	.dw	0,2557
+      001023 05                    2937 	.uleb128	5
+      001024 05                    2938 	.db	5
+      001025 03                    2939 	.db	3
+      001026 00 00 00 80           2940 	.dw	0,(_MOSI)
+      00102A 4D 4F 53 49           2941 	.ascii "MOSI"
+      00102E 00                    2942 	.db	0
+      00102F 01                    2943 	.db	1
+      001030 00 00 09 FD           2944 	.dw	0,2557
+      001034 03                    2945 	.uleb128	3
+      001035 75 6E 73 69 67 6E 65  2946 	.ascii "unsigned char"
+             64 20 63 68 61 72
+      001042 00                    2947 	.db	0
+      001043 01                    2948 	.db	1
+      001044 08                    2949 	.db	8
+      001045 06                    2950 	.uleb128	6
+      001046 00 00 10 34           2951 	.dw	0,4148
+      00104A 07                    2952 	.uleb128	7
+      00104B 00 00 10 57           2953 	.dw	0,4183
+      00104F 0F                    2954 	.db	15
+      001050 00 00 10 45           2955 	.dw	0,4165
+      001054 08                    2956 	.uleb128	8
+      001055 0E                    2957 	.db	14
+      001056 00                    2958 	.uleb128	0
+      001057 09                    2959 	.uleb128	9
+      001058 05                    2960 	.db	5
+      001059 03                    2961 	.db	3
+      00105A 00 00 11 DE           2962 	.dw	0,(___str_0)
+      00105E 5F 5F 73 74 72 5F 30  2963 	.ascii "__str_0"
+      001065 00                    2964 	.db	0
+      001066 00 00 10 4A           2965 	.dw	0,4170
+      00106A 00                    2966 	.uleb128	0
+      00106B                       2967 Ldebug_info_end:
+                                   2968 
+                                   2969 	.area .debug_pubnames (NOLOAD)
+      000000 00 00 08 5F           2970 	.dw	0,Ldebug_pubnames_end-Ldebug_pubnames_start
+      000004                       2971 Ldebug_pubnames_start:
+      000004 00 02                 2972 	.dw	2
+      000006 00 00 00 00           2973 	.dw	0,(Ldebug_info_start-4)
+      00000A 00 00 10 6B           2974 	.dw	0,4+Ldebug_info_end-Ldebug_info_start
+      00000E 00 00 00 75           2975 	.dw	0,117
+      000012 6D 61 69 6E           2976 	.ascii "main"
+      000016 00                    2977 	.db	0
+      000017 00 00 00 9E           2978 	.dw	0,158
+      00001B 50 30                 2979 	.ascii "P0"
+      00001D 00                    2980 	.db	0
+      00001E 00 00 00 AD           2981 	.dw	0,173
+      000022 53 50                 2982 	.ascii "SP"
+      000024 00                    2983 	.db	0
+      000025 00 00 00 BC           2984 	.dw	0,188
+      000029 44 50 4C              2985 	.ascii "DPL"
+      00002C 00                    2986 	.db	0
+      00002D 00 00 00 CC           2987 	.dw	0,204
+      000031 44 50 48              2988 	.ascii "DPH"
+      000034 00                    2989 	.db	0
+      000035 00 00 00 DC           2990 	.dw	0,220
+      000039 52 43 54 52 49 4D 30  2991 	.ascii "RCTRIM0"
+      000040 00                    2992 	.db	0
+      000041 00 00 00 F0           2993 	.dw	0,240
+      000045 52 43 54 52 49 4D 31  2994 	.ascii "RCTRIM1"
+      00004C 00                    2995 	.db	0
+      00004D 00 00 01 04           2996 	.dw	0,260
+      000051 52 57 4B              2997 	.ascii "RWK"
+      000054 00                    2998 	.db	0
+      000055 00 00 01 14           2999 	.dw	0,276
+      000059 50 43 4F 4E           3000 	.ascii "PCON"
+      00005D 00                    3001 	.db	0
+      00005E 00 00 01 25           3002 	.dw	0,293
+      000062 54 43 4F 4E           3003 	.ascii "TCON"
+      000066 00                    3004 	.db	0
+      000067 00 00 01 36           3005 	.dw	0,310
+      00006B 54 4D 4F 44           3006 	.ascii "TMOD"
+      00006F 00                    3007 	.db	0
+      000070 00 00 01 47           3008 	.dw	0,327
+      000074 54 4C 30              3009 	.ascii "TL0"
+      000077 00                    3010 	.db	0
+      000078 00 00 01 57           3011 	.dw	0,343
+      00007C 54 4C 31              3012 	.ascii "TL1"
+      00007F 00                    3013 	.db	0
+      000080 00 00 01 67           3014 	.dw	0,359
+      000084 54 48 30              3015 	.ascii "TH0"
+      000087 00                    3016 	.db	0
+      000088 00 00 01 77           3017 	.dw	0,375
+      00008C 54 48 31              3018 	.ascii "TH1"
+      00008F 00                    3019 	.db	0
+      000090 00 00 01 87           3020 	.dw	0,391
+      000094 43 4B 43 4F 4E        3021 	.ascii "CKCON"
+      000099 00                    3022 	.db	0
+      00009A 00 00 01 99           3023 	.dw	0,409
+      00009E 57 4B 43 4F 4E        3024 	.ascii "WKCON"
+      0000A3 00                    3025 	.db	0
+      0000A4 00 00 01 AB           3026 	.dw	0,427
+      0000A8 50 31                 3027 	.ascii "P1"
+      0000AA 00                    3028 	.db	0
+      0000AB 00 00 01 BA           3029 	.dw	0,442
+      0000AF 53 46 52 53           3030 	.ascii "SFRS"
+      0000B3 00                    3031 	.db	0
+      0000B4 00 00 01 CB           3032 	.dw	0,459
+      0000B8 43 41 50 43 4F 4E 30  3033 	.ascii "CAPCON0"
+      0000BF 00                    3034 	.db	0
+      0000C0 00 00 01 DF           3035 	.dw	0,479
+      0000C4 43 41 50 43 4F 4E 31  3036 	.ascii "CAPCON1"
+      0000CB 00                    3037 	.db	0
+      0000CC 00 00 01 F3           3038 	.dw	0,499
+      0000D0 43 41 50 43 4F 4E 32  3039 	.ascii "CAPCON2"
+      0000D7 00                    3040 	.db	0
+      0000D8 00 00 02 07           3041 	.dw	0,519
+      0000DC 43 4B 44 49 56        3042 	.ascii "CKDIV"
+      0000E1 00                    3043 	.db	0
+      0000E2 00 00 02 19           3044 	.dw	0,537
+      0000E6 43 4B 53 57 54        3045 	.ascii "CKSWT"
+      0000EB 00                    3046 	.db	0
+      0000EC 00 00 02 2B           3047 	.dw	0,555
+      0000F0 43 4B 45 4E           3048 	.ascii "CKEN"
+      0000F4 00                    3049 	.db	0
+      0000F5 00 00 02 3C           3050 	.dw	0,572
+      0000F9 53 43 4F 4E           3051 	.ascii "SCON"
+      0000FD 00                    3052 	.db	0
+      0000FE 00 00 02 4D           3053 	.dw	0,589
+      000102 53 42 55 46           3054 	.ascii "SBUF"
+      000106 00                    3055 	.db	0
+      000107 00 00 02 5E           3056 	.dw	0,606
+      00010B 53 42 55 46 5F 31     3057 	.ascii "SBUF_1"
+      000111 00                    3058 	.db	0
+      000112 00 00 02 71           3059 	.dw	0,625
+      000116 45 49 45              3060 	.ascii "EIE"
+      000119 00                    3061 	.db	0
+      00011A 00 00 02 81           3062 	.dw	0,641
+      00011E 45 49 45 31           3063 	.ascii "EIE1"
+      000122 00                    3064 	.db	0
+      000123 00 00 02 92           3065 	.dw	0,658
+      000127 43 48 50 43 4F 4E     3066 	.ascii "CHPCON"
+      00012D 00                    3067 	.db	0
+      00012E 00 00 02 A5           3068 	.dw	0,677
+      000132 50 32                 3069 	.ascii "P2"
+      000134 00                    3070 	.db	0
+      000135 00 00 02 B4           3071 	.dw	0,692
+      000139 41 55 58 52 31        3072 	.ascii "AUXR1"
+      00013E 00                    3073 	.db	0
+      00013F 00 00 02 C6           3074 	.dw	0,710
+      000143 42 4F 44 43 4F 4E 30  3075 	.ascii "BODCON0"
+      00014A 00                    3076 	.db	0
+      00014B 00 00 02 DA           3077 	.dw	0,730
+      00014F 49 41 50 54 52 47     3078 	.ascii "IAPTRG"
+      000155 00                    3079 	.db	0
+      000156 00 00 02 ED           3080 	.dw	0,749
+      00015A 49 41 50 55 45 4E     3081 	.ascii "IAPUEN"
+      000160 00                    3082 	.db	0
+      000161 00 00 03 00           3083 	.dw	0,768
+      000165 49 41 50 41 4C        3084 	.ascii "IAPAL"
+      00016A 00                    3085 	.db	0
+      00016B 00 00 03 12           3086 	.dw	0,786
+      00016F 49 41 50 41 48        3087 	.ascii "IAPAH"
+      000174 00                    3088 	.db	0
+      000175 00 00 03 24           3089 	.dw	0,804
+      000179 49 45                 3090 	.ascii "IE"
+      00017B 00                    3091 	.db	0
+      00017C 00 00 03 33           3092 	.dw	0,819
+      000180 53 41 44 44 52        3093 	.ascii "SADDR"
+      000185 00                    3094 	.db	0
+      000186 00 00 03 45           3095 	.dw	0,837
+      00018A 57 44 43 4F 4E        3096 	.ascii "WDCON"
+      00018F 00                    3097 	.db	0
+      000190 00 00 03 57           3098 	.dw	0,855
+      000194 42 4F 44 43 4F 4E 31  3099 	.ascii "BODCON1"
+      00019B 00                    3100 	.db	0
+      00019C 00 00 03 6B           3101 	.dw	0,875
+      0001A0 50 33 4D 31           3102 	.ascii "P3M1"
+      0001A4 00                    3103 	.db	0
+      0001A5 00 00 03 7C           3104 	.dw	0,892
+      0001A9 50 33 53              3105 	.ascii "P3S"
+      0001AC 00                    3106 	.db	0
+      0001AD 00 00 03 8C           3107 	.dw	0,908
+      0001B1 50 33 4D 32           3108 	.ascii "P3M2"
+      0001B5 00                    3109 	.db	0
+      0001B6 00 00 03 9D           3110 	.dw	0,925
+      0001BA 50 33 53 52           3111 	.ascii "P3SR"
+      0001BE 00                    3112 	.db	0
+      0001BF 00 00 03 AE           3113 	.dw	0,942
+      0001C3 49 41 50 46 44        3114 	.ascii "IAPFD"
+      0001C8 00                    3115 	.db	0
+      0001C9 00 00 03 C0           3116 	.dw	0,960
+      0001CD 49 41 50 43 4E        3117 	.ascii "IAPCN"
+      0001D2 00                    3118 	.db	0
+      0001D3 00 00 03 D2           3119 	.dw	0,978
+      0001D7 50 33                 3120 	.ascii "P3"
+      0001D9 00                    3121 	.db	0
+      0001DA 00 00 03 E1           3122 	.dw	0,993
+      0001DE 50 30 4D 31           3123 	.ascii "P0M1"
+      0001E2 00                    3124 	.db	0
+      0001E3 00 00 03 F2           3125 	.dw	0,1010
+      0001E7 50 30 53              3126 	.ascii "P0S"
+      0001EA 00                    3127 	.db	0
+      0001EB 00 00 04 02           3128 	.dw	0,1026
+      0001EF 50 30 4D 32           3129 	.ascii "P0M2"
+      0001F3 00                    3130 	.db	0
+      0001F4 00 00 04 13           3131 	.dw	0,1043
+      0001F8 50 30 53 52           3132 	.ascii "P0SR"
+      0001FC 00                    3133 	.db	0
+      0001FD 00 00 04 24           3134 	.dw	0,1060
+      000201 50 31 4D 31           3135 	.ascii "P1M1"
+      000205 00                    3136 	.db	0
+      000206 00 00 04 35           3137 	.dw	0,1077
+      00020A 50 31 53              3138 	.ascii "P1S"
+      00020D 00                    3139 	.db	0
+      00020E 00 00 04 45           3140 	.dw	0,1093
+      000212 50 31 4D 32           3141 	.ascii "P1M2"
+      000216 00                    3142 	.db	0
+      000217 00 00 04 56           3143 	.dw	0,1110
+      00021B 50 31 53 52           3144 	.ascii "P1SR"
+      00021F 00                    3145 	.db	0
+      000220 00 00 04 67           3146 	.dw	0,1127
+      000224 50 32 53              3147 	.ascii "P2S"
+      000227 00                    3148 	.db	0
+      000228 00 00 04 77           3149 	.dw	0,1143
+      00022C 49 50 48              3150 	.ascii "IPH"
+      00022F 00                    3151 	.db	0
+      000230 00 00 04 87           3152 	.dw	0,1159
+      000234 50 57 4D 49 4E 54 43  3153 	.ascii "PWMINTC"
+      00023B 00                    3154 	.db	0
+      00023C 00 00 04 9B           3155 	.dw	0,1179
+      000240 49 50                 3156 	.ascii "IP"
+      000242 00                    3157 	.db	0
+      000243 00 00 04 AA           3158 	.dw	0,1194
+      000247 53 41 44 45 4E        3159 	.ascii "SADEN"
+      00024C 00                    3160 	.db	0
+      00024D 00 00 04 BC           3161 	.dw	0,1212
+      000251 53 41 44 45 4E 5F 31  3162 	.ascii "SADEN_1"
+      000258 00                    3163 	.db	0
+      000259 00 00 04 D0           3164 	.dw	0,1232
+      00025D 53 41 44 44 52 5F 31  3165 	.ascii "SADDR_1"
+      000264 00                    3166 	.db	0
+      000265 00 00 04 E4           3167 	.dw	0,1252
+      000269 49 32 44 41 54        3168 	.ascii "I2DAT"
+      00026E 00                    3169 	.db	0
+      00026F 00 00 04 F6           3170 	.dw	0,1270
+      000273 49 32 53 54 41 54     3171 	.ascii "I2STAT"
+      000279 00                    3172 	.db	0
+      00027A 00 00 05 09           3173 	.dw	0,1289
+      00027E 49 32 43 4C 4B        3174 	.ascii "I2CLK"
+      000283 00                    3175 	.db	0
+      000284 00 00 05 1B           3176 	.dw	0,1307
+      000288 49 32 54 4F 43        3177 	.ascii "I2TOC"
+      00028D 00                    3178 	.db	0
+      00028E 00 00 05 2D           3179 	.dw	0,1325
+      000292 49 32 43 4F 4E        3180 	.ascii "I2CON"
+      000297 00                    3181 	.db	0
+      000298 00 00 05 3F           3182 	.dw	0,1343
+      00029C 49 32 41 44 44 52     3183 	.ascii "I2ADDR"
+      0002A2 00                    3184 	.db	0
+      0002A3 00 00 05 52           3185 	.dw	0,1362
+      0002A7 41 44 43 52 4C        3186 	.ascii "ADCRL"
+      0002AC 00                    3187 	.db	0
+      0002AD 00 00 05 64           3188 	.dw	0,1380
+      0002B1 41 44 43 52 48        3189 	.ascii "ADCRH"
+      0002B6 00                    3190 	.db	0
+      0002B7 00 00 05 76           3191 	.dw	0,1398
+      0002BB 54 33 43 4F 4E        3192 	.ascii "T3CON"
+      0002C0 00                    3193 	.db	0
+      0002C1 00 00 05 88           3194 	.dw	0,1416
+      0002C5 50 57 4D 34 48        3195 	.ascii "PWM4H"
+      0002CA 00                    3196 	.db	0
+      0002CB 00 00 05 9A           3197 	.dw	0,1434
+      0002CF 52 4C 33              3198 	.ascii "RL3"
+      0002D2 00                    3199 	.db	0
+      0002D3 00 00 05 AA           3200 	.dw	0,1450
+      0002D7 50 57 4D 35 48        3201 	.ascii "PWM5H"
+      0002DC 00                    3202 	.db	0
+      0002DD 00 00 05 BC           3203 	.dw	0,1468
+      0002E1 52 48 33              3204 	.ascii "RH3"
+      0002E4 00                    3205 	.db	0
+      0002E5 00 00 05 CC           3206 	.dw	0,1484
+      0002E9 50 49 4F 43 4F 4E 31  3207 	.ascii "PIOCON1"
+      0002F0 00                    3208 	.db	0
+      0002F1 00 00 05 E0           3209 	.dw	0,1504
+      0002F5 54 41                 3210 	.ascii "TA"
+      0002F7 00                    3211 	.db	0
+      0002F8 00 00 05 EF           3212 	.dw	0,1519
+      0002FC 54 32 43 4F 4E        3213 	.ascii "T2CON"
+      000301 00                    3214 	.db	0
+      000302 00 00 06 01           3215 	.dw	0,1537
+      000306 54 32 4D 4F 44        3216 	.ascii "T2MOD"
+      00030B 00                    3217 	.db	0
+      00030C 00 00 06 13           3218 	.dw	0,1555
+      000310 52 43 4D 50 32 4C     3219 	.ascii "RCMP2L"
+      000316 00                    3220 	.db	0
+      000317 00 00 06 26           3221 	.dw	0,1574
+      00031B 52 43 4D 50 32 48     3222 	.ascii "RCMP2H"
+      000321 00                    3223 	.db	0
+      000322 00 00 06 39           3224 	.dw	0,1593
+      000326 54 4C 32              3225 	.ascii "TL2"
+      000329 00                    3226 	.db	0
+      00032A 00 00 06 49           3227 	.dw	0,1609
+      00032E 50 57 4D 34 4C        3228 	.ascii "PWM4L"
+      000333 00                    3229 	.db	0
+      000334 00 00 06 5B           3230 	.dw	0,1627
+      000338 54 48 32              3231 	.ascii "TH2"
+      00033B 00                    3232 	.db	0
+      00033C 00 00 06 6B           3233 	.dw	0,1643
+      000340 50 57 4D 35 4C        3234 	.ascii "PWM5L"
+      000345 00                    3235 	.db	0
+      000346 00 00 06 7D           3236 	.dw	0,1661
+      00034A 41 44 43 4D 50 4C     3237 	.ascii "ADCMPL"
+      000350 00                    3238 	.db	0
+      000351 00 00 06 90           3239 	.dw	0,1680
+      000355 41 44 43 4D 50 48     3240 	.ascii "ADCMPH"
+      00035B 00                    3241 	.db	0
+      00035C 00 00 06 A3           3242 	.dw	0,1699
+      000360 50 53 57              3243 	.ascii "PSW"
+      000363 00                    3244 	.db	0
+      000364 00 00 06 B3           3245 	.dw	0,1715
+      000368 50 57 4D 50 48        3246 	.ascii "PWMPH"
+      00036D 00                    3247 	.db	0
+      00036E 00 00 06 C5           3248 	.dw	0,1733
+      000372 50 57 4D 30 48        3249 	.ascii "PWM0H"
+      000377 00                    3250 	.db	0
+      000378 00 00 06 D7           3251 	.dw	0,1751
+      00037C 50 57 4D 31 48        3252 	.ascii "PWM1H"
+      000381 00                    3253 	.db	0
+      000382 00 00 06 E9           3254 	.dw	0,1769
+      000386 50 57 4D 32 48        3255 	.ascii "PWM2H"
+      00038B 00                    3256 	.db	0
+      00038C 00 00 06 FB           3257 	.dw	0,1787
+      000390 50 57 4D 33 48        3258 	.ascii "PWM3H"
+      000395 00                    3259 	.db	0
+      000396 00 00 07 0D           3260 	.dw	0,1805
+      00039A 50 4E 50              3261 	.ascii "PNP"
+      00039D 00                    3262 	.db	0
+      00039E 00 00 07 1D           3263 	.dw	0,1821
+      0003A2 46 42 44              3264 	.ascii "FBD"
+      0003A5 00                    3265 	.db	0
+      0003A6 00 00 07 2D           3266 	.dw	0,1837
+      0003AA 50 57 4D 43 4F 4E 30  3267 	.ascii "PWMCON0"
+      0003B1 00                    3268 	.db	0
+      0003B2 00 00 07 41           3269 	.dw	0,1857
+      0003B6 50 57 4D 50 4C        3270 	.ascii "PWMPL"
+      0003BB 00                    3271 	.db	0
+      0003BC 00 00 07 53           3272 	.dw	0,1875
+      0003C0 50 57 4D 30 4C        3273 	.ascii "PWM0L"
+      0003C5 00                    3274 	.db	0
+      0003C6 00 00 07 65           3275 	.dw	0,1893
+      0003CA 50 57 4D 31 4C        3276 	.ascii "PWM1L"
+      0003CF 00                    3277 	.db	0
+      0003D0 00 00 07 77           3278 	.dw	0,1911
+      0003D4 50 57 4D 32 4C        3279 	.ascii "PWM2L"
+      0003D9 00                    3280 	.db	0
+      0003DA 00 00 07 89           3281 	.dw	0,1929
+      0003DE 50 57 4D 33 4C        3282 	.ascii "PWM3L"
+      0003E3 00                    3283 	.db	0
+      0003E4 00 00 07 9B           3284 	.dw	0,1947
+      0003E8 50 49 4F 43 4F 4E 30  3285 	.ascii "PIOCON0"
+      0003EF 00                    3286 	.db	0
+      0003F0 00 00 07 AF           3287 	.dw	0,1967
+      0003F4 50 57 4D 43 4F 4E 31  3288 	.ascii "PWMCON1"
+      0003FB 00                    3289 	.db	0
+      0003FC 00 00 07 C3           3290 	.dw	0,1987
+      000400 41 43 43              3291 	.ascii "ACC"
+      000403 00                    3292 	.db	0
+      000404 00 00 07 D3           3293 	.dw	0,2003
+      000408 41 44 43 43 4F 4E 31  3294 	.ascii "ADCCON1"
+      00040F 00                    3295 	.db	0
+      000410 00 00 07 E7           3296 	.dw	0,2023
+      000414 41 44 43 43 4F 4E 32  3297 	.ascii "ADCCON2"
+      00041B 00                    3298 	.db	0
+      00041C 00 00 07 FB           3299 	.dw	0,2043
+      000420 41 44 43 44 4C 59     3300 	.ascii "ADCDLY"
+      000426 00                    3301 	.db	0
+      000427 00 00 08 0E           3302 	.dw	0,2062
+      00042B 43 30 4C              3303 	.ascii "C0L"
+      00042E 00                    3304 	.db	0
+      00042F 00 00 08 1E           3305 	.dw	0,2078
+      000433 43 30 48              3306 	.ascii "C0H"
+      000436 00                    3307 	.db	0
+      000437 00 00 08 2E           3308 	.dw	0,2094
+      00043B 43 31 4C              3309 	.ascii "C1L"
+      00043E 00                    3310 	.db	0
+      00043F 00 00 08 3E           3311 	.dw	0,2110
+      000443 43 31 48              3312 	.ascii "C1H"
+      000446 00                    3313 	.db	0
+      000447 00 00 08 4E           3314 	.dw	0,2126
+      00044B 41 44 43 43 4F 4E 30  3315 	.ascii "ADCCON0"
+      000452 00                    3316 	.db	0
+      000453 00 00 08 62           3317 	.dw	0,2146
+      000457 50 49 43 4F 4E        3318 	.ascii "PICON"
+      00045C 00                    3319 	.db	0
+      00045D 00 00 08 74           3320 	.dw	0,2164
+      000461 50 49 4E 45 4E        3321 	.ascii "PINEN"
+      000466 00                    3322 	.db	0
+      000467 00 00 08 86           3323 	.dw	0,2182
+      00046B 50 49 50 45 4E        3324 	.ascii "PIPEN"
+      000470 00                    3325 	.db	0
+      000471 00 00 08 98           3326 	.dw	0,2200
+      000475 50 49 46              3327 	.ascii "PIF"
+      000478 00                    3328 	.db	0
+      000479 00 00 08 A8           3329 	.dw	0,2216
+      00047D 43 32 4C              3330 	.ascii "C2L"
+      000480 00                    3331 	.db	0
+      000481 00 00 08 B8           3332 	.dw	0,2232
+      000485 43 32 48              3333 	.ascii "C2H"
+      000488 00                    3334 	.db	0
+      000489 00 00 08 C8           3335 	.dw	0,2248
+      00048D 45 49 50              3336 	.ascii "EIP"
+      000490 00                    3337 	.db	0
+      000491 00 00 08 D8           3338 	.dw	0,2264
+      000495 42                    3339 	.ascii "B"
+      000496 00                    3340 	.db	0
+      000497 00 00 08 E6           3341 	.dw	0,2278
+      00049B 43 41 50 43 4F 4E 33  3342 	.ascii "CAPCON3"
+      0004A2 00                    3343 	.db	0
+      0004A3 00 00 08 FA           3344 	.dw	0,2298
+      0004A7 43 41 50 43 4F 4E 34  3345 	.ascii "CAPCON4"
+      0004AE 00                    3346 	.db	0
+      0004AF 00 00 09 0E           3347 	.dw	0,2318
+      0004B3 53 50 43 52           3348 	.ascii "SPCR"
+      0004B7 00                    3349 	.db	0
+      0004B8 00 00 09 1F           3350 	.dw	0,2335
+      0004BC 53 50 43 52 32        3351 	.ascii "SPCR2"
+      0004C1 00                    3352 	.db	0
+      0004C2 00 00 09 31           3353 	.dw	0,2353
+      0004C6 53 50 53 52           3354 	.ascii "SPSR"
+      0004CA 00                    3355 	.db	0
+      0004CB 00 00 09 42           3356 	.dw	0,2370
+      0004CF 53 50 44 52           3357 	.ascii "SPDR"
+      0004D3 00                    3358 	.db	0
+      0004D4 00 00 09 53           3359 	.dw	0,2387
+      0004D8 41 49 4E 44 49 44 53  3360 	.ascii "AINDIDS"
+      0004DF 00                    3361 	.db	0
+      0004E0 00 00 09 67           3362 	.dw	0,2407
+      0004E4 45 49 50 48           3363 	.ascii "EIPH"
+      0004E8 00                    3364 	.db	0
+      0004E9 00 00 09 78           3365 	.dw	0,2424
+      0004ED 53 43 4F 4E 5F 31     3366 	.ascii "SCON_1"
+      0004F3 00                    3367 	.db	0
+      0004F4 00 00 09 8B           3368 	.dw	0,2443
+      0004F8 50 44 54 45 4E        3369 	.ascii "PDTEN"
+      0004FD 00                    3370 	.db	0
+      0004FE 00 00 09 9D           3371 	.dw	0,2461
+      000502 50 44 54 43 4E 54     3372 	.ascii "PDTCNT"
+      000508 00                    3373 	.db	0
+      000509 00 00 09 B0           3374 	.dw	0,2480
+      00050D 50 4D 45 4E           3375 	.ascii "PMEN"
+      000511 00                    3376 	.db	0
+      000512 00 00 09 C1           3377 	.dw	0,2497
+      000516 50 4D 44              3378 	.ascii "PMD"
+      000519 00                    3379 	.db	0
+      00051A 00 00 09 D1           3380 	.dw	0,2513
+      00051E 45 49 50 31           3381 	.ascii "EIP1"
+      000522 00                    3382 	.db	0
+      000523 00 00 09 E2           3383 	.dw	0,2530
+      000527 45 49 50 48 31        3384 	.ascii "EIPH1"
+      00052C 00                    3385 	.db	0
+      00052D 00 00 0A 02           3386 	.dw	0,2562
+      000531 53 4D 30 5F 31        3387 	.ascii "SM0_1"
+      000536 00                    3388 	.db	0
+      000537 00 00 0A 14           3389 	.dw	0,2580
+      00053B 46 45 5F 31           3390 	.ascii "FE_1"
+      00053F 00                    3391 	.db	0
+      000540 00 00 0A 25           3392 	.dw	0,2597
+      000544 53 4D 31 5F 31        3393 	.ascii "SM1_1"
+      000549 00                    3394 	.db	0
+      00054A 00 00 0A 37           3395 	.dw	0,2615
+      00054E 53 4D 32 5F 31        3396 	.ascii "SM2_1"
+      000553 00                    3397 	.db	0
+      000554 00 00 0A 49           3398 	.dw	0,2633
+      000558 52 45 4E 5F 31        3399 	.ascii "REN_1"
+      00055D 00                    3400 	.db	0
+      00055E 00 00 0A 5B           3401 	.dw	0,2651
+      000562 54 42 38 5F 31        3402 	.ascii "TB8_1"
+      000567 00                    3403 	.db	0
+      000568 00 00 0A 6D           3404 	.dw	0,2669
+      00056C 52 42 38 5F 31        3405 	.ascii "RB8_1"
+      000571 00                    3406 	.db	0
+      000572 00 00 0A 7F           3407 	.dw	0,2687
+      000576 54 49 5F 31           3408 	.ascii "TI_1"
+      00057A 00                    3409 	.db	0
+      00057B 00 00 0A 90           3410 	.dw	0,2704
+      00057F 52 49 5F 31           3411 	.ascii "RI_1"
+      000583 00                    3412 	.db	0
+      000584 00 00 0A A1           3413 	.dw	0,2721
+      000588 41 44 43 46           3414 	.ascii "ADCF"
+      00058C 00                    3415 	.db	0
+      00058D 00 00 0A B2           3416 	.dw	0,2738
+      000591 41 44 43 53           3417 	.ascii "ADCS"
+      000595 00                    3418 	.db	0
+      000596 00 00 0A C3           3419 	.dw	0,2755
+      00059A 45 54 47 53 45 4C 31  3420 	.ascii "ETGSEL1"
+      0005A1 00                    3421 	.db	0
+      0005A2 00 00 0A D7           3422 	.dw	0,2775
+      0005A6 45 54 47 53 45 4C 30  3423 	.ascii "ETGSEL0"
+      0005AD 00                    3424 	.db	0
+      0005AE 00 00 0A EB           3425 	.dw	0,2795
+      0005B2 41 44 43 48 53 33     3426 	.ascii "ADCHS3"
+      0005B8 00                    3427 	.db	0
+      0005B9 00 00 0A FE           3428 	.dw	0,2814
+      0005BD 41 44 43 48 53 32     3429 	.ascii "ADCHS2"
+      0005C3 00                    3430 	.db	0
+      0005C4 00 00 0B 11           3431 	.dw	0,2833
+      0005C8 41 44 43 48 53 31     3432 	.ascii "ADCHS1"
+      0005CE 00                    3433 	.db	0
+      0005CF 00 00 0B 24           3434 	.dw	0,2852
+      0005D3 41 44 43 48 53 30     3435 	.ascii "ADCHS0"
+      0005D9 00                    3436 	.db	0
+      0005DA 00 00 0B 37           3437 	.dw	0,2871
+      0005DE 50 57 4D 52 55 4E     3438 	.ascii "PWMRUN"
+      0005E4 00                    3439 	.db	0
+      0005E5 00 00 0B 4A           3440 	.dw	0,2890
+      0005E9 4C 4F 41 44           3441 	.ascii "LOAD"
+      0005ED 00                    3442 	.db	0
+      0005EE 00 00 0B 5B           3443 	.dw	0,2907
+      0005F2 50 57 4D 46           3444 	.ascii "PWMF"
+      0005F6 00                    3445 	.db	0
+      0005F7 00 00 0B 6C           3446 	.dw	0,2924
+      0005FB 43 4C 52 50 57 4D     3447 	.ascii "CLRPWM"
+      000601 00                    3448 	.db	0
+      000602 00 00 0B 7F           3449 	.dw	0,2943
+      000606 43 59                 3450 	.ascii "CY"
+      000608 00                    3451 	.db	0
+      000609 00 00 0B 8E           3452 	.dw	0,2958
+      00060D 41 43                 3453 	.ascii "AC"
+      00060F 00                    3454 	.db	0
+      000610 00 00 0B 9D           3455 	.dw	0,2973
+      000614 46 30                 3456 	.ascii "F0"
+      000616 00                    3457 	.db	0
+      000617 00 00 0B AC           3458 	.dw	0,2988
+      00061B 52 53 31              3459 	.ascii "RS1"
+      00061E 00                    3460 	.db	0
+      00061F 00 00 0B BC           3461 	.dw	0,3004
+      000623 52 53 30              3462 	.ascii "RS0"
+      000626 00                    3463 	.db	0
+      000627 00 00 0B CC           3464 	.dw	0,3020
+      00062B 4F 56                 3465 	.ascii "OV"
+      00062D 00                    3466 	.db	0
+      00062E 00 00 0B DB           3467 	.dw	0,3035
+      000632 50                    3468 	.ascii "P"
+      000633 00                    3469 	.db	0
+      000634 00 00 0B E9           3470 	.dw	0,3049
+      000638 54 46 32              3471 	.ascii "TF2"
+      00063B 00                    3472 	.db	0
+      00063C 00 00 0B F9           3473 	.dw	0,3065
+      000640 54 52 32              3474 	.ascii "TR2"
+      000643 00                    3475 	.db	0
+      000644 00 00 0C 09           3476 	.dw	0,3081
+      000648 43 4D 5F 52 4C 32     3477 	.ascii "CM_RL2"
+      00064E 00                    3478 	.db	0
+      00064F 00 00 0C 1C           3479 	.dw	0,3100
+      000653 49 32 43 45 4E        3480 	.ascii "I2CEN"
+      000658 00                    3481 	.db	0
+      000659 00 00 0C 2E           3482 	.dw	0,3118
+      00065D 53 54 41              3483 	.ascii "STA"
+      000660 00                    3484 	.db	0
+      000661 00 00 0C 3E           3485 	.dw	0,3134
+      000665 53 54 4F              3486 	.ascii "STO"
+      000668 00                    3487 	.db	0
+      000669 00 00 0C 4E           3488 	.dw	0,3150
+      00066D 53 49                 3489 	.ascii "SI"
+      00066F 00                    3490 	.db	0
+      000670 00 00 0C 5D           3491 	.dw	0,3165
+      000674 41 41                 3492 	.ascii "AA"
+      000676 00                    3493 	.db	0
+      000677 00 00 0C 6C           3494 	.dw	0,3180
+      00067B 49 32 43 50 58        3495 	.ascii "I2CPX"
+      000680 00                    3496 	.db	0
+      000681 00 00 0C 7E           3497 	.dw	0,3198
+      000685 50 41 44 43           3498 	.ascii "PADC"
+      000689 00                    3499 	.db	0
+      00068A 00 00 0C 8F           3500 	.dw	0,3215
+      00068E 50 42 4F 44           3501 	.ascii "PBOD"
+      000692 00                    3502 	.db	0
+      000693 00 00 0C A0           3503 	.dw	0,3232
+      000697 50 53                 3504 	.ascii "PS"
+      000699 00                    3505 	.db	0
+      00069A 00 00 0C AF           3506 	.dw	0,3247
+      00069E 50 54 31              3507 	.ascii "PT1"
+      0006A1 00                    3508 	.db	0
+      0006A2 00 00 0C BF           3509 	.dw	0,3263
+      0006A6 50 58 31              3510 	.ascii "PX1"
+      0006A9 00                    3511 	.db	0
+      0006AA 00 00 0C CF           3512 	.dw	0,3279
+      0006AE 50 54 30              3513 	.ascii "PT0"
+      0006B1 00                    3514 	.db	0
+      0006B2 00 00 0C DF           3515 	.dw	0,3295
+      0006B6 50 58 30              3516 	.ascii "PX0"
+      0006B9 00                    3517 	.db	0
+      0006BA 00 00 0C EF           3518 	.dw	0,3311
+      0006BE 50 33 30              3519 	.ascii "P30"
+      0006C1 00                    3520 	.db	0
+      0006C2 00 00 0C FF           3521 	.dw	0,3327
+      0006C6 45 41                 3522 	.ascii "EA"
+      0006C8 00                    3523 	.db	0
+      0006C9 00 00 0D 0E           3524 	.dw	0,3342
+      0006CD 45 41 44 43           3525 	.ascii "EADC"
+      0006D1 00                    3526 	.db	0
+      0006D2 00 00 0D 1F           3527 	.dw	0,3359
+      0006D6 45 42 4F 44           3528 	.ascii "EBOD"
+      0006DA 00                    3529 	.db	0
+      0006DB 00 00 0D 30           3530 	.dw	0,3376
+      0006DF 45 53                 3531 	.ascii "ES"
+      0006E1 00                    3532 	.db	0
+      0006E2 00 00 0D 3F           3533 	.dw	0,3391
+      0006E6 45 54 31              3534 	.ascii "ET1"
+      0006E9 00                    3535 	.db	0
+      0006EA 00 00 0D 4F           3536 	.dw	0,3407
+      0006EE 45 58 31              3537 	.ascii "EX1"
+      0006F1 00                    3538 	.db	0
+      0006F2 00 00 0D 5F           3539 	.dw	0,3423
+      0006F6 45 54 30              3540 	.ascii "ET0"
+      0006F9 00                    3541 	.db	0
+      0006FA 00 00 0D 6F           3542 	.dw	0,3439
+      0006FE 45 58 30              3543 	.ascii "EX0"
+      000701 00                    3544 	.db	0
+      000702 00 00 0D 7F           3545 	.dw	0,3455
+      000706 50 32 30              3546 	.ascii "P20"
+      000709 00                    3547 	.db	0
+      00070A 00 00 0D 8F           3548 	.dw	0,3471
+      00070E 53 4D 30              3549 	.ascii "SM0"
+      000711 00                    3550 	.db	0
+      000712 00 00 0D 9F           3551 	.dw	0,3487
+      000716 46 45                 3552 	.ascii "FE"
+      000718 00                    3553 	.db	0
+      000719 00 00 0D AE           3554 	.dw	0,3502
+      00071D 53 4D 31              3555 	.ascii "SM1"
+      000720 00                    3556 	.db	0
+      000721 00 00 0D BE           3557 	.dw	0,3518
+      000725 53 4D 32              3558 	.ascii "SM2"
+      000728 00                    3559 	.db	0
+      000729 00 00 0D CE           3560 	.dw	0,3534
+      00072D 52 45 4E              3561 	.ascii "REN"
+      000730 00                    3562 	.db	0
+      000731 00 00 0D DE           3563 	.dw	0,3550
+      000735 54 42 38              3564 	.ascii "TB8"
+      000738 00                    3565 	.db	0
+      000739 00 00 0D EE           3566 	.dw	0,3566
+      00073D 52 42 38              3567 	.ascii "RB8"
+      000740 00                    3568 	.db	0
+      000741 00 00 0D FE           3569 	.dw	0,3582
+      000745 54 49                 3570 	.ascii "TI"
+      000747 00                    3571 	.db	0
+      000748 00 00 0E 0D           3572 	.dw	0,3597
+      00074C 52 49                 3573 	.ascii "RI"
+      00074E 00                    3574 	.db	0
+      00074F 00 00 0E 1C           3575 	.dw	0,3612
+      000753 50 31 37              3576 	.ascii "P17"
+      000756 00                    3577 	.db	0
+      000757 00 00 0E 2C           3578 	.dw	0,3628
+      00075B 50 31 36              3579 	.ascii "P16"
+      00075E 00                    3580 	.db	0
+      00075F 00 00 0E 3C           3581 	.dw	0,3644
+      000763 54 58 44 5F 31        3582 	.ascii "TXD_1"
+      000768 00                    3583 	.db	0
+      000769 00 00 0E 4E           3584 	.dw	0,3662
+      00076D 50 31 35              3585 	.ascii "P15"
+      000770 00                    3586 	.db	0
+      000771 00 00 0E 5E           3587 	.dw	0,3678
+      000775 50 31 34              3588 	.ascii "P14"
+      000778 00                    3589 	.db	0
+      000779 00 00 0E 6E           3590 	.dw	0,3694
+      00077D 53 44 41              3591 	.ascii "SDA"
+      000780 00                    3592 	.db	0
+      000781 00 00 0E 7E           3593 	.dw	0,3710
+      000785 50 31 33              3594 	.ascii "P13"
+      000788 00                    3595 	.db	0
+      000789 00 00 0E 8E           3596 	.dw	0,3726
+      00078D 53 43 4C              3597 	.ascii "SCL"
+      000790 00                    3598 	.db	0
+      000791 00 00 0E 9E           3599 	.dw	0,3742
+      000795 50 31 32              3600 	.ascii "P12"
+      000798 00                    3601 	.db	0
+      000799 00 00 0E AE           3602 	.dw	0,3758
+      00079D 50 31 31              3603 	.ascii "P11"
+      0007A0 00                    3604 	.db	0
+      0007A1 00 00 0E BE           3605 	.dw	0,3774
+      0007A5 50 31 30              3606 	.ascii "P10"
+      0007A8 00                    3607 	.db	0
+      0007A9 00 00 0E CE           3608 	.dw	0,3790
+      0007AD 54 46 31              3609 	.ascii "TF1"
+      0007B0 00                    3610 	.db	0
+      0007B1 00 00 0E DE           3611 	.dw	0,3806
+      0007B5 54 52 31              3612 	.ascii "TR1"
+      0007B8 00                    3613 	.db	0
+      0007B9 00 00 0E EE           3614 	.dw	0,3822
+      0007BD 54 46 30              3615 	.ascii "TF0"
+      0007C0 00                    3616 	.db	0
+      0007C1 00 00 0E FE           3617 	.dw	0,3838
+      0007C5 54 52 30              3618 	.ascii "TR0"
+      0007C8 00                    3619 	.db	0
+      0007C9 00 00 0F 0E           3620 	.dw	0,3854
+      0007CD 49 45 31              3621 	.ascii "IE1"
+      0007D0 00                    3622 	.db	0
+      0007D1 00 00 0F 1E           3623 	.dw	0,3870
+      0007D5 49 54 31              3624 	.ascii "IT1"
+      0007D8 00                    3625 	.db	0
+      0007D9 00 00 0F 2E           3626 	.dw	0,3886
+      0007DD 49 45 30              3627 	.ascii "IE0"
+      0007E0 00                    3628 	.db	0
+      0007E1 00 00 0F 3E           3629 	.dw	0,3902
+      0007E5 49 54 30              3630 	.ascii "IT0"
+      0007E8 00                    3631 	.db	0
+      0007E9 00 00 0F 4E           3632 	.dw	0,3918
+      0007ED 50 30 37              3633 	.ascii "P07"
+      0007F0 00                    3634 	.db	0
+      0007F1 00 00 0F 5E           3635 	.dw	0,3934
+      0007F5 52 58 44              3636 	.ascii "RXD"
+      0007F8 00                    3637 	.db	0
+      0007F9 00 00 0F 6E           3638 	.dw	0,3950
+      0007FD 50 30 36              3639 	.ascii "P06"
+      000800 00                    3640 	.db	0
+      000801 00 00 0F 7E           3641 	.dw	0,3966
+      000805 54 58 44              3642 	.ascii "TXD"
+      000808 00                    3643 	.db	0
+      000809 00 00 0F 8E           3644 	.dw	0,3982
+      00080D 50 30 35              3645 	.ascii "P05"
+      000810 00                    3646 	.db	0
+      000811 00 00 0F 9E           3647 	.dw	0,3998
+      000815 50 30 34              3648 	.ascii "P04"
+      000818 00                    3649 	.db	0
+      000819 00 00 0F AE           3650 	.dw	0,4014
+      00081D 53 54 41 44 43        3651 	.ascii "STADC"
+      000822 00                    3652 	.db	0
+      000823 00 00 0F C0           3653 	.dw	0,4032
+      000827 50 30 33              3654 	.ascii "P03"
+      00082A 00                    3655 	.db	0
+      00082B 00 00 0F D0           3656 	.dw	0,4048
+      00082F 50 30 32              3657 	.ascii "P02"
+      000832 00                    3658 	.db	0
+      000833 00 00 0F E0           3659 	.dw	0,4064
+      000837 52 58 44 5F 31        3660 	.ascii "RXD_1"
+      00083C 00                    3661 	.db	0
+      00083D 00 00 0F F2           3662 	.dw	0,4082
+      000841 50 30 31              3663 	.ascii "P01"
+      000844 00                    3664 	.db	0
+      000845 00 00 10 02           3665 	.dw	0,4098
+      000849 4D 49 53 4F           3666 	.ascii "MISO"
+      00084D 00                    3667 	.db	0
+      00084E 00 00 10 13           3668 	.dw	0,4115
+      000852 50 30 30              3669 	.ascii "P00"
+      000855 00                    3670 	.db	0
+      000856 00 00 10 23           3671 	.dw	0,4131
+      00085A 4D 4F 53 49           3672 	.ascii "MOSI"
+      00085E 00                    3673 	.db	0
+      00085F 00 00 00 00           3674 	.dw	0,0
+      000863                       3675 Ldebug_pubnames_end:
+                                   3676 
+                                   3677 	.area .debug_frame (NOLOAD)
+      000000 00 00                 3678 	.dw	0
+      000002 00 10                 3679 	.dw	Ldebug_CIE0_end-Ldebug_CIE0_start
+      000004                       3680 Ldebug_CIE0_start:
+      000004 FF FF                 3681 	.dw	0xffff
+      000006 FF FF                 3682 	.dw	0xffff
+      000008 01                    3683 	.db	1
+      000009 00                    3684 	.db	0
+      00000A 01                    3685 	.uleb128	1
+      00000B 01                    3686 	.sleb128	1
+      00000C 09                    3687 	.db	9
+      00000D 0C                    3688 	.db	12
+      00000E 16                    3689 	.uleb128	22
+      00000F 02                    3690 	.uleb128	2
+      000010 89                    3691 	.db	137
+      000011 01                    3692 	.uleb128	1
+      000012 00                    3693 	.db	0
+      000013 00                    3694 	.db	0
+      000014                       3695 Ldebug_CIE0_end:
+      000014 00 00 00 14           3696 	.dw	0,20
+      000018 00 00 00 00           3697 	.dw	0,(Ldebug_CIE0_start-4)
+      00001C 00 00 00 62           3698 	.dw	0,(Smain$main$1)	;initial loc
+      000020 00 00 00 21           3699 	.dw	0,Smain$main$8-Smain$main$1
+      000024 01                    3700 	.db	1
+      000025 00 00 00 62           3701 	.dw	0,(Smain$main$1)
+      000029 0E                    3702 	.db	14
+      00002A 02                    3703 	.uleb128	2
+      00002B 00                    3704 	.db	0

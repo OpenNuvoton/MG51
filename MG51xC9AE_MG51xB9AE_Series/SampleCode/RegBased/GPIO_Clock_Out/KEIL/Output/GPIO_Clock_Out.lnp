@@ -1,0 +1,9 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\delay.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\GPIO_Clock_Out" 
+
+PRINT(".\LST\GPIO_Clock_Out.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

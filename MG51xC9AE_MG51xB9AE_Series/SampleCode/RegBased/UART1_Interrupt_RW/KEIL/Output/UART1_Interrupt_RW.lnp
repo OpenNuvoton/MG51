@@ -1,0 +1,9 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\uart.obj",
+".\Output\common.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\UART1_Interrupt_RW" 
+
+PRINT(".\LST\UART1_Interrupt_RW.map") DISABLEWARNING (16) 
+REMOVEUNUSED 

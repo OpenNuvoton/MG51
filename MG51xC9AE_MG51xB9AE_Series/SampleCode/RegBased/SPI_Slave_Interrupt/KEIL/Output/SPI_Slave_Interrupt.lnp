@@ -1,0 +1,10 @@
+".\Output\main.obj",
+".\Output\sys.obj",
+".\Output\spi.obj",
+".\Output\common.obj",
+".\Output\uart.obj",
+".\Output\STARTUP.obj" 
+TO ".\Output\SPI_Slave_Interrupt" 
+
+PRINT(".\LST\SPI_Slave_Interrupt.map") DISABLEWARNING (16) 
+REMOVEUNUSED 
