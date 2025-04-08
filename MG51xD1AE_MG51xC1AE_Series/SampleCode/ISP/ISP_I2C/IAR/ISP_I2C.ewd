@@ -116,7 +116,7 @@
                 </option>
                 <option>
                     <name>DdfFile master</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\ioMG51xD1AE.ddf</state>
+                    <state>$TOOLKIT_DIR$\config\devices\Nuvoton\ioMS51_16K.ddf</state>
                 </option>
                 <option>
                     <name>OCImagesOffset1</name>
@@ -819,7 +819,7 @@
                 </option>
                 <option>
                     <name>DdfFile master</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\ioMG51xD1AE.ddf</state>
+                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\ioN76E003.ddf</state>
                 </option>
                 <option>
                     <name>OCImagesOffset1</name>

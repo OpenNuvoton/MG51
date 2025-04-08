@@ -1,4 +1,4 @@
-#define trig_IAPGO           SFRS=0;TA=0xAA;TA=0x55;IAPTRG|=0x01
+#define trig_IAPGO           TA=0xAA;TA=0x55;IAPTRG|=0x01
 
 #define TRUE       1
 #define FALSE     0
@@ -6,7 +6,7 @@
 #define CMD_CONNECT          0xAE
 #define CMD_SYNC_PACKNO      0xA4
 #define CMD_GET_FWVER        0xA6
-#define FW_VERSION           0x27
+#define FW_VERSION           0x28
 #define CMD_RUN_APROM        0xAB
 #define CMD_GET_DEVICEID     0xB1
 #define CMD_ERASE_ALL        0xA3
@@ -22,14 +22,13 @@
 #define BYTE_PROGRAM_CONFIG  0xE1
 #define READ_UID             0x04
 #define PAGE_SIZE            128
-#define APROM_SIZE           30*1024
- 
+#define APROM_SIZE           62*1024UL
+
 extern  BIT volatile bI2CDataReady;
 extern  BIT volatile bISPDataReady;
 extern  BIT volatile g_timer0Over;
 extern  BIT volatile g_timer1Over;
 extern  BIT volatile g_progarmflag;
-extern  BIT BIT_TMP;
 
 #if defined __C51__
 extern  xdata volatile uint8_t rx_buf[64];
@@ -57,8 +56,6 @@ extern  __data volatile uint8_t count;
 extern  __data volatile uint16_t g_timer0Counter;
 extern  __data volatile uint32_t g_checksum;
 extern  __data volatile uint32_t g_totalchecksum;
-extern  __data volatile uint8_t g_u8SlvDataLen;
-
 extern __data uint8_t PID_highB,PID_lowB,DID_highB,DID_lowB,CONF0,CONF1,CONF2,CONF4;
 extern __data uint8_t recv_CONF0,recv_CONF1,recv_CONF2,recv_CONF4;
 
@@ -73,20 +70,14 @@ extern  __data volatile uint8_t count;
 extern  __data volatile uint16_t g_timer0Counter;
 extern  __data volatile uint32_t g_checksum;
 extern  __data volatile uint32_t g_totalchecksum;
-extern  __data volatile uint8_t g_u8SlvDataLen;
-
 extern __data uint8_t PID_highB,PID_lowB,DID_highB,DID_lowB,CONF0,CONF1,CONF2,CONF4;
 extern __data uint8_t recv_CONF0,recv_CONF1,recv_CONF2,recv_CONF4;
 #endif
 
 void Init_I2C(void);
 void TM0_ini(void);
-void MODIFY_HIRC_24(void);
-void MODIFY_HIRC_16(void);
 void UART0_ini_115200_24MHz(void);
 void Package_checksum(void);
-
-void MODIFY_HIRC_24(void);
-void MODIFY_HIRC_16(void);
+void Timer1_Delay10ms(UINT32 u32CNT);
 void READ_ID(void);
 void READ_CONFIG(void);

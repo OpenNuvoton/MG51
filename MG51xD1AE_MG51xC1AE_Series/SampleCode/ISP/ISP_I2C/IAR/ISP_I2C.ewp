@@ -54,7 +54,7 @@
                 </option>
                 <option>
                     <name>Start of extended stack</name>
-                    <state>0x002000</state>
+                    <state />
                 </option>
                 <option>
                     <name>Calling convention</name>
@@ -251,11 +251,11 @@
                 </option>
                 <option>
                     <name>OGChipSelectMenu</name>
-                    <state>MG51xD1AE	MG51xD1AE</state>
+                    <state>MS51_16K	MS51_16K</state>
                 </option>
                 <option>
                     <name>OGChipSelectMenuSlave</name>
-                    <state>MG51xD1AE	MG51xD1AE</state>
+                    <state>MS51_16K	MS51_16K</state>
                 </option>
                 <option>
                     <name>DPC Address</name>
@@ -279,7 +279,7 @@
                 </option>
                 <option>
                     <name>OGChipConfigPath</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\MG51\MG51xD1AE.i51</state>
+                    <state>C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\8051\config\devices\NuvoTon\MS51\MS51_16K.i51</state>
                 </option>
             </data>
         </settings>
@@ -514,7 +514,7 @@
                 </option>
                 <option>
                     <name>IccCDialect</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>IccAllowVLA</name>
@@ -819,7 +819,7 @@
                 </option>
                 <option>
                     <name>XclFile</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\lnk51ew_MG51xD1AE.xcl</state>
+                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\lnk51ew_MS51_16K.xcl</state>
                 </option>
                 <option>
                     <name>XclFileSlave</name>
@@ -961,11 +961,11 @@
                 </option>
                 <option>
                     <name>xcOverrideProgramEntryLabel</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>xcProgramEntryLabelSelect</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>ListOutputFormat</name>
@@ -1364,11 +1364,11 @@
                 </option>
                 <option>
                     <name>OGChipSelectMenu</name>
-                    <state>MG51xD1AE	MG51xD1AE</state>
+                    <state>N76E003	N76E003</state>
                 </option>
                 <option>
                     <name>OGChipSelectMenuSlave</name>
-                    <state>MG51xD1AE	MG51xD1AE</state>
+                    <state>N76E003	N76E003</state>
                 </option>
                 <option>
                     <name>DPC Address</name>
@@ -1392,7 +1392,7 @@
                 </option>
                 <option>
                     <name>OGChipConfigPath</name>
-                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\MG51\MG51xD1AE.i51</state>
+                    <state>$TOOLKIT_DIR$\config\devices\NuvoTon\MS51\MS51_16K.i51</state>
                 </option>
             </data>
         </settings>
@@ -2225,9 +2225,12 @@
             <data />
         </settings>
     </configuration>
-    <file>
-        <name>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</name>
-    </file>
+    <group>
+        <name>Startup</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</name>
+        </file>
+    </group>
     <file>
         <name>$PROJ_DIR$\..\isp_i2c.c</name>
     </file>

@@ -6,7 +6,7 @@
 #define CMD_CONNECT          0xAE
 #define CMD_SYNC_PACKNO      0xA4
 #define CMD_GET_FWVER        0xA6
-#define FW_VERSION           0x27
+#define FW_VERSION           0x28
 #define CMD_RUN_APROM        0xAB
 #define CMD_GET_DEVICEID     0xB1
 #define CMD_ERASE_ALL        0xA3
@@ -22,7 +22,7 @@
 #define BYTE_PROGRAM_CONFIG  0xE1
 #define READ_UID             0x04
 #define PAGE_SIZE            128
-#define APROM_SIZE           30*1024
+#define APROM_SIZE           30*1024UL   //for LDROM 2KB
 
 extern  BIT volatile bI2CDataReady;
 extern  BIT volatile bISPDataReady;
@@ -76,12 +76,7 @@ extern __data uint8_t recv_CONF0,recv_CONF1,recv_CONF2,recv_CONF4;
 
 void Init_I2C(void);
 void TM0_ini(void);
-void MODIFY_HIRC_24(void);
-void MODIFY_HIRC_16(void);
-void UART0_ini_115200_24MHz(void);
 void Package_checksum(void);
-
-void MODIFY_HIRC_24(void);
-void MODIFY_HIRC_16(void);
+void Timer1_Delay10ms(UINT32 u32CNT);
 void READ_ID(void);
 void READ_CONFIG(void);

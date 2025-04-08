@@ -261,21 +261,13 @@ void HXTGain(uint8_t u8HXTGainLevel)
   SFRS = 2;
   switch (u8HXTGainLevel)
   {
-    /***** HXT L0 ******/
+    /***** HXT L0 For MG51 HXT Crystal 4 to 12 MHz ******/
     case HXTGainL0:
       XTLCON = 0;
     break;
-     /***** HXT L1 ******/
+     /***** HXT L1 MG51 HXT Crystal 12 to 24 MHz and Ceramic Resonator 4 to 24MHz  ******/
     case HXTGainL1:
       XTLCON = 0x0C;
-    break;
-    /***** HXT L2 ******/
-    case HXTGainL2:
-      XTLCON = 0x18;
-    break;
-    /***** HXT L3 ******/
-    case HXTGainL3:
-      XTLCON = 0x28;
     break;
   }
 	SFRS = 0;

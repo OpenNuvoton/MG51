@@ -25,4 +25,8 @@
 
 2024/08
 1.                            Added MG51 64KB series BSP.
-2.Document                    Update NuEclipse quick start to v1.02
+2.Document                    Update NuEclipse quick start to v2.0
+
+2025/03
+1. UART0/1                   Added disable UART RX interrupt when using checkflag TX to help UART TX behavior stable.
+2. ISP_I2C                   Added I2C1 ISP project. added I2C transfer time out after last package to help quick run in APROM.

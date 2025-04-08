@@ -25,5 +25,5 @@ void ClockEnable(uint8_t u8FsysMode);
 void ClockDisable(uint8_t u8FsysMode);
 void ClockSwitch(uint8_t u8FsysMode);
 void MODIFY_HIRC(uint8_t u8HIRCSEL);
-
+void HXTGain(uint8_t u8HXTGainLevel);
 

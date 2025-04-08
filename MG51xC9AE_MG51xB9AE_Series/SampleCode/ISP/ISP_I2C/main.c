@@ -51,7 +51,7 @@ while(1)
 #else
               trig_IAPGO;
 #endif
-          
+
               IAPCN = BYTE_READ_AP;              //program byte verify
               set_IAPTRG_IAPGO;
               vo8temp = rx_buf[count]; 
@@ -65,19 +65,19 @@ while(1)
               vo16temp = AP_size;
               if(flash_address==vo16temp)
               {
-                g_progarmflag=0;
-				g_timer0Over =1;
-                 goto END_2;          
+                 g_progarmflag=0;
+                 g_timer1Over =1;
+                 goto END_2;
               }
             } 
-END_2:                
+END_2:
             Package_checksum();
             tx_buf[8]=g_totalchecksum&0xff;
             tx_buf[9]=(g_totalchecksum>>8)&0xff;
 
             bISPDataReady = 1;
           }
-            
+
           switch(rx_buf[0])
           {                
             case CMD_CONNECT:
@@ -91,7 +91,7 @@ END_2:
             break;
             }
                         
-            case CMD_GET_FWVER:            
+            case CMD_GET_FWVER:
             {
               Package_checksum();
               tx_buf[8]=FW_VERSION;  
@@ -289,8 +289,14 @@ END_1:
       //For connect timer out  
       if(g_timer0Over==1)
       {       
-       goto _APROM;
+          goto _APROM;
       }
+      if(g_timer1Over==1)
+      {       
+          Timer1_Delay10ms(20);
+          goto _APROM;
+      }
+
 }   
 
 
