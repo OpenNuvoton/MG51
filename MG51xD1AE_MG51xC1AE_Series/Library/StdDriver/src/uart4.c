@@ -50,6 +50,35 @@ void UART4_Open(uint32_t u32SysClock, uint32_t u32Baudrate)
   }
 
 /**
+ * @brief       UART2 Parity Enable / Disable Setting 
+ * @param       Enable / Disable
+ * @return      none
+ * @details     none
+ * @example:    UART2_Parity(ENBALE,SCPODD)
+ */ 
+void UART4_Parity(uint8_t u8PStatus, uint8_t u8PEvenOdd)
+{
+    SFRS_TMP = SFRS;
+    if (u8PStatus==DISABLE)
+      {
+        set_SC0CR1_PBOFF;
+      }
+      else if (u8PStatus==ENABLE)
+      {
+        clr_SC2CR1_PBOFF;
+        if (u8PEvenOdd==SC2PEVEN)
+        {
+          clr_SC2CR1_OPE;
+        }
+        else if (u8PEvenOdd==SC2PODD)
+        {
+          set_SC2CR1_OPE;
+        }
+      }
+    SFRS = SFRS_TMP;
+}
+	
+/**
  * @brief       UART3 receive data without interrupt 
  * @param       baudrate value
  * @return      received data

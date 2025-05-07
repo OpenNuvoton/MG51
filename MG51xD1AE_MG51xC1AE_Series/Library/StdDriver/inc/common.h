@@ -12,6 +12,9 @@
 #define  BOOT_APROM     0
 #define  BOOT_LDROM     2
 
+#define  DISABLE        0
+#define  ENABLE         1
+
 extern BIT BIT_TMP;
 
 #if defined __C51__

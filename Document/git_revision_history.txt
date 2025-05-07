@@ -28,5 +28,11 @@
 2.Document                    Update NuEclipse quick start to v2.0
 
 2025/03
-1. UART0/1                   Added disable UART RX interrupt when using checkflag TX to help UART TX behavior stable.
-2. ISP_I2C                   Added I2C1 ISP project. added I2C transfer time out after last package to help quick run in APROM.
+1. UART0/1                    Added disable UART RX interrupt when using checkflag TX to help UART TX behavior stable.
+2. ISP_I2C                    Added I2C1 ISP project. added I2C transfer time out after last package to help quick run in APROM.
+
+2025/04
+1.SDCC project                Add project paramater display with memory size. 
+
+2025/05
+1. UART2/UART3/UART4          Add UART2/UART3/UART4 Parity bit project. 
