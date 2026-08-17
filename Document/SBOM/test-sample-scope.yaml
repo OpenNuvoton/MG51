@@ -1,0 +1,12 @@
+# MG51 Test Sample SBOM scope
+# Examples, demos, ISP utilities and build/IDE projects.
+# These are NOT product runtime dependencies unless the customer integrates
+# them. Paths are relative to the BSP root.
+sbomType: Test Sample SBOM
+include:
+  - path: MG51xC9AE_MG51xB9AE_Series/SampleCode
+  - path: MG51xD1AE_MG51xC1AE_Series/SampleCode
+exclude:
+  - path: Document/
+  - path: MG51xC9AE_MG51xB9AE_Series/Library/
+  - path: MG51xD1AE_MG51xC1AE_Series/Library/

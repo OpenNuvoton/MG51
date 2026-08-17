@@ -1,0 +1,176 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:bda5f795-f202-4324-b748-1eda14a0ca43",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-08-17T09:25:29+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.51.0"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "e54d68090d5c6522",
+      "type": "application",
+      "name": "MCU Test Sample",
+      "version": "5f20302-dirty",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components used only for examples, demonstrations, validation, host-side utilities, or testing; not included in product runtime unless explicitly integrated by the user."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "test-sample-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:test-sample-scope-include-path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/SampleCode"
+        },
+        {
+          "name": "bsp:test-sample-scope-include-path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/SampleCode"
+        },
+        {
+          "name": "bsp:test-sample-scope-exclude-path",
+          "value": "Document/"
+        },
+        {
+          "name": "bsp:test-sample-scope-exclude-path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/Library/"
+        },
+        {
+          "name": "bsp:test-sample-scope-exclude-path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/Library/"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "mg51:test-sample-component:mg51xc9ae_mg51xb9ae_series-samplecode",
+      "name": "MG51 SampleCode",
+      "version": "5f20302-dirty",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP test-sample component included from test-sample scope path MG51xC9AE_MG51xB9AE_Series/SampleCode",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/SampleCode"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "test-sample-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "type": "application",
+      "bom-ref": "mg51:test-sample-component:mg51xd1ae_mg51xc1ae_series-samplecode",
+      "name": "MG51 SampleCode",
+      "version": "5f20302-dirty",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP test-sample component included from test-sample scope path MG51xD1AE_MG51xC1AE_Series/SampleCode",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/SampleCode"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "test-sample-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "e54d68090d5c6522",
+      "dependsOn": [
+        "mg51:test-sample-component:mg51xc9ae_mg51xb9ae_series-samplecode",
+        "mg51:test-sample-component:mg51xd1ae_mg51xc1ae_series-samplecode"
+      ]
+    }
+  ]
+}

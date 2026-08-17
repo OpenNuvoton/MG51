@@ -1,0 +1,20 @@
+# MG51 Product SBOM scope
+# Runtime / product-integrated first-party sources.
+# Paths are relative to the BSP root and follow the actual MG51 layout
+# (an 8051 BSP split into two chip families, each with its own Library/).
+# Only include:, exclude: and their "- path:" entries are parsed by
+# tools/gen_bsp_sbom.py.
+sbomType: Product SBOM
+include:
+  # --- MG51xC9AE / MG51xB9AE family ---
+  - path: MG51xC9AE_MG51xB9AE_Series/Library/Device
+  - path: MG51xC9AE_MG51xB9AE_Series/Library/Startup
+  - path: MG51xC9AE_MG51xB9AE_Series/Library/StdDriver
+  # --- MG51xD1AE / MG51xC1AE family ---
+  - path: MG51xD1AE_MG51xC1AE_Series/Library/Device
+  - path: MG51xD1AE_MG51xC1AE_Series/Library/Startup
+  - path: MG51xD1AE_MG51xC1AE_Series/Library/StdDriver
+exclude:
+  - path: Document/
+  - path: MG51xC9AE_MG51xB9AE_Series/SampleCode/
+  - path: MG51xD1AE_MG51xC1AE_Series/SampleCode/
