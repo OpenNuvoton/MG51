@@ -1,0 +1,380 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:6becb4ac-bfb9-40be-91d2-a8920372bf20",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-08-17T17:08:10+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.51.0"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "cd571a81fda3bd51",
+      "type": "library",
+      "name": "MCU Driver",
+      "version": "f642ced",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:third-party-components",
+          "value": "none identified in product scope based on the defined Product SBOM scope policy"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/Library/Device"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/Library/Startup"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/Library/StdDriver"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/Library/Device"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/Library/Startup"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/Library/StdDriver"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Document/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/SampleCode/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/SampleCode/"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-device",
+      "name": "MG51 Device",
+      "version": "f642ced",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path MG51xC9AE_MG51xB9AE_Series/Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/Library/Device"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-startup",
+      "name": "MG51 Startup",
+      "version": "f642ced",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path MG51xC9AE_MG51xB9AE_Series/Library/Startup",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/Library/Startup"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-stddriver",
+      "name": "MG51 StdDriver",
+      "version": "f642ced",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path MG51xC9AE_MG51xB9AE_Series/Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xC9AE_MG51xB9AE_Series/Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-device",
+      "name": "MG51 Device",
+      "version": "f642ced",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path MG51xD1AE_MG51xC1AE_Series/Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/Library/Device"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-startup",
+      "name": "MG51 Startup",
+      "version": "f642ced",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path MG51xD1AE_MG51xC1AE_Series/Library/Startup",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/Library/Startup"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-stddriver",
+      "name": "MG51 StdDriver",
+      "version": "f642ced",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path MG51xD1AE_MG51xC1AE_Series/Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "MG51xD1AE_MG51xC1AE_Series/Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "cd571a81fda3bd51",
+      "dependsOn": [
+        "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-device",
+        "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-startup",
+        "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-stddriver",
+        "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-device",
+        "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-startup",
+        "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-stddriver"
+      ]
+    }
+  ]
+}
