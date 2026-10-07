@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:6becb4ac-bfb9-40be-91d2-a8920372bf20",
+  "serialNumber": "urn:uuid:86ca1303-fa59-42fd-85c9-ec8cd0b3d7ef",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-17T17:08:10+08:00",
+    "timestamp": "2026-10-07T10:28:32+08:00",
     "tools": {
       "components": [
         {
@@ -17,10 +17,17 @@
       ]
     },
     "component": {
-      "bom-ref": "cd571a81fda3bd51",
+      "bom-ref": "9eba73336c54e591",
       "type": "library",
       "name": "MCU Driver",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-product@889f96b",
       "licenses": [
         {
           "license": {
@@ -90,6 +97,12 @@
           "value": "MG51xD1AE_MG51xC1AE_Series/SampleCode/"
         }
       ]
+    },
+    "manufacturer": {
+      "name": "Nuvoton Technology Corporation",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
     }
   },
   "components": [
@@ -97,7 +110,14 @@
       "type": "library",
       "bom-ref": "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-device",
       "name": "MG51 Device",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xc9ae_mg51xb9ae_series-library-device@889f96b",
       "licenses": [
         {
           "license": {
@@ -142,7 +162,14 @@
       "type": "library",
       "bom-ref": "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-startup",
       "name": "MG51 Startup",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xc9ae_mg51xb9ae_series-library-startup@889f96b",
       "licenses": [
         {
           "license": {
@@ -187,7 +214,14 @@
       "type": "library",
       "bom-ref": "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-stddriver",
       "name": "MG51 StdDriver",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xc9ae_mg51xb9ae_series-library-stddriver@889f96b",
       "licenses": [
         {
           "license": {
@@ -232,7 +266,14 @@
       "type": "library",
       "bom-ref": "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-device",
       "name": "MG51 Device",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xd1ae_mg51xc1ae_series-library-device@889f96b",
       "licenses": [
         {
           "license": {
@@ -277,7 +318,14 @@
       "type": "library",
       "bom-ref": "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-startup",
       "name": "MG51 Startup",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xd1ae_mg51xc1ae_series-library-startup@889f96b",
       "licenses": [
         {
           "license": {
@@ -322,7 +370,14 @@
       "type": "library",
       "bom-ref": "mg51:product-component:mg51xd1ae_mg51xc1ae_series-library-stddriver",
       "name": "MG51 StdDriver",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xd1ae_mg51xc1ae_series-library-stddriver@889f96b",
       "licenses": [
         {
           "license": {
@@ -366,7 +421,7 @@
   ],
   "dependencies": [
     {
-      "ref": "cd571a81fda3bd51",
+      "ref": "9eba73336c54e591",
       "dependsOn": [
         "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-device",
         "mg51:product-component:mg51xc9ae_mg51xb9ae_series-library-startup",

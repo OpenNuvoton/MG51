@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:781c79da-850f-4742-8f93-0a2f0b3739d0",
+  "serialNumber": "urn:uuid:7e0e964f-076e-4ccf-babf-f0d59349a373",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-17T17:08:13+08:00",
+    "timestamp": "2026-10-07T10:28:34+08:00",
     "tools": {
       "components": [
         {
@@ -17,10 +17,17 @@
       ]
     },
     "component": {
-      "bom-ref": "bd3f956a59e957b8",
+      "bom-ref": "6fa965cc004768f8",
       "type": "application",
       "name": "MCU Test Sample",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-testsample@889f96b",
       "licenses": [
         {
           "license": {
@@ -70,6 +77,12 @@
           "value": "MG51xD1AE_MG51xC1AE_Series/Library/"
         }
       ]
+    },
+    "manufacturer": {
+      "name": "Nuvoton Technology Corporation",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
     }
   },
   "components": [
@@ -77,7 +90,14 @@
       "type": "application",
       "bom-ref": "mg51:test-sample-component:mg51xc9ae_mg51xb9ae_series-samplecode",
       "name": "MG51 SampleCode",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xc9ae_mg51xb9ae_series-samplecode@889f96b",
       "licenses": [
         {
           "license": {
@@ -122,7 +142,14 @@
       "type": "application",
       "bom-ref": "mg51:test-sample-component:mg51xd1ae_mg51xc1ae_series-samplecode",
       "name": "MG51 SampleCode",
-      "version": "f642ced",
+      "version": "889f96b",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mg51-mg51xd1ae_mg51xc1ae_series-samplecode@889f96b",
       "licenses": [
         {
           "license": {
@@ -166,7 +193,7 @@
   ],
   "dependencies": [
     {
-      "ref": "bd3f956a59e957b8",
+      "ref": "6fa965cc004768f8",
       "dependsOn": [
         "mg51:test-sample-component:mg51xc9ae_mg51xb9ae_series-samplecode",
         "mg51:test-sample-component:mg51xd1ae_mg51xc1ae_series-samplecode"
